@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-namespace NissGram.Models;
+using NissGram.Models;
+
+namespace NissGram.DAL;
 
 public class NissDbContext : DbContext
 {
@@ -9,6 +11,7 @@ public class NissDbContext : DbContext
 
 
     public DbSet<User> Users { get; set; }
+
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Post> Posts { get; set; }
     public DbSet<UserPostLike> UserPostLikes { get; set; }
