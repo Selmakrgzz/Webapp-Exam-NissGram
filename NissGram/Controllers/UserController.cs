@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NissGram.Models;
+using NissGram.ViewModels;
 using NissGram.DAL;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,12 @@ public class UserController : Controller
     {
         // Fetch all users from the database
         var users = await _context.Users.ToListAsync();
-        return View(users);  // Pass the list of users to the view
+
+        // Create an instance of UsersViewModel with the list of users
+        var viewModel = new UsersViewModel(users, "All Users");
+
+        // Pass the ViewModel to the view
+        return View(viewModel);
     }
 
 
