@@ -59,7 +59,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Today I went to the park and enjoyed the sunshine.",
-                    ImgUrl = null;
+                    ImgUrl = null,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now
                 }
