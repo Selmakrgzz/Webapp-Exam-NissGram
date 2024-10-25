@@ -42,26 +42,32 @@ public static class DBInit
 
         if (!context.Posts.Any())
         {
+            var userNico = context.Users.FirstOrDefault(u => u.UserName == "Nico123");
+            var userJane = context.Users.FirstOrDefault(u => u.UserName == "JaneDoe");
+
             var posts = new List<Post>
             {
                 new Post
                 {
-                    Title = "My First Post",
-                    Content = "This is the content of my first post!",
-                    UserId = context.Users.First(u => u.UserName == "Nico123").UserId, // Assumes UserId is available
-                    CreatedAt = DateTime.Now
+                    User = userNico, // Brukerobjektet for å sette relasjonen
+                    Text = null,
+                    ImgUrl = "/wwwroot/images/profile_image_default", // Legg til en passende URL for bildet
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now
                 },
                 new Post
                 {
-                    Title = "A Day in the Life",
-                    Content = "Today I went to the park and enjoyed the sunshine.",
-                    UserId = context.Users.First(u => u.UserName == "JaneDoe").UserId, // Assumes UserId is available
-                    CreatedAt = DateTime.Now
+                    User = userJane, // Brukerobjektet for å sette relasjonen
+                    Text = "Today I went to the park and enjoyed the sunshine.",
+                    ImgUrl = null;
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now
                 }
             };
 
             context.AddRange(posts);
             context.SaveChanges();
         }
+
     }
 }
