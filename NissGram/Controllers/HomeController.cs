@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using NissGram.Models;
 using NissGram.DAL;
+using NissGram.DAL.Repositories;
 
 namespace NissGram.Controllers;
 

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using NissGram.Models;
 using NissGram.ViewModels;
 using NissGram.DAL;
+using NissGram.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace NissGram.Controllers;
@@ -28,25 +29,18 @@ public class UserController : Controller
         return View(viewModel);
     }
 
-
-
     //GET: /Users/Details/5
     [HttpGet]
-    public async Task<IActionResult> GetProfile(int? id)
+    public async Task<IActionResult> GetProfile(int id)
     {
         if (id == null)
         {
             return NotFound();
         }
 
-        // Fetch user by ID
-        var user = await _context.Users
-            .FirstOrDefaultAsync(m => m.UserId == id);
+        var user = await _userRepository.GetUserByIdAsync(id);
         if (user == null)
-        {
             return NotFound();
-        }
-
         return View(user);
     }
 

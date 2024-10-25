@@ -1,74 +1,69 @@
 using Microsoft.AspNetCore.Mvc;
-using NissGram.Models;
-using Microsoft.EntityFrameworkCore;
 using NissGram.DAL;
-
+using NissGram.DAL.Repositories;
+using NissGram.Models;
+using System.Threading.Tasks;
 
 namespace NissGram.Controllers;
-
 public class PostController : Controller
 {
+    private readonly IPostRepository _postRepository;
 
-    private readonly NissDbContext _context;
-
-    public PostController(NissDbContext context)
+    public PostController(IPostRepository postRepository)
     {
-        _context = context;
+        _postRepository = postRepository;
     }
 
-
-    // GET: /Posts use on the main page.
+    // GET: /Posts - Hent alle innlegg for hovedsiden
     public async Task<IActionResult> Index()
     {
-        // Fetch all posts, including related user data
-        var posts = await _context.Posts.Include(p => p.User).ToListAsync();
+        var posts = await _postRepository.GetAllPostsAsync();
         return View(posts);
     }
 
-
-    // GET: Use when a user clicks on a post, either from profile or from home page.
-    public async Task<IActionResult> Details(int? id)
+    // GET: Vis detaljer for et enkelt innlegg, inkludert kommentarer og antall likes
+    public async Task<IActionResult> Details(int id)
     {
         if (id == null)
         {
             return NotFound();
         }
 
-        var post = await _context.Posts
-            .Include(p => p.User)
-            .FirstOrDefaultAsync(m => m.PostId == id);
-        if (post == null)
-        {
+        var user = await _userRepository.GetUserByIdAsync(id);
+        if (user == null)
             return NotFound();
-        }
-
-        return View(post);
+        return View(user);
     }
 
-    // LIKE A POST
+    // Like a Post
     [HttpPost]
     public async Task<IActionResult> LikePost(int postId)
     {
-        var post = await _context.Posts.Include(p => p.UserLikes).FirstOrDefaultAsync(p => p.PostId == postId);
+        var userId = 1; // Replace with the currently logged-in user ID
+        
+        // Check if the post exists
+        var post = await _postRepository.GetPostByIdAsync(postId);
         if (post == null)
         {
             return NotFound();
         }
 
-        var userId = 1;  // Replace with the currently logged-in user ID
-        var existingLike = post.UserLikes.FirstOrDefault(ul => ul.UserId == userId);
+        // Check if the user has already liked the post
+        var existingLike = await _postRepository.GetLikeByUserAndPostAsync(userId, postId);
 
-        if (existingLike == null)  // Add like
+        if (existingLike == null) // Add like
         {
             var like = new UserPostLike { PostId = postId, UserId = userId };
-            _context.UserPostLikes.Add(like);
+            await _postRepository.LikePostAsync(like);
         }
-        else  // Remove like (unlike)
+        else // Remove like (unlike)
         {
-            _context.UserPostLikes.Remove(existingLike);
+            await _postRepository.UnlikePostAsync(existingLike);
         }
 
-        await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Details), new { id = postId });
     }
+
+    
 }
+
