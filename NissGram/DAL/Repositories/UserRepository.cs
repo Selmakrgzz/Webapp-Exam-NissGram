@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace NissGram.DAL.Repositories;
 public class UserRepository : IUserRepository
@@ -21,6 +19,11 @@ public class UserRepository : IUserRepository
     public async Task<User?> GetUserByIdAsync(int id)
     {
         return await _context.Users.FindAsync(id);
+    }
+
+    public async Task<User?> GetUserByUsernameAsync(string username)
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
     }
 
     public async Task AddUserAsync(User user)
