@@ -1,44 +1,75 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+   for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+/* General container setup for a full-height flexbox layout */
+.d-flex {
+  height: 100vh;
 }
 
-a {
-  color: #0077cc;
+/* Header that stays fixed at the top of the page */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 80px; /* Matches the width of the sidebar */
+  width: calc(100% - 80px); /* Adjusts width considering sidebar */
+  z-index: 1030; /* Ensures it stays above other elements */
+  height: 60px;
+  background-color: #007bff;
+  display: flex;
+  justify-content: center; /* Centers the title "Niss" horizontally */
+  align-items: center; /* Centers content vertically */
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+/* Content container adjustments to fit below the header */
+.content-container {
+  margin-top: 60px; /* Accounts for header height */
+  margin-left: 80px; /* Matches the width of the sidebar */
+  padding: 20px;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+/* Sidebar setup to fill the full height with vertical spacing */
+.side-navbar {
+  width: 80px;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spaces content evenly, with top and bottom content */
+  padding-top: 20px; /* Slight padding at the top */
+  padding-bottom: 20px; /* Slight padding at the bottom */
+  border-right: 1px solid #e5e5e5; /* Adds a border to separate the sidebar */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Light shadow for visual separation */
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+/* General style for circle elements (used for navigation icons) */
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Makes the elements circular */
+  display: flex;
+  justify-content: center; /* Centers content inside the circle */
+  align-items: center; /* Centers content inside the circle */
+  font-size: 14px;
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for color changes */
 }
 
+/* Specific styling for the first circle */
+.circle.first {
+  margin-bottom: 50px; /* Extra space after the first circle */
+}
+
+/* Consistent spacing for middle circles (2-5) */
+.circle.middle {
+  margin-bottom: 20px; /* Even spacing between middle circles */
+}
+
+/* Specific styling for the logout button */
+.circle.logout {
+  align-self: center; /* Centers horizontally in the sidebar */
+}
+
+/* Footer adjustments to stick at the bottom of the page */
 .footer {
   position: absolute;
   bottom: 0;
