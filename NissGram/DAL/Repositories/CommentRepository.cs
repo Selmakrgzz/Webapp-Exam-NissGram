@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using NissGram.DAL;
 namespace NissGram.DAL.Repositories;
 
 public class CommentRepository : ICommentRepository

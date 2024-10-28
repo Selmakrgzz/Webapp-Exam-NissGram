@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using NissGram.Models;
 using NissGram.DAL;
-using NissGram.DAL.Repositories;
+//using NissGram.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

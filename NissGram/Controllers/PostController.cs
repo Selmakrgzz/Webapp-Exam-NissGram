@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NissGram.DAL;
-using NissGram.DAL.Repositories;
+using NissGram.Repositories;
 using NissGram.Models;
 using System.Threading.Tasks;
 

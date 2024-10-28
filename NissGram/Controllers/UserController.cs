@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using NissGram.Models;
 using NissGram.ViewModels;
 using NissGram.DAL;
-using NissGram.DAL.Repositories;
+//using NissGram.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace NissGram.Controllers;
