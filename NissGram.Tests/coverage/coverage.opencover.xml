@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CoverageSession>
-  <Summary numSequencePoints="246" visitedSequencePoints="20" numBranchPoints="22" visitedBranchPoints="1" sequenceCoverage="8.13" branchCoverage="4.54" maxCyclomaticComplexity="75" minCyclomaticComplexity="75" visitedClasses="4" numClasses="33" visitedMethods="14" numMethods="62" />
+  <Summary numSequencePoints="246" visitedSequencePoints="47" numBranchPoints="22" visitedBranchPoints="4" sequenceCoverage="19.1" branchCoverage="18.18" maxCyclomaticComplexity="75" minCyclomaticComplexity="75" visitedClasses="7" numClasses="33" visitedMethods="18" numMethods="62" />
   <Modules>
-    <Module hash="5A63E8C7-DE65-494B-BD6B-E4C86DFAAEED">
+    <Module hash="AE267888-87C9-4B5D-82E8-6D999E850AC8">
       <ModulePath>NissGram.dll</ModulePath>
-      <ModuleTime>2024-10-30T09:06:29</ModuleTime>
+      <ModuleTime>2024-10-30T09:20:02</ModuleTime>
       <ModuleName>NissGram</ModuleName>
       <Files>
-        <File uid="1" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Program.cs" />
-        <File uid="2" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Home\Index.cshtml" />
-        <File uid="3" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Home\Privacy.cshtml" />
-        <File uid="4" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Shared\Error.cshtml" />
-        <File uid="5" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Shared\_UserTable.cshtml" />
-        <File uid="6" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\_ViewStart.cshtml" />
-        <File uid="7" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\ViewModels\UsersViewModel.cs" />
-        <File uid="8" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\Comment.cs" />
-        <File uid="9" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\ErrorViewModel.cs" />
-        <File uid="10" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\Post.cs" />
-        <File uid="11" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\User.cs" />
-        <File uid="12" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\UserPostLike.cs" />
-        <File uid="13" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\DBInit.cs" />
-        <File uid="14" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\NissDbContext.cs" />
-        <File uid="15" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\Repositories\PostRepository.cs" />
-        <File uid="16" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\Repositories\UserRepository.cs" />
-        <File uid="17" fullPath="c:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Controllers\PostController.cs" />
+        <File uid="1" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Program.cs" />
+        <File uid="2" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Home\Index.cshtml" />
+        <File uid="3" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Home\Privacy.cshtml" />
+        <File uid="4" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Shared\Error.cshtml" />
+        <File uid="5" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\Shared\_UserTable.cshtml" />
+        <File uid="6" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Views\_ViewStart.cshtml" />
+        <File uid="7" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\ViewModels\UsersViewModel.cs" />
+        <File uid="8" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\Comment.cs" />
+        <File uid="9" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\ErrorViewModel.cs" />
+        <File uid="10" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\Post.cs" />
+        <File uid="11" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\User.cs" />
+        <File uid="12" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Models\UserPostLike.cs" />
+        <File uid="13" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\DBInit.cs" />
+        <File uid="14" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\NissDbContext.cs" />
+        <File uid="15" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\Repositories\PostRepository.cs" />
+        <File uid="16" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\DAL\Repositories\UserRepository.cs" />
+        <File uid="17" fullPath="C:\Users\Bruker\Desktop\Webapp-exam\Webapp-Exam-NissGram\NissGram\Controllers\PostController.cs" />
       </Files>
       <Classes>
         <Class>
@@ -272,19 +272,19 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="7" visitedSequencePoints="6" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="85.71" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="6" numMethods="7" />
+          <Summary numSequencePoints="7" visitedSequencePoints="7" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="7" numMethods="7" />
           <FullName>NissGram.Models.Post</FullName>
           <Methods>
-            <Method cyclomaticComplexity="1" nPathComplexity="1" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Int32 NissGram.Models.Post::get_PostId()</Name>
               <FileRef uid="10" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="4" ordinal="0" sl="4" sc="1" el="4" ec="2" bec="0" bev="0" fileid="10" />
+                <SequencePoint vc="5" uspid="4" ordinal="0" sl="4" sc="1" el="4" ec="2" bec="0" bev="0" fileid="10" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="4" ec="1" el="4" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
+              <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="4" ec="1" el="4" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
             </Method>
             <Method cyclomaticComplexity="1" nPathComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
@@ -292,7 +292,7 @@
               <Name>NissGram.Models.User NissGram.Models.Post::get_User()</Name>
               <FileRef uid="10" />
               <SequencePoints>
-                <SequencePoint vc="4" uspid="6" ordinal="0" sl="6" sc="1" el="6" ec="2" bec="0" bev="0" fileid="10" />
+                <SequencePoint vc="18" uspid="6" ordinal="0" sl="6" sc="1" el="6" ec="2" bec="0" bev="0" fileid="10" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="6" ec="1" el="6" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
@@ -303,7 +303,7 @@
               <Name>System.String NissGram.Models.Post::get_Text()</Name>
               <FileRef uid="10" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="8" ordinal="0" sl="8" sc="1" el="8" ec="2" bec="0" bev="0" fileid="10" />
+                <SequencePoint vc="9" uspid="8" ordinal="0" sl="8" sc="1" el="8" ec="2" bec="0" bev="0" fileid="10" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="8" ec="1" el="8" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
@@ -314,7 +314,7 @@
               <Name>System.String NissGram.Models.Post::get_ImgUrl()</Name>
               <FileRef uid="10" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="10" />
+                <SequencePoint vc="7" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="10" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="9" ec="1" el="9" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
@@ -325,7 +325,7 @@
               <Name>System.DateTime NissGram.Models.Post::get_DateCreated()</Name>
               <FileRef uid="10" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="10" />
+                <SequencePoint vc="7" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="10" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="4" offset="4" sc="0" sl="10" ec="1" el="10" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
@@ -336,7 +336,7 @@
               <Name>System.DateTime NissGram.Models.Post::get_DateUpdated()</Name>
               <FileRef uid="10" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="10" />
+                <SequencePoint vc="7" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="10" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="5" offset="5" sc="0" sl="11" ec="1" el="11" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
@@ -347,7 +347,7 @@
               <Name>System.Collections.Generic.ICollection`1&lt;NissGram.Models.UserPostLike&gt; NissGram.Models.Post::get_UserLikes()</Name>
               <FileRef uid="10" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="13" ordinal="0" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="10" />
+                <SequencePoint vc="7" uspid="13" ordinal="0" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="10" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="6" offset="6" sc="0" sl="13" ec="1" el="13" bec="0" bev="0" fileid="10" xmlns:p8="xsi" />
@@ -375,7 +375,7 @@
               <Name>System.String NissGram.Models.User::get_UserName()</Name>
               <FileRef uid="11" />
               <SequencePoints>
-                <SequencePoint vc="1" uspid="7" ordinal="0" sl="7" sc="1" el="7" ec="2" bec="0" bev="0" fileid="11" />
+                <SequencePoint vc="7" uspid="7" ordinal="0" sl="7" sc="1" el="7" ec="2" bec="0" bev="0" fileid="11" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="1" offset="1" sc="0" sl="7" ec="1" el="7" bec="0" bev="0" fileid="11" xmlns:p8="xsi" />
@@ -386,7 +386,7 @@
               <Name>System.String NissGram.Models.User::get_Email()</Name>
               <FileRef uid="11" />
               <SequencePoints>
-                <SequencePoint vc="1" uspid="8" ordinal="0" sl="8" sc="1" el="8" ec="2" bec="0" bev="0" fileid="11" />
+                <SequencePoint vc="5" uspid="8" ordinal="0" sl="8" sc="1" el="8" ec="2" bec="0" bev="0" fileid="11" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="2" offset="2" sc="0" sl="8" ec="1" el="8" bec="0" bev="0" fileid="11" xmlns:p8="xsi" />
@@ -397,7 +397,7 @@
               <Name>System.String NissGram.Models.User::get_Password()</Name>
               <FileRef uid="11" />
               <SequencePoints>
-                <SequencePoint vc="1" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="11" />
+                <SequencePoint vc="5" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="11" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="3" offset="3" sc="0" sl="9" ec="1" el="9" bec="0" bev="0" fileid="11" xmlns:p8="xsi" />
@@ -408,7 +408,7 @@
               <Name>System.String NissGram.Models.User::get_FirstName()</Name>
               <FileRef uid="11" />
               <SequencePoints>
-                <SequencePoint vc="1" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="11" />
+                <SequencePoint vc="5" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="11" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="4" offset="4" sc="0" sl="10" ec="1" el="10" bec="0" bev="0" fileid="11" xmlns:p8="xsi" />
@@ -419,7 +419,7 @@
               <Name>System.String NissGram.Models.User::get_LastName()</Name>
               <FileRef uid="11" />
               <SequencePoints>
-                <SequencePoint vc="1" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="11" />
+                <SequencePoint vc="5" uspid="11" ordinal="0" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="11" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="5" offset="5" sc="0" sl="11" ec="1" el="11" bec="0" bev="0" fileid="11" xmlns:p8="xsi" />
@@ -463,7 +463,7 @@
               <Name>System.Collections.Generic.ICollection`1&lt;NissGram.Models.UserPostLike&gt; NissGram.Models.User::get_LikedPosts()</Name>
               <FileRef uid="11" />
               <SequencePoints>
-                <SequencePoint vc="1" uspid="20" ordinal="0" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="11" />
+                <SequencePoint vc="5" uspid="20" ordinal="0" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="11" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="1" uspid="0" p8:type="SequencePoint" ordinal="9" offset="9" sc="0" sl="20" ec="1" el="20" bec="0" bev="0" fileid="11" xmlns:p8="xsi" />
@@ -976,10 +976,10 @@
               <Name>System.Void NissGram.Controllers.PostController::.ctor(NissGram.DAL.Repositories.IPostRepository)</Name>
               <FileRef uid="17" />
               <SequencePoints>
-                <SequencePoint vc="1" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="1" uspid="11" ordinal="1" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="1" uspid="12" ordinal="2" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="1" uspid="13" ordinal="3" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="8" uspid="10" ordinal="0" sl="10" sc="1" el="10" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="8" uspid="11" ordinal="1" sl="11" sc="1" el="11" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="8" uspid="12" ordinal="2" sl="12" sc="1" el="12" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="8" uspid="13" ordinal="3" sl="13" sc="1" el="13" ec="2" bec="0" bev="0" fileid="17" />
               </SequencePoints>
               <BranchPoints />
               <MethodPoint vc="4" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="10" ec="1" el="13" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
@@ -987,57 +987,57 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="7" visitedSequencePoints="4" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="57.14" branchCoverage="50" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
+          <Summary numSequencePoints="7" visitedSequencePoints="7" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
           <FullName>NissGram.Controllers.PostController/&lt;Create&gt;d__4</FullName>
           <Methods>
-            <Method cyclomaticComplexity="2" nPathComplexity="2" sequenceCoverage="57.14" branchCoverage="50" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="7" visitedSequencePoints="4" numBranchPoints="2" visitedBranchPoints="1" sequenceCoverage="57.14" branchCoverage="50" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
+            <Method cyclomaticComplexity="2" nPathComplexity="2" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="7" visitedSequencePoints="7" numBranchPoints="2" visitedBranchPoints="2" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="2" minCyclomaticComplexity="2" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Void NissGram.Controllers.PostController/&lt;Create&gt;d__4::MoveNext()</Name>
               <FileRef uid="17" />
               <SequencePoints>
-                <SequencePoint vc="2" uspid="36" ordinal="0" sl="36" sc="1" el="36" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="2" uspid="37" ordinal="1" sl="37" sc="1" el="37" ec="2" bec="2" bev="1" fileid="17" />
-                <SequencePoint vc="0" uspid="38" ordinal="2" sl="38" sc="1" el="38" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="39" ordinal="3" sl="39" sc="1" el="39" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="40" ordinal="4" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="2" uspid="41" ordinal="5" sl="41" sc="1" el="41" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="2" uspid="42" ordinal="6" sl="42" sc="1" el="42" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="3" uspid="36" ordinal="0" sl="36" sc="1" el="36" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="3" uspid="37" ordinal="1" sl="37" sc="1" el="37" ec="2" bec="2" bev="2" fileid="17" />
+                <SequencePoint vc="1" uspid="38" ordinal="2" sl="38" sc="1" el="38" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="39" ordinal="3" sl="39" sc="1" el="39" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="40" ordinal="4" sl="40" sc="1" el="40" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="3" uspid="41" ordinal="5" sl="41" sc="1" el="41" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="3" uspid="42" ordinal="6" sl="42" sc="1" el="42" ec="2" bec="0" bev="0" fileid="17" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" uspid="37" ordinal="0" path="0" offset="33" offsetend="35" sl="37" fileid="17" />
-                <BranchPoint vc="2" uspid="37" ordinal="1" path="1" offset="33" offsetend="147" sl="37" fileid="17" />
+                <BranchPoint vc="1" uspid="37" ordinal="0" path="0" offset="33" offsetend="35" sl="37" fileid="17" />
+                <BranchPoint vc="3" uspid="37" ordinal="1" path="1" offset="33" offsetend="147" sl="37" fileid="17" />
               </BranchPoints>
-              <MethodPoint vc="4" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="36" ec="1" el="42" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
+              <MethodPoint vc="7" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="36" ec="1" el="42" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="13" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="1" />
+          <Summary numSequencePoints="13" visitedSequencePoints="9" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="69.23" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
           <FullName>NissGram.Controllers.PostController/&lt;Delete&gt;d__6</FullName>
           <Methods>
-            <Method cyclomaticComplexity="1" nPathComplexity="1" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="13" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="1" sequenceCoverage="69.23" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="13" visitedSequencePoints="9" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="69.23" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Void NissGram.Controllers.PostController/&lt;Delete&gt;d__6::MoveNext()</Name>
               <FileRef uid="17" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="69" ordinal="0" sl="69" sc="1" el="69" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="71" ordinal="1" sl="71" sc="1" el="71" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="73" ordinal="2" sl="73" sc="1" el="73" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="76" ordinal="3" sl="76" sc="1" el="76" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="78" ordinal="4" sl="78" sc="1" el="78" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="79" ordinal="5" sl="79" sc="1" el="79" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="81" ordinal="6" sl="81" sc="1" el="81" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="82" ordinal="7" sl="82" sc="1" el="82" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="69" ordinal="0" sl="69" sc="1" el="69" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="71" ordinal="1" sl="71" sc="1" el="71" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="73" ordinal="2" sl="73" sc="1" el="73" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="76" ordinal="3" sl="76" sc="1" el="76" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="78" ordinal="4" sl="78" sc="1" el="78" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="79" ordinal="5" sl="79" sc="1" el="79" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="81" ordinal="6" sl="81" sc="1" el="81" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="82" ordinal="7" sl="82" sc="1" el="82" ec="2" bec="0" bev="0" fileid="17" />
                 <SequencePoint vc="0" uspid="84" ordinal="8" sl="84" sc="1" el="84" ec="2" bec="0" bev="0" fileid="17" />
                 <SequencePoint vc="0" uspid="85" ordinal="9" sl="85" sc="1" el="85" ec="2" bec="0" bev="0" fileid="17" />
                 <SequencePoint vc="0" uspid="87" ordinal="10" sl="87" sc="1" el="87" ec="2" bec="0" bev="0" fileid="17" />
                 <SequencePoint vc="0" uspid="88" ordinal="11" sl="88" sc="1" el="88" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="90" ordinal="12" sl="90" sc="1" el="90" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="90" ordinal="12" sl="90" sc="1" el="90" ec="2" bec="0" bev="0" fileid="17" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="69" ec="1" el="90" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
+              <MethodPoint vc="9" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="69" ec="1" el="90" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
@@ -1068,56 +1068,56 @@
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="4" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="1" />
+          <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
           <FullName>NissGram.Controllers.PostController/&lt;Index&gt;d__2</FullName>
           <Methods>
-            <Method cyclomaticComplexity="1" nPathComplexity="1" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="4" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="1" nPathComplexity="1" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="4" visitedSequencePoints="4" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Void NissGram.Controllers.PostController/&lt;Index&gt;d__2::MoveNext()</Name>
               <FileRef uid="17" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="18" ordinal="1" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="19" ordinal="2" sl="19" sc="1" el="19" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="20" ordinal="3" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="18" ordinal="1" sl="18" sc="1" el="18" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="19" ordinal="2" sl="19" sc="1" el="19" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="20" ordinal="3" sl="20" sc="1" el="20" ec="2" bec="0" bev="0" fileid="17" />
               </SequencePoints>
               <BranchPoints />
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="17" ec="1" el="20" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
+              <MethodPoint vc="4" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="17" ec="1" el="20" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
         <Class>
-          <Summary numSequencePoints="13" visitedSequencePoints="0" numBranchPoints="4" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="1" />
+          <Summary numSequencePoints="13" visitedSequencePoints="10" numBranchPoints="4" visitedBranchPoints="2" sequenceCoverage="76.92" branchCoverage="50" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
           <FullName>NissGram.Controllers.PostController/&lt;Update&gt;d__5</FullName>
           <Methods>
-            <Method cyclomaticComplexity="4" nPathComplexity="4" sequenceCoverage="0" branchCoverage="0" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
-              <Summary numSequencePoints="13" visitedSequencePoints="0" numBranchPoints="4" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
+            <Method cyclomaticComplexity="4" nPathComplexity="4" sequenceCoverage="76.92" branchCoverage="50" isConstructor="False" isGetter="False" isSetter="False" isStatic="True">
+              <Summary numSequencePoints="13" visitedSequencePoints="10" numBranchPoints="4" visitedBranchPoints="2" sequenceCoverage="76.92" branchCoverage="50" maxCyclomaticComplexity="4" minCyclomaticComplexity="4" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
               <Name>System.Void NissGram.Controllers.PostController/&lt;Update&gt;d__5::MoveNext()</Name>
               <FileRef uid="17" />
               <SequencePoints>
-                <SequencePoint vc="0" uspid="47" ordinal="0" sl="47" sc="1" el="47" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="48" ordinal="1" sl="48" sc="1" el="48" ec="2" bec="4" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="47" ordinal="0" sl="47" sc="1" el="47" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="48" ordinal="1" sl="48" sc="1" el="48" ec="2" bec="4" bev="2" fileid="17" />
                 <SequencePoint vc="0" uspid="49" ordinal="2" sl="49" sc="1" el="49" ec="2" bec="0" bev="0" fileid="17" />
                 <SequencePoint vc="0" uspid="50" ordinal="3" sl="50" sc="1" el="50" ec="2" bec="0" bev="0" fileid="17" />
                 <SequencePoint vc="0" uspid="51" ordinal="4" sl="51" sc="1" el="51" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="55" ordinal="5" sl="55" sc="1" el="55" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="56" ordinal="6" sl="56" sc="1" el="56" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="57" ordinal="7" sl="57" sc="1" el="57" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="59" ordinal="8" sl="59" sc="1" el="59" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="60" ordinal="9" sl="60" sc="1" el="60" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="61" ordinal="10" sl="61" sc="1" el="61" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="62" ordinal="11" sl="62" sc="1" el="62" ec="2" bec="0" bev="0" fileid="17" />
-                <SequencePoint vc="0" uspid="64" ordinal="12" sl="64" sc="1" el="64" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="55" ordinal="5" sl="55" sc="1" el="55" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="56" ordinal="6" sl="56" sc="1" el="56" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="57" ordinal="7" sl="57" sc="1" el="57" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="59" ordinal="8" sl="59" sc="1" el="59" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="60" ordinal="9" sl="60" sc="1" el="60" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="61" ordinal="10" sl="61" sc="1" el="61" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="1" uspid="62" ordinal="11" sl="62" sc="1" el="62" ec="2" bec="0" bev="0" fileid="17" />
+                <SequencePoint vc="2" uspid="64" ordinal="12" sl="64" sc="1" el="64" ec="2" bec="0" bev="0" fileid="17" />
               </SequencePoints>
               <BranchPoints>
-                <BranchPoint vc="0" uspid="48" ordinal="0" path="0" offset="21" offsetend="23" sl="48" fileid="17" />
+                <BranchPoint vc="2" uspid="48" ordinal="0" path="0" offset="21" offsetend="23" sl="48" fileid="17" />
                 <BranchPoint vc="0" uspid="48" ordinal="1" path="1" offset="21" offsetend="39" sl="48" fileid="17" />
                 <BranchPoint vc="0" uspid="48" ordinal="2" path="0" offset="42" offsetend="44" sl="48" fileid="17" />
-                <BranchPoint vc="0" uspid="48" ordinal="3" path="1" offset="42" offsetend="95" sl="48" fileid="17" />
+                <BranchPoint vc="2" uspid="48" ordinal="3" path="1" offset="42" offsetend="95" sl="48" fileid="17" />
               </BranchPoints>
-              <MethodPoint vc="0" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="47" ec="1" el="64" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
+              <MethodPoint vc="10" uspid="0" p8:type="SequencePoint" ordinal="0" offset="0" sc="0" sl="47" ec="1" el="64" bec="0" bev="0" fileid="17" xmlns:p8="xsi" />
             </Method>
           </Methods>
         </Class>
