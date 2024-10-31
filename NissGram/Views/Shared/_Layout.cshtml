@@ -1,57 +1,46 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta data for proper character encoding and responsive behavior -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Title that dynamically changes based on page content -->
     <title>@ViewData["Title"] - NissGram</title>
-    
-    <!-- Linking CSS stylesheets including Bootstrap for layout and additional custom styles -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NissGram.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <!-- Fixed header that remains at the top, displaying the title "Niss" -->
     <header class="fixed-header">
         <a class="navbar-brand text-white" href="#">NissGram</a>
     </header>
     
-    <!-- Main container that uses a flex layout to structure content -->
     <div class="d-flex">
-        <!-- Sidebar navigation menu on the left side -->
+        <!-- Side Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column align-items-center side-navbar">
-            
-            <!-- Navigation list with icons (circles) -->
             <ul class="nav flex-column text-center flex-grow-1">
-                <!-- First circle with specific style and spacing -->
+                <!-- User Profile -->
                 <li class="nav-item mb-3">
-                    <a class="nav-link" href="#"><div class="circle first bg-primary text-white">1</div></a>
+                    <a class="nav-link" href="/User/Profile"><div class="circle first bg-primary text-white">1</div></a>
                 </li>
-                <!-- Middle circles with consistent spacing -->
+                <!-- Main Page (House Icon) -->
                 <li class="nav-item mb-3">
-                    <a class="nav-link" href="#"><div class="circle middle bg-secondary text-white">2</div></a>
+                    <a class="nav-link" href="/Home/Index"><div class="circle middle bg-secondary text-white">🏠</div></a>
                 </li>
+                <!-- Add Post (Plus Icon) -->
                 <li class="nav-item mb-3">
-                    <a class="nav-link" href="#"><div class="circle middle bg-success text-white">3</div></a>
+                    <a class="nav-link" href="/Post/Create"><div class="circle middle bg-success text-white">+</div></a>
                 </li>
+                <!-- Search User (Magnifying Glass Icon) -->
                 <li class="nav-item mb-3">
-                    <a class="nav-link" href="#"><div class="circle middle bg-danger text-white">4</div></a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a class="nav-link" href="#"><div class="circle middle bg-warning text-white">5</div></a>
+                    <a class="nav-link" href="/User/Search"><div class="circle middle bg-danger text-white">🔍</div></a>
                 </li>
             </ul>
-            
-            <!-- Logout button positioned at the bottom of the sidebar -->
+            <!-- Logout Button -->
             <div class="circle logout bg-dark text-white">
-                Logout
+                <a class="nav-link text-white" href="/Account/Logout">Logout</a>
             </div>
         </nav>
 
-        <!-- Main content area that expands to fill available space -->
+        <!-- Main Content Area -->
         <div class="content-container flex-grow-1">
             <div class="container">
                 @RenderBody()
@@ -59,14 +48,12 @@
         </div>
     </div>
 
-    <!-- Footer positioned at the bottom of the page -->
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - NissGram - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     
-    <!-- Scripts for jQuery and Bootstrap functionality -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
