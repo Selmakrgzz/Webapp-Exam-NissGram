@@ -2,12 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using NissGram.Models;
 using NissGram.DAL;
+using NissGram.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 
 
 builder.Services.AddDbContext<NissDbContext>(options =>

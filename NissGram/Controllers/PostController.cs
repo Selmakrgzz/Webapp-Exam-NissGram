@@ -1,74 +1,64 @@
 using Microsoft.AspNetCore.Mvc;
+using NissGram.DAL.Repositories;
 using NissGram.Models;
-using Microsoft.EntityFrameworkCore;
-using NissGram.DAL;
-
 
 namespace NissGram.Controllers;
-
 public class PostController : Controller
 {
+    private readonly IPostRepository _postRepository;
 
-    private readonly NissDbContext _context;
-
-    public PostController(NissDbContext context)
+    public PostController(IPostRepository postRepository)
     {
-        _context = context;
+        _postRepository = postRepository;
     }
 
-
-    // GET: /Posts use on the main page.
+    // GET: /Posts - Hent alle innlegg for hovedsiden
     public async Task<IActionResult> Index()
     {
-        // Fetch all posts, including related user data
-        var posts = await _context.Posts.Include(p => p.User).ToListAsync();
+        var posts = await _postRepository.GetAllPostsAsync();
         return View(posts);
     }
 
-
-    // GET: Use when a user clicks on a post, either from profile or from home page.
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var post = await _context.Posts
-            .Include(p => p.User)
-            .FirstOrDefaultAsync(m => m.PostId == id);
+    // GET: Vis detaljer for et enkelt innlegg, inkludert kommentarer og antall likes
+    public async Task<IActionResult> Details(int id)
+    {   
+        var post = await _postRepository.GetPostByIdAsync(id);
         if (post == null)
         {
             return NotFound();
+        }
+        return View(post);
+    }
+
+    // CREATE
+    [HttpPost]
+    public async Task<IActionResult> Create(Post post)
+    {
+        if (ModelState.IsValid)
+        {
+            await _postRepository.CreatePostAsync(post);
+        }
+        return View(post);
+    }
+
+    // UPDATE
+    [HttpPost]
+    public async Task<IActionResult> Update(Post post)
+    {
+        if (ModelState.IsValid)
+        {
+            await _postRepository.UpdatePostAsync(post);
         }
 
         return View(post);
     }
 
-    // LIKE A POST
+    // DELETE
     [HttpPost]
-    public async Task<IActionResult> LikePost(int postId)
+    public async Task<IActionResult> Delete(int id)
     {
-        var post = await _context.Posts.Include(p => p.UserLikes).FirstOrDefaultAsync(p => p.PostId == postId);
-        if (post == null)
-        {
-            return NotFound();
-        }
-
-        var userId = 1;  // Replace with the currently logged-in user ID
-        var existingLike = post.UserLikes.FirstOrDefault(ul => ul.UserId == userId);
-
-        if (existingLike == null)  // Add like
-        {
-            var like = new UserPostLike { PostId = postId, UserId = userId };
-            _context.UserPostLikes.Add(like);
-        }
-        else  // Remove like (unlike)
-        {
-            _context.UserPostLikes.Remove(existingLike);
-        }
-
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Details), new { id = postId });
+        await _postRepository.DeletePostAsync(id);
+        return RedirectToAction(nameof(Index)); 
     }
 }
+
