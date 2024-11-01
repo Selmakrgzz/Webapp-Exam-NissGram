@@ -12,5 +12,4 @@ public class Post
     // Use a join entity for many-to-many
     public virtual ICollection<UserPostLike> UserLikes { get; set; } = new List<UserPostLike>();
 
-
 }

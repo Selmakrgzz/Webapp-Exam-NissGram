@@ -28,6 +28,9 @@ NissGram/obj/**
 NissGram/bin/**
 NissGram/Migrations/**
 TestResults/
+NissGram.Tests/coverage-report/**
+NissGram.Tests/coverage/**
+
 
 ###################
 # Web publish log #
