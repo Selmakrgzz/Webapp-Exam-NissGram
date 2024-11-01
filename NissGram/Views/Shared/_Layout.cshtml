@@ -9,32 +9,36 @@
     <link rel="stylesheet" href="~/NissGram.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <!-- Responsive header that changes layout based on screen size -->
     <header class="fixed-header">
         <a class="navbar-brand text-white" href="#">NissGram</a>
+        <!-- Icon bar that only appears on small screens -->
+        <nav class="icon-bar">
+            <a href="/User/Profile"><div class="circle bg-primary text-white">1</div></a>
+            <a href="/Home/Index"><div class="circle bg-secondary text-white">🏠</div></a>
+            <a href="/Post/Create"><div class="circle bg-success text-white">+</div></a>
+            <a href="/User/Search"><div class="circle bg-danger text-white">🔍</div></a>
+            <a href="/Account/Logout"><div class="circle bg-dark text-white">Logout</div></a>
+        </nav>
     </header>
     
     <div class="d-flex">
-        <!-- Side Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column align-items-center side-navbar">
+        <!-- Side Navigation Bar, hidden on small screens -->
+        <nav class="side-navbar">
             <ul class="nav flex-column text-center flex-grow-1">
-                <!-- User Profile -->
                 <li class="nav-item mb-3">
                     <a class="nav-link" href="/User/Profile"><div class="circle first bg-primary text-white">1</div></a>
                 </li>
-                <!-- Main Page (House Icon) -->
                 <li class="nav-item mb-3">
                     <a class="nav-link" href="/Home/Index"><div class="circle middle bg-secondary text-white">🏠</div></a>
                 </li>
-                <!-- Add Post (Plus Icon) -->
                 <li class="nav-item mb-3">
                     <a class="nav-link" href="/Post/Create"><div class="circle middle bg-success text-white">+</div></a>
                 </li>
-                <!-- Search User (Magnifying Glass Icon) -->
                 <li class="nav-item mb-3">
                     <a class="nav-link" href="/User/Search"><div class="circle middle bg-danger text-white">🔍</div></a>
                 </li>
             </ul>
-            <!-- Logout Button -->
             <div class="circle logout bg-dark text-white">
                 <a class="nav-link text-white" href="/Account/Logout">Logout</a>
             </div>
@@ -58,5 +62,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+</body> 
 </html>
