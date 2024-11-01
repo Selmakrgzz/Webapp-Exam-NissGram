@@ -80,7 +80,7 @@ public static class DBInit
                 new Post
                 {
                     User = userNico, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Very pretty colors Gggg!",
                     ImgUrl = "/wwwroot/images/snorekling.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -110,7 +110,7 @@ public static class DBInit
                 new Post
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Nais hiking",
                     ImgUrl = "/wwwroot/images/hiking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -125,7 +125,7 @@ public static class DBInit
                 new Post
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Wow so many animals",
                     ImgUrl = "/wwwroot/images/safari.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -155,7 +155,7 @@ public static class DBInit
                 new Post
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "I catched a huge cod",
                     ImgUrl = "/wwwroot/images/fishing.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -170,7 +170,7 @@ public static class DBInit
                 new Post
                 {
                     User = userTina, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Dinner time",
                     ImgUrl = "/wwwroot/images/cooking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -200,7 +200,7 @@ public static class DBInit
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Music time",
                     ImgUrl = "/wwwroot/images/mexican_amigos.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -215,7 +215,7 @@ public static class DBInit
                 new Post
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Travel time",
                     ImgUrl = "/wwwroot/images/airplane_window.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -245,7 +245,7 @@ public static class DBInit
                 new Post
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Adventure time",
                     ImgUrl = "/wwwroot/images/paragliding.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -260,7 +260,7 @@ public static class DBInit
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Just loving nature",
                     ImgUrl = "/wwwroot/images/northern_lights.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -290,7 +290,7 @@ public static class DBInit
                 new Post
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "I love steak",
                     ImgUrl = "/wwwroot/images/cows.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -305,7 +305,7 @@ public static class DBInit
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "Happy hour",
                     ImgUrl = "/wwwroot/images/friends_dining.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
@@ -335,7 +335,7 @@ public static class DBInit
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
-                    Text = null,
+                    Text = "FOOOOOD",
                     ImgUrl = "/wwwroot/images/picknick.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
