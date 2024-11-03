@@ -43,13 +43,18 @@ public class PostController : Controller
     {
         if (ModelState.IsValid)
         {
-            if(await _postRepository.CreatePostAsync(post)){
+            if (await _postRepository.CreatePostAsync(post))
+            {
                 return RedirectToAction(nameof(Index));
             }
-            
+        }
+        else
+        {
+            Console.WriteLine("Model state is invalid");
         }
         return View(post);
     }
+
 
     // UPDATE
     [HttpPost]

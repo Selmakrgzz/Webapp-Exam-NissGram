@@ -24,17 +24,21 @@ public class PostRepository : IPostRepository
     }
 
     // CREATE
-    public async Task<bool> CreatePostAsync(Post post)
+  public async Task<bool> CreatePostAsync(Post post)
     {
-        try{
+        try
+        {
             _db.Posts.Add(post);
             await _db.SaveChangesAsync();
             return true;
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
+            Console.WriteLine($"Error saving post: {e.Message}");
             return false;
         }
     }
+
 
     // UPDATE
     public async Task<bool> UpdatePostAsync(Post post)
