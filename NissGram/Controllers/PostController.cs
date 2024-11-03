@@ -30,13 +30,21 @@ public class PostController : Controller
         return View(post);
     }
 
-    // CREATE
+    // GET: Create Post Form
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    // POST: Create a new Post
     [HttpPost]
     public async Task<IActionResult> Create(Post post)
     {
         if (ModelState.IsValid)
         {
             await _postRepository.CreatePostAsync(post);
+            return RedirectToAction(nameof(Index));
         }
         return View(post);
     }
