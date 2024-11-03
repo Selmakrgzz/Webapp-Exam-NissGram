@@ -81,7 +81,7 @@ public static class DBInit
                 {
                     User = userNico, // Brukerobjektet for å sette relasjonen
                     Text = "Very pretty colors Gggg!",
-                    ImgUrl = "/wwwroot/images/snorekling.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/snorekling.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -111,7 +111,7 @@ public static class DBInit
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
                     Text = "Nais hiking",
-                    ImgUrl = "/wwwroot/images/hiking.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/hiking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -126,7 +126,7 @@ public static class DBInit
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
                     Text = "Wow so many animals",
-                    ImgUrl = "/wwwroot/images/safari.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/safari.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -156,7 +156,7 @@ public static class DBInit
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
                     Text = "I catched a huge cod",
-                    ImgUrl = "/wwwroot/images/fishing.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/fishing.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -171,7 +171,7 @@ public static class DBInit
                 {
                     User = userTina, // Brukerobjektet for å sette relasjonen
                     Text = "Dinner time",
-                    ImgUrl = "/wwwroot/images/cooking.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/cooking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -201,7 +201,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Music time",
-                    ImgUrl = "/wwwroot/images/mexican_amigos.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/mexican_amigos.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -216,7 +216,7 @@ public static class DBInit
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
                     Text = "Travel time",
-                    ImgUrl = "/wwwroot/images/airplane_window.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/airplane_window.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -246,7 +246,7 @@ public static class DBInit
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
                     Text = "Adventure time",
-                    ImgUrl = "/wwwroot/images/paragliding.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/paragliding.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -261,7 +261,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Just loving nature",
-                    ImgUrl = "/wwwroot/images/northern_lights.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/northern_lights.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -291,7 +291,7 @@ public static class DBInit
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
                     Text = "I love steak",
-                    ImgUrl = "/wwwroot/images/cows.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/cows.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -306,7 +306,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Happy hour",
-                    ImgUrl = "/wwwroot/images/friends_dining.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/friends_dining.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -336,7 +336,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "FOOOOOD",
-                    ImgUrl = "/wwwroot/images/picknick.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/picknick.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>

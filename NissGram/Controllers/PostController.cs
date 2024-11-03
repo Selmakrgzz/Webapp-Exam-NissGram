@@ -43,7 +43,8 @@ public class PostController : Controller
     {
         if (ModelState.IsValid)
         {
-            if (await _postRepository.CreatePostAsync(post))
+            bool ok = await _postRepository.CreatePostAsync(post);
+            if (ok)
             {
                 return RedirectToAction(nameof(Index));
             }
@@ -56,17 +57,33 @@ public class PostController : Controller
     }
 
 
-    // UPDATE
+ // GET: Show the update form
+    [HttpGet]
+    public async Task<IActionResult> Update(int id)
+    {
+        var post = await _postRepository.GetPostByIdAsync(id);
+        if (post == null)
+        {
+            return NotFound();
+        }
+        return View(post); // Viser oppdateringsskjemaet med eksisterende data
+    }
+
+    // POST: Update the post
     [HttpPost]
     public async Task<IActionResult> Update(Post post)
     {
         if (ModelState.IsValid)
         {
-            await _postRepository.UpdatePostAsync(post);
+            var ok = await _postRepository.UpdatePostAsync(post);
+            if (ok)
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
-
-        return View(post);
+        return View(post); // Viser skjemaet på nytt hvis validering mislyktes
     }
+
 
     // DELETE
     [HttpPost]
