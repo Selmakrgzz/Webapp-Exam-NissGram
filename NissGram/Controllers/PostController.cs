@@ -43,8 +43,10 @@ public class PostController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _postRepository.CreatePostAsync(post);
-            return RedirectToAction(nameof(Index));
+            if(await _postRepository.CreatePostAsync(post)){
+                return RedirectToAction(nameof(Index));
+            }
+            
         }
         return View(post);
     }
