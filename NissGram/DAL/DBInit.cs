@@ -22,43 +22,50 @@ public static class DBInit
                 {
                     UserName = "Nico123",
                     Email = "nico123@example.com",
-                    Password = "password123"
+                    Password = "password123",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "JaneDoe",
                     Email = "jane.doe@example.com",
-                    Password = "password456"
+                    Password = "password456",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "JohnSmith",
                     Email = "john.smith@example.com",
-                    Password = "password789"
+                    Password = "password789",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "Bom93",
                     Email = "bombom@gmail.com",
-                    Password = "password90"
+                    Password = "password90",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "koko_223",
                     Email = "kko.2@outlook.com",
-                    Password = "hei3892"
+                    Password = "hei3892",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "geir_er_kul",
                     Email = "geir34@jahoo.com",
-                    Password = "jegerkul123"
+                    Password = "jegerkul123",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "tina_betina12",
                     Email = "tine.b@gmail.com",
-                    Password = "ciao12345"
+                    Password = "ciao12345",
+                    ProfilePicture = "/images/profile_image_default.png"
                 }
             };
 
