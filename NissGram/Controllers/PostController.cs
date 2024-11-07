@@ -1,27 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
-using NissGram.DAL.Repositories;
+using NissGram.DAL;
 using NissGram.Models;
+using NissGram.ViewModels;
+
 
 namespace NissGram.Controllers;
 public class PostController : Controller
 {
     private readonly IPostRepository _postRepository;
+    private readonly ILogger<PostController> _logger;
 
-    public PostController(IPostRepository postRepository)
+    public PostController(IPostRepository postRepository, ILogger<PostController> logger)
     {
         _postRepository = postRepository;
-    }
-
-    // GET: /Posts - Hent alle innlegg for hovedsiden
-    public async Task<IActionResult> Index()
-    {
-        var posts = await _postRepository.GetAllPostsAsync();
-        return View(posts);
+        _logger = logger;
     }
 
     // GET: Vis detaljer for et enkelt innlegg, inkludert kommentarer og antall likes
     public async Task<IActionResult> Details(int id)
-    {   
+    {
         var post = await _postRepository.GetPostByIdAsync(id);
         if (post == null)
         {
@@ -57,7 +54,7 @@ public class PostController : Controller
     }
 
 
- // GET: Show the update form
+    // GET: Show the update form
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
@@ -90,7 +87,7 @@ public class PostController : Controller
     public async Task<IActionResult> Delete(int id)
     {
         await _postRepository.DeletePostAsync(id);
-        return RedirectToAction(nameof(Index)); 
+        return RedirectToAction(nameof(Index));
     }
 }
 
