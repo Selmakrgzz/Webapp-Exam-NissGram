@@ -11,10 +11,12 @@
 <body>
     <!-- Responsive header that changes layout based on screen size -->
     <header class="fixed-header">
-        <a class="navbar-brand text-white" href="#">NissGram</a>
+        <a class="navbar-brand" href="#">
+            <img src="~/images/NissGramLogo.png" alt="NissGram Logo" style="height: 35px; padding: 5px;">
+        </a> 
         <!-- Icon bar that only appears on small screens -->
         <nav class="icon-bar">
-            <a href="/User/Profile"><div class="circle bg-primary text-white">1</div></a>
+            <a href="/User/Profile"><div class="circle bg-primary text-white">Profile</div></a>
             <a href="/Home/Index"><div class="circle bg-secondary text-white">🏠</div></a>
             <a href="/Post/Create"><div class="circle bg-success text-white">+</div></a>
             <a href="/User/Search"><div class="circle bg-danger text-white">🔍</div></a>
@@ -26,8 +28,12 @@
         <!-- Side Navigation Bar, hidden on small screens -->
         <nav class="side-navbar">
             <ul class="nav flex-column text-center flex-grow-1">
-                <li class="nav-item mb-3">
-                    <a class="nav-link" href="/User/Profile"><div class="circle first bg-primary text-white">1</div></a>
+               <li class="nav-item mb-3">
+                    <a class="nav-link" href="/User/Profile">
+                        <div class="circle first bg-primary text-white">
+                           Profile
+                        </div>
+                    </a>
                 </li>
                 <li class="nav-item mb-3">
                     <a class="nav-link" href="/Home/Index"><div class="circle middle bg-secondary text-white">🏠</div></a>
