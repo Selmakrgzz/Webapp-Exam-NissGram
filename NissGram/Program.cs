@@ -3,6 +3,7 @@ using NissGram.DAL;
 using Microsoft.AspNetCore.Identity;
 using Serilog;
 using Serilog.Events;
+using NissGram.Models;
 //Oppretter en instans av WebApplicationBuilder som brukes til å konfigurere
 //applikasjonen. args er komamandolinje argumenter som sendes inn i applikasjonen
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,10 @@ builder.Services.AddDbContext<NissDbContext>(options =>
         builder.Configuration["ConnectionStrings:NissDbContextConnection"]);
 });
 
-builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<NissDbContext>();
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<NissDbContext>()
+    .AddDefaultTokenProviders();
+// builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<NissDbContext>();
 
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 
