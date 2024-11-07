@@ -1,32 +1,60 @@
 using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
 
-namespace NissGram.DAL.Repositories;
+namespace NissGram.DAL;
 public class UserRepository : IUserRepository
 {
     private readonly NissDbContext _db;
+    private readonly ILogger<UserRepository> _logger;
 
-    public UserRepository(NissDbContext db)
+    public UserRepository(NissDbContext db, ILogger<UserRepository> logger)
     {
         _db = db;
+        _logger = logger;
     }
 
-    public async Task<IEnumerable<User>> GetAllUsersAsync()
+    public async Task<IEnumerable<User>?> GetAllUsersAsync()
     {
-        return await _db.Users.ToListAsync();
+        try
+        {
+            return await _db.Users.ToListAsync();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[UserRepository] users ToListAsync() failed when GetAllUsersAsync(), error message: {e}", e.Message);
+            return null;
+        }
     }
 
     public async Task<User?> GetUserByIdAsync(int id)
     {
-        return await _db.Users.FindAsync(id);
+        try
+        {
+            return await _db.Users.FindAsync(id);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[UserRepository] user FindAsync(id) failed for UserId {UserId:0000}, error message: {e}", id, e.Message);
+            return null;
+        }
+
     }
 
     public async Task<User?> GetUserByUsernameAsync(string username)
     {
-        return await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        try
+        {
+            return await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[UserRepository] user FirstOrDefaultAsync(u => u.UserName == username) failed for username {username}, error message: {e}", username, e.Message);
+            return null;
+        }
+
     }
 
-    public async Task AddUserAsync(User user)
+    public async Task CreateUserAsync(User user)
     {
         await _db.Users.AddAsync(user);
         await _db.SaveChangesAsync();

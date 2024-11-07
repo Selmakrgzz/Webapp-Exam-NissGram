@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using NissGram.DAL;
 using Microsoft.AspNetCore.Identity;
-using NissGram.DAL.Repositories;
+using Serilog;
+using Serilog.Events;
 //Oppretter en instans av WebApplicationBuilder som brukes til å konfigurere
 //applikasjonen. args er komamandolinje argumenter som sendes inn i applikasjonen
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +11,10 @@ var connectionString = builder.Configuration.GetConnectionString("NissDbContextC
 //som applikasjonen bruker
 //AddControllersWithViews: Legger støtte for MVC i applikasjonen. Denne metoden
 //konfigurerer nødvendige tjenester for å håndtere kontroller og generere HTML-sider
-builder.Services. AddControllersWithViews();
+builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<NissDbContext>(options => {
+builder.Services.AddDbContext<NissDbContext>(options =>
+{
     options.UseSqlite(
         builder.Configuration["ConnectionStrings:NissDbContextConnection"]);
 });
@@ -24,6 +26,17 @@ builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddRazorPages(); //Order of adding services does not matter
 builder.Services.AddSession();
 
+var loggerConfiguration = new LoggerConfiguration()
+    .MinimumLevel.Information() // levels: Trace< Information < Warning < Erorr < Fatal
+    .WriteTo.File($"Logs/app_{DateTime.Now:yyyyMMdd_HHmmss}.log");
+
+
+loggerConfiguration.Filter.ByExcluding(e => e.Properties.TryGetValue("SourceContext", out var value) &&
+                            e.Level == LogEventLevel.Information &&
+                            e.MessageTemplate.Text.Contains("Executed DbCommand"));
+
+var logger = loggerConfiguration.CreateLogger();
+builder.Logging.AddSerilog(logger);
 
 //Når alle tjenester og middleware er konfigurert, bygges applikasjonen ved å kalle Build()
 //Dette returnerer en WebApplication instans som kan brukes til å konfigurere
@@ -31,7 +44,7 @@ builder.Services.AddSession();
 var app = builder.Build();
 
 //Dette skjekker om applikasjonen kjører i et utviklingsmiljø.
-if(app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     //Hvis applikasjonen kjører i utviklingsmiljø, legger dette til en side som viser detaljerte feilmeldinger.
     app.UseDeveloperExceptionPage();

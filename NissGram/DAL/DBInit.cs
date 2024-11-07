@@ -10,8 +10,10 @@ public static class DBInit
         using var serviceScope = app.ApplicationServices.CreateScope();
         NissDbContext context = serviceScope.ServiceProvider.GetRequiredService<NissDbContext>();
         //context.Database.EnsureDeleted();
+        context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
+#nullable disable
         if (!context.Users.Any())
         {
             var users = new List<User>
@@ -81,7 +83,7 @@ public static class DBInit
                 {
                     User = userNico, // Brukerobjektet for å sette relasjonen
                     Text = "Very pretty colors Gggg!",
-                    ImgUrl = "/images/snorekling.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/snorekling.png",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -376,7 +378,7 @@ public static class DBInit
 
             var comments = new List<Comment>
             {
-                new Comment 
+                new Comment
                 {
                     CommentId = 1,
                     Post = post1,
@@ -384,7 +386,7 @@ public static class DBInit
                     Text = "Damnnnn gurl slayyyy",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 2,
                     Post = post2,
@@ -392,7 +394,7 @@ public static class DBInit
                     Text = "This is so inspiring! Love your work.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 3,
                     Post = post3,
@@ -400,7 +402,7 @@ public static class DBInit
                     Text = "Where did you take this photo? Amazing location!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 4,
                     Post = post4,
@@ -408,7 +410,7 @@ public static class DBInit
                     Text = "Can't wait to see more of your work!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 5,
                     Post = post5,
@@ -416,7 +418,7 @@ public static class DBInit
                     Text = "The colors are just stunning!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 6,
                     Post = post6,
@@ -424,7 +426,7 @@ public static class DBInit
                     Text = "Such a powerful message. Thank you for sharing.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 7,
                     Post = post7,
@@ -432,7 +434,7 @@ public static class DBInit
                     Text = "I keep coming back to this post, it's incredible.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 8,
                     Post = post8,
@@ -440,7 +442,7 @@ public static class DBInit
                     Text = "So much talent in one post! Keep it up!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 9,
                     Post = post9,
@@ -448,7 +450,7 @@ public static class DBInit
                     Text = "Can’t get enough of these updates!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 10,
                     Post = post10,
@@ -456,7 +458,7 @@ public static class DBInit
                     Text = "Epic vibes! How did you pull this off?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 11,
                     Post = post11,
@@ -464,7 +466,7 @@ public static class DBInit
                     Text = "This looks amazing, very well done!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 12,
                     Post = post12,
@@ -472,7 +474,7 @@ public static class DBInit
                     Text = "Always blown away by your creativity!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 13,
                     Post = post13,
@@ -480,7 +482,7 @@ public static class DBInit
                     Text = "Such an inspiration!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 14,
                     Post = post14,
@@ -488,7 +490,7 @@ public static class DBInit
                     Text = "This should be framed in a museum!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 15,
                     Post = post15,
@@ -496,7 +498,7 @@ public static class DBInit
                     Text = "Gorgeous shot, love the perspective.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 16,
                     Post = post16,
@@ -504,7 +506,7 @@ public static class DBInit
                     Text = "Pure magic!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 17,
                     Post = post17,
@@ -512,7 +514,7 @@ public static class DBInit
                     Text = "Always exciting to see your updates!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 18,
                     Post = post18,
@@ -520,7 +522,7 @@ public static class DBInit
                     Text = "So much character in this!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 19,
                     Post = post1,
@@ -528,7 +530,7 @@ public static class DBInit
                     Text = "Absolutely stunning! Where was this taken?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 20,
                     Post = post2,
@@ -536,7 +538,7 @@ public static class DBInit
                     Text = "Loving the detail on this one!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 21,
                     Post = post3,
@@ -544,7 +546,7 @@ public static class DBInit
                     Text = "Can I use this as my wallpaper?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 22,
                     Post = post4,
@@ -552,7 +554,7 @@ public static class DBInit
                     Text = "Great composition! Keep up the amazing work.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 23,
                     Post = post5,
@@ -560,7 +562,7 @@ public static class DBInit
                     Text = "Every detail is on point. Love it!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 24,
                     Post = post6,
@@ -568,7 +570,7 @@ public static class DBInit
                     Text = "This just made my day!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 25,
                     Post = post7,
@@ -576,7 +578,7 @@ public static class DBInit
                     Text = "You have such a unique style!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 26,
                     Post = post8,
@@ -584,7 +586,7 @@ public static class DBInit
                     Text = "Speechless... your work is incredible.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 27,
                     Post = post9,
@@ -592,7 +594,7 @@ public static class DBInit
                     Text = "Keep these coming! You’re a true artist.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 28,
                     Post = post10,
@@ -600,7 +602,7 @@ public static class DBInit
                     Text = "Fantastic use of lighting here.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 29,
                     Post = post11,
@@ -608,7 +610,7 @@ public static class DBInit
                     Text = "This feels like it tells a story.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 30,
                     Post = post12,
@@ -616,7 +618,7 @@ public static class DBInit
                     Text = "Wow, so inspiring!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 31,
                     Post = post13,
@@ -624,7 +626,7 @@ public static class DBInit
                     Text = "The colors just pop here. Amazing!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 32,
                     Post = post14,
@@ -632,7 +634,7 @@ public static class DBInit
                     Text = "Love the energy this gives off!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 33,
                     Post = post15,
@@ -640,7 +642,7 @@ public static class DBInit
                     Text = "You’ve outdone yourself with this one.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 34,
                     Post = post16,
@@ -648,7 +650,7 @@ public static class DBInit
                     Text = "Wow, the vibe here is so cozy!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 35,
                     Post = post17,
@@ -656,7 +658,7 @@ public static class DBInit
                     Text = "I could stare at this all day!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 36,
                     Post = post18,
@@ -664,7 +666,7 @@ public static class DBInit
                     Text = "This post gives me so many ideas.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 37,
                     Post = post3,
@@ -672,7 +674,7 @@ public static class DBInit
                     Text = "How do you manage to keep every post so unique?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 38,
                     Post = post5,
@@ -684,5 +686,6 @@ public static class DBInit
             context.AddRange(comments);
             context.SaveChanges();
         }
+#nullable restore
     }
 }
