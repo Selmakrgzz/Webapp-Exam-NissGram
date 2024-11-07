@@ -13,7 +13,6 @@ function previewImage(event) {
             // Remove border and background color for clean display
             imagePreview.classList.remove('border');
             imagePreview.style.border = 'none';
-            imagePreview.style.backgroundColor = 'blue';
 
             // Add a class to control styling when an image is loaded
             imagePreview.classList.add('has-image');
