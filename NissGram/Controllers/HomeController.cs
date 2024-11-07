@@ -2,21 +2,32 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using NissGram.Models;
 using NissGram.DAL;
+using NissGram.ViewModels;
 
 namespace NissGram.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IPostRepository _postRepository;
 
-    public HomeController(ILogger<HomeController> logger)
+
+    public HomeController(ILogger<HomeController> logger, IPostRepository postRepository)
     {
         _logger = logger;
+        _postRepository = postRepository;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var posts = await _postRepository.GetAllPostsAsync();
+        if (posts == null)
+        {
+            _logger.LogError("[HomeController] Post list not found while executing _itemRepository.GetAllPostsAsync()");
+            return NotFound("Item list not found");
+        }
+        var viewModel = new PostsViewModel(posts, "All Posts");
+        return View(viewModel);
     }
 
     public IActionResult Privacy()

@@ -1,0 +1,15 @@
+@model NissGram.Models.Post
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">@Model.User.UserName</h5> <!-- Adjust `UserName` based on your User model -->
+        <p class="card-text">@Model.Text</p>
+        <img src="@Url.Content(Model.ImgUrl)" alt="Post Image" class="img-fluid rounded mb-3">
+
+        <p class="text-muted">
+            <small>Posted on @Model.DateCreated.ToString("MMMM dd, yyyy")</small><br>
+            <small>Last updated on @Model.DateUpdated.ToString("MMMM dd, yyyy")</small>
+        </p>
+        <p><strong>Likes:</strong> @Model.UserLikes.Count</p>
+    </div>
+</div>

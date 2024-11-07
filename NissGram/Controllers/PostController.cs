@@ -1,74 +1,127 @@
 using Microsoft.AspNetCore.Mvc;
-using NissGram.Models;
-using Microsoft.EntityFrameworkCore;
 using NissGram.DAL;
+using NissGram.Models;
+using NissGram.ViewModels;
 
 
 namespace NissGram.Controllers;
-
 public class PostController : Controller
 {
+    private readonly IPostRepository _postRepository;
+    private readonly ILogger<PostController> _logger;
 
-    private readonly NissDbContext _context;
-
-    public PostController(NissDbContext context)
+    public PostController(IPostRepository postRepository, ILogger<PostController> logger)
     {
-        _context = context;
+        _postRepository = postRepository;
+        _logger = logger;
     }
 
-
-    // GET: /Posts use on the main page.
-    public async Task<IActionResult> Index()
+    // GET: Vis detaljer for et enkelt innlegg, inkludert kommentarer og antall likes
+    public async Task<IActionResult> Details(int id)
     {
-        // Fetch all posts, including related user data
-        var posts = await _context.Posts.Include(p => p.User).ToListAsync();
-        return View(posts);
-    }
-
-
-    // GET: Use when a user clicks on a post, either from profile or from home page.
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var post = await _context.Posts
-            .Include(p => p.User)
-            .FirstOrDefaultAsync(m => m.PostId == id);
+        var post = await _postRepository.GetPostByIdAsync(id);
         if (post == null)
         {
             return NotFound();
         }
-
         return View(post);
     }
 
-    // LIKE A POST
-    [HttpPost]
-    public async Task<IActionResult> LikePost(int postId)
+    // GET: Create Post Form
+    [HttpGet]
+    public IActionResult Create()
     {
-        var post = await _context.Posts.Include(p => p.UserLikes).FirstOrDefaultAsync(p => p.PostId == postId);
+        return View();
+    }
+
+    // POST: Create a new Post
+    [HttpPost]
+    public async Task<IActionResult> Create(Post post, IFormFile? uploadImage)
+    {
+
+        // MIDLERTIDIG FØR INNLOGGING ER PÅ PLASS
+        ModelState.Remove("User");
+
+        post.User = await _postRepository.TempGetRandUser();
+
+        if (uploadImage != null && uploadImage.Length > 0)
+        {
+            // Generate a unique file name and path
+            var fileName = Guid.NewGuid() + Path.GetExtension(uploadImage.FileName);
+            var filePath = Path.Combine("wwwroot/images", fileName);
+
+            // Save the file to wwwroot/images
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await uploadImage.CopyToAsync(stream);
+            }
+
+            // Set the ImgUrl to the relative path for the database
+            post.ImgUrl = "/images/" + fileName;
+        }
+
+        post.DateCreated = DateTime.Now;
+        post.DateUpdated = DateTime.Now;
+
+
+
+        if (ModelState.IsValid)
+        {
+            bool ok = await _postRepository.CreatePostAsync(post);
+            if (ok)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+        else
+        {
+            foreach (var entry in ModelState)
+            {
+                foreach (var error in entry.Value.Errors)
+                {
+                    Console.WriteLine($"Key: {entry.Key}, Error: {error.ErrorMessage}");
+                }
+            }
+            Console.WriteLine("Model state is invalid");
+        }
+        return View(post);
+    }
+
+
+    // GET: Show the update form
+    [HttpGet]
+    public async Task<IActionResult> Update(int id)
+    {
+        var post = await _postRepository.GetPostByIdAsync(id);
         if (post == null)
         {
             return NotFound();
         }
+        return View(post); // Viser oppdateringsskjemaet med eksisterende data
+    }
 
-        var userId = 1;  // Replace with the currently logged-in user ID
-        var existingLike = post.UserLikes.FirstOrDefault(ul => ul.UserId == userId);
-
-        if (existingLike == null)  // Add like
+    // POST: Update the post
+    [HttpPost]
+    public async Task<IActionResult> Update(Post post)
+    {
+        if (ModelState.IsValid)
         {
-            var like = new UserPostLike { PostId = postId, UserId = userId };
-            _context.UserPostLikes.Add(like);
+            var ok = await _postRepository.UpdatePostAsync(post);
+            if (ok)
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
-        else  // Remove like (unlike)
-        {
-            _context.UserPostLikes.Remove(existingLike);
-        }
+        return View(post); // Viser skjemaet på nytt hvis validering mislyktes
+    }
 
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Details), new { id = postId });
+
+    // DELETE
+    [HttpPost]
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _postRepository.DeletePostAsync(id);
+        return RedirectToAction(nameof(Index));
     }
 }
+
