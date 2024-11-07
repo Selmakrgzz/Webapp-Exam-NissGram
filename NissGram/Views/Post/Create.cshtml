@@ -20,17 +20,21 @@
         <!-- Right Column: Form Elements -->
         <div class="col-md-6">
             <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <!-- Text Area and Button aligned to the right -->
                 <div class="form-group md-1">
-                    <textarea class="form-control form-control-lg" id="textArea" rows="6" placeholder="Write something..." asp-for="Text"></textarea>
+                    <textarea class="form-control form-control-lg" id="textArea" rows="6"
+                        placeholder="Write something..." asp-for="Text"></textarea>
                     <span asp-validation-for="Text" class="text-danger"></span>
 
                     <!-- Image Upload Section -->
                     <div class="form-group md-2">
                         <!-- Hidden file input -->
-                        <input type="file" id="uploadImage" class="file-input" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                        <input type="file" id="uploadImage" name="uploadImage" class="file-input" accept="image/*"
+                            onchange="previewImage(event)" style="display: none;">
                         <!-- Custom button to trigger file input -->
-                        <button type="button" class="btn-upload" onclick="document.getElementById('uploadImage').click();">Upload Image</button>
+                        <button type="button" class="btn-upload"
+                            onclick="document.getElementById('uploadImage').click();">Upload Image</button>
                         <!-- Validation message -->
                         <span asp-validation-for="ImgUrl" class="text-danger"></span>
                     </div>

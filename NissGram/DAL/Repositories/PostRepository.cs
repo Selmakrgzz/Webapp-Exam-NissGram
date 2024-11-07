@@ -59,6 +59,11 @@ public class PostRepository : IPostRepository
 
     }
 
+    // Fjerne senere
+    public async Task<User?> TempGetRandUser()
+    {
+        return await _db.Users.FindAsync(1);
+    }
     // CREATE
     public async Task<bool> CreatePostAsync(Post post)
     {

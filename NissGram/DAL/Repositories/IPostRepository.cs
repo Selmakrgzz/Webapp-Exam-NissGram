@@ -12,6 +12,8 @@ public interface IPostRepository
     Task<bool> DeletePostAsync(int id);
 
     Task<int> GetCountLikes(Post post);
+
+    Task<User?> TempGetRandUser();
 }
 
 
