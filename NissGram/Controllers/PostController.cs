@@ -43,7 +43,7 @@ public class PostController : Controller
         ModelState.Remove("User");
 
         post.User = await _postRepository.TempGetRandUser();
-
+     
         if (uploadImage != null && uploadImage.Length > 0)
         {
             // Generate a unique file name and path

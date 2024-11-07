@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -57,7 +57,9 @@
         <!-- Main Content Area -->
         <div class="content-container flex-grow-1">
             <div class="container">
+                <partial name="_LoginPartial"/>
                 @RenderBody()
+                @RenderSection("Scripts", required:false)
             </div>
         </div>
     </div>
