@@ -1,16 +1,17 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
 
 namespace NissGram.DAL;
 
-public class NissDbContext : DbContext
+public class NissDbContext : IdentityDbContext<User>
 {
     public NissDbContext(DbContextOptions<NissDbContext> options) : base(options)
     {
     }
 
 
-    public DbSet<User> Users { get; set; }
+    // public DbSet<User> Users { get; set; }
 
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Post> Posts { get; set; }
@@ -25,6 +26,7 @@ public class NissDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         // Configure the many-to-many relationship
         modelBuilder.Entity<UserPostLike>()
             .HasKey(upl => new { upl.UserId, upl.PostId });  // Composite key for the join table
