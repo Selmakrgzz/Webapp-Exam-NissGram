@@ -1,21 +1,22 @@
 ﻿/* Full-screen layout with header and side navbar */
 .d-flex {
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Fixed header at the top, with space for side navbar on the left */
+/* Fixed header at the top with space for side navbar on the left */
 .fixed-header {
   position: fixed;
   top: 0;
-  left: 80px; 
-  width: calc(100% - 80px); 
-  z-index: 1030;
+  left: 80px;
+  width: calc(100% - 80px);
   height: 60px;
   background-color: #007bff;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999999; /* Ensures header is above other elements */
+  z-index: 1030;
 }
 
 /* Logo image styling in the header */
@@ -28,8 +29,9 @@ img.navbar-brand {
 
 /* Main content area with margins for header and side navbar */
 .content-container {
-  margin-top: 60px; 
-  margin-left: 80px; 
+  flex-grow: 1;
+  margin-top: 60px;
+  margin-left: 80px;
   padding: 20px;
 }
 
@@ -70,6 +72,29 @@ img.navbar-brand {
   display: none; 
 }
 
+/* Profile icon styling within a circular frame */
+.profile-icon {
+  width: 80%; 
+  height: auto; 
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+/* Footer styling at the bottom of the page */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 80px;
+  width: calc(100% - 80px);
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  z-index: 1000;
+}
+
 /* Responsive adjustments for small screens */
 @media (max-width: 768px) {
   .side-navbar {
@@ -89,28 +114,11 @@ img.navbar-brand {
       width: 40px; 
       height: 40px;
   }
-  
   .content-container {
     margin-left: 0;
   }
+  .footer {
+    left: 0;
+    width: 100%;
+  }
 }
-
-/* Profile icon styling within a circular frame */
-.profile-icon {
-  width: 80%; 
-  height: auto; 
-  border-radius: 50%; 
-  object-fit: cover; 
-}
-
-/* Footer styling at the bottom of the page */
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 3.1rem; 
-  padding: 0.5rem 0; 
-  font-size: 0.9rem; 
-}
-

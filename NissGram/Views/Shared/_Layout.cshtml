@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,27 +9,63 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NissGram.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <!-- Responsive header that changes layout based on screen size -->
     <header class="fixed-header">
         <a asp-controller="Home" asp-action="Index" class="navbar-brand">
             <img src="~/images/NissGramLogo.png" alt="NissGram Logo" style="height: 35px; padding: 5px;">
-        </a> 
+        </a>
         <!-- Icon bar that only appears on small screens -->
         <nav class="icon-bar">
-            <a asp-controller="User" asp-action="Profile"><div class="circle bg-primary text-white">Profile</div></a>
-            <a asp-controller="Home" asp-action="Index"><div class="circle bg-secondary text-white">🏠</div></a>
-            <a asp-controller="Post" asp-action="Create"><div class="circle bg-success text-white">+</div></a>
-            <a asp-controller="User" asp-action="Search"><div class="circle bg-danger text-white">🔍</div></a>
-            <a asp-controller="Account" asp-action="Logout"><div class="circle bg-dark text-white">Logout</div></a>
+            <a asp-controller="User" asp-action="Profile">
+                <div class="circle bg-primary text-white">Profile</div>
+            </a>
+            <a asp-controller="Home" asp-action="Index">
+                <div class="circle bg-secondary text-white">🏠</div>
+            </a>
+            <a asp-controller="Post" asp-action="Create">
+                <div class="circle bg-success text-white">+</div>
+            </a>
+            <a asp-controller="User" asp-action="Search">
+                <div class="circle bg-danger text-white">🔍</div>
+            </a>
+            <a asp-controller="Account" asp-action="Logout">
+                <div class="circle bg-dark text-white">Logout</div>
+            </a>
         </nav>
     </header>
-    
+
     <div class="d-flex">
-        <!-- Side Navigation Bar, hidden on small screens -->
+        <!-- Fixed header -->
+        <header class="fixed-header">
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                <img src="~/images/NissGramLogo.png" alt="NissGram Logo" style="height: 35px; padding: 5px;">
+            </a>
+            <!-- Icon bar for small screens -->
+            <nav class="icon-bar">
+                <a asp-controller="User" asp-action="Profile">
+                    <div class="circle bg-primary text-white">Profile</div>
+                </a>
+                <a asp-controller="Home" asp-action="Index">
+                    <div class="circle bg-secondary text-white">🏠</div>
+                </a>
+                <a asp-controller="Post" asp-action="Create">
+                    <div class="circle bg-success text-white">+</div>
+                </a>
+                <a asp-controller="User" asp-action="Search">
+                    <div class="circle bg-danger text-white">🔍</div>
+                </a>
+                <a asp-controller="Account" asp-action="Logout">
+                    <div class="circle bg-dark text-white">Logout</div>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Side Navigation Bar -->
         <nav class="side-navbar">
             <ul class="nav flex-column text-center flex-grow-1">
-               <li class="nav-item mb-3">
+                <li class="nav-item mb-3">
                     <a asp-controller="User" asp-action="Profile" class="nav-link">
                         <div class="circle first bg-primary text-white">Profile</div>
                     </a>
@@ -55,24 +92,26 @@
         </nav>
 
         <!-- Main Content Area -->
-        <div class="content-container flex-grow-1">
+        <div class="content-container">
             <div class="container">
-                <partial name="_LoginPartial"/>
+                <partial name="_LoginPartial" />
                 @RenderBody()
-                @RenderSection("Scripts", required:false)
+                @RenderSection("Scripts", required: false)
             </div>
         </div>
+
+        <!-- Footer at the bottom -->
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2024 - NissGram - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - NissGram - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body> 
+</body>
+
 </html>
