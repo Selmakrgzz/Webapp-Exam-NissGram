@@ -23,7 +23,6 @@ builder.Services.AddDbContext<NissDbContext>(options =>
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<NissDbContext>()
     .AddDefaultTokenProviders();
-// builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<NissDbContext>();
 
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 
