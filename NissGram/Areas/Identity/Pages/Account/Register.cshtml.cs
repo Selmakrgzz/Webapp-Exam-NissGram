@@ -22,6 +22,8 @@ using NissGram.Models;
 
 namespace NissGram.Areas.Identity.Pages.Account
 {
+    //linja under er det som gjør at bruker kan trykke på register fra log in siden og blir ført til register skjema
+    [AllowAnonymous]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<User> _signInManager;
@@ -141,7 +143,12 @@ namespace NissGram.Areas.Identity.Pages.Account
                     }
                     else
                     {
+                        //After the user is registered - logged in automatically
                         await _signInManager.SignInAsync(user, isPersistent: false);
+
+                         // Log user authentication status
+                        _logger.LogInformation("User is signed in: " + _signInManager.IsSignedIn(User));
+
                         return LocalRedirect(returnUrl);
                     }
                 }

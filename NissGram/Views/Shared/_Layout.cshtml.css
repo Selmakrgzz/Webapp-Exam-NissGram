@@ -1,6 +1,6 @@
 ﻿/* Full-screen layout with header and side navbar */
 .d-flex {
-  height: 100vh;
+  min-height: auto;
 }
 
 /* Fixed header at the top, with space for side navbar on the left */
