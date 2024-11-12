@@ -22,6 +22,8 @@ using NissGram.Models;
 
 namespace NissGram.Areas.Identity.Pages.Account
 {
+    //linja under er det som gjør at bruker kan trykke på register fra log in siden og blir ført til register skjema
+    [AllowAnonymous]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<User> _signInManager;
@@ -29,21 +31,19 @@ namespace NissGram.Areas.Identity.Pages.Account
         private readonly IUserStore<User> _userStore;
         private readonly IUserEmailStore<User> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
+
 
         public RegisterModel(
             UserManager<User> userManager,
             IUserStore<User> userStore,
             SignInManager<User> signInManager,
-            ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            ILogger<RegisterModel> logger)
         {
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
         }
 
         /// <summary>
@@ -132,8 +132,6 @@ namespace NissGram.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -141,7 +139,12 @@ namespace NissGram.Areas.Identity.Pages.Account
                     }
                     else
                     {
+                        //After the user is registered - logged in automatically
                         await _signInManager.SignInAsync(user, isPersistent: false);
+
+                         // Log user authentication status
+                        _logger.LogInformation("User is signed in: " + _signInManager.IsSignedIn(User));
+
                         return LocalRedirect(returnUrl);
                     }
                 }

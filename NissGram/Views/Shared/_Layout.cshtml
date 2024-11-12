@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using NissGram.Models
+@inject SignInManager<User> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,38 +15,14 @@
 </head>
 
 <body>
-    <!-- Responsive header that changes layout based on screen size -->
-    <header class="fixed-header">
-        <a asp-controller="Home" asp-action="Index" class="navbar-brand">
-            <img src="~/images/NissGramLogo.png" alt="NissGram Logo" style="height: 35px; padding: 5px;">
-        </a>
-        <!-- Icon bar that only appears on small screens -->
-        <nav class="icon-bar">
-            <a asp-controller="User" asp-action="Profile">
-                <div class="circle bg-primary text-white">Profile</div>
-            </a>
-            <a asp-controller="Home" asp-action="Index">
-                <div class="circle bg-secondary text-white">🏠</div>
-            </a>
-            <a asp-controller="Post" asp-action="Create">
-                <div class="circle bg-success text-white">+</div>
-            </a>
-            <a asp-controller="User" asp-action="Search">
-                <div class="circle bg-danger text-white">🔍</div>
-            </a>
-            <a asp-controller="Account" asp-action="Logout">
-                <div class="circle bg-dark text-white">Logout</div>
-            </a>
-        </nav>
-    </header>
-
-    <div class="d-flex">
-        <!-- Fixed header -->
+    <!-- Header and navigation -->
+    @if (SignInManager.IsSignedIn(User))
+    {
         <header class="fixed-header">
             <a asp-controller="Home" asp-action="Index" class="navbar-brand">
                 <img src="~/images/NissGramLogo.png" alt="NissGram Logo" style="height: 35px; padding: 5px;">
             </a>
-            <!-- Icon bar for small screens -->
+            <!-- Icon bar that only appears on small screens -->
             <nav class="icon-bar">
                 <a asp-controller="User" asp-action="Profile">
                     <div class="circle bg-primary text-white">Profile</div>
@@ -56,57 +36,64 @@
                 <a asp-controller="User" asp-action="Search">
                     <div class="circle bg-danger text-white">🔍</div>
                 </a>
-                <a asp-controller="Account" asp-action="Logout">
-                    <div class="circle bg-dark text-white">Logout</div>
-                </a>
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="~/Identity/Account/Login" method="post" class="d-inline">
+                    <button type="submit" class="nav-link text-white p-0 border-0 bg-transparent">
+                        <div class="circle bg-dark text-white">Logout</div>
+                    </button>
+                </form>
+
+
             </nav>
         </header>
-
-        <!-- Side Navigation Bar -->
-        <nav class="side-navbar">
-            <ul class="nav flex-column text-center flex-grow-1">
-                <li class="nav-item mb-3">
-                    <a asp-controller="User" asp-action="Profile" class="nav-link">
-                        <div class="circle first bg-primary text-white">Profile</div>
-                    </a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a asp-controller="Home" asp-action="Index" class="nav-link">
-                        <div class="circle middle bg-secondary text-white">🏠</div>
-                    </a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a asp-controller="Post" asp-action="Create" class="nav-link">
-                        <div class="circle middle bg-success text-white">+</div>
-                    </a>
-                </li>
-                <li class="nav-item mb-3">
-                    <a asp-controller="User" asp-action="Search" class="nav-link">
-                        <div class="circle middle bg-danger text-white">🔍</div>
-                    </a>
-                </li>
-            </ul>
-            <div class="circle logout bg-dark text-white">
-                <a asp-controller="Account" asp-action="Logout" class="nav-link text-white">Logout</a>
-            </div>
-        </nav>
+        <div class="d-flex">
+            <nav class="side-navbar">
+                <ul class="nav flex-column text-center flex-grow-1">
+                    <li class="nav-item mb-3">
+                        <a asp-controller="User" asp-action="Profile" class="nav-link">
+                            <div class="circle first bg-primary text-white">Profile</div>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link">
+                            <div class="circle middle bg-secondary text-white">🏠</div>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a asp-controller="Post" asp-action="Create" class="nav-link">
+                            <div class="circle middle bg-success text-white">+</div>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a asp-controller="User" asp-action="Search" class="nav-link">
+                            <div class="circle middle bg-danger text-white">🔍</div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="circle logout bg-dark text-white">
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="~/Identity/Account/Login" method="post" class="d-inline">
+                    <button type="submit" class="nav-link text-white p-0 border-0 bg-transparent">
+                        <div class="circle bg-dark text-white">Logout</div>
+                    </button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    }
 
         <!-- Main Content Area -->
         <div class="content-container">
             <div class="container">
-                <partial name="_LoginPartial" />
                 @RenderBody()
                 @RenderSection("Scripts", required: false)
             </div>
         </div>
-
-        <!-- Footer at the bottom -->
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2024 - NissGram - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
     </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - NissGram - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

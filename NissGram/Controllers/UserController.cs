@@ -3,6 +3,7 @@ using NissGram.Models;
 using NissGram.ViewModels;
 using NissGram.DAL;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NissGram.Controllers;
 public class UserController : Controller
