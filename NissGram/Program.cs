@@ -30,7 +30,6 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<NissDbContext>()
     .AddDefaultTokenProviders();
-// builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<NissDbContext>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

@@ -21,6 +21,7 @@
             <a asp-controller="Home" asp-action="Index" class="navbar-brand">
                 <img src="~/images/NissGramLogo.png" alt="NissGram Logo" style="height: 35px; padding: 5px;">
             </a>
+            <!-- Icon bar that only appears on small screens -->
             <nav class="icon-bar">
                 <a asp-controller="User" asp-action="Profile">
                     <div class="circle bg-primary text-white">Profile</div>
@@ -78,11 +79,12 @@
         </div>
     }
 
-    <!-- Main Content Area - RenderBody() always called here -->
-    <div class="content-container flex-grow-1">
-        <div class="container">
-            @RenderBody()
-            @RenderSection("Scripts", required: false)
+        <!-- Main Content Area -->
+        <div class="content-container flex-grow-1">
+            <div class="container">
+                @RenderBody()
+                @RenderSection("Scripts", required: false)
+            </div>
         </div>
     </div>
 
