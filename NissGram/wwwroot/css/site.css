@@ -23,50 +23,41 @@ body {
 }
 
 .fixed-header {
-  background-color: pink;
+  background-color: #8fa0c3 !important;
 }
 
-/* Sentrerer innhold i sirklene */
+.side-navbar {
+  background-color: #a4b0c9 !important;
+}
+
+
+/* Generelle regler for ikonbokser */
 .circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   width: 60px; /* Diameter */
   height: 60px; /* Diameter */
-  border: 2px solid #868c91; /* Tynn kant rundt */
-  background-color: white; /* Legg til hvit bakgrunn for klarhet */
+  border-radius: 50%; /* Gjør dem runde */
+
 }
 
-/* Profilbilde-stil */
+/* Spesifikk regel for profilboksen */
 .profile-container {
-  background-color: transparent; /* Fjern bakgrunnsfargen for minimalistisk design */
-  border: 2px solid #868c91; /* Tynn blå kant rundt profilen */
+  border: 2px solid #8fa0c3; /* Blå kant rundt profilbildet */
 }
 
+/* Profilbildet */
 .profile-picture {
-  width: 50px; /* Mindre bilde, nesten hele sirkelen */
-  height: 50px;
-  object-fit: contain; /* Sørger for at bildet skaleres uten å bli kuttet */
+  width: 100%; /* Tilpass bildet til containerens bredde */
+  height: auto; /* Behold proporsjonene */
+  object-fit: scale-down; /* Sørger for at bildet ikke blir kuttet */
   border-radius: 50%; /* Gjør bildet rundt */
 }
 
-/* Logout-knapp */
-.circle.logout {
-  margin-top: auto; /* Flytt logout til bunnen */
-}
-
-/* Navigasjonsknapper */
-.nav-item {
-  margin-bottom: 20px;
-}
-
-.nav-link {
-  text-decoration: none;
-}
-
-/* Hover-effekter */
-.circle:hover {
-  transform: scale(1.1); /* Liten zoom-effekt */
-  transition: transform 0.2s ease-in-out;
+/* Hover-effekt */
+.nav-link:hover {
+  transform: scale(1.1); /* Liten zoom ved hover */
+  filter: brightness(1.1); /* Gjør ikonet lysere ved hover */
+  cursor: pointer; /* Endre markøren til håndikon */
 }

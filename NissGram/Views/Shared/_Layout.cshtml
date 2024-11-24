@@ -22,26 +22,22 @@
         var currentUser = await UserManager.GetUserAsync(User);
         var profilePicture = currentUser?.ProfilePicture ?? "/images/profile_image_default.png";
 
-        <header class="fixed-header">
+       <header class="fixed-header">
             <a asp-controller="Home" asp-action="Index" class="navbar-brand">
                 <img src="/images/Niss.png" style="height: 70px; padding: 5px;" alt="NissGram Logo">
             </a>
             <!-- Icon bar for små skjermer -->
             <nav class="icon-bar">
                 <a asp-controller="User" asp-action="Profile">
-                    <div class="profile-container">
+                    <div class="profile-container circle">
                         <img src="@profilePicture" class="profile-picture" alt="Profile Picture">
                     </div>
                 </a>
                 <a asp-controller="Home" asp-action="Index">
-                    <div class="bg-secondary text-white">
-                        <img src="/images/homeIcon.png" style="height: 40px; padding: 5px;" alt="Home Icon">
-                    </div>
+                    <img src="/images/homeIcon.png" style="height: 40px; padding: 5px;" alt="Home Icon">
                 </a>
                 <a asp-controller="Post" asp-action="Create">
-                    <div class="bg-success text-white">
-                        <img src="/images/addIcon.png" style="height: 40px; padding: 5px;" alt="Add Post Icon">
-                    </div>
+                    <img src="/images/addIcon.png" style="height: 40px; padding: 5px;" alt="Add Post Icon">
                 </a>
                 <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="~/Identity/Account/Login" method="post" class="d-inline">
                     <button type="submit" class="nav-link text-white p-0 border-0 bg-transparent">
@@ -51,29 +47,31 @@
             </nav>
         </header>
 
-        <div class="d-flex">
+       <div class="d-flex">
             <!-- Side navbar -->
             <nav class="side-navbar">
                 <ul class="nav flex-column text-center flex-grow-1">
                     <li class="nav-item mb-3">
                         <a asp-controller="User" asp-action="Profile" class="nav-link">
-                            <img src="@profilePicture" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px;">
+                            <div class="profile-container circle">
+                                <img src="@profilePicture" alt="Profile Picture" class="profile-picture">
+                            </div>
                         </a>
                     </li>
                     <li class="nav-item mb-3">
                         <a asp-controller="Home" asp-action="Index" class="nav-link">
-                            <img src="/images/homeIcon.png" alt="Home Icon" class="rounded-circle bg-secondary p-2" style="width: 50px; height: 50px;">
+                            <img src="/images/homeIcon.png" alt="Home Icon" style="height: 40px; width: 40px;">
                         </a>
                     </li>
                     <li class="nav-item mb-3">
                         <a asp-controller="Post" asp-action="Create" class="nav-link">
-                            <img src="/images/addIcon.png" alt="Add Post Icon" class="rounded-circle bg-success p-2" style="width: 50px; height: 50px;">
+                            <img src="/images/addIcon.png" alt="Add Post Icon" style="height: 40px; width: 40px;">
                         </a>
                     </li>
                 </ul>
                 <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="~/Identity/Account/Login" method="post" class="d-flex align-items-center justify-content-center" style="height: 100%;">
                     <button type="submit" class="nav-link text-white p-0 border-0 bg-transparent">
-                        <img src="/images/logoutIcon.png" alt="Logout Icon" class="rounded-circle" style="width: 50px; height: 50px;">
+                        <img src="/images/logoutIcon.png" alt="Logout Icon" style="height: 40px; width: 40px; margin: 15px;;">
                     </button>
                 </form>
             </nav>
