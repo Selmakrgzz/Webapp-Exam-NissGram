@@ -22,36 +22,43 @@ public static class DBInit
                 {
                     UserName = "Nico123",
                     Email = "nico123@example.com",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "JaneDoe",
                     Email = "jane.doe@example.com",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "JohnSmith",
                     Email = "john.smith@example.com",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "Bom93",
                     Email = "bombom@gmail.com",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "koko_223",
                     Email = "kko.2@outlook.com",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "geir_er_kul",
                     Email = "geir34@jahoo.com",
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "tina_betina12",
                     Email = "tine.b@gmail.com",
+                    ProfilePicture = "/images/profile_image_default.png"
                 }
             };
 
