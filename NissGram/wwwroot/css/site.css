@@ -19,4 +19,54 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #eef0f5;
+}
+
+.fixed-header {
+  background-color: pink;
+}
+
+/* Sentrerer innhold i sirklene */
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 60px; /* Diameter */
+  height: 60px; /* Diameter */
+  border: 2px solid #868c91; /* Tynn kant rundt */
+  background-color: white; /* Legg til hvit bakgrunn for klarhet */
+}
+
+/* Profilbilde-stil */
+.profile-container {
+  background-color: transparent; /* Fjern bakgrunnsfargen for minimalistisk design */
+  border: 2px solid #868c91; /* Tynn blå kant rundt profilen */
+}
+
+.profile-picture {
+  width: 50px; /* Mindre bilde, nesten hele sirkelen */
+  height: 50px;
+  object-fit: contain; /* Sørger for at bildet skaleres uten å bli kuttet */
+  border-radius: 50%; /* Gjør bildet rundt */
+}
+
+/* Logout-knapp */
+.circle.logout {
+  margin-top: auto; /* Flytt logout til bunnen */
+}
+
+/* Navigasjonsknapper */
+.nav-item {
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+/* Hover-effekter */
+.circle:hover {
+  transform: scale(1.1); /* Liten zoom-effekt */
+  transition: transform 0.2s ease-in-out;
 }
