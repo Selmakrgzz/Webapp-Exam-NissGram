@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NissGram.Models;
 using NissGram.DAL;
 using NissGram.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NissGram.Controllers;
 
