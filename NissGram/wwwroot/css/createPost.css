@@ -2,7 +2,7 @@ h2 {
     font-size: 50px;
 }
 
-/* Standard styling */
+/* Standard styling for image preview box */
 #imagePreview {
     width: 450px;
     height: 450px;
@@ -14,14 +14,21 @@ h2 {
     background-color: #f8f9fa;
 }
 
+/* Hide border and background when an image is present */
+#imagePreview.has-image {
+    background-color: transparent;
+    border: none;
+}
+
 /* Image inside the preview box */
 #imagePreview img {
-    width: auto;            
-    height: auto;           
-    max-width: 100%;    
-    max-height: 100%;      
-    object-fit: contain;    
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
+
 
 .col-md-6  {
     margin-top: 40px;

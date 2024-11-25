@@ -3,6 +3,7 @@ using NissGram.Models;
 using NissGram.ViewModels;
 using NissGram.DAL;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NissGram.Controllers;
 public class UserController : Controller
@@ -22,7 +23,8 @@ public class UserController : Controller
         var users = await _context.Users.ToListAsync();
 
         // Create an instance of UsersViewModel with the list of users
-        var viewModel = new UsersViewModel(users, "All Users");
+        var viewModel = new UsersViewModel(users, "All users");
+    
 
         // Pass the ViewModel to the view
         return View(viewModel);
@@ -40,8 +42,7 @@ public class UserController : Controller
         }
 
         // Fetch user by ID
-        var user = await _context.Users
-            .FirstOrDefaultAsync(m => m.UserId == id);
+        var user = await _context.Users.FindAsync(id);
         if (user == null)
         {
             return NotFound();

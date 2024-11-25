@@ -1,30 +1,71 @@
+using System.Numerics;
 using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
 
-namespace NissGram.DAL.Repositories;
+namespace NissGram.DAL;
 public class PostRepository : IPostRepository
 {
     private readonly NissDbContext _db;
+    private readonly ILogger<PostRepository> _logger;
 
-    public PostRepository(NissDbContext db)
+    public PostRepository(NissDbContext db, ILogger<PostRepository> logger)
     {
         _db = db;
+        _logger = logger;
     }
 
     // GET ALL POSTS
-    public async Task<IEnumerable<Post>> GetAllPostsAsync()
+    public async Task<IEnumerable<Post>?> GetAllPostsAsync()
     {
-        return await _db.Posts.Include(p => p.User).ToListAsync();
+        try
+        {
+            var posts = await _db.Posts.ToListAsync();
+            Console.WriteLine("Count:" + posts.Count);
+            return posts;
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[PostRepository] Posts ToListAsync() failed when GetAllPostsAsync(), error message: {e}", e.Message);
+            return null;
+        }
+    }
+
+    // Get All Posts by User
+    public async Task<IEnumerable<Post>?> GetAllPostsAsync(User user)
+    {
+        try
+        {
+            return await _db.Posts.Where(p => p.User == user).ToListAsync();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[PostRepository] Failed to get posts for User {@user}, Error message: {e}", user, e.Message);
+            return null;
+        }
     }
 
     // GET SINGLE POST 
     public async Task<Post?> GetPostByIdAsync(int id)
     {
-        return await _db.Posts.Include(p => p.User).FirstOrDefaultAsync(p => p.PostId == id);
+        try
+        {
+            return await _db.Posts.FindAsync(id);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[PostRepository] post FindAsync(id) failed when GetPostByIdAsync for PostId {PostId:0000}, error message: {e}", id, e.Message);
+            return null;
+        }
+
     }
 
+    // Fjerne senere
+    public async Task<User?> TempGetRandUser()
+    {
+        return await _db.Users.FindAsync(1);
+    }
     // CREATE
-  public async Task<bool> CreatePostAsync(Post post)
+    public async Task<bool> CreatePostAsync(Post post)
     {
         try
         {
@@ -34,7 +75,7 @@ public class PostRepository : IPostRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error saving post: {e.Message}");
+            _logger.LogError("[PostRepository] post creation failed for post {@post}, error message: {e}", post, e.Message);
             return false;
         }
     }
@@ -42,13 +83,16 @@ public class PostRepository : IPostRepository
 
     // UPDATE
     public async Task<bool> UpdatePostAsync(Post post)
-    {   
-        try{
+    {
+        try
+        {
             _db.Posts.Update(post);
             await _db.SaveChangesAsync();
             return true;
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
+            _logger.LogError("[PostRepository] post update failed for post {@post}, error message: {e}", post, e.Message);
             return false;
         }
     }
@@ -56,17 +100,34 @@ public class PostRepository : IPostRepository
     // DELETE
     public async Task<bool> DeletePostAsync(int id)
     {
-        try{
+        try
+        {
             var post = await _db.Posts.FindAsync(id);
-            if (post != null)
+            if (post == null)
             {
-                _db.Posts.Remove(post);
-                await _db.SaveChangesAsync();
+                _logger.LogError("[PostRepository] post not found for the PostId {PostId:0000}", id);
+                return false;
             }
+            _db.Posts.Remove(post);
             return true;
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
+            _logger.LogError("[PostRepository] post deletion failed for the PostId {PostId:0000}, error message: {e}", id, e.Message);
             return false;
+        }
+    }
+
+    public async Task<int> GetCountLikes(Post post)
+    {
+        try
+        {
+            return await _db.UserPostLikes.Where(p => p.PostId == post.PostId).CountAsync();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[PostRepository] post likes failed for post {@post}, error message {e}", post, e.Message);
+            return -1;
         }
     }
 
