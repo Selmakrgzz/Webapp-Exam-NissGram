@@ -1,15 +1,13 @@
-@model NissGram.ViewModels.UserProfileViewModel
-
 <div class="profile-container">
     <!-- Static Section with Frame -->
     <div class="profile-header-frame border rounded p-3 mb-4">
         <div class="profile-header d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <!-- Profile Picture from Controller-->
+                <!-- Profile Picture from Controller -->
                 <img src="@(Model.User.ProfilePicture ?? "/images/profile_image_default.png")" 
-                    alt="Profile Picture" 
-                    class="rounded-circle me-5" 
-                    style="width: 100px; height: 100px;">
+                     alt="Profile Picture" 
+                     class="rounded-circle me-5" 
+                     style="width: 100px; height: 100px;">
 
                 <div>
                     <!-- Username -->
@@ -20,10 +18,9 @@
                         <span>@Model.NoteCount Notes</span>
                     </p>
                     <!-- Description/About -->
-                <div class="fs-6" style="word-wrap: break-word; overflow-wrap: break-word;">
-                    <p class="mb-0" style="white-space: pre-wrap;">@Model.User.About</p>
-                </div>
-
+                    <div class="fs-6" style="word-wrap: break-word; overflow-wrap: break-word;">
+                        <p class="mb-0" style="white-space: pre-wrap;">@Model.User.About</p>
+                    </div>
                 </div>
             </div>
 
@@ -47,39 +44,31 @@
         </div>
     </div>
 
+    <!-- Buttons Section -->
     <div class="profile-buttons d-flex justify-content-center my-4">
         @{
             var section = Context.Request.Query["section"].ToString();
         }
         <a asp-controller="User" asp-action="Profile" asp-route-section="Pictures" 
-        class="btn btn-primary btn-lg mx-2 w-25 @(section == "Pictures" || string.IsNullOrEmpty(section) ? "btn-dark" : "")">
+           class="btn btn-primary btn-lg mx-2 w-25 @(section == "Pictures" || string.IsNullOrEmpty(section) ? "btn-dark" : "")">
             Pictures
         </a>
         <a asp-controller="User" asp-action="Profile" asp-route-section="Notes" 
-        class="btn btn-primary btn-lg mx-2 w-25 @(section == "Notes" ? "btn-dark" : "")">
+           class="btn btn-primary btn-lg mx-2 w-25 @(section == "Notes" ? "btn-dark" : "")">
             Notes
         </a>
         <a asp-controller="User" asp-action="Profile" asp-route-section="Archive" 
-        class="btn btn-primary btn-lg mx-2 w-25 @(section == "Archive" ? "btn-dark" : "")">
+           class="btn btn-primary btn-lg mx-2 w-25 @(section == "Archive" ? "btn-dark" : "")">
             Archive
         </a>
         <a asp-controller="User" asp-action="Profile" asp-route-section="Activity" 
-        class="btn btn-primary btn-lg mx-2 w-25 @(section == "Activity" ? "btn-dark" : "")">
+           class="btn btn-primary btn-lg mx-2 w-25 @(section == "Activity" ? "btn-dark" : "")">
             Activity
         </a>
     </div>
 
-    <!-- Buttons without the dark feature for chosen button
-    <div class="profile-buttons d-flex justify-content-center my-4">
-        <a asp-controller="User" asp-action="Profile" asp-route-section="Pictures" class="btn btn-primary btn-lg mx-2 w-25">Pictures</a>
-        <a asp-controller="User" asp-action="Profile" asp-route-section="Notes" class="btn btn-primary btn-lg mx-2 w-25">Notes</a>
-        <a asp-controller="User" asp-action="Profile" asp-route-section="Archive" class="btn btn-primary btn-lg mx-2 w-25">Archive</a>
-        <a asp-controller="User" asp-action="Profile" asp-route-section="Activity" class="btn btn-primary btn-lg mx-2 w-25">Activity</a>
-    </div>-->
-
-
     <!-- Dynamic Content -->
-    <div>
+    <div class="dynamic-content mt-4">
         @if (string.IsNullOrEmpty(Context.Request.Query["section"]))
         {
             <h3>Pictures</h3>
