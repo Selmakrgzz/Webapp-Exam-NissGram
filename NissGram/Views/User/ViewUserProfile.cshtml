@@ -1,37 +1,35 @@
 @model NissGram.ViewModels.UserProfileViewModel
 
-<div class="profile-container">
-    <!-- Static Section with Frame -->
-    <div class="profile-header-frame border rounded p-3 mb-4">
-        <div class="profile-header d-flex align-items-center">
-            <img src="@(Model.User.ProfilePicture ?? "/images/profile_image_default.png")" 
-                 alt="Profile Picture" 
-                 class="rounded-circle me-5" 
-                 style="width: 100px; height: 100px;">
-            <div>
-                <h2 class="mb-4">@Model.User.UserName</h2>
-                <p class="mb-4 fs-5">
-                    <span>@Model.PictureCount Pictures</span> | 
-                    <span>@Model.NoteCount Notes</span>
-                </p>
-            </div>
+<!-- Static Section with Frame -->
+<div class="profile-header-frame border rounded p-3 mb-4">
+    <div class="profile-header d-flex align-items-center">
+        <img src="@(Model.User.ProfilePicture ?? "/images/profile_image_default.png")" 
+                alt="Profile Picture" 
+                class="rounded-circle me-5" 
+                style="width: 100px; height: 100px;">
+        <div>
+            <h2 class="mb-4">@Model.User.UserName</h2>
+            <p class="mb-4 fs-5">
+                <span>@Model.PictureCount Pictures</span> | 
+                <span>@Model.NoteCount Notes</span>
+            </p>
         </div>
     </div>
+</div>
 
-    <!-- User's Posts -->
-    <div class="row">
-        @foreach (var post in Model.Pictures.Concat(Model.Notes))
-        {
-            <div class="col-md-8 offset-md-2 mb-4">
-                @if (!string.IsNullOrEmpty(post.ImgUrl))
-                {
-                    <partial name="_PostWithImage" model="post" />
-                }
-                else
-                {
-                    <partial name="_PostNote" model="post" />
-                }
-            </div>
-        }
-    </div>
+<!-- User's Posts -->
+<div class="row">
+    @foreach (var post in Model.Pictures.Concat(Model.Notes))
+    {
+        <div class="col-md-8 offset-md-2 mb-4">
+            @if (!string.IsNullOrEmpty(post.ImgUrl))
+            {
+                <partial name="_PostWithImage" model="post" />
+            }
+            else
+            {
+                <partial name="_PostNote" model="post" />
+            }
+        </div>
+    }
 </div>
