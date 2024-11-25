@@ -69,8 +69,13 @@ namespace NissGram.Areas.Identity.Pages.Account
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public class InputModel
+         public class InputModel
         {
+            public string ProfilePicture { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "Username cannot exceed 100 characters.")]
+            public string Username { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -79,6 +84,20 @@ namespace NissGram.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}", ErrorMessage = "The Name must be letters and between 2 to 20 characters.")]
+            [Display(Name = "First name")]
+            public string FirstName { get; set; } // Add FirstName
+
+            [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}", ErrorMessage = "The Name must be letters and between 2 to 20 characters.")]
+            [Display(Name = "First name")]
+            public string LastName { get; set; }  // Add LastName
+
+            [StringLength(500, ErrorMessage = "About section cannot exceed 500 characters.")]
+            public string About { get; set; }
+
+            [RegularExpression(@"^[0-9]{8,10}$", ErrorMessage = "The phone number must contain only numbers and be between 8 and 10 digits.")]    
+            public string PhoneNumber { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -107,16 +126,63 @@ namespace NissGram.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
+
+        
+
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+
+            
+            if (Request.Form.Files.Count > 0)
+            {
+                 var file = Request.Form.Files[0];
+                if (file.Length > 0)
+                {
+                    // Generate a unique filename and save the file
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var uploadsFolder = Path.Combine("wwwroot", "uploads", "profile-pictures");
+                    Directory.CreateDirectory(uploadsFolder); // Ensure the directory exists
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    // Save the file path in the Input model
+                    Input.ProfilePicture = $"/uploads/profile-pictures/{fileName}";
+                }
+                else
+                {
+                    ModelState.AddModelError("ProfilePicture", "Uploaded file is empty.");
+                }// Handle uploaded profile picture logic here...
+            }
+            else
+            {
+                // Set default picture if no picture is uploaded
+                Input.ProfilePicture = "/images/profile_image_default.png";
+            }
+            
+            
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                 var user = new User
+                {
+                    ProfilePicture = Input.ProfilePicture, // Save the profile picture path
+                    UserName = Input.Username,
+                    Email = Input.Email,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    About = Input.About,
+                    PhoneNumber = Input.PhoneNumber
+                };
+
+                //await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                //await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

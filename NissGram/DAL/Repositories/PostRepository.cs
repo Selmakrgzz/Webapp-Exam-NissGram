@@ -14,6 +14,13 @@ public class PostRepository : IPostRepository
         _logger = logger;
     }
 
+
+    public async Task<User?> GetUserByIdAsync(string userId)
+    {
+        return await _db.Users.Include(u => u.Posts).FirstOrDefaultAsync(u => u.Id == userId);
+    }
+
+
     // GET ALL POSTS
     public async Task<IEnumerable<Post>?> GetAllPostsAsync()
     {
@@ -62,7 +69,8 @@ public class PostRepository : IPostRepository
     // Fjerne senere
     public async Task<User?> TempGetRandUser()
     {
-        return await _db.Users.FindAsync(1);
+        return await _db.Users.OrderBy(u => u.Id).FirstOrDefaultAsync();
+    
     }
     // CREATE
     public async Task<bool> CreatePostAsync(Post post)
