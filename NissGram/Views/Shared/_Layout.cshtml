@@ -33,7 +33,7 @@
             var profilePicture = currentUser?.ProfilePicture ?? "/images/profile_image_default.png";
             <!-- Icon bar that only appears on small screens for authenticated users -->
             <nav class="icon-bar">
-                <a asp-controller="User" asp-action="Profile">
+                <a asp-controller="User" asp-route-id="@currentUser?.Id" asp-action="Profile">
                     <div class="profile-container circle">
                         <img src="@profilePicture" class="profile-picture" alt="Profile Picture">
                     </div>

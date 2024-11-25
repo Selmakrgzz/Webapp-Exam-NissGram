@@ -96,7 +96,7 @@ public class PostControllerTests
         {
             User = testUser, // User object as input in the relation
             Text = "Today I went to the park and enjoyed the sunshine.",
-            ImgUrl = null,
+            ImgUrl = "wwwroot/images/picknick.png",
             DateCreated = DateTime.Now,
             DateUpdated = DateTime.Now
         };
@@ -121,7 +121,8 @@ public class PostControllerTests
         // Verify that CreatePostAsync was called exactly once with a Post object matching the expected properties
         mockPostRepository.Verify(repo => repo.CreatePostAsync(It.Is<Post>(p =>
             p.User.UserName == "JaneDoe" &&
-            p.Text == "Today I went to the park and enjoyed the sunshine."
+            p.Text == "Today I went to the park and enjoyed the sunshine." &&
+            p.ImgUrl == "wwwroot/images/picknick.png"
         )), Times.Once);
     }
 

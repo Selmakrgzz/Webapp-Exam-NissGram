@@ -22,43 +22,43 @@ public static class DBInit
                 {
                     UserName = "Nico123",
                     Email = "nico123@example.com",
-                    ProfilePicture = "/images/profile_image_default.png"
+                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c1.png"
                 },
                 new User
                 {
                     UserName = "JaneDoe",
                     Email = "jane.doe@example.com",
-                    ProfilePicture = "/images/profile_image_default.png"
+                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c2.png"
                 },
                 new User
                 {
                     UserName = "JohnSmith",
                     Email = "john.smith@example.com",
-                    ProfilePicture = "/images/profile_image_default.png"
+                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c3.png"
                 },
                 new User
                 {
                     UserName = "Bom93",
                     Email = "bombom@gmail.com",
-                    ProfilePicture = "/images/profile_image_default.png"
+                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c4.png"
                 },
                 new User
                 {
                     UserName = "koko_223",
                     Email = "kko.2@outlook.com",
-                    ProfilePicture = "/images/profile_image_default.png"
+                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c5.png"
                 },
                 new User
                 {
                     UserName = "geir_er_kul",
                     Email = "geir34@jahoo.com",
-                    ProfilePicture = "/images/profile_image_default.png"
+                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c6.png"
                 },
                 new User
                 {
                     UserName = "tina_betina12",
                     Email = "tine.b@gmail.com",
-                    ProfilePicture = "/images/profile_image_default.png"
+                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c7.png"
                 }
             };
 
