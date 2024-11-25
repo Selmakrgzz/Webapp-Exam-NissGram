@@ -7,8 +7,8 @@
 .fixed-header {
   position: fixed;
   top: 0;
-  left: 80px;
-  width: calc(100% - 80px);
+  left: 0;
+  width: 100%;
   height: 60px;
   background-color: #007bff;
   display: flex;
@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding-top: 80px;
   border-right: 1px solid #e5e5e5;
   background-color: #f2f4f7; /* Softer color for sidebar background */
 }
@@ -90,6 +90,13 @@
   line-height: 1.5rem;
   border-top: 1px solid #e5e5e5;
   z-index: 1000;
+}
+
+/* Full-width footer for login and register pages */
+.full-width-footer {
+  left: 0;
+  width: 100%;
+  margin-left: 0;
 }
 
 /* Responsive adjustments for small screens */

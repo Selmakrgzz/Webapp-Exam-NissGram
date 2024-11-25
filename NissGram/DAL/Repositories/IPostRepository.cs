@@ -3,6 +3,7 @@ using NissGram.Models;
 namespace NissGram.DAL;
 public interface IPostRepository
 {
+    Task<User?> GetUserByIdAsync(string userId);
     Task<IEnumerable<Post>?> GetAllPostsAsync();
     Task<IEnumerable<Post>?> GetAllPostsAsync(User user);
     Task<Post?> GetPostByIdAsync(int id);
