@@ -146,4 +146,44 @@ public class PostController : Controller
         await _postRepository.DeletePostAsync(id);
         return RedirectToAction(nameof(Index));
     }
+
+
+    [HttpPost]
+    public async Task<IActionResult> Like(int postId)
+    {
+        var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
+        if (user == null) return Unauthorized();
+
+        var post = await _postRepository.GetPostByIdAsync(postId);
+        if (post == null) return NotFound();
+
+
+        // Check if the user has already liked the post
+        var existingLike = post.UserLikes.FirstOrDefault(like => like.UserId == user.Id);
+
+        if (existingLike != null)
+        {
+            // If the user has already liked, remove the like
+            post.UserLikes.Remove(existingLike);
+        }
+        else
+        {
+            // If the user hasn't liked, add the like
+            post.UserLikes.Add(new UserPostLike
+            {
+                UserId = user.Id,
+                PostId = postId,
+            });
+        }
+
+        var success = await _postRepository.UpdatePostAsync(post);
+
+        if (!success)
+        {
+            return StatusCode(500, "An error occurred while updating the like status.");
+        }
+
+        /// Redirect back to the specific post section
+        return RedirectToAction(nameof(Index), "Home", new { section = $"post-{postId}" });
+    }
 }

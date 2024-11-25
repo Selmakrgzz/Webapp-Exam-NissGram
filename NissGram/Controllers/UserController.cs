@@ -190,11 +190,7 @@ public class UserController : Controller
             return NotFound("User not found.");
         }
 
-        var pictures = user.Posts?.Where(p => p.ImgUrl != null).ToList() ?? new List<Post>();
-        var notes = user.Posts?.Where(p => p.ImgUrl == null).ToList() ?? new List<Post>();
-
         var userProfileViewModel = new UserProfileViewModel(user);
-
 
         return View(userProfileViewModel);
     }
