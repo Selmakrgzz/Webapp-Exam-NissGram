@@ -16,13 +16,15 @@
 </head>
 
 <body>
+
+    <!-- Header and navigation -->
     @if (SignInManager.IsSignedIn(User))
     {
         // Hent den innloggede brukeren
         var currentUser = await UserManager.GetUserAsync(User);
         var profilePicture = currentUser?.ProfilePicture ?? "/images/profile_image_default.png";
 
-       <header class="fixed-header">
+        <header class="fixed-header">
             <a asp-controller="Home" asp-action="Index" class="navbar-brand">
                 <img src="/images/Niss.png" style="height: 70px; padding: 5px;" alt="NissGram Logo">
             </a>
@@ -77,6 +79,7 @@
             </nav>
         </div>
     }
+
 
     <div class="content-container">
         <div class="container">
