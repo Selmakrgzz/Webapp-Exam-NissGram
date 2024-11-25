@@ -9,7 +9,7 @@ public class Comment
     public virtual Post Post { get; set; } = default!;
     public virtual User User { get; set; } = default!;
     public required string Text { get; set; }
-    public DateTime dateCommented { get; set; }
-
+    public DateTime dateCommented { get; set; } //capital letters?
+ 
 
 }

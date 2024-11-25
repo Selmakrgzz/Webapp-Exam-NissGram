@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NissGram.DAL;
 using NissGram.Models;
 using NissGram.ViewModels;
+using System.Security.Claims;
 
 
 namespace NissGram.Controllers;
@@ -63,7 +64,6 @@ public class PostController : Controller
 
         post.DateCreated = DateTime.Now;
         post.DateUpdated = DateTime.Now;
-
 
 
         if (ModelState.IsValid)

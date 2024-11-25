@@ -7,50 +7,111 @@
     <link rel="stylesheet" href="~/css/loginRegister.css"/>
 </head>
 
-<div class="d-flex align-items-center justify-content-center" style="min-height: 80vh;">
-    <div class="row w-100" style="max-width: 800px; transform: translateY(-10%);">
-        <!-- Venstre kolonne med bilde -->
-        <div class="col-md-5 d-flex align-items-center" style="justify-content: flex-start; padding-right: 20px;">
-            <img src="/images/Niss.png" alt="Login Illustration" class="img-fluid" style="max-height: 400px;">
+<div class="container">
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+        <!-- Profile Picture Upload Section -->
+        <div class="mb-4 text-center position-relative">
+            <div class="fs-5 fw-bold mb-2">Profile Picture</div>
+            <div id="profileImagePreview" class="rounded-circle mx-auto mb-3"
+                 style="width: 150px; height: 150px; overflow: hidden; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center;">
+                <img id="profileImage" 
+                    src="@(!string.IsNullOrEmpty(Model.Input?.ProfilePicture) ? Model.Input.ProfilePicture : "/images/profile_image_default.png")"
+                    alt="Profile Picture Preview" 
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+            </div>
+            <div class="position-absolute" style="bottom: -20px; right: 50%; transform: translateX(50%);">
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary rounded-circle p-0" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="width: 40px; height: 40px;">
+                        +
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            <button type="button" id="uploadProfilePictureButton" class="dropdown-item">Upload Profile Picture</button>
+                        </li>
+                        <li>
+                            <button type="button" id="deleteProfilePictureButton" class="dropdown-item text-danger" disabled>Delete Picture</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <input type="file" id="uploadProfilePicture" name="uploadImage" class="file-input" accept="image/*" style="display: none;" />
         </div>
 
-        <!-- Vertikal strek -->
-        <div class="col-md-1 d-flex align-items-center justify-content-center">
-            <div style="border-left: 2px solid #ccc; height: 120%;"></div>
+        <!-- Username -->
+        <div class="mb-3">
+            <label asp-for="Input.Username" class="form-label fs-5 fw-bold"></label><span class="text-danger">*</span>
+            <input asp-for="Input.Username" class="form-control" />
+            <span asp-validation-for="Input.Username" class="text-danger"></span>
         </div>
 
-        <!-- Høyre kolonne med registreringsskjema -->
-        <div class="col-md-6 p-4">
-            <h2 class="text-center mb-4">Create a new account</h2>
-            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                    <label asp-for="Input.Email" class="form-label">Email</label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.ConfirmPassword" class="form-label">Confirm Password</label>
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                </div>
-
-                <button id="registerSubmit" type="submit" class="btn btn-primary w-100 mb-3">Register</button>
-
-                <div class="text-center">
-                    <p>
-                        <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-secondary w-100 mb-3">Log in</a>
-                    </p>
-                </div>
-            </form>
+        <!-- Email -->
+        <div class="mb-3">
+            <label asp-for="Input.Email" class="form-label fs-5 fw-bold"></label><span class="text-danger">*</span>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
         </div>
+
+        <!-- First Name -->
+        <div class="mb-3">
+            <label asp-for="Input.FirstName" class="form-label fs-5 fw-bold"></label>
+            <input asp-for="Input.FirstName" class="form-control" />
+            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+        </div>
+
+        <!-- Last Name -->
+        <div class="mb-3">
+            <label asp-for="Input.LastName" class="form-label fs-5 fw-bold"></label>
+            <input asp-for="Input.LastName" class="form-control" />
+            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+        </div>
+
+        <!-- About Section -->
+        <div class="mb-3">
+            <label asp-for="Input.About" class="form-label fs-5 fw-bold"></label>
+            <textarea asp-for="Input.About" class="form-control">@Model.Input?.About</textarea>
+            <span asp-validation-for="Input.About" class="text-danger"></span>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+            <label asp-for="Input.PhoneNumber" class="form-label fs-5 fw-bold"></label>
+            <input asp-for="Input.PhoneNumber" class="form-control" />
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3 position-relative">
+            <label asp-for="Input.Password" class="form-label fs-5 fw-bold"></label><span class="text-danger">*</span>
+            <div class="input-group">
+                <input asp-for="Input.Password" type="password" class="form-control" id="PasswordInput" />
+                <button type="button" class="btn btn-outline-secondary" id="togglePasswordVisibility">
+                    <i class="bi bi-eye" id="togglePasswordIcon"></i>
+                </button>
+            </div>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-floating mb-3">
+            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+            <label asp-for="Input.ConfirmPassword" class="form-label">Confirm Password</label>
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+
+        <!-- Submit Button -->
+        <button type="submit" id="registerSubmit" class="btn btn-primary w-100 mb-3">Register</button>
+    </form>
+
+    <!-- Log in Button -->
+    <div class="text-center">
+        <p>
+            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-secondary w-100 mb-3">Log in</a>
+        </p>
     </div>
 </div>
+
+<script src="~/js/userUpdateCreate.js"></script>
