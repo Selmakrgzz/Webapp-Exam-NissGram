@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
 
@@ -12,6 +13,7 @@ public static class DBInit
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
+#nullable disable
         if (!context.Users.Any())
         {
             var users = new List<User>
@@ -20,43 +22,43 @@ public static class DBInit
                 {
                     UserName = "Nico123",
                     Email = "nico123@example.com",
-                    Password = "password123"
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "JaneDoe",
                     Email = "jane.doe@example.com",
-                    Password = "password456"
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "JohnSmith",
                     Email = "john.smith@example.com",
-                    Password = "password789"
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "Bom93",
                     Email = "bombom@gmail.com",
-                    Password = "password90"
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "koko_223",
                     Email = "kko.2@outlook.com",
-                    Password = "hei3892"
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "geir_er_kul",
                     Email = "geir34@jahoo.com",
-                    Password = "jegerkul123"
+                    ProfilePicture = "/images/profile_image_default.png"
                 },
                 new User
                 {
                     UserName = "tina_betina12",
                     Email = "tine.b@gmail.com",
-                    Password = "ciao12345"
+                    ProfilePicture = "/images/profile_image_default.png"
                 }
             };
 
@@ -73,6 +75,9 @@ public static class DBInit
         var userGeir = context.Users.FirstOrDefault(u => u.UserName == "geir_er_kul");
         var userTina = context.Users.FirstOrDefault(u => u.UserName == "tina_betina12");
 
+
+
+
         if (!context.Posts.Any())
         {
             var posts = new List<Post>
@@ -81,15 +86,11 @@ public static class DBInit
                 {
                     User = userNico, // Brukerobjektet for å sette relasjonen
                     Text = "Very pretty colors Gggg!",
-                    ImgUrl = "/wwwroot/images/snorekling.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/snorekling.png",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 1 },
-                        new UserPostLike { UserId = 2, PostId = 1 },
-                        new UserPostLike { UserId = 3, PostId = 1 },
-                        new UserPostLike { UserId = 6, PostId = 1 }
                     }
                 },
                 new Post
@@ -101,40 +102,28 @@ public static class DBInit
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 2 },
-                        new UserPostLike { UserId = 1, PostId = 2 },
-                        new UserPostLike { UserId = 3, PostId = 2 },
-                        new UserPostLike { UserId = 6, PostId = 2 }
                     }
                 },
                 new Post
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
                     Text = "Nais hiking",
-                    ImgUrl = "/wwwroot/images/hiking.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/hiking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 3 },
-                        new UserPostLike { UserId = 2, PostId = 3 },
-                        new UserPostLike { UserId = 1, PostId = 3 },
-                        new UserPostLike { UserId = 6, PostId = 3 }
                     }
                 },
                 new Post
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
                     Text = "Wow so many animals",
-                    ImgUrl = "/wwwroot/images/safari.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/safari.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 1, PostId = 4 },
-                        new UserPostLike { UserId = 2, PostId = 4 },
-                        new UserPostLike { UserId = 3, PostId = 4 },
-                        new UserPostLike { UserId = 6, PostId = 4 }
                     }
                 },
                 new Post
@@ -146,40 +135,28 @@ public static class DBInit
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 5 },
-                        new UserPostLike { UserId = 2, PostId = 5 },
-                        new UserPostLike { UserId = 3, PostId = 5 },
-                        new UserPostLike { UserId = 6, PostId = 5 }
                     }
                 },
                 new Post
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
                     Text = "I catched a huge cod",
-                    ImgUrl = "/wwwroot/images/fishing.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/fishing.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 6 },
-                        new UserPostLike { UserId = 2, PostId = 6 },
-                        new UserPostLike { UserId = 3, PostId = 6 },
-                        new UserPostLike { UserId = 1, PostId = 6 }
                     }
                 },
                 new Post
                 {
                     User = userTina, // Brukerobjektet for å sette relasjonen
                     Text = "Dinner time",
-                    ImgUrl = "/wwwroot/images/cooking.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/cooking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 7 },
-                        new UserPostLike { UserId = 2, PostId = 7 },
-                        new UserPostLike { UserId = 3, PostId = 7 },
-                        new UserPostLike { UserId = 6, PostId = 7 }
                     }
                 },
                 new Post
@@ -191,40 +168,28 @@ public static class DBInit
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 8 },
-                        new UserPostLike { UserId = 2, PostId = 8 },
-                        new UserPostLike { UserId = 3, PostId = 8 },
-                        new UserPostLike { UserId = 6, PostId = 8 }
                     }
                 },
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Music time",
-                    ImgUrl = "/wwwroot/images/mexican_amigos.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/mexican_amigos.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 9 },
-                        new UserPostLike { UserId = 1, PostId = 9 },
-                        new UserPostLike { UserId = 3, PostId = 9 },
-                        new UserPostLike { UserId = 6, PostId = 9 }
                     }
                 },
                 new Post
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
                     Text = "Travel time",
-                    ImgUrl = "/wwwroot/images/airplane_window.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/airplane_window.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 5, PostId = 10 },
-                        new UserPostLike { UserId = 2, PostId = 10 },
-                        new UserPostLike { UserId = 3, PostId = 10 },
-                        new UserPostLike { UserId = 6, PostId = 10 }
                     }
                 },
                 new Post
@@ -236,40 +201,28 @@ public static class DBInit
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 11 },
-                        new UserPostLike { UserId = 1, PostId = 11 },
-                        new UserPostLike { UserId = 3, PostId = 11 },
-                        new UserPostLike { UserId = 6, PostId = 11 }
                     }
                 },
                 new Post
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
                     Text = "Adventure time",
-                    ImgUrl = "/wwwroot/images/paragliding.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/paragliding.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 12 },
-                        new UserPostLike { UserId = 2, PostId = 12 },
-                        new UserPostLike { UserId = 1, PostId = 12 },
-                        new UserPostLike { UserId = 6, PostId = 12 }
                     }
                 },
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Just loving nature",
-                    ImgUrl = "/wwwroot/images/northern_lights.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/northern_lights.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 13 },
-                        new UserPostLike { UserId = 1, PostId = 13 },
-                        new UserPostLike { UserId = 3, PostId = 13 },
-                        new UserPostLike { UserId = 6, PostId = 13 }
                     }
                 },
                 new Post
@@ -281,40 +234,28 @@ public static class DBInit
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 14 },
-                        new UserPostLike { UserId = 1, PostId = 14 },
-                        new UserPostLike { UserId = 3, PostId = 14 },
-                        new UserPostLike { UserId = 6, PostId = 14 }
                     }
                 },
                 new Post
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
                     Text = "I love steak",
-                    ImgUrl = "/wwwroot/images/cows.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/cows.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 15 },
-                        new UserPostLike { UserId = 2, PostId = 15 },
-                        new UserPostLike { UserId = 3, PostId = 15 },
-                        new UserPostLike { UserId = 1, PostId = 15 }
                     }
                 },
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Happy hour",
-                    ImgUrl = "/wwwroot/images/friends_dining.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/friends_dining.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 16 },
-                        new UserPostLike { UserId = 1, PostId = 16 },
-                        new UserPostLike { UserId = 3, PostId = 16 },
-                        new UserPostLike { UserId = 6, PostId = 16 }
                     }
                 },
                 new Post
@@ -326,32 +267,27 @@ public static class DBInit
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 17 },
-                        new UserPostLike { UserId = 1, PostId = 17 },
-                        new UserPostLike { UserId = 3, PostId = 17 },
-                        new UserPostLike { UserId = 6, PostId = 17 }
                     }
                 },
                 new Post
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "FOOOOOD",
-                    ImgUrl = "/wwwroot/images/picknick.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/picknick.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
                     {
-                        new UserPostLike { UserId = 4, PostId = 18 },
-                        new UserPostLike { UserId = 1, PostId = 18 },
-                        new UserPostLike { UserId = 3, PostId = 18 },
-                        new UserPostLike { UserId = 6, PostId = 18 }
                     }
                 }
             };
 
+
             context.AddRange(posts);
             context.SaveChanges();
         }
+
+        SeedRandomLikes(context);
 
         if (!context.Comments.Any())
         {
@@ -376,7 +312,7 @@ public static class DBInit
 
             var comments = new List<Comment>
             {
-                new Comment 
+                new Comment
                 {
                     CommentId = 1,
                     Post = post1,
@@ -384,7 +320,7 @@ public static class DBInit
                     Text = "Damnnnn gurl slayyyy",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 2,
                     Post = post2,
@@ -392,7 +328,7 @@ public static class DBInit
                     Text = "This is so inspiring! Love your work.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 3,
                     Post = post3,
@@ -400,7 +336,7 @@ public static class DBInit
                     Text = "Where did you take this photo? Amazing location!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 4,
                     Post = post4,
@@ -408,7 +344,7 @@ public static class DBInit
                     Text = "Can't wait to see more of your work!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 5,
                     Post = post5,
@@ -416,7 +352,7 @@ public static class DBInit
                     Text = "The colors are just stunning!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 6,
                     Post = post6,
@@ -424,7 +360,7 @@ public static class DBInit
                     Text = "Such a powerful message. Thank you for sharing.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 7,
                     Post = post7,
@@ -432,7 +368,7 @@ public static class DBInit
                     Text = "I keep coming back to this post, it's incredible.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 8,
                     Post = post8,
@@ -440,7 +376,7 @@ public static class DBInit
                     Text = "So much talent in one post! Keep it up!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 9,
                     Post = post9,
@@ -448,7 +384,7 @@ public static class DBInit
                     Text = "Can’t get enough of these updates!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 10,
                     Post = post10,
@@ -456,7 +392,7 @@ public static class DBInit
                     Text = "Epic vibes! How did you pull this off?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 11,
                     Post = post11,
@@ -464,7 +400,7 @@ public static class DBInit
                     Text = "This looks amazing, very well done!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 12,
                     Post = post12,
@@ -472,7 +408,7 @@ public static class DBInit
                     Text = "Always blown away by your creativity!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 13,
                     Post = post13,
@@ -480,7 +416,7 @@ public static class DBInit
                     Text = "Such an inspiration!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 14,
                     Post = post14,
@@ -488,7 +424,7 @@ public static class DBInit
                     Text = "This should be framed in a museum!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 15,
                     Post = post15,
@@ -496,7 +432,7 @@ public static class DBInit
                     Text = "Gorgeous shot, love the perspective.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 16,
                     Post = post16,
@@ -504,7 +440,7 @@ public static class DBInit
                     Text = "Pure magic!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 17,
                     Post = post17,
@@ -512,7 +448,7 @@ public static class DBInit
                     Text = "Always exciting to see your updates!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 18,
                     Post = post18,
@@ -520,7 +456,7 @@ public static class DBInit
                     Text = "So much character in this!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 19,
                     Post = post1,
@@ -528,7 +464,7 @@ public static class DBInit
                     Text = "Absolutely stunning! Where was this taken?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 20,
                     Post = post2,
@@ -536,7 +472,7 @@ public static class DBInit
                     Text = "Loving the detail on this one!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 21,
                     Post = post3,
@@ -544,7 +480,7 @@ public static class DBInit
                     Text = "Can I use this as my wallpaper?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 22,
                     Post = post4,
@@ -552,7 +488,7 @@ public static class DBInit
                     Text = "Great composition! Keep up the amazing work.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 23,
                     Post = post5,
@@ -560,7 +496,7 @@ public static class DBInit
                     Text = "Every detail is on point. Love it!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 24,
                     Post = post6,
@@ -568,7 +504,7 @@ public static class DBInit
                     Text = "This just made my day!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 25,
                     Post = post7,
@@ -576,7 +512,7 @@ public static class DBInit
                     Text = "You have such a unique style!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 26,
                     Post = post8,
@@ -584,7 +520,7 @@ public static class DBInit
                     Text = "Speechless... your work is incredible.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 27,
                     Post = post9,
@@ -592,7 +528,7 @@ public static class DBInit
                     Text = "Keep these coming! You’re a true artist.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 28,
                     Post = post10,
@@ -600,7 +536,7 @@ public static class DBInit
                     Text = "Fantastic use of lighting here.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 29,
                     Post = post11,
@@ -608,7 +544,7 @@ public static class DBInit
                     Text = "This feels like it tells a story.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 30,
                     Post = post12,
@@ -616,7 +552,7 @@ public static class DBInit
                     Text = "Wow, so inspiring!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 31,
                     Post = post13,
@@ -624,7 +560,7 @@ public static class DBInit
                     Text = "The colors just pop here. Amazing!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 32,
                     Post = post14,
@@ -632,7 +568,7 @@ public static class DBInit
                     Text = "Love the energy this gives off!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 33,
                     Post = post15,
@@ -640,7 +576,7 @@ public static class DBInit
                     Text = "You’ve outdone yourself with this one.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 34,
                     Post = post16,
@@ -648,7 +584,7 @@ public static class DBInit
                     Text = "Wow, the vibe here is so cozy!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 35,
                     Post = post17,
@@ -656,7 +592,7 @@ public static class DBInit
                     Text = "I could stare at this all day!",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 36,
                     Post = post18,
@@ -664,7 +600,7 @@ public static class DBInit
                     Text = "This post gives me so many ideas.",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 37,
                     Post = post3,
@@ -672,7 +608,7 @@ public static class DBInit
                     Text = "How do you manage to keep every post so unique?",
                     dateCommented = DateTime.Now
                 },
-                new Comment 
+                new Comment
                 {
                     CommentId = 38,
                     Post = post5,
@@ -684,5 +620,35 @@ public static class DBInit
             context.AddRange(comments);
             context.SaveChanges();
         }
+#nullable restore
+    }
+
+    private static void SeedRandomLikes(NissDbContext context)
+    {
+        var users = context.Users.ToList();
+        var posts = context.Posts.ToList();
+        Random random = new Random();
+
+        foreach (var post in posts)
+        {
+            // Generate a random number of likes for this post
+            int numberOfLikes = random.Next(0, users.Count);
+
+            // Select random users to like this post
+            var selectedUsers = users.OrderBy(u => random.Next()).Take(numberOfLikes);
+
+            foreach (var user in selectedUsers)
+            {
+                // Create a new UserPostLike entry and add it to the post's UserLikes collection
+                post.UserLikes.Add(new UserPostLike
+                {
+                    UserId = user.Id,
+                    PostId = post.PostId
+                });
+            }
+        }
+
+        // Save changes to the database
+        context.SaveChanges();
     }
 }

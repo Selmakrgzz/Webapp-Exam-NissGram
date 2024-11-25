@@ -19,4 +19,45 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #eef0f5;
+}
+
+.fixed-header {
+  background-color: #8fa0c3 !important;
+}
+
+.side-navbar {
+  background-color: #a4b0c9 !important;
+}
+
+
+/* Generelle regler for ikonbokser */
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Diameter */
+  height: 60px; /* Diameter */
+  border-radius: 50%; /* Gjør dem runde */
+
+}
+
+/* Spesifikk regel for profilboksen */
+.profile-container {
+  border: 2px solid #8fa0c3; /* Blå kant rundt profilbildet */
+}
+
+/* Profilbildet */
+.profile-picture {
+  width: 100%; /* Tilpass bildet til containerens bredde */
+  height: auto; /* Behold proporsjonene */
+  object-fit: scale-down; /* Sørger for at bildet ikke blir kuttet */
+  border-radius: 50%; /* Gjør bildet rundt */
+}
+
+/* Hover-effekt */
+.nav-link:hover {
+  transform: scale(1.1); /* Liten zoom ved hover */
+  filter: brightness(1.1); /* Gjør ikonet lysere ved hover */
+  cursor: pointer; /* Endre markøren til håndikon */
 }
