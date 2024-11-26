@@ -1,0 +1,24 @@
+@model NissGram.ViewModels.UserProfileViewModel
+
+@{
+    var currentSection = Context.Request.Query["section"].ToString();
+}
+
+<div class="profile-buttons d-flex justify-content-center my-4">
+    <a asp-controller="User" asp-action="@(Model.User.UserName == User.Identity.Name ? "Profile" : "ViewUserProfile")" asp-route-section="Pictures" asp-route-username="@Model.User.UserName"
+       class="btn btn-primary btn-lg mx-2 w-25 @(currentSection == "Pictures" || string.IsNullOrEmpty(currentSection) ? "btn-dark" : "")">
+        Pictures
+    </a>
+    <a asp-controller="User" asp-action="@(Model.User.UserName == User.Identity.Name ? "Profile" : "ViewUserProfile")" asp-route-section="Notes" asp-route-username="@Model.User.UserName"
+       class="btn btn-primary btn-lg mx-2 w-25 @(currentSection == "Notes" ? "btn-dark" : "")">
+        Notes
+    </a>
+    <a asp-controller="User" asp-action="@(Model.User.UserName == User.Identity.Name ? "Profile" : "ViewUserProfile")" asp-route-section="Archive" asp-route-username="@Model.User.UserName"
+       class="btn btn-primary btn-lg mx-2 w-25 @(currentSection == "Archive" ? "btn-dark" : "")">
+        Archive
+    </a>
+    <a asp-controller="User" asp-action="@(Model.User.UserName == User.Identity.Name ? "Profile" : "ViewUserProfile")" asp-route-section="Activity" asp-route-username="@Model.User.UserName"
+       class="btn btn-primary btn-lg mx-2 w-25 @(currentSection == "Activity" ? "btn-dark" : "")">
+        Activity
+    </a>
+</div>
