@@ -43,7 +43,11 @@ public class PostRepository : IPostRepository
     {
         try
         {
-            return await _db.Posts.Where(p => p.User == user).ToListAsync();
+            var posts = await _db.Posts
+            .Where(p => p.User == user)
+            .OrderByDescending(post => post.DateCreated)
+            .ToListAsync();
+            return posts;
         }
         catch (Exception e)
         {
