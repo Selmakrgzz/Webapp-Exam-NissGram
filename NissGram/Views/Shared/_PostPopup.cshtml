@@ -71,11 +71,11 @@
                     {
                         <p>No comments yet. Be the first to comment!</p>
                     }
-                    <form asp-action="AddComment" method="post">
+                    <form asp-controller="Comment" asp-action="Add" method="post">
+                        @Html.AntiForgeryToken() <!-- Ensures CSRF protection -->
                         <input type="hidden" name="PostId" value="@Model.PostId" />
                         <div class="input-group mt-3">
-                            <input type="text" class="form-control" name="Text" placeholder="Write a comment..."
-                                required />
+                            <input type="text" class="form-control" name="Text" placeholder="Write a comment..." required />
                             <button class="btn btn-primary" type="submit">Post</button>
                         </div>
                     </form>

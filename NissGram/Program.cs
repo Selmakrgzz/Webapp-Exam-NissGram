@@ -65,6 +65,8 @@ builder.Services.AddRazorPages(options =>
 
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>(); // Register UserRepository
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+
 
 builder.Services.AddSingleton<IEmailSender, DummyEmailSender>();
 
