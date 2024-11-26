@@ -72,7 +72,7 @@ small {
 }
 
 /* Responsiv styling for små skjermer */
-@media (max-width: 1050px) {
+@media (max-width: 900px) {
     .likes-comments-dates {
         flex-direction:row; 
         align-items: flex-start; 
