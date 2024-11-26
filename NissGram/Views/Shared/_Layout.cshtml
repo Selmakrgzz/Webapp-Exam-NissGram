@@ -32,7 +32,7 @@
         {
             // Hent den innloggede brukeren
             var currentUser = await UserManager.GetUserAsync(User);
-            var profilePicture = currentUser?.ProfilePicture ?? "/images/profile_image_default.png";
+            var profilePicture = currentUser?.ProfilePicture;
             <!-- Icon bar that only appears on small screens for authenticated users -->
             <nav class="icon-bar">
                 <a asp-controller="User" asp-route-id="@currentUser?.Id" asp-action="Profile">
@@ -60,7 +60,7 @@
     {
         // Hent den innloggede brukeren
         var currentUser = await UserManager.GetUserAsync(User);
-        var profilePicture = currentUser?.ProfilePicture ?? "/images/profile_image_default.png";
+        var profilePicture = currentUser?.ProfilePicture;
         <!-- Sidebar navigation for signed-in users -->
         <div class="d-flex">
             <nav class="side-navbar">
