@@ -12,6 +12,76 @@
     vertical-align: middle;
     margin-left: 15px;
 }
+
+/* Style for the like button container */
+.like-button-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer; 
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out; 
+}
+
+/* Hover effect for the like button */
+.like-button-container:hover {
+  transform: scale(1.1); 
+}
+
+/* Style for the like icon */
+.like-button-container img {
+  width: 20px; 
+  height: 20px;
+  margin-right: 5px; 
+}
+
+/* Hover effect for the like count text (optional) */
+.like-button-container span {
+  color: #555;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.like-button-container:hover span {
+  color: #ff4d4d; 
+}
+
+/* Optional: Add a custom focus style for better accessibility */
+.like-button-container button:focus {
+  border-radius: 5px; 
+  box-shadow: 0 0 5px green; 
+}
+
+/* Style for the comment button container */
+.comment-button-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer; 
+  transition: transform 0.2s ease-in-out; 
+}
+
+/* Hover effect for the comment button */
+.comment-button-container:hover {
+  transform: scale(1.1); 
+  filter: brightness(1.2); 
+}
+
+/* Style for the comment icon */
+.comment-button-container img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px; 
+}
+
+/* Hover effect for the text next to the icon (optional) */
+.comment-button-container span {
+  color: #555; 
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.comment-button-container:hover span {
+  color: #007bff;
+}
+
 small {
     color: gray;
 }

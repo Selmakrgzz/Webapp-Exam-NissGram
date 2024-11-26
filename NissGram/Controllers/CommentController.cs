@@ -70,7 +70,7 @@ public class CommentController : Controller
 
     // Delete a comment
     [HttpPost]
-    public async Task<IActionResult> Delete(int commentId)
+    public async Task<IActionResult> Delete(int commentId, int postId)
     {
         var comment = await _commentRepository.DeleteCommentAsync(commentId);
         if (!comment)
@@ -81,7 +81,8 @@ public class CommentController : Controller
 
         _logger.LogInformation("Comment deleted successfully. CommentId: {CommentId}", commentId);
         /// Redirect back to the specific post section
-        return RedirectToAction(nameof(Index), "Home", new {});
+        return RedirectToAction(nameof(Index), "Home", new { section = $"post-{postId}" });
+        
     }
 }
 
