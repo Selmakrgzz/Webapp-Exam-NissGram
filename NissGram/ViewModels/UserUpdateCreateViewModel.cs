@@ -5,7 +5,7 @@ namespace NissGram.ViewModels
     public class UserUpdateCreateViewModel
     {
         public string? ProfilePicture { get; set; }
-        
+
         [Required]
         [StringLength(100, ErrorMessage = "The username cannot exceed 100 characters.")]
         public string Username { get; set; } = string.Empty;
@@ -16,14 +16,14 @@ namespace NissGram.ViewModels
 
         [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}", ErrorMessage = "The Name must be letters and between 2 to 20 characters.")]
         //[Display(Name = "First name")]  
-        public string? FirstName { get; set; } 
+        public string? FirstName { get; set; }
 
         [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}", ErrorMessage = "The Name must be letters and between 2 to 20 characters.")]
         //[Display(Name = "Last name")]
         public string? LastName { get; set; }
 
         [StringLength(500, ErrorMessage = "About section cannot exceed 500 characters.")]
-        public string? About { get; set; } 
+        public string? About { get; set; }
 
         [RegularExpression(@"^[0-9]{8,10}$", ErrorMessage = "The phone number must contain only numbers and be between 8 and 10 digits.")]
         public string? PhoneNumber { get; set; }

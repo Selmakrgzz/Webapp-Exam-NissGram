@@ -120,9 +120,12 @@ namespace NissGram.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            // StatusMessage = "Your password has been changed.";
 
-            return RedirectToPage();
+            // return RedirectToPage();
+
+            // Redirect to Profile action with a success message
+            return RedirectToAction("Profile", "User", new { statusMessage = "Your password has been changed." });
         }
     }
 }

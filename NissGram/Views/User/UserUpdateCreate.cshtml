@@ -82,10 +82,11 @@
             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
         </div>
 
-        <!-- Link to Change Password through Controller Action -->
+        <!-- Link to Change Password -->
         <div class="mb-3 text-center">
-            <a asp-controller="User" asp-action="RedirectToChangePassword" class="text-primary">Change your password here</a>
+            <a asp-area="Identity" asp-page="/Account/Manage/ChangePassword" class="text-primary">Change your password here</a>
         </div>
+
 
         <div asp-validation-asp-validation-summary="All" class="text-danger"></div>
 
