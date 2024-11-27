@@ -40,30 +40,11 @@ public class UserRepository : IUserRepository
 
     }
 
-    /*public async Task<User?> GetUserByUsernameAsync(string username)
-    {
-        try
-        {
-            return await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError("[UserRepository] user FirstOrDefaultAsync(u => u.UserName == username) failed for username {username}, error message: {e}", username, e.Message);
-            return null;
-        }
-
-    }*/
-
     public async Task<User?> GetUserByUsernameAsync(string username)
     {
         try
         {
-            var user = await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
-            if (user != null && string.IsNullOrEmpty(user.ProfilePicture))
-            {
-                user.ProfilePicture = "/images/profile_image_default.png"; // Default profile picture
-            }
-            return user;
+            return await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
         }
         catch (Exception e)
         {
@@ -73,48 +54,71 @@ public class UserRepository : IUserRepository
     }
 
 
-    public async Task CreateUserAsync(User user)
+    public async Task<bool> CreateUserAsync(User user)
     {
-        await _db.Users.AddAsync(user);
-        await _db.SaveChangesAsync();
+        if (user == null)
+        {
+            _logger.LogWarning("[UserRepository] Attempted to create a null user. User: {user}", user);
+            return false;
+        }
+
+        try
+        {
+            await _db.Users.AddAsync(user);
+            await _db.SaveChangesAsync();
+            _logger.LogInformation("[UserRepository] User with username {Username} was successfully created.", user.UserName);
+            return true; // Success
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("[UserRepository] An error occurred while creating user with username {Username}. Exception: {ex}", user.UserName, ex.Message);
+            return false;
+        }
     }
 
-    public async Task UpdateUserAsync(User user)
+    public async Task<bool> UpdateUserAsync(User user)
     {
-        _db.Users.Update(user);
-        await _db.SaveChangesAsync();
+        if (user == null)
+        {
+            _logger.LogWarning("[UserRepository] Attempted to create a null user. User: {user}", user);
+            return false;
+        }
+
+        try
+        {
+            var existingUser = await _db.Users.FindAsync(user);
+
+            _db.Users.Update(user);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[UserRepository] An error occurred while updating user with ID {UserId}.", user.Id);
+            return false;
+        }
     }
 
-    // public async Task DeleteUserAsync(int id)
-    // {
-    //     var user = await _db.Users.FindAsync(id);
-    //     if (user != null)
-    //     {
-    //         _db.Users.Remove(user);
-    //         await _db.SaveChangesAsync();
-    //     }
-    // }
-    
-    public async Task DeleteUserByUsernameAsync(string username)
+
+    public async Task<bool> DeleteUserByUsernameAsync(string username)
     {
         try
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
-            if (user != null)
+            if (user == null)
             {
-                _db.Users.Remove(user);
-                await _db.SaveChangesAsync();
-                _logger.LogInformation("User with username {Username} was deleted successfully.", username);
+                _logger.LogWarning("[UserRepository] User with username {Username} was not found and could not be deleted.", username);
+                return false;
+
             }
-            else
-            {
-                _logger.LogWarning("User with username {Username} was not found and could not be deleted.", username);
-            }
+            _db.Users.Remove(user);
+            await _db.SaveChangesAsync();
+            return true;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred while trying to delete user with username {Username}.", username);
-            throw;
+            _logger.LogError("[UserRepository] An error occurred while trying to delete user with username {Username}. Exception: {e}", username, ex.Message);
+            return false;
         }
     }
 }
