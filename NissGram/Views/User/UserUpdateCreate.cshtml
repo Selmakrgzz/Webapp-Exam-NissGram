@@ -26,16 +26,15 @@
                 </li>
                 <li>
                     @if (Model.ProfilePicture != "../../wwwwroot/images/profile_image_default.png")
-                            {
-                                <!-- Call the DeleteProfilePicture method in the controller -->
-                                <a asp-action="DeleteProfilePicture" asp-controller="User" class="dropdown-item text-danger">
-                                    Delete Picture
-                                </a>
-                            }
+                    {
+                        <!-- Call the DeleteProfilePicture method in the controller -->
+                        <a asp-action="DeleteProfilePicture" asp-controller="User" class="dropdown-item text-danger">
+                            Delete Picture
+                        </a>
+                    }
 
                 </li>
             </ul>
-
                 </div>
             </div>
             <input type="file" id="uploadProfilePicture" name="uploadImage" class="file-input" accept="image/*" style="display: none;" />
@@ -44,7 +43,7 @@
         <!-- Username -->
         <div class="mb-3">
             <label asp-for="Username" class="form-label fs-5 fw-bold"></label><span class="text-danger">*</span>
-            <input asp-for="Username" class="form-control" />
+            <input asp-for="Username" class="form-control" readonly/>
             <span asp-validation-for="Username" class="text-danger"></span>
         </div>
 
@@ -83,6 +82,11 @@
             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
         </div>
 
+        <!-- Link to Change Password through Controller Action -->
+        <div class="mb-3 text-center">
+            <a asp-controller="User" asp-action="RedirectToChangePassword" class="text-primary">Change your password here</a>
+        </div>
+
         <div asp-validation-asp-validation-summary="All" class="text-danger"></div>
 
         <!-- Submit and Cancel Buttons -->
@@ -91,6 +95,11 @@
             <a asp-controller="User" asp-action="Profile" class="btn btn-danger btn-lg">Cancel</a>
         </div>
 
+    </form>
+
+       <!-- Delete Account Button on Far Right -->
+    <form asp-controller="User" asp-action="DeleteUser" method="post" class="d-flex justify-content-center gap-4 mt-4">
+        <button type="submit" class="btn btn-danger btn-lg">Delete Your Account</button>
     </form>
 </div>
 

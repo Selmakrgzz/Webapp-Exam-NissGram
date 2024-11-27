@@ -4,6 +4,7 @@ using NissGram.ViewModels;
 using NissGram.DAL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 
 namespace NissGram.Controllers;
 
@@ -22,7 +23,7 @@ public class UserController : Controller
         // Fetch all users from the repository
         var users = await _userRepository.GetAllUsersAsync();
 
-        if (users == null)
+        if (users == null || !users.Any())
         {
             return View("Error", "Could not retrieve users.");
         }
@@ -64,6 +65,8 @@ public class UserController : Controller
     [HttpGet]
     public async Task<IActionResult> UserUpdateCreate()
     {
+
+        
         // Check if User.Identity or User.Identity.Name is null
         if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
         {
@@ -84,12 +87,12 @@ public class UserController : Controller
 
         var model = new UserUpdateCreateViewModel
         {
-            ProfilePicture = currentUser.ProfilePicture ?? "/images/profile_images_default.png",
+            ProfilePicture = currentUser.ProfilePicture,  //?? "/images/profile_images_default.png",
             About = currentUser.About,
-            Username = currentUser.UserName,
+            Username = currentUser.UserName ?? "",  // Ensure the UserName is not null
             FirstName = currentUser.FirstName,
             LastName = currentUser.LastName,
-            Email = currentUser.Email,
+            Email = currentUser.Email ?? "", // Ensure Email is not null
             PhoneNumber = currentUser.PhoneNumber,
         };
 
@@ -104,25 +107,34 @@ public class UserController : Controller
             return View(model); // Redisplay the form with validation errors
         }
 
-        var currentUser = await _userRepository.GetUserByUsernameAsync(User.Identity.Name);
+        var currentUserName = User.Identity?.Name;
+
+         if (string.IsNullOrEmpty(currentUserName))
+        {
+            return Unauthorized("User is not authenticated.");
+        }
+
+        var currentUser = await _userRepository.GetUserByUsernameAsync(currentUserName);
+        
 
         if (currentUser == null)
         {
             return NotFound("User not found.");
         }
 
-        if ((await _userRepository.GetAllUsersAsync())
-            .Any(u => u.UserName == model.Username && u.Id != currentUser.Id))
-        {
-            ModelState.AddModelError("Username", "This username is already taken.");
-            return View(model);
-        }
+        // if ((await _userRepository.GetAllUsersAsync())
+        //     .Any(u => u.UserName == model.Username && u.Id != currentUser.Id))
+        // {
+        //     ModelState.AddModelError("Username", "This username is already taken.");
+        //     return View(model);
+        // }
 
-        if (Request.Form["deleteProfilePicture"] == "true")
-        {
-            currentUser.ProfilePicture = "/images/profile_images_default.png";
-        }
-        else if (Request.Form.Files.Count > 0)
+        // if (Request.Form["deleteProfilePicture"] == "true")
+        // {
+        //     currentUser.ProfilePicture = "/images/profile_images_default.png";
+        // }
+        // else 
+        if (Request.Form.Files.Count > 0)
         {
             var file = Request.Form.Files[0];
             if (file.Length > 0)
@@ -153,9 +165,59 @@ public class UserController : Controller
         return RedirectToAction(nameof(Profile));
     }
 
+     //Delete User 
+    [HttpPost]
+    public async Task<IActionResult> DeleteUser()
+    {
+        try
+        {
+            // Ensure user is authenticated before attempting to delete
+            if (string.IsNullOrEmpty(User.Identity?.Name))
+            {
+                return Unauthorized("User is not authenticated.");
+            }
+
+            // Get the username of the current user
+            var username = User.Identity.Name;
+
+            // Fetch the user from the database
+            var user = await _userRepository.GetUserByUsernameAsync(username);
+
+             // Delete the profile picture if it exists and is not the default picture
+            if (!string.IsNullOrEmpty(user?.ProfilePicture) && 
+                user.ProfilePicture != "/images/profile_image_default.png")
+            {
+                var filePath = Path.Combine("wwwroot", user.ProfilePicture.TrimStart('/'));
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+            }
+            // Delete the user from the database
+            await _userRepository.DeleteUserByUsernameAsync(username);
+
+            // Sign the user out after deletion
+            await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+
+            // Redirect to the login page or homepage
+            return RedirectToAction("Index", "Home");
+        }
+        catch (Exception ex)
+        {
+            // Log any exception and return an appropriate error response
+            return StatusCode(500, $"An error occurred while deleting the account: {ex.Message}");
+        }
+    }
+
     [HttpGet]
     public async Task<IActionResult> DeleteProfilePicture()
     {
+         // Ensure user is authenticated before proceeding
+        if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
+        {
+            return Unauthorized("User is not authenticated.");
+        }
+
         var currentUser = await _userRepository.GetUserByUsernameAsync(User.Identity.Name);
 
         if (currentUser == null)
@@ -194,4 +256,12 @@ public class UserController : Controller
 
         return View(userProfileViewModel);
     }
+
+    [HttpGet]
+    public IActionResult RedirectToChangePassword()
+    {
+        // Redirecting to the ChangePassword Razor Page
+        return RedirectToPage("/Identity/Account/Manage/ChangePassword");
+    }
+
 }
