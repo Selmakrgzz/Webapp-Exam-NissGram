@@ -28,7 +28,7 @@ namespace NissGram.ViewModels
             PictureCount = Pictures.Count;
             NoteCount = Notes.Count;
         }
-        public string StatusMessage { get; set; } = string.Empty;
+        public string? StatusMessage { get; set; }
 
 
     }
