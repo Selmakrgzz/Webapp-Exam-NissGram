@@ -86,7 +86,7 @@ public class UserRepository : IUserRepository
 
         try
         {
-            var existingUser = await _db.Users.FindAsync(user);
+            var existingUser = await _db.Users.FindAsync(user.Id);
 
             _db.Users.Update(user);
             await _db.SaveChangesAsync();
