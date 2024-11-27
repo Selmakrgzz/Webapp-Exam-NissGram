@@ -88,8 +88,8 @@
         </div>
 
         <!-- Confirm Password -->
-        <div class="form-label fs-5 fw-bold mb-3">
-            <label asp-for="Input.ConfirmPassword" type="password" class="form-label"></label><span class="text-danger">*</span>
+        <div class="mb-3">
+            <label asp-for="Input.ConfirmPassword" type="password" class="form-label fs-5 fw-bold"></label><span class="text-danger">*</span>
             <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
             <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
         </div>
