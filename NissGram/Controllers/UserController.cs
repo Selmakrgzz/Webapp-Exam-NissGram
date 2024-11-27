@@ -36,7 +36,7 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Profile()
+    public async Task<IActionResult> Profile(string? statusMessage = null)
     {
 
         // Check if User.Identity or User.Identity.Name is null
@@ -57,7 +57,10 @@ public class UserController : Controller
            currentUser.ProfilePicture = "/images/profile_image_default.png"; // Ensure default picture
        }*/
 
-        var userProfileViewModel = new UserProfileViewModel(currentUser);
+        var userProfileViewModel = new UserProfileViewModel(currentUser)
+        {
+            StatusMessage = statusMessage // Pass the status message to the view model
+        };
 
         return View(userProfileViewModel);
     }
@@ -257,11 +260,11 @@ public class UserController : Controller
         return View(userProfileViewModel);
     }
 
-    [HttpGet]
-    public IActionResult RedirectToChangePassword()
-    {
-        // Redirecting to the ChangePassword Razor Page
-        return RedirectToPage("/Identity/Account/Manage/ChangePassword");
-    }
+    // [HttpGet]
+    // public async Task<IActionResult> RedirectToChangePassword()
+    // {
+    //     // Redirecting to the ChangePassword Razor Page
+    //     return RedirectToPage("/Identity/Account/Manage/ChangePassword");
+    // }
 
 }

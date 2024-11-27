@@ -1,5 +1,12 @@
 @model NissGram.ViewModels.UserProfileViewModel
 
+@if (!string.IsNullOrEmpty(Model.StatusMessage))
+{
+    <div class="alert alert-success text-center mt-4">
+        @Model.StatusMessage
+    </div>
+}
+
 <!-- Profile Header -->
 <partial name="_ProfileHeader" model="Model" />
 
@@ -8,3 +15,4 @@
 
 <!-- Dynamic Content Section -->
 <partial name="_ProfilePostContent" model="Model" />
+
