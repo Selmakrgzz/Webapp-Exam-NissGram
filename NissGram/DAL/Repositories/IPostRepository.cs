@@ -9,7 +9,6 @@ public interface IPostRepository
     Task<bool> CreatePostAsync(Post post);
     Task<bool> UpdatePostAsync(Post post);
     Task<bool> DeletePostAsync(int id);
-
     Task<int> GetCountLikes(Post post);
 
 }

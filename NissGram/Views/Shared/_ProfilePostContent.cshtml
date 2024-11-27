@@ -27,4 +27,18 @@
             <p>No content available for the selected section.</p>
         }
     }
+    else if (Context.Request.Query["section"].ToString() == "LikedPosts")
+    {
+        @if (Model.LikedPosts != null && Model.LikedPosts.Any())
+        {
+            <h3>Activity</h3>
+            <partial name="_AllPosts" model="Model.LikedPosts" />
+        }
+        else
+        {
+            <h3>No Activity</h3>
+            <p>No content available for the selected section.</p>
+        }
+    }
+    
 </div>
