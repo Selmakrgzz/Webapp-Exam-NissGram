@@ -130,39 +130,92 @@ public class PostController : Controller
             _logger.LogError("[PostController] An error occurred while getting post with PostId: {PostId}", id);
             return NotFound();
         }
-        return View(post); // Viser oppdateringsskjemaet med eksisterende data
+       // Map post to ViewModel
+        var model = new PostUpdateViewModel
+        {
+            PostId = post.PostId,
+            Text = post.Text,
+            ExistingImgUrl = post.ImgUrl // Use ImgUrl property for existing image
+        };
+        return View("PostUpdateView", model); // Display the update form with existing data
     }
 
-    // POST: Update the post
-    [HttpPost]
-    public async Task<IActionResult> Update(Post post)
+   [HttpPost]
+    public async Task<IActionResult> Update(PostUpdateViewModel model)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
+            return View("PostUpdateView", model); // Returner skjemaet hvis validering feiler
+        }
+
+        // Hent eksisterende post
+        var existingPost = await _postRepository.GetPostByIdAsync(model.PostId);
+        if (existingPost == null)
+        {
+            return NotFound();
+        }
+
+        // Oppdater tekst
+        if (!string.IsNullOrWhiteSpace(model.Text) && model.Text != existingPost.Text)
+        {
+            existingPost.Text = model.Text;
+        }
+
+        // Håndter ny bildeopplasting
+        if (model.NewImage != null && model.NewImage.Length > 0)
+        {
+            var fileName = Guid.NewGuid() + Path.GetExtension(model.NewImage.FileName);
+            var filePath = Path.Combine("wwwroot/images", fileName);
+
             try
             {
-                var ok = await _postRepository.UpdatePostAsync(post);
-                if (ok)
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    return RedirectToAction(nameof(Index));
+                    await model.NewImage.CopyToAsync(stream);
                 }
+
+                existingPost.ImgUrl = "/images/" + fileName;
             }
             catch (Exception ex)
             {
-                _logger.LogError("[PostController] An error occurred while creating a post. Post data: {@Post}, Exception: {ex}", post, ex.Message);
-                ModelState.AddModelError("", "A system error occurred while processing your request. Please contact support.");
+                _logger.LogError(ex, "Error occurred while uploading image.");
+                ModelState.AddModelError("", "An error occurred while uploading the image.");
+                return View("PostUpdateView", model);
             }
         }
-        return View(post);
+
+        // Oppdater tidsstempel
+        existingPost.DateUpdated = DateTime.Now;
+
+        // Lagre oppdateringen
+        var success = await _postRepository.UpdatePostAsync(existingPost);
+        if (success)
+        {
+            return RedirectToAction("Index", "Home"); // Redirect til hjemmesiden
+
+        }
+
+        ModelState.AddModelError("", "Failed to update the post.");
+        return RedirectToAction(nameof(PostUpdateViewModel));
     }
 
-    // DELETE
+
+
+
     [HttpPost]
     public async Task<IActionResult> Delete(int id)
     {
-        await _postRepository.DeletePostAsync(id);
-        return RedirectToAction(nameof(Index));
+        var success = await _postRepository.DeletePostAsync(id);
+        if (success)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        // Hvis slettingen mislykkes, legg til en feilmelding
+        ModelState.AddModelError("", "Failed to delete the post.");
+        return RedirectToAction("Details", new { id });
     }
+
 
 
     [HttpPost]
