@@ -1,0 +1,25 @@
+@model NissGram.Models.Post
+
+<head>
+    <link rel="stylesheet" href="~/css/postCard.css" />
+</head>
+
+<div class="card mb-4 mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+        <!-- User Profile Header -->
+        <partial name="_PostProfileHeader" model="Model" />
+
+        <!-- Text Content -->
+        <p class="card-text font-italic">@Model.Text</p>
+        
+        <!-- Post Dates -->
+        <hr>
+        <partial name="_PostDates" model="Tuple.Create(Model.DateCreated, Model.DateUpdated)" />
+        
+        <!-- Post Actions -->
+        <partial name="_PostActions" model="Model" />
+
+        <!-- Popup Modal  -->
+        <partial name="_PostPopup" model="Model" />
+    </div>
+</div>
