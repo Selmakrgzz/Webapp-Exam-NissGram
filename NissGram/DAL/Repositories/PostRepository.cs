@@ -120,18 +120,21 @@ public class PostRepository : IPostRepository
             var post = await _db.Posts.FindAsync(id);
             if (post == null)
             {
-                _logger.LogError("[PostRepository] post not found for the PostId {PostId:0000}", id);
+                _logger.LogError($"[PostRepository] Post not found for the PostId {id:0000}");
                 return false;
             }
+
             _db.Posts.Remove(post);
+            await _db.SaveChangesAsync(); // Sørg for at endringer lagres i databasen
             return true;
         }
         catch (Exception e)
         {
-            _logger.LogError("[PostRepository] post deletion failed for the PostId {PostId:0000}, error message: {e}", id, e.Message);
+            _logger.LogError($"[PostRepository] Post deletion failed for the PostId {id:0000}, error message: {e.Message}");
             return false;
         }
     }
+
 
     public async Task<int> GetCountLikes(Post post)
     {
