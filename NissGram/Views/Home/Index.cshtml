@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    string sectionId = ViewContext.HttpContext.Request.Query["section"];
+    string? sectionId = ViewContext.HttpContext.Request.Query["section"];
 }
 
 <div id="all-posts">

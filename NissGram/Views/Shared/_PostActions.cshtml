@@ -7,7 +7,7 @@
             @Html.AntiForgeryToken()
             <input type="hidden" name="postId" value="@Model.PostId" />
             @{
-                var userLiked = Model.UserLikes.Any(like => like.User.UserName == User.Identity.Name);
+                var userLiked = Model.UserLikes.Any(like => like.User.UserName == User.Identity?.Name);
             }
             <button type="submit" class="btn p-0" style="border: none;">
                 <img src="~/images/heart.png" alt="Like Icon" class="like-img me-2 @(userLiked ? "liked" : "")"

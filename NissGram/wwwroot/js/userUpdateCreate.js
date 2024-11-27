@@ -60,7 +60,8 @@ document.getElementById('deleteProfilePictureButton').addEventListener('click', 
     const fileInput = document.getElementById('uploadProfilePicture');
 
     // Set the preview to the default picture
-    preview.innerHTML = '<img src="/images/profile_image_default.png" alt="Default Profile Picture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />';
+    preview.innerHTML = `<img src="/images/profile_image_default.png" alt="Default Profile Picture" 
+                          style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />`;
 
     // Disable the delete button
     deleteButton.disabled = true;
@@ -68,8 +69,9 @@ document.getElementById('deleteProfilePictureButton').addEventListener('click', 
     // Clear the file input
     fileInput.value = '';
 
-    // Set a hidden field or form value to indicate the default picture is being used
-    document.getElementById('deleteProfilePicture').value = 'true';
+    // // Set a hidden field or form value to indicate the default picture is being used
+    // document.getElementById('deleteProfilePicture').value = 'true';
 });}
+
 
 

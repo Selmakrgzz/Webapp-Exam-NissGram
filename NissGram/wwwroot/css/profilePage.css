@@ -1,0 +1,19 @@
+#dropdownMenuButton {
+    background-color: #e58e00; /* Orange background */
+    border: none; /* Remove border */
+    color: rgb(255, 255, 255); /* White "+" symbol */
+    font-size: 20px; /* Adjust size if needed */
+}
+
+#dropdownMenuButton:hover {
+    background-color:  rgb(228, 127, 60); /* Slightly darker shade on hover */
+}
+
+.description-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; /* Ensures that text will break onto the next line */
+    word-break: break-word; /* Ensures words are broken when necessary */
+    max-width: 100%; /* Ensure it does not overflow its container */
+}
+

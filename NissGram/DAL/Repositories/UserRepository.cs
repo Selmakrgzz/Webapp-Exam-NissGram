@@ -85,13 +85,36 @@ public class UserRepository : IUserRepository
         await _db.SaveChangesAsync();
     }
 
-    public async Task DeleteUserAsync(int id)
+    // public async Task DeleteUserAsync(int id)
+    // {
+    //     var user = await _db.Users.FindAsync(id);
+    //     if (user != null)
+    //     {
+    //         _db.Users.Remove(user);
+    //         await _db.SaveChangesAsync();
+    //     }
+    // }
+    
+    public async Task DeleteUserByUsernameAsync(string username)
     {
-        var user = await _db.Users.FindAsync(id);
-        if (user != null)
+        try
         {
-            _db.Users.Remove(user);
-            await _db.SaveChangesAsync();
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+            if (user != null)
+            {
+                _db.Users.Remove(user);
+                await _db.SaveChangesAsync();
+                _logger.LogInformation("User with username {Username} was deleted successfully.", username);
+            }
+            else
+            {
+                _logger.LogWarning("User with username {Username} was not found and could not be deleted.", username);
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while trying to delete user with username {Username}.", username);
+            throw;
         }
     }
 }
