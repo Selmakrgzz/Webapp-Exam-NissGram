@@ -11,62 +11,36 @@ namespace NissGram.Controllers;
 public class UserController : Controller
 {
     private readonly IUserRepository _userRepository;
+    private readonly ILogger<UserController> _logger;
 
-    public UserController(IUserRepository userRepository)
+    public UserController(IUserRepository userRepository, ILogger<UserController> logger)
     {
         _userRepository = userRepository;
-    }
-
-    // GET: /Users
-    public async Task<IActionResult> GetAllUsers()
-    {
-        // Fetch all users from the repository
-        var users = await _userRepository.GetAllUsersAsync();
-
-        if (users == null || !users.Any())
-        {
-            return View("Error", "Could not retrieve users.");
-        }
-
-        // Create an instance of UsersViewModel with the list of users
-        var viewModel = new UsersViewModel(users, "All users");
-
-        // Pass the ViewModel to the view
-        return View(viewModel);
+        _logger = logger;
     }
 
     [HttpGet]
     public async Task<IActionResult> Profile()
     {
-
         // Check if User.Identity or User.Identity.Name is null
         if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
-        {
             return Unauthorized("User is not authenticated.");
-        }
+
 
         var currentUser = await _userRepository.GetUserByUsernameAsync(User.Identity.Name);
 
         if (currentUser == null)
         {
+            _logger.LogError("[UserController] Failed to find user with GetUserByUsernameAsync for username: {username}", User.Identity.Name);
             return NotFound("User not found.");
         }
 
-        /*if (string.IsNullOrEmpty(currentUser.ProfilePicture))
-       {
-           currentUser.ProfilePicture = "/images/profile_image_default.png"; // Ensure default picture
-       }*/
-
-        var userProfileViewModel = new UserProfileViewModel(currentUser);
-
-        return View(userProfileViewModel);
+        return View(new UserProfileViewModel(currentUser));
     }
 
     [HttpGet]
     public async Task<IActionResult> UserUpdateCreate()
     {
-
-        
         // Check if User.Identity or User.Identity.Name is null
         if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
         {
@@ -79,11 +53,6 @@ public class UserController : Controller
         {
             return NotFound("User not found.");
         }
-
-        /*if (string.IsNullOrEmpty(currentUser.ProfilePicture))
-        {
-            currentUser.ProfilePicture = "/images/profile_image_default.png"; // Ensure default picture
-        }*/
 
         var model = new UserUpdateCreateViewModel
         {
@@ -109,92 +78,118 @@ public class UserController : Controller
 
         var currentUserName = User.Identity?.Name;
 
-         if (string.IsNullOrEmpty(currentUserName))
+        if (string.IsNullOrWhiteSpace(currentUserName))
         {
+            _logger.LogWarning("[UserController] Unauthorized access attempt to UserUpdateCreate.");
             return Unauthorized("User is not authenticated.");
         }
 
-        var currentUser = await _userRepository.GetUserByUsernameAsync(currentUserName);
-        
-
-        if (currentUser == null)
+        try
         {
-            return NotFound("User not found.");
-        }
+            var currentUser = await _userRepository.GetUserByUsernameAsync(currentUserName);
 
-        // if ((await _userRepository.GetAllUsersAsync())
-        //     .Any(u => u.UserName == model.Username && u.Id != currentUser.Id))
-        // {
-        //     ModelState.AddModelError("Username", "This username is already taken.");
-        //     return View(model);
-        // }
-
-        // if (Request.Form["deleteProfilePicture"] == "true")
-        // {
-        //     currentUser.ProfilePicture = "/images/profile_images_default.png";
-        // }
-        // else 
-        if (Request.Form.Files.Count > 0)
-        {
-            var file = Request.Form.Files[0];
-            if (file.Length > 0)
+            if (currentUser == null)
             {
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                var uploadsFolder = Path.Combine("wwwroot", "uploads", "profile-pictures");
-                Directory.CreateDirectory(uploadsFolder);
-                var filePath = Path.Combine(uploadsFolder, fileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-
-                currentUser.ProfilePicture = $"/uploads/profile-pictures/{fileName}";
+                _logger.LogWarning("[UserController] User not found for username: {Username}", currentUserName);
+                return NotFound("User not found.");
             }
+
+            // Handle profile picture upload if present
+            if (Request.Form.Files.Count > 0)
+            {
+                var file = Request.Form.Files[0];
+                if (file.Length > 0)
+                {
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var uploadsFolder = Path.Combine("wwwroot", "uploads", "profile-pictures");
+                    Directory.CreateDirectory(uploadsFolder);
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    currentUser.ProfilePicture = $"/uploads/profile-pictures/{fileName}";
+                }
+            }
+
+            // Update user properties
+            currentUser.About = model.About;
+            currentUser.FirstName = model.FirstName;
+            currentUser.LastName = model.LastName;
+            currentUser.PhoneNumber = model.PhoneNumber;
+
+            // Save updates
+            var updateSuccess = await _userRepository.UpdateUserAsync(currentUser);
+
+            if (!updateSuccess)
+            {
+                _logger.LogError("[UserController] Failed to update user with username: {Username}", currentUserName);
+                return StatusCode(500, "An error occurred while updating the user.");
+            }
+
+            return RedirectToAction(nameof(Profile));
         }
-
-        currentUser.About = model.About;
-        currentUser.UserName = model.Username;
-        currentUser.FirstName = model.FirstName;
-        currentUser.LastName = model.LastName;
-        currentUser.Email = model.Email;
-        currentUser.PhoneNumber = model.PhoneNumber;
-
-        await _userRepository.UpdateUserAsync(currentUser);
-
-        return RedirectToAction(nameof(Profile));
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[UserController] An error occurred in UserUpdateCreate for username: {Username}", currentUserName);
+            return StatusCode(500, "An unexpected error occurred.");
+        }
     }
 
-     //Delete User 
+    //Delete User 
     [HttpPost]
     public async Task<IActionResult> DeleteUser()
     {
         try
         {
+            // Get the username of the current user
+            var username = User.Identity?.Name;
+
             // Ensure user is authenticated before attempting to delete
-            if (string.IsNullOrEmpty(User.Identity?.Name))
+            if (string.IsNullOrEmpty(username))
             {
+                _logger.LogWarning("[UserController] Unauthorized deletion attempt.");
                 return Unauthorized("User is not authenticated.");
             }
-
-            // Get the username of the current user
-            var username = User.Identity.Name;
 
             // Fetch the user from the database
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
-             // Delete the profile picture if it exists and is not the default picture
-            if (!string.IsNullOrEmpty(user?.ProfilePicture) && 
+            if (user == null)
+            {
+                _logger.LogWarning("[UserController] User not found for deletion. Username: {Username}", username);
+                return NotFound("Your account could not be found.");
+            }
+
+            // Delete the profile picture if it exists and is not the default picture
+            if (!string.IsNullOrEmpty(user.ProfilePicture) &&
                 user.ProfilePicture != "/images/profile_image_default.png")
             {
-                var filePath = Path.Combine("wwwroot", user.ProfilePicture.TrimStart('/'));
-                if (System.IO.File.Exists(filePath))
+                try
                 {
-                    System.IO.File.Delete(filePath);
+                    var filePath = Path.Combine("wwwroot", user.ProfilePicture.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "[UserController] Failed to delete profile picture for user: {Username}", username);
+                    return StatusCode(500, "An error occurred while deleting your profile picture.");
                 }
             }
+
+
             // Delete the user from the database
-            await _userRepository.DeleteUserByUsernameAsync(username);
+            var deleteSuccess = await _userRepository.DeleteUserByUsernameAsync(username);
+            if (!deleteSuccess)
+            {
+                _logger.LogError("[UserController] Failed to delete user from database. Username: {Username}", username);
+                return StatusCode(500, "An error occurred while deleting your account.");
+            }
 
             // Sign the user out after deletion
             await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
@@ -204,57 +199,97 @@ public class UserController : Controller
         }
         catch (Exception ex)
         {
-            // Log any exception and return an appropriate error response
-            return StatusCode(500, $"An error occurred while deleting the account: {ex.Message}");
+            _logger.LogError(ex, "[UserController] An unexpected error occurred while deleting user.");
+            return StatusCode(500, "An unexpected error occurred. Please try again later.");
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> DeleteProfilePicture()
     {
-         // Ensure user is authenticated before proceeding
-        if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
+        try
         {
-            return Unauthorized("User is not authenticated.");
-        }
-
-        var currentUser = await _userRepository.GetUserByUsernameAsync(User.Identity.Name);
-
-        if (currentUser == null)
-        {
-            return NotFound("User not found.");
-        }
-
-        if (!string.IsNullOrEmpty(currentUser.ProfilePicture) &&
-            currentUser.ProfilePicture != "/images/profile_image_default.png")
-        {
-            var filePath = Path.Combine("wwwroot", currentUser.ProfilePicture.TrimStart('/'));
-            if (System.IO.File.Exists(filePath))
+            // Ensure user is authenticated before proceeding
+            if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
             {
-                System.IO.File.Delete(filePath);
+                _logger.LogWarning("[UserController] Unauthorized attempt to delete profile picture.");
+                return Unauthorized("You must be logged in to delete your profile picture.");
             }
+
+            var currentUser = await _userRepository.GetUserByUsernameAsync(User.Identity.Name);
+
+            if (currentUser == null)
+            {
+                _logger.LogWarning("[UserController] User not found while attempting to delete profile picture. Username: {Username}", User.Identity.Name);
+                return NotFound("User not found.");
+            }
+
+            if (!string.IsNullOrEmpty(currentUser.ProfilePicture) &&
+                currentUser.ProfilePicture != "/images/profile_image_default.png")
+            {
+                try
+                {
+                    var filePath = Path.Combine("wwwroot", currentUser.ProfilePicture.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "[UserController] Failed to delete profile picture file for user: {Username}", User.Identity.Name);
+                    return StatusCode(500, "An error occurred while deleting the profile picture. Please try again later.");
+                }
+            }
+
+            // Reset to default profile picture
+            currentUser.ProfilePicture = "/images/profile_image_default.png";
+            var updateSuccess = await _userRepository.UpdateUserAsync(currentUser);
+
+            if (!updateSuccess)
+            {
+                _logger.LogError("[UserController] Failed to update profile picture to default for user: {Username}", User.Identity.Name);
+                return StatusCode(500, "An error occurred while updating your profile picture. Please try again later.");
+            }
+
+            return RedirectToAction(nameof(UserUpdateCreate));
         }
-
-        currentUser.ProfilePicture = "/images/profile_image_default.png"; // Reset to default
-        await _userRepository.UpdateUserAsync(currentUser);
-
-        return RedirectToAction(nameof(UserUpdateCreate));
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[UserController] An unexpected error occurred while deleting profile picture for user: {Username}", User.Identity?.Name ?? "Unknown");
+            return StatusCode(500, "An unexpected error occurred. Please contact support if the issue persists.");
+        }
     }
 
 
     [HttpGet]
     public async Task<IActionResult> ViewUserProfile(string username)
     {
-        var user = await _userRepository.GetUserByUsernameAsync(username);
 
-        if (user == null)
+        if (string.IsNullOrWhiteSpace(username))
         {
-            return NotFound("User not found.");
+            _logger.LogWarning("[UserController] Attempted to view profile with an empty or null username.");
+            return BadRequest("Username cannot be empty.");
         }
 
-        var userProfileViewModel = new UserProfileViewModel(user);
+        try
+        {
+            var user = await _userRepository.GetUserByUsernameAsync(username);
 
-        return View(userProfileViewModel);
+            if (user == null)
+            {
+                _logger.LogWarning("[UserController] User not found while attempting to view profile. Username: {Username}", username);
+                return NotFound("User not found.");
+            }
+
+            var userProfileViewModel = new UserProfileViewModel(user);
+            return View(userProfileViewModel);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[UserController] An unexpected error occurred while attempting to view user profile. Username: {Username}", username);
+            return StatusCode(500, "An unexpected error occurred. Please contact support if the issue persists.");
+        }
     }
 
     [HttpGet]

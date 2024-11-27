@@ -26,6 +26,7 @@ public class PostController : Controller
         var post = await _postRepository.GetPostByIdAsync(id);
         if (post == null)
         {
+            _logger.LogError("[PostController] Getting post failed for postid: {@post}", post);
             return NotFound();
         }
         return View(post);
@@ -84,16 +85,14 @@ public class PostController : Controller
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error occurred while uploading image.");
+                _logger.LogError("[PostController] Error occurred while uploading image. Exception: {ex}", ex.Message);
                 ModelState.AddModelError("", "An error occurred while uploading the image.");
                 return View(post);
             }
         }
 
         // Assign the current user and timestamps to the post
-        post.User = user;
-        post.DateCreated = DateTime.Now;
-        post.DateUpdated = DateTime.Now;
+        post.User = user; post.DateCreated = DateTime.Now; post.DateUpdated = DateTime.Now;
 
         // Proceed if the ModelState is valid
         if (ModelState.IsValid)
@@ -103,18 +102,17 @@ public class PostController : Controller
                 bool success = await _postRepository.CreatePostAsync(post);
                 if (success)
                 {
-                    _logger.LogInformation("Post created successfully. Post data: {@Post}", post);
                     return RedirectToAction("Index", "Home");
                 }
 
                 // Log failure from the repository
-                _logger.LogError("Failed to create a new post. Post data: {@Post}", post);
+                _logger.LogError("[PostController] Failed to create a new post. Post data: {@Post}", post);
                 ModelState.AddModelError("", "An unexpected error occurred while trying to create the post.");
             }
             catch (Exception ex)
             {
                 // Log the exception
-                _logger.LogError(ex, "An error occurred while creating a post. Post data: {@Post}", post);
+                _logger.LogError("[PostController] An error occurred while creating a post. Post data: {@Post}, Exception: {ex}", post, ex.Message);
                 ModelState.AddModelError("", "A system error occurred while processing your request. Please contact support.");
             }
         }
@@ -129,6 +127,7 @@ public class PostController : Controller
         var post = await _postRepository.GetPostByIdAsync(id);
         if (post == null)
         {
+            _logger.LogError("[PostController] An error occurred while getting post with PostId: {PostId}", id);
             return NotFound();
         }
         return View(post); // Viser oppdateringsskjemaet med eksisterende data
@@ -140,15 +139,22 @@ public class PostController : Controller
     {
         if (ModelState.IsValid)
         {
-            var ok = await _postRepository.UpdatePostAsync(post);
-            if (ok)
+            try
             {
-                return RedirectToAction(nameof(Index));
+                var ok = await _postRepository.UpdatePostAsync(post);
+                if (ok)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("[PostController] An error occurred while creating a post. Post data: {@Post}, Exception: {ex}", post, ex.Message);
+                ModelState.AddModelError("", "A system error occurred while processing your request. Please contact support.");
             }
         }
-        return View(post); // Viser skjemaet på nytt hvis validering mislyktes
+        return View(post);
     }
-
 
     // DELETE
     [HttpPost]
@@ -166,8 +172,11 @@ public class PostController : Controller
         if (user == null) return Unauthorized();
 
         var post = await _postRepository.GetPostByIdAsync(postId);
-        if (post == null) return NotFound();
-
+        if (post == null)
+        {
+            _logger.LogError("[PostController] An error occurred while getting post with PostId: {PostId}", postId);
+            return NotFound();
+        }
 
         // Check if the user has already liked the post
         var existingLike = post.UserLikes.FirstOrDefault(like => like.UserId == user.Id);
@@ -191,9 +200,9 @@ public class PostController : Controller
 
         if (!success)
         {
+            _logger.LogError("[PostController] An error occurred while updating like on post with PostId: {PostId}", postId);
             return StatusCode(500, "An error occurred while updating the like status.");
         }
-
         /// Redirect back to the specific post section
         return RedirectToAction(nameof(Index), "Home", new { section = $"post-{postId}" });
     }

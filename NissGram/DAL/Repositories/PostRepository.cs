@@ -13,13 +13,6 @@ public class PostRepository : IPostRepository
         _logger = logger;
     }
 
-
-    public async Task<User?> GetUserByIdAsync(string userId)
-    {
-        return await _db.Users.Include(u => u.Posts).FirstOrDefaultAsync(u => u.Id == userId);
-    }
-
-
     // GET ALL POSTS
     public async Task<IEnumerable<Post>?> GetAllPostsAsync()
     {
@@ -57,40 +50,32 @@ public class PostRepository : IPostRepository
     }
 
     // GET SINGLE POST 
-    public async Task<Post?> GetPostByIdAsync(int id)
+    public async Task<Post?> GetPostByIdAsync(int postId)
     {
         try
         {
-            return await _db.Posts.FindAsync(id);
+            return await _db.Posts.FindAsync(postId);
         }
         catch (Exception e)
         {
-            _logger.LogError("[PostRepository] post FindAsync(id) failed when GetPostByIdAsync for PostId {PostId:0000}, error message: {e}", id, e.Message);
+            _logger.LogError("[PostRepository] post FindAsync(id) failed when GetPostByIdAsync for PostId {PostId:0000}, error message: {e}", postId, e.Message);
             return null;
         }
 
     }
 
-    // Fjerne senere
-    public async Task<User?> TempGetRandUser()
-    {
-        return await _db.Users.OrderBy(u => u.Id).FirstOrDefaultAsync();
-
-    }
-    // CREATE
+    // CREATE A POST
     public async Task<bool> CreatePostAsync(Post post)
     {
         try
         {
-
             _db.Posts.Add(post);
             await _db.SaveChangesAsync();
-            Console.WriteLine("Post created");
             return true;
         }
         catch (Exception e)
         {
-            _logger.LogError("[PostRepository] post creation failed for post {@post}, error message: {e}", post, e.Message);
+            _logger.LogError("[PostRepository] Post creation failed for post {@post}, error message: {e}", post, e.Message);
             return false;
         }
     }
@@ -141,7 +126,7 @@ public class PostRepository : IPostRepository
         }
         catch (Exception e)
         {
-            _logger.LogError("[PostRepository] post likes failed for post {@post}, error message {e}", post, e.Message);
+            _logger.LogError("[PostRepository] Getting count of likes failed for post {@post}, error message {e}", post, e.Message);
             return -1;
         }
     }
