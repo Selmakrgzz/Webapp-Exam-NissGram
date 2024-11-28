@@ -32,10 +32,10 @@ namespace NissGram.ViewModels
                 .Select(like => like.Post)
                 .ToList() ?? new List<Post>();
 
-            if (LikedPosts != null)
-            {
-                Console.WriteLine($"Number of liked posts: {LikedPosts.Count()}");
-            }
+            // if (LikedPosts != null)
+            // {
+            //     Console.WriteLine($"Number of liked posts: {LikedPosts.Count()}");
+            // }
 
             PictureCount = Pictures.Count;
             NoteCount = Notes.Count;

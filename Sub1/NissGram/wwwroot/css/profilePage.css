@@ -90,3 +90,49 @@
 .cancel-delete-button {
     margin: 0;
 }
+
+/* Match buttons to the background color */
+.btn-primary {
+    background-color: #8fa0c3; /* Same as body background */
+    border-color: #8fa0c3; /* Match border to background */
+    color: #ffffff; /* Text color for visibility */
+}
+
+.btn-primary:hover {
+    background-color: rgb(92, 124, 194); /* Slightly darker for hover */
+    border-color: rgb(170, 183, 211); /* Matching hover border */
+    color: #ffffff; /* Keep text color same */
+}
+
+/* Secondary button to match the background */
+.btn-secondary {
+    background-color: #8fa0c3; /* Same as body background */
+    border-color: #8fa0c3; /* Match border to background */
+    color: #ffffff; /* Text color for visibility */
+}
+
+.btn-secondary:hover {
+    background-color: rgb(170, 183, 211); /* Slightly darker for hover */
+    border-color: rgb(170, 183, 211); /* Matching hover border */
+    color: #000000; /* Keep text color same */
+}
+
+
+/* Ensure text stays within the button and scales properly */
+.btn-primary, .btn-secondary {
+    display: flex; /* flexbox for inner alignment */
+    justify-content: center; /* Center text horizontally */
+    /*align-items: center;  Center text vertically */
+   /* white-space: nowrap;  Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow if text gets too long */
+    /* text-overflow: ellipsis; Add ellipsis if text overflows */
+   /* max-width: 100%;  Prevent the button from exceeding its container */
+    /*padding: 0.5rem 1rem;  Ensure enough padding */
+    /*box-sizing: border-box;  Include padding in width calculation */
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: scale(1.05); /* Slight scaling on hover for effect */
+}
+
+
