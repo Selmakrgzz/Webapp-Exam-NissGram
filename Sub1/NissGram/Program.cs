@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NissGram.DAL.Repositories;
 using NissGram.DAL;
 using Microsoft.AspNetCore.Identity;
 using Serilog;

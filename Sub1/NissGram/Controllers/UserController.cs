@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NissGram.Models;
 using NissGram.ViewModels;
+using NissGram.DAL.Repositories;
 using NissGram.DAL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
 
-namespace NissGram.DAL;
+namespace NissGram.DAL.Repositories;
 public interface IUserRepository
 {
     Task<IEnumerable<User>?> GetAllUsersAsync();
