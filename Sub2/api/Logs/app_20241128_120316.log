@@ -1,0 +1,616 @@
+2024-11-28 12:03:18.175 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+2024-11-28 12:03:18.302 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetRoles" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "NormalizedName" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL
+);
+2024-11-28 12:03:18.303 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetUsers" PRIMARY KEY,
+    "ProfilePicture" TEXT NULL,
+    "FirstName" TEXT NULL,
+    "LastName" TEXT NULL,
+    "About" TEXT NULL,
+    "UserName" TEXT NULL,
+    "NormalizedUserName" TEXT NULL,
+    "Email" TEXT NULL,
+    "NormalizedEmail" TEXT NULL,
+    "EmailConfirmed" INTEGER NOT NULL,
+    "PasswordHash" TEXT NULL,
+    "SecurityStamp" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL,
+    "PhoneNumber" TEXT NULL,
+    "PhoneNumberConfirmed" INTEGER NOT NULL,
+    "TwoFactorEnabled" INTEGER NOT NULL,
+    "LockoutEnd" TEXT NULL,
+    "LockoutEnabled" INTEGER NOT NULL,
+    "AccessFailedCount" INTEGER NOT NULL
+);
+2024-11-28 12:03:18.304 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoleClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetRoleClaims" PRIMARY KEY AUTOINCREMENT,
+    "RoleId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetRoleClaims_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE
+);
+2024-11-28 12:03:18.304 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetUserClaims" PRIMARY KEY AUTOINCREMENT,
+    "UserId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetUserClaims_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2024-11-28 12:03:18.305 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserLogins" (
+    "LoginProvider" TEXT NOT NULL,
+    "ProviderKey" TEXT NOT NULL,
+    "ProviderDisplayName" TEXT NULL,
+    "UserId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserLogins" PRIMARY KEY ("LoginProvider", "ProviderKey"),
+    CONSTRAINT "FK_AspNetUserLogins_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2024-11-28 12:03:18.305 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserRoles" (
+    "UserId" TEXT NOT NULL,
+    "RoleId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserRoles" PRIMARY KEY ("UserId", "RoleId"),
+    CONSTRAINT "FK_AspNetUserRoles_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_AspNetUserRoles_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2024-11-28 12:03:18.305 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserTokens" (
+    "UserId" TEXT NOT NULL,
+    "LoginProvider" TEXT NOT NULL,
+    "Name" TEXT NOT NULL,
+    "Value" TEXT NULL,
+    CONSTRAINT "PK_AspNetUserTokens" PRIMARY KEY ("UserId", "LoginProvider", "Name"),
+    CONSTRAINT "FK_AspNetUserTokens_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2024-11-28 12:03:18.305 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Posts" (
+    "PostId" INTEGER NOT NULL CONSTRAINT "PK_Posts" PRIMARY KEY AUTOINCREMENT,
+    "UserId" TEXT NULL,
+    "Text" TEXT NULL,
+    "ImgUrl" TEXT NULL,
+    "DateCreated" TEXT NOT NULL,
+    "DateUpdated" TEXT NOT NULL,
+    CONSTRAINT "FK_Posts_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id")
+);
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Comments" (
+    "CommentId" INTEGER NOT NULL CONSTRAINT "PK_Comments" PRIMARY KEY AUTOINCREMENT,
+    "PostId" INTEGER NOT NULL,
+    "UserId" TEXT NULL,
+    "Text" TEXT NOT NULL,
+    "dateCommented" TEXT NOT NULL,
+    CONSTRAINT "FK_Comments_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id"),
+    CONSTRAINT "FK_Comments_Posts_PostId" FOREIGN KEY ("PostId") REFERENCES "Posts" ("PostId") ON DELETE CASCADE
+);
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "UserPostLikes" (
+    "UserId" TEXT NOT NULL,
+    "PostId" INTEGER NOT NULL,
+    CONSTRAINT "PK_UserPostLikes" PRIMARY KEY ("UserId", "PostId"),
+    CONSTRAINT "FK_UserPostLikes_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_UserPostLikes_Posts_PostId" FOREIGN KEY ("PostId") REFERENCES "Posts" ("PostId") ON DELETE CASCADE
+);
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetRoleClaims_RoleId" ON "AspNetRoleClaims" ("RoleId");
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "RoleNameIndex" ON "AspNetRoles" ("NormalizedName");
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserClaims_UserId" ON "AspNetUserClaims" ("UserId");
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserLogins_UserId" ON "AspNetUserLogins" ("UserId");
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserRoles_RoleId" ON "AspNetUserRoles" ("RoleId");
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "EmailIndex" ON "AspNetUsers" ("NormalizedEmail");
+2024-11-28 12:03:18.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "UserNameIndex" ON "AspNetUsers" ("NormalizedUserName");
+2024-11-28 12:03:18.307 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Comments_PostId" ON "Comments" ("PostId");
+2024-11-28 12:03:18.307 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Comments_UserId" ON "Comments" ("UserId");
+2024-11-28 12:03:18.307 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Posts_UserId" ON "Posts" ("UserId");
+2024-11-28 12:03:18.307 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_UserPostLikes_PostId" ON "UserPostLikes" ("PostId");
+2024-11-28 12:03:18.460 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS "a")
+2024-11-28 12:03:18.626 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 16), @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 44), @p16='?' (Size = 36), @p17='?' (DbType = Boolean), @p18='?' (Size = 13)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 12:03:18.627 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 20), @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 44), @p16='?' (Size = 36), @p17='?' (DbType = Boolean), @p18='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 12:03:18.628 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 17), @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 44), @p16='?' (Size = 36), @p17='?' (DbType = Boolean), @p18='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 12:03:18.628 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 16), @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 44), @p16='?' (Size = 36), @p17='?' (DbType = Boolean), @p18='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 12:03:18.628 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 16), @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 44), @p16='?' (Size = 36), @p17='?' (DbType = Boolean), @p18='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 12:03:18.629 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 19), @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 44), @p16='?' (Size = 36), @p17='?' (DbType = Boolean), @p18='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 12:03:18.629 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 22), @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 44), @p16='?' (Size = 36), @p17='?' (DbType = Boolean), @p18='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 12:03:18.880 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Nico123'
+LIMIT 1
+2024-11-28 12:03:18.887 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JaneDoe'
+LIMIT 1
+2024-11-28 12:03:18.892 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JohnSmith'
+LIMIT 1
+2024-11-28 12:03:18.896 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Bom93'
+LIMIT 1
+2024-11-28 12:03:18.901 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'koko_223'
+LIMIT 1
+2024-11-28 12:03:18.906 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'geir_er_kul'
+LIMIT 1
+2024-11-28 12:03:18.910 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'tina_betina12'
+LIMIT 1
+2024-11-28 12:03:18.912 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Posts" AS "p")
+2024-11-28 12:03:18.969 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 22), @p3='?' (Size = 24), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.978 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 50), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.979 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 18), @p3='?' (Size = 11), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.979 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 18), @p3='?' (Size = 19), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.980 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 30), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.980 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 19), @p3='?' (Size = 20), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.981 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 19), @p3='?' (Size = 11), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.981 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 186), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.981 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 26), @p3='?' (Size = 10), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.982 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 27), @p3='?' (Size = 11), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.982 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 330), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.983 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 23), @p3='?' (Size = 14), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.983 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 27), @p3='?' (Size = 18), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.983 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 311), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.983 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 16), @p3='?' (Size = 12), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.984 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 26), @p3='?' (Size = 10), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.984 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 194), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.984 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 20), @p3='?' (Size = 7), @p4='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("DateCreated", "DateUpdated", "ImgUrl", "Text", "UserId")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "PostId";
+2024-11-28 12:03:18.994 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+2024-11-28 12:03:19.024 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+2024-11-28 12:03:19.051 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.051 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.051 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.051 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.053 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.054 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.054 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.054 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.054 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.054 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.054 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.055 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.055 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.055 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.055 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.055 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.055 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.056 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "UserPostLikes" ("PostId", "UserId")
+VALUES (@p0, @p1);
+2024-11-28 12:03:19.060 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Comments" AS "c")
+2024-11-28 12:03:19.067 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 1
+LIMIT 1
+2024-11-28 12:03:19.071 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 2
+LIMIT 1
+2024-11-28 12:03:19.075 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 3
+LIMIT 1
+2024-11-28 12:03:19.079 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 4
+LIMIT 1
+2024-11-28 12:03:19.083 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 5
+LIMIT 1
+2024-11-28 12:03:19.087 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 6
+LIMIT 1
+2024-11-28 12:03:19.091 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 7
+LIMIT 1
+2024-11-28 12:03:19.094 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 8
+LIMIT 1
+2024-11-28 12:03:19.099 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 9
+LIMIT 1
+2024-11-28 12:03:19.103 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 10
+LIMIT 1
+2024-11-28 12:03:19.106 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 11
+LIMIT 1
+2024-11-28 12:03:19.110 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 12
+LIMIT 1
+2024-11-28 12:03:19.115 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 13
+LIMIT 1
+2024-11-28 12:03:19.119 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 14
+LIMIT 1
+2024-11-28 12:03:19.123 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 15
+LIMIT 1
+2024-11-28 12:03:19.127 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 16
+LIMIT 1
+2024-11-28 12:03:19.132 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 17
+LIMIT 1
+2024-11-28 12:03:19.136 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = 18
+LIMIT 1
+2024-11-28 12:03:19.151 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 20), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.151 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 37), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.151 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 48), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.152 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 36), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.152 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 29), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.152 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 47), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.152 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 49), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.152 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 39), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.152 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 34), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.153 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 38), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.153 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 35), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.153 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 37), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.153 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 20), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.153 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 34), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.154 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 36), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.154 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 11), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.154 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 36), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.155 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 26), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.155 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 42), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.155 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 30), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.155 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 31), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.155 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 44), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.155 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 34), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 22), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 29), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 38), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 40), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 31), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 33), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 18), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.156 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 34), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 31), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 38), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 30), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 30), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 33), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 47), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.157 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 40), @p3='?' (Size = 36), @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("CommentId", "PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-11-28 12:03:19.417 +01:00 [INF] User profile is available. Using 'C:\Users\nicol\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-28 12:03:19.633 +01:00 [INF] Now listening on: http://localhost:5024
+2024-11-28 12:03:19.641 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-28 12:03:19.645 +01:00 [INF] Hosting environment: Development
+2024-11-28 12:03:19.647 +01:00 [INF] Content root path: C:\Users\nicol\OneDrive\Skrivebord\Webapp\Sub2\api
+2024-11-28 12:03:19.982 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger - null null
+2024-11-28 12:03:20.033 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger - 301 0 null 54.4846ms
+2024-11-28 12:03:20.046 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 12:03:20.101 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 55.7191ms
+2024-11-28 12:03:20.136 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/swagger-ui.css - null null
+2024-11-28 12:03:20.139 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/swagger-ui-standalone-preset.js - null null
+2024-11-28 12:03:20.139 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/swagger-ui-bundle.js - null null
+2024-11-28 12:03:20.258 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2024-11-28 12:03:20.258 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2024-11-28 12:03:20.259 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2024-11-28 12:03:20.261 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 122.9121ms
+2024-11-28 12:03:20.262 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 122.9753ms
+2024-11-28 12:03:20.263 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/swagger-ui.css - 200 143943 text/css 127.7006ms
+2024-11-28 12:03:20.508 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 12:03:20.543 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/favicon-32x32.png - null null
+2024-11-28 12:03:20.544 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-11-28 12:03:20.545 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/favicon-32x32.png - 200 628 image/png 1.913ms
+2024-11-28 12:03:20.545 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 37.2337ms

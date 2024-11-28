@@ -12,9 +12,9 @@ public class CommentController : Controller
     private readonly IPostRepository _postRepository;
     private readonly IUserRepository _userRepository;
     private readonly ICommentRepository _commentRepository;
-    private readonly ILogger<PostController> _logger;
+    private readonly ILogger<PostAPIController> _logger;
 
-    public CommentController(IPostRepository postRepository, IUserRepository userRepository, ICommentRepository commentRepository, ILogger<PostController> logger)
+    public CommentController(IPostRepository postRepository, IUserRepository userRepository, ICommentRepository commentRepository, ILogger<PostAPIController> logger)
     {
         _userRepository = userRepository;
         _postRepository = postRepository;

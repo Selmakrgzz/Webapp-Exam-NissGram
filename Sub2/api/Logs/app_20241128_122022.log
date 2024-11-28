@@ -1,0 +1,122 @@
+2024-11-28 12:20:23.550 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2024-11-28 12:20:23.703 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS "a")
+2024-11-28 12:20:23.935 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Nico123'
+LIMIT 1
+2024-11-28 12:20:24.006 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JaneDoe'
+LIMIT 1
+2024-11-28 12:20:24.010 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JohnSmith'
+LIMIT 1
+2024-11-28 12:20:24.016 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Bom93'
+LIMIT 1
+2024-11-28 12:20:24.021 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'koko_223'
+LIMIT 1
+2024-11-28 12:20:24.026 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'geir_er_kul'
+LIMIT 1
+2024-11-28 12:20:24.031 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'tina_betina12'
+LIMIT 1
+2024-11-28 12:20:24.033 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Posts" AS "p")
+2024-11-28 12:20:24.036 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Comments" AS "c")
+2024-11-28 12:20:24.194 +01:00 [INF] User profile is available. Using 'C:\Users\nicol\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-28 12:20:24.307 +01:00 [INF] Now listening on: http://localhost:5024
+2024-11-28 12:20:24.313 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-28 12:20:24.316 +01:00 [INF] Hosting environment: Development
+2024-11-28 12:20:24.318 +01:00 [INF] Content root path: C:\Users\nicol\OneDrive\Skrivebord\Webapp\Sub2\api
+2024-11-28 12:20:24.526 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 12:20:24.627 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 103.8658ms
+2024-11-28 12:20:24.773 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 12:20:24.869 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.1557ms
+2024-11-28 12:20:40.637 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/1 - null null
+2024-11-28 12:20:40.687 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:20:40.689 +01:00 [INF] Executing endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:20:40.711 +01:00 [INF] Route matched with {action = "Details", controller = "PostAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32) on controller NissGram.Controllers.PostAPIController (api).
+2024-11-28 12:20:40.718 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 12:20:40.719 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 12:20:40.721 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 12:20:40.725 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 12:20:40.728 +01:00 [INF] Executed action NissGram.Controllers.PostAPIController.Details (api) in 13.7428ms
+2024-11-28 12:20:40.728 +01:00 [INF] Executed endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:20:40.729 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/1 - 302 0 null 92.3908ms
+2024-11-28 12:20:40.735 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F1 - null null
+2024-11-28 12:20:40.739 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:20:40.740 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F1 - 404 0 null 4.9471ms
+2024-11-28 12:20:40.740 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/Identity/Account/Login, Response status code: 404
+2024-11-28 12:20:46.910 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/2 - null null
+2024-11-28 12:20:46.913 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:20:46.913 +01:00 [INF] Executing endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:20:46.914 +01:00 [INF] Route matched with {action = "Details", controller = "PostAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32) on controller NissGram.Controllers.PostAPIController (api).
+2024-11-28 12:20:46.916 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 12:20:46.916 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 12:20:46.916 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 12:20:46.917 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 12:20:46.917 +01:00 [INF] Executed action NissGram.Controllers.PostAPIController.Details (api) in 2.6948ms
+2024-11-28 12:20:46.917 +01:00 [INF] Executed endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:20:46.917 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/2 - 302 0 null 7.2465ms
+2024-11-28 12:20:46.922 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F2 - null null
+2024-11-28 12:20:46.923 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:20:46.924 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F2 - 404 0 null 1.3732ms
+2024-11-28 12:20:46.924 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/Identity/Account/Login, Response status code: 404
+2024-11-28 12:20:50.211 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/5 - null null
+2024-11-28 12:20:50.212 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:20:50.212 +01:00 [INF] Executing endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:20:50.212 +01:00 [INF] Route matched with {action = "Details", controller = "PostAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32) on controller NissGram.Controllers.PostAPIController (api).
+2024-11-28 12:20:50.214 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 12:20:50.214 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 12:20:50.214 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 12:20:50.214 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 12:20:50.214 +01:00 [INF] Executed action NissGram.Controllers.PostAPIController.Details (api) in 1.7727ms
+2024-11-28 12:20:50.214 +01:00 [INF] Executed endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:20:50.215 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/5 - 302 0 null 3.9286ms
+2024-11-28 12:20:50.220 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F5 - null null
+2024-11-28 12:20:50.221 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:20:50.221 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F5 - 404 0 null 1.2289ms
+2024-11-28 12:20:50.221 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/Identity/Account/Login, Response status code: 404
+2024-11-28 12:23:00.580 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/5 - null null
+2024-11-28 12:23:00.581 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:23:00.581 +01:00 [INF] Executing endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:23:00.581 +01:00 [INF] Route matched with {action = "Details", controller = "PostAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32) on controller NissGram.Controllers.PostAPIController (api).
+2024-11-28 12:23:00.581 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 12:23:00.581 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 12:23:00.581 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 12:23:00.581 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 12:23:00.581 +01:00 [INF] Executed action NissGram.Controllers.PostAPIController.Details (api) in 0.3623ms
+2024-11-28 12:23:00.581 +01:00 [INF] Executed endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 12:23:00.582 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/PostAPI/Details/5 - 302 0 null 1.5914ms
+2024-11-28 12:23:00.587 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F5 - null null
+2024-11-28 12:23:00.587 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 12:23:00.588 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/Identity/Account/Login?ReturnUrl=%2Fapi%2FPostAPI%2FDetails%2F5 - 404 0 null 0.9458ms
+2024-11-28 12:23:00.588 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/Identity/Account/Login, Response status code: 404

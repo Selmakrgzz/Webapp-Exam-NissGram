@@ -7,6 +7,36 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace NissGram.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
+public class HomeAPIController : Controller
+{
+    private readonly ILogger<HomeAPIController> _logger;
+    private readonly IPostRepository _postRepository;
+
+
+    public HomeAPIController(ILogger<HomeAPIController> logger, IPostRepository postRepository)
+    {
+        _logger = logger;
+        _postRepository = postRepository;
+    }
+
+    [HttpGet("Index")]
+    public async Task<IActionResult> Index()
+    {
+        var posts = await _postRepository.GetAllPostsAsync();
+        if (posts == null)
+        {
+            _logger.LogError("[HomeController] Post list not found while executing _itemRepository.GetAllPostsAsync()");
+            return NotFound("Item list not found");
+        }
+        var viewModel = new PostsViewModel(posts, "All Posts");
+        return View(viewModel);
+    }
+
+ 
+}
+
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
