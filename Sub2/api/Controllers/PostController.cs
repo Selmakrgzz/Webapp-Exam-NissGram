@@ -35,17 +35,6 @@ public class PostAPIController : Controller
         }
         return Ok(post); // Return JSON response
     }
-
-
-    [HttpGet("tests")]
-    public async Task<IActionResult> tests(){
-
-        var post =  new Post{
-            PostId = 100000,
-        };
-        
-        return Ok(post);
-    }
 }
 
 

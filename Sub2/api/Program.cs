@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Serilog;
 using NissGram.DAL; 
 using NissGram.Models;
+using Microsoft.AspNetCore.Mvc;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -84,6 +87,12 @@ var loggerConfiguration = new LoggerConfiguration()
 var logger = loggerConfiguration.CreateLogger();
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
+
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+    });
 
 var app = builder.Build();
 

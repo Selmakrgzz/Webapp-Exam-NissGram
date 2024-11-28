@@ -548,3 +548,6 @@ c:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api\obj\Debug\net8.0\re
 c:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api\obj\Debug\net8.0\api.pdb
 c:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 c:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api\obj\Debug\net8.0\ref\api.dll
+C:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

@@ -1,0 +1,951 @@
+2024-11-28 16:25:53.707 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2024-11-28 16:25:53.889 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS "a")
+2024-11-28 16:25:54.186 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Nico123'
+LIMIT 1
+2024-11-28 16:25:54.277 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JaneDoe'
+LIMIT 1
+2024-11-28 16:25:54.283 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JohnSmith'
+LIMIT 1
+2024-11-28 16:25:54.290 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Bom93'
+LIMIT 1
+2024-11-28 16:25:54.296 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'koko_223'
+LIMIT 1
+2024-11-28 16:25:54.303 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'geir_er_kul'
+LIMIT 1
+2024-11-28 16:25:54.308 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'tina_betina12'
+LIMIT 1
+2024-11-28 16:25:54.311 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Posts" AS "p")
+2024-11-28 16:25:54.314 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Comments" AS "c")
+2024-11-28 16:25:54.536 +01:00 [INF] User profile is available. Using 'C:\Users\Sina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-28 16:25:54.650 +01:00 [INF] Now listening on: http://localhost:5024
+2024-11-28 16:25:54.653 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-28 16:25:54.654 +01:00 [INF] Hosting environment: Development
+2024-11-28 16:25:54.654 +01:00 [INF] Content root path: C:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api
+2024-11-28 16:26:05.562 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 16:26:05.683 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 122.5136ms
+2024-11-28 16:26:05.896 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 16:26:06.040 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 143.9286ms
+2024-11-28 16:26:15.111 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - null null
+2024-11-28 16:26:15.185 +01:00 [INF] Executing endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 16:26:15.207 +01:00 [INF] Route matched with {action = "Index", controller = "HomeAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NissGram.Controllers.HomeAPIController (api).
+2024-11-28 16:26:15.288 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+ORDER BY "p"."DateCreated" DESC
+2024-11-28 16:26:15.327 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[NissGram.Models.Post, api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-28 16:26:15.455 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.502 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.529 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.548 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.552 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.553 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.564 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.566 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.567 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.568 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.569 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.570 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.572 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.573 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.574 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.575 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.576 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.577 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.607 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.631 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.632 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.637 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.638 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.643 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:15.656 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:15.659 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.660 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:15.661 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:15.662 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.663 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.664 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.665 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.668 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:15.669 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.671 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.672 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.673 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.674 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.678 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.679 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.685 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.686 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.688 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.695 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:15.703 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.704 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.705 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.729 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:15.731 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:15.758 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:16.039 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:16.477 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:19.277 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:19.866 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:29.482 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/auth/test - null null
+2024-11-28 16:26:29.492 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Test (api)'
+2024-11-28 16:26:29.495 +01:00 [INF] Route matched with {action = "Test", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Test() on controller NissGram.Controllers.AuthController (api).
+2024-11-28 16:26:29.498 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-11-28 16:26:29.505 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Test (api) in 5.8172ms
+2024-11-28 16:26:29.505 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Test (api)'
+2024-11-28 16:26:29.507 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/auth/test - 200 null text/plain; charset=utf-8 24.869ms
+2024-11-28 16:26:36.393 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 16:26:36.395 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 2.2148ms
+2024-11-28 16:26:36.727 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 16:26:36.741 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.3069ms
+2024-11-28 16:26:40.011 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - null null
+2024-11-28 16:26:40.047 +01:00 [INF] Executing endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 16:26:40.048 +01:00 [INF] Route matched with {action = "Index", controller = "HomeAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NissGram.Controllers.HomeAPIController (api).
+2024-11-28 16:26:40.182 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+ORDER BY "p"."DateCreated" DESC
+2024-11-28 16:26:40.185 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[NissGram.Models.Post, api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-28 16:26:40.186 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.188 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.189 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.191 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.192 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.193 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.194 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.195 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.196 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.198 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.199 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.200 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.201 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.202 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.203 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.204 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.205 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.206 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.207 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.208 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.209 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.210 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.211 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.212 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:40.213 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:40.214 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.216 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:26:40.217 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:26:40.218 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.218 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.220 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.220 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.221 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:40.222 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.223 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.224 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.226 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.227 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.229 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.229 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.233 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.234 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.235 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.237 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:40.242 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.243 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.244 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.259 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:26:40.260 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.278 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:40.444 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:40.766 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:45.780 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:26:47.355 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:26:50.809 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 16:26:50.810 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 1.1681ms
+2024-11-28 16:26:51.161 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 16:26:51.172 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 11.2385ms
+2024-11-28 16:27:12.806 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/register - application/json-patch+json 230
+2024-11-28 16:27:12.817 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:27:12.820 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 16:27:12.839 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(NissGram.DTOs.RegisterDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 16:27:13.221 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedUserName_0='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 16:27:13.249 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='?' (Size = 16)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2024-11-28 16:27:13.255 +01:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-28 16:27:13.266 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Register (api) in 426.7554ms
+2024-11-28 16:27:13.267 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 16:27:13.272 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/register - 400 57 application/json; charset=utf-8 465.6964ms
+2024-11-28 16:27:21.996 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/register - application/json-patch+json 234
+2024-11-28 16:27:21.997 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:27:21.998 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 16:27:21.998 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(NissGram.DTOs.RegisterDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 16:27:22.189 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedUserName_0='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 16:27:22.190 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2024-11-28 16:27:22.363 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 6), @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 20), @p5='?' (DbType = Boolean), @p6='?' (Size = 17), @p7='?' (Size = 11), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?' (Size = 20), @p11='?' (Size = 4), @p12='?' (Size = 84), @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 6), @p16='?' (Size = 32), @p17='?' (DbType = Boolean), @p18='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 16:27:22.379 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-28 16:27:22.384 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Register (api) in 386.3913ms
+2024-11-28 16:27:22.384 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 16:27:22.385 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/register - 200 140 application/json; charset=utf-8 388.5637ms
+2024-11-28 16:27:34.655 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/login - application/json-patch+json 72
+2024-11-28 16:27:34.656 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:27:34.657 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 16:27:34.663 +01:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NissGram.DTOs.LoginDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 16:27:34.677 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedUserName_0='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 16:27:34.974 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE "a"."UserId" = @__user_Id_0
+2024-11-28 16:27:35.002 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a0"."Name"
+FROM "AspNetUserRoles" AS "a"
+INNER JOIN "AspNetRoles" AS "a0" ON "a"."RoleId" = "a0"."Id"
+WHERE "a"."UserId" = @__userId_0
+2024-11-28 16:27:35.011 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-11-28 16:27:35.012 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-28 16:27:35.013 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Login (api) in 349.5832ms
+2024-11-28 16:27:35.013 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 16:27:35.014 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/login - 200 31 application/json; charset=utf-8 358.3414ms
+2024-11-28 16:27:40.196 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - null null
+2024-11-28 16:27:40.198 +01:00 [INF] Executing endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 16:27:40.198 +01:00 [INF] Route matched with {action = "Index", controller = "HomeAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NissGram.Controllers.HomeAPIController (api).
+2024-11-28 16:27:40.201 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+ORDER BY "p"."DateCreated" DESC
+2024-11-28 16:27:40.202 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[NissGram.Models.Post, api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-28 16:27:40.203 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.205 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.206 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.207 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.208 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.209 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.210 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.211 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.211 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.212 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.213 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.214 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.215 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.215 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.216 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.217 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.218 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.219 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.219 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.220 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.220 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.222 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.223 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.223 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:27:40.224 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:27:40.225 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.225 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 16:27:40.226 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 16:27:40.227 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.227 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.228 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.228 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.229 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:27:40.229 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.230 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.231 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.231 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.232 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.233 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.233 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.237 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.239 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.240 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.244 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:27:40.250 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.250 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.251 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.269 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:27:40.270 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.291 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:27:40.451 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:40.696 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:27:44.649 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:27:45.799 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:27:53.338 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:28:32.915 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:29:03.259 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:29:03.260 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:29:27.054 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:29:41.589 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:29:41.597 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:30:35.967 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."PostId" = @__p_0
+2024-11-28 16:30:35.967 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."PostId" = @__p_0
+2024-11-28 16:40:03.875 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:40:18.506 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "u"."UserId", "u"."PostId"
+FROM "UserPostLikes" AS "u"
+WHERE "u"."UserId" = @__p_0
+2024-11-28 16:40:34.875 +01:00 [INF] Executed action NissGram.Controllers.HomeAPIController.Index (api) in 834827.057ms
+2024-11-28 16:40:34.876 +01:00 [INF] Executed endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 16:40:34.877 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - 499 null application/json; charset=utf-8 834865.8387ms
+2024-11-28 16:40:34.984 +01:00 [INF] Executed action NissGram.Controllers.HomeAPIController.Index (api) in 859776.7519ms
+2024-11-28 16:40:34.984 +01:00 [INF] Executed action NissGram.Controllers.HomeAPIController.Index (api) in 774786.3673ms
+2024-11-28 16:40:34.985 +01:00 [INF] Executed endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 16:40:34.985 +01:00 [INF] Executed endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 16:40:34.986 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - 499 null application/json; charset=utf-8 859874.9047ms
+2024-11-28 16:40:34.986 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.IOException: There is not enough space on the disk. : 'C:\Users\Sina\AppData\Local\Temp\ASPNETCORE_503c76ba-fe82-490a-9dcb-513df87f6acd.tmp'
+   at Microsoft.AspNetCore.WebUtilities.PagedByteBuffer.MoveTo(Stream stream)
+   at Microsoft.AspNetCore.WebUtilities.HttpResponseStreamWriter.FlushInternal(Boolean flushEncoder)
+   at Newtonsoft.Json.Utilities.JavaScriptUtils.WriteEscapedJavaScriptString(TextWriter writer, String s, Char delimiter, Boolean appendDelimiters, Boolean[] charEscapeFlags, StringEscapeHandling stringEscapeHandling, IArrayPool`1 bufferPool, Char[]& writeBuffer)
+   at Newtonsoft.Json.JsonWriter.WriteValue(JsonWriter writer, PrimitiveTypeCode typeCode, Object value)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeObject(JsonWriter writer, Object value, JsonObjectContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.SerializeList(JsonWriter writer, IEnumerable values, JsonArrayContract contract, JsonProperty member, JsonContainerContract collectionContract, JsonProperty containerProperty)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalWriter.Serialize(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.SerializeInternal(JsonWriter jsonWriter, Object value, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Serialize(JsonWriter jsonWriter, Object value)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.NewtonsoftJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-11-28 16:40:35.017 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - 500 null text/plain; charset=utf-8 774820.5071ms
