@@ -12,12 +12,15 @@
       "isolatedModules": true,           // Ensures each file is treated as a separate module.
       "baseUrl": "./src",                // Base URL for module resolution.
       "paths": {
+        "@components/*": ["components/*"],
+        "@api/*": ["api/*"],
+        "@assets/*": ["assets/*"],
         "*": ["node_modules/*"]          // Ensures proper module resolution.
       },
+      "typeRoots": ["./node_modules/@types", "./src/types"],
       "outDir": "./build",               // Directory to output compiled JavaScript files.
       "lib": ["dom", "dom.iterable", "esnext"] // Add libraries for modern JS and DOM features.
     },
     "include": ["src/**/*"],             // Include all files in the src directory.
     "exclude": ["node_modules", "build"] // Exclude node_modules and build directories.
   }
-  

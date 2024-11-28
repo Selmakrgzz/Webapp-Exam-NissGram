@@ -1,6 +1,6 @@
 import React from 'react';
-import './../../styles/auth.css'; // Bruk samme CSS for enhetlig stil.
-//import logo from '../../assets/images/logo.png';
+import './../../styles/auth.css'; // CSS-stil for enhetlig design
+import DefaultProfilePicture from './../../assets/images/profile_image_default.png';
 
 const RegisterPage: React.FC = () => {
   return (
@@ -24,8 +24,8 @@ const RegisterPage: React.FC = () => {
           >
             <img
               id="profileImage"
-              src="/images/profile_image_default.png"
-              alt="Profile Preview"
+              src={DefaultProfilePicture} // Bruker logo som standardbilde
+              alt="Profile Picture Preview"
               style={{
                 width: '100%',
                 height: '100%',
@@ -46,7 +46,7 @@ const RegisterPage: React.FC = () => {
         {/* Username */}
         <div className="mb-3">
           <label htmlFor="username" className="form-label fs-5 fw-bold">
-            Username
+            Username<span className="text-danger">*</span>
           </label>
           <input type="text" id="username" className="form-control" />
         </div>
@@ -54,15 +54,47 @@ const RegisterPage: React.FC = () => {
         {/* Email */}
         <div className="mb-3">
           <label htmlFor="email" className="form-label fs-5 fw-bold">
-            Email
+            Email<span className="text-danger">*</span>
           </label>
           <input type="email" id="email" className="form-control" />
+        </div>
+
+        {/* First Name */}
+        <div className="mb-3">
+          <label htmlFor="firstName" className="form-label fs-5 fw-bold">
+            First Name
+          </label>
+          <input type="text" id="firstName" className="form-control" />
+        </div>
+
+        {/* Last Name */}
+        <div className="mb-3">
+          <label htmlFor="lastName" className="form-label fs-5 fw-bold">
+            Last Name
+          </label>
+          <input type="text" id="lastName" className="form-control" />
+        </div>
+
+        {/* About */}
+        <div className="mb-3">
+          <label htmlFor="about" className="form-label fs-5 fw-bold">
+            About
+          </label>
+          <textarea id="about" className="form-control" />
+        </div>
+
+        {/* Phone Number */}
+        <div className="mb-3">
+          <label htmlFor="phoneNumber" className="form-label fs-5 fw-bold">
+            Phone Number
+          </label>
+          <input type="text" id="phoneNumber" className="form-control" />
         </div>
 
         {/* Password */}
         <div className="mb-3">
           <label htmlFor="password" className="form-label fs-5 fw-bold">
-            Password
+            Password<span className="text-danger">*</span>
           </label>
           <input type="password" id="password" className="form-control" />
         </div>
@@ -70,7 +102,7 @@ const RegisterPage: React.FC = () => {
         {/* Confirm Password */}
         <div className="mb-3">
           <label htmlFor="confirmPassword" className="form-label fs-5 fw-bold">
-            Confirm Password
+            Confirm Password<span className="text-danger">*</span>
           </label>
           <input type="password" id="confirmPassword" className="form-control" />
         </div>

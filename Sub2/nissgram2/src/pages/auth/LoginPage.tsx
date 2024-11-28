@@ -1,15 +1,15 @@
 import React from 'react';
-import './../../styles/auth.css'; // Bruk samme CSS for enhetlig stil.
-//import logo from './../../assets/images/logo.png'; // Oppdater stien basert på din struktur
+import './../../styles/auth.css'; // CSS-stil for enhetlig design
+import NissGramLogo from './../../assets/images/Niss.png';
 
 const LoginPage: React.FC = () => {
   return (
     <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }}>
       <div className="row w-100" style={{ maxWidth: '800px', transform: 'translateY(-10%)' }}>
-        {/* Venstre kolonne med bilde */}
+        {/* Venstre kolonne med logo */}
         <div className="col-md-5 d-flex align-items-center" style={{ paddingRight: '20px' }}>
           <img
-            src="/images/Niss.png"
+            src={NissGramLogo}
             alt="Login Illustration"
             className="img-fluid"
             style={{ maxHeight: '400px' }}
@@ -47,7 +47,7 @@ const LoginPage: React.FC = () => {
 
             <div className="form-check mb-3">
               <input className="form-check-input" type="checkbox" id="rememberMe" />
-              <label className="form-check-label" htmlFor="rememberMe" style={{ fontWeight: 500 }}>
+              <label className="form-check-label" htmlFor="rememberMe">
                 Remember me
               </label>
             </div>
