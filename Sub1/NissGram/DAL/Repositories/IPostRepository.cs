@@ -1,6 +1,6 @@
 using NissGram.Models;
 
-namespace NissGram.DAL;
+namespace NissGram.DAL.Repositories;
 public interface IPostRepository
 {
     Task<IEnumerable<Post>?> GetAllPostsAsync();
