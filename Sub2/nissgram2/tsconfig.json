@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "es2016",                // Target ECMAScript version. es2016 is fine for modern apps.
+      "module": "commonjs",              // Module system. For React apps, "esnext" is also commonly used.
+      "jsx": "react-jsx",                // Enable React 17+ JSX transform.
+      "esModuleInterop": true,           // Allows interop with CommonJS modules like 'axios'.
+      "skipLibCheck": true,              // Skip type checks for library files (improves performance).
+      "forceConsistentCasingInFileNames": true, // Enforces consistent casing in file names.
+      "strict": true,                    // Enable all strict type-checking options.
+      "moduleResolution": "node",        // Node-style module resolution.
+      "resolveJsonModule": true,         // Allow importing JSON files as modules.
+      "isolatedModules": true,           // Ensures each file is treated as a separate module.
+      "baseUrl": "./src",                // Base URL for module resolution.
+      "paths": {
+        "*": ["node_modules/*"]          // Ensures proper module resolution.
+      },
+      "outDir": "./build",               // Directory to output compiled JavaScript files.
+      "lib": ["dom", "dom.iterable", "esnext"] // Add libraries for modern JS and DOM features.
+    },
+    "include": ["src/**/*"],             // Include all files in the src directory.
+    "exclude": ["node_modules", "build"] // Exclude node_modules and build directories.
+  }
+  
