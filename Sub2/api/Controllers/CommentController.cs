@@ -1,90 +1,90 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NissGram.DAL;
+using NissGram.DTOs;
 using NissGram.Models;
-using NissGram.ViewModels;
-using System.Security.Claims;
+using NissGram.DAL;
 
-
-namespace NissGram.Controllers;
-public class CommentController : Controller
+namespace NissGram.Controllers
 {
-    private readonly IPostRepository _postRepository;
-    private readonly IUserRepository _userRepository;
-    private readonly ICommentRepository _commentRepository;
-    private readonly ILogger<PostAPIController> _logger;
-
-    public CommentController(IPostRepository postRepository, IUserRepository userRepository, ICommentRepository commentRepository, ILogger<PostAPIController> logger)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CommentAPIController : ControllerBase
     {
-        _userRepository = userRepository;
-        _postRepository = postRepository;
-        _commentRepository = commentRepository;
-        _logger = logger;
-    }
+        private readonly IPostRepository _postRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly ICommentRepository _commentRepository;
+        private readonly ILogger<CommentAPIController> _logger;
 
-    [HttpPost]
-    public async Task<IActionResult> Add(int postId, string text)
-    {
-
-
-        // Fetch the user
-        var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
-        if (user == null)
+        public CommentAPIController(
+            IPostRepository postRepository,
+            IUserRepository userRepository,
+            ICommentRepository commentRepository,
+            ILogger<CommentAPIController> logger)
         {
-            _logger.LogError("[CommentController] User not found for logged in user");
-            return Unauthorized();
+            _postRepository = postRepository;
+            _userRepository = userRepository;
+            _commentRepository = commentRepository;
+            _logger = logger;
         }
 
-        // Fetch the post
-        var post = await _postRepository.GetPostByIdAsync(postId);
-        if (post == null)
+        [HttpPost("add")]
+        public async Task<IActionResult> Add([FromBody] CommentDto commentDto)
         {
-            _logger.LogError("[CommentController] Post not found for postId: {postId}", postId);
-            return NotFound("Post not found.");
+            if (string.IsNullOrWhiteSpace(commentDto.Text))
+            {
+                return BadRequest("Comment text is required.");
+            }
+
+            var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
+            if (user == null)
+            {
+                _logger.LogError("[CommentAPIController] User not found for logged-in user.");
+                return Unauthorized("User not authenticated.");
+            }
+
+            var post = await _postRepository.GetPostByIdAsync(commentDto.PostId);
+            if (post == null)
+            {
+                _logger.LogError("[CommentAPIController] Post not found for PostId: {PostId}", commentDto.PostId);
+                return NotFound("Post not found.");
+            }
+
+            var comment = new Comment
+            {
+                Post = post,
+                User = user,
+                Text = commentDto.Text,
+                dateCommented = DateTime.UtcNow
+            };
+
+            var success = await _commentRepository.AddCommentAsync(comment);
+            if (!success)
+            {
+                _logger.LogError("[CommentAPIController] Failed to add comment for PostId: {PostId}", commentDto.PostId);
+                return StatusCode(500, "An error occurred while adding the comment.");
+            }
+
+            return CreatedAtAction(nameof(Add), new { id = comment.CommentId }, new CommentDto
+            {
+                CommentId = comment.CommentId,
+                PostId = commentDto.PostId,
+                Text = comment.Text,
+                Username = user.UserName,
+                DateCommented = comment.dateCommented
+            });
         }
 
-        // Create the comment
-        var comment = new Comment
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Post = post,
-            User = user,
-            Text = text,
-            dateCommented = DateTime.Now
-        };
+            var success = await _commentRepository.DeleteCommentAsync(id);
+            if (!success)
+            {
+                _logger.LogWarning("[CommentAPIController] Attempted to delete a non-existent comment. CommentId: {CommentId}", id);
+                return NotFound("Comment not found.");
+            }
 
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
+            return NoContent();
         }
-
-        // Save the comment
-        var success = await _commentRepository.AddCommentAsync(comment);
-        if (!success)
-        {
-            _logger.LogError("[CommentController] Failed to add comment for PostId: {PostId}", postId);
-            return StatusCode(500, "An error occurred while adding the comment.");
-        }
-
-        _logger.LogInformation("[CommentController] Comment added successfully for PostId: {PostId}", postId);
-
-        /// Redirect back to the specific post section
-        return RedirectToAction(nameof(Index), "Home", new { section = $"post-{postId}" });
-    }
-
-    // Delete a comment
-    [HttpPost]
-    public async Task<IActionResult> Delete(int commentId, int postId)
-    {
-        var comment = await _commentRepository.DeleteCommentAsync(commentId);
-        if (!comment)
-        {
-            _logger.LogWarning("[CommentController] Attempted to delete a comment that does not exist. CommentId: {CommentId}", commentId);
-            return NotFound("Comment not found.");
-        }
-
-        /// Redirect back to the specific post section
-        return RedirectToAction(nameof(Index), "Home", new { section = $"post-{postId}" });
 
     }
 }
-
