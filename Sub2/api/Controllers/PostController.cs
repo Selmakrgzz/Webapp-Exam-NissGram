@@ -38,7 +38,7 @@ public class PostAPIController : Controller
 
 
     [HttpGet("tests")]
-    public async Task<IActionResult> testing(){
+    public async Task<IActionResult> tests(){
 
         var post =  new Post{
             PostId = 100000,

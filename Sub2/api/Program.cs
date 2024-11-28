@@ -1,10 +1,9 @@
-using Microsoft.EntityFrameworkCore;
-using NissGram.DAL;
 using Microsoft.AspNetCore.Identity;
-using Serilog;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using Serilog;
+using NissGram.DAL; 
 using NissGram.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,12 +14,14 @@ var connectionString = builder.Configuration.GetConnectionString("NissDbContextC
 
 // Add services to the container
 builder.Services.AddDbContext<NissDbContext>(options =>
-{
-    options.UseSqlite(builder.Configuration["ConnectionStrings:NissDbContextConnection"]);
-});
+    options.UseSqlite(connectionString));
 
+// Configure ASP.NET Identity
 builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredLength = 8;
     options.SignIn.RequireConfirmedAccount = false;
     options.SignIn.RequireConfirmedEmail = false;
     options.User.RequireUniqueEmail = true;
@@ -28,21 +29,32 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     .AddEntityFrameworkStores<NissDbContext>()
     .AddDefaultTokenProviders();
 
+// Configure authentication cookies
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.LogoutPath = "/Identity/Account/Logout";
-    options.ExpireTimeSpan = TimeSpan.FromSeconds(1800);
+    options.LoginPath = "/api/auth/login";
+    options.AccessDeniedPath = "/api/auth/accessdenied";
+    options.LogoutPath = "/api/auth/logout";
+    options.SlidingExpiration = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // Adjust as needed
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = 401; // Return 401 Unauthorized for APIs
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToAccessDenied = context =>
+    {
+        context.Response.StatusCode = 403; // Return 403 Forbidden for APIs
+        return Task.CompletedTask;
+    };
 });
 
+// Add custom repositories and other dependencies
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
-
-
-// Add MVC and Razor Pages
+// Add controllers and policy for authorization
 builder.Services.AddControllersWithViews(config =>
 {
     var policy = new AuthorizationPolicyBuilder()
@@ -51,18 +63,46 @@ builder.Services.AddControllersWithViews(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 
-
-
 // Add CORS for React integration
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy", 
-        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-    });
+    options.AddPolicy("CorsPolicy", builder =>
+        builder.AllowAnyOrigin() // Consider restricting this in production
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+});
 
 // Add Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// builder.Services.AddSwaggerGen(options =>
+// {
+//     options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+//     {
+//         Name = "Authorization",
+//         Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+//         Scheme = "Bearer",
+//         BearerFormat = "JWT",
+//         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+//         Description = "Enter 'Bearer' followed by a space and your token."
+//     });
+
+//     options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+//     {
+//         {
+//             new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+//             {
+//                 Reference = new Microsoft.OpenApi.Models.OpenApiReference
+//                 {
+//                     Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+//                     Id = "Bearer"
+//                 }
+//             },
+//             Array.Empty<string>()
+//         }
+//     });
+// });
+
 
 // Set up Serilog logging
 var loggerConfiguration = new LoggerConfiguration()
@@ -70,6 +110,7 @@ var loggerConfiguration = new LoggerConfiguration()
     .WriteTo.File($"Logs/app_{DateTime.Now:yyyyMMdd_HHmmss}.log");
 
 var logger = loggerConfiguration.CreateLogger();
+builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
 var app = builder.Build();
@@ -77,18 +118,24 @@ var app = builder.Build();
 // Configure middleware
 if (app.Environment.IsDevelopment())
 {
-    DBInit.Seed(app); // Seed data in development
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage();
+    DBInit.Seed(app); // Seed data in development
 }
 
 app.UseStaticFiles();
 app.UseRouting();
-app.UseCors("CorsPolicy"); // Enable CORS
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseCors("CorsPolicy");
+app.UseAuthentication(); // Enable ASP.NET Identity authentication
+app.UseAuthorization(); // Enable authorization
 
-app.MapControllerRoute(name:"api", pattern: "{controller}/{action=index}/{id?}");
+
+
+// Map routes
+app.MapControllers(); // Attribute-based API routes
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

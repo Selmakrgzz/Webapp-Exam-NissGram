@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\api.csproj": {}
+    "c:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj": {}
   },
   "projects": {
-    "c:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\api.csproj": {
+    "c:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\api.csproj",
+        "projectUniqueName": "c:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\obj\\",
+        "projectPath": "c:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
+        "packagesPath": "C:\\Users\\Sina\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Sina\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

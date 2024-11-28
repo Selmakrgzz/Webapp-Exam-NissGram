@@ -1,0 +1,90 @@
+2024-11-28 13:39:42.260 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2024-11-28 13:39:42.922 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS "a")
+2024-11-28 13:39:43.639 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Nico123'
+LIMIT 1
+2024-11-28 13:39:43.852 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JaneDoe'
+LIMIT 1
+2024-11-28 13:39:43.859 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JohnSmith'
+LIMIT 1
+2024-11-28 13:39:43.867 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Bom93'
+LIMIT 1
+2024-11-28 13:39:43.874 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'koko_223'
+LIMIT 1
+2024-11-28 13:39:43.897 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'geir_er_kul'
+LIMIT 1
+2024-11-28 13:39:43.943 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'tina_betina12'
+LIMIT 1
+2024-11-28 13:39:43.958 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Posts" AS "p")
+2024-11-28 13:39:43.966 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Comments" AS "c")
+2024-11-28 13:39:44.580 +01:00 [INF] User profile is available. Using 'C:\Users\Sina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-28 13:39:45.028 +01:00 [INF] Now listening on: http://localhost:5024
+2024-11-28 13:39:45.062 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-28 13:39:45.066 +01:00 [INF] Hosting environment: Development
+2024-11-28 13:39:45.067 +01:00 [INF] Content root path: C:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api
+2024-11-28 13:39:46.570 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 13:39:46.864 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 318.0729ms
+2024-11-28 13:39:47.941 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 13:39:48.353 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 413.364ms
+2024-11-28 13:40:03.954 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - null null
+2024-11-28 13:40:04.056 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 13:40:04.059 +01:00 [INF] Executing endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 13:40:04.126 +01:00 [INF] Route matched with {action = "Index", controller = "HomeAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NissGram.Controllers.HomeAPIController (api).
+2024-11-28 13:40:04.135 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 13:40:04.137 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 13:40:04.140 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 13:40:04.144 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 13:40:04.149 +01:00 [INF] Executed action NissGram.Controllers.HomeAPIController.Index (api) in 18.5862ms
+2024-11-28 13:40:04.149 +01:00 [INF] Executed endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 13:40:04.150 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - 302 0 null 201.2563ms
+2024-11-28 13:40:04.154 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/auth/login?ReturnUrl=%2Fapi%2FHomeAPI%2Findex - null null
+2024-11-28 13:40:04.174 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 13:40:04.175 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/auth/login?ReturnUrl=%2Fapi%2FHomeAPI%2Findex - 404 0 null 21.2086ms
+2024-11-28 13:40:04.176 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/api/auth/login, Response status code: 404
+2024-11-28 13:40:36.508 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/PostAPI/tests - null null
+2024-11-28 13:40:36.564 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 13:40:36.564 +01:00 [INF] Executing endpoint 'NissGram.Controllers.PostAPIController.tests (api)'
+2024-11-28 13:40:36.570 +01:00 [INF] Route matched with {action = "tests", controller = "PostAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] tests() on controller NissGram.Controllers.PostAPIController (api).
+2024-11-28 13:40:36.573 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 13:40:36.573 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 13:40:36.573 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 13:40:36.574 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 13:40:36.574 +01:00 [INF] Executed action NissGram.Controllers.PostAPIController.tests (api) in 3.3987ms
+2024-11-28 13:40:36.574 +01:00 [INF] Executed endpoint 'NissGram.Controllers.PostAPIController.tests (api)'
+2024-11-28 13:40:36.574 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/PostAPI/tests - 302 0 null 66.7673ms
+2024-11-28 13:40:36.578 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/auth/login?ReturnUrl=%2Fapi%2FPostAPI%2Ftests - null null
+2024-11-28 13:40:36.579 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 13:40:36.580 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/auth/login?ReturnUrl=%2Fapi%2FPostAPI%2Ftests - 404 0 null 1.3832ms
+2024-11-28 13:40:36.580 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5024/api/auth/login, Response status code: 404

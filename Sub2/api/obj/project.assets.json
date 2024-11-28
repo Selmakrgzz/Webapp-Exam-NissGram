@@ -7575,19 +7575,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nicol\\.nuget\\packages\\": {}
+    "C:\\Users\\Sina\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\api.csproj",
+      "projectUniqueName": "C:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nicol\\OneDrive\\Skrivebord\\Webapp\\Sub2\\api\\obj\\",
+      "projectPath": "C:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
+      "packagesPath": "C:\\Users\\Sina\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sina\\Documents\\webapp\\Webapp-Exam-NissGram\\Sub2\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Sina\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

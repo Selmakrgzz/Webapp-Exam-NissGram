@@ -21,7 +21,7 @@ public class HomeAPIController : Controller
         _postRepository = postRepository;
     }
 
-    [HttpGet("Index")]
+    [HttpGet("index")]
     public async Task<IActionResult> Index()
     {
         var posts = await _postRepository.GetAllPostsAsync();
@@ -30,8 +30,8 @@ public class HomeAPIController : Controller
             _logger.LogError("[HomeController] Post list not found while executing _itemRepository.GetAllPostsAsync()");
             return NotFound("Item list not found");
         }
-        var viewModel = new PostsViewModel(posts, "All Posts");
-        return View(viewModel);
+        //var viewModel = new PostsViewModel(posts, "All Posts");
+        return Ok(posts);
     }
 
  
