@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NissGram.Models;
 
-namespace NissGram.DAL;
+namespace NissGram.DAL.Repositories;
 public class CommentRepository : ICommentRepository
 {
     private readonly NissDbContext _db;

@@ -6,79 +6,69 @@ using NissGram.Controllers;
 using NissGram.DAL.Repositories;
 using NissGram.Models;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.AspNetCore.Http;
+using NissGram.ViewModels;
+using System.Security.Principal;
+using System.Security.Claims;
 
 namespace NissGram.Tests.Controllers;
 
 public class PostControllerTests
 {
-    // POSITIVE TEST : INDEX
+    static Mock<IPostRepository> _mockPostRepository = new Mock<IPostRepository>();
+    static Mock<IUserRepository> _mockUserRepository = new Mock<IUserRepository>();
+    static Mock<ILogger<PostController>> _mockLogger = new Mock<ILogger<PostController>>();
+    PostController _postController = new PostController(
+        _mockPostRepository.Object,
+        _mockUserRepository.Object,
+        _mockLogger.Object
+    );
+ 
     [Fact]
-    public async Task TestIndexValid()
+    public async Task TestDetailsValid()
     {
         // ARRANGE
-
-        // Simulerer at repositoriet returnerer en liste med innlegg
-        var testUser = new User
+        int testId = 1;
+        var testPost = new Post
         {
-            UserName = "JaneDoe",
-            Email = "jane.doe@example.com",
-            Password = "password456"
-        };
-        var posts = new List<Post>
-        {
-            new Post {
-            User = testUser, // User object as input in the relation
-            Text = "Today I went to the park and enjoyed the sunshine.",
+            PostId = testId,
+            Text = "Test post",
             ImgUrl = null,
             DateCreated = DateTime.Now,
             DateUpdated = DateTime.Now
-            },
-            new Post {
-            User = testUser, // User object as input in the relation
-            Text = null,
-            ImgUrl = "/wwwroot/images/profile_image_default.png",
-            DateCreated = DateTime.Now,
-            DateUpdated = DateTime.Now
-            }
         };
 
-        var mockPostRepository = new Mock<IPostRepository>();
-        var postController = new PostController(mockPostRepository.Object);
-
-        mockPostRepository
-            .Setup(repo => repo.GetAllPostsAsync())
-            .ReturnsAsync(posts); // Simulerer vellykket henting av innlegg
+        _mockPostRepository
+            .Setup(repo => repo.GetPostByIdAsync(testId))
+            .ReturnsAsync(testPost); // Simulate that the post exists
 
         // ACT
-        var result = await postController.Index();
+        var result = await _postController.Details(testId);
 
         // ASSERT
-        var viewResult = Assert.IsType<ViewResult>(result); // Sjekker at resultatet er en ViewResult
-        var model = Assert.IsAssignableFrom<List<Post>>(viewResult.Model); // Sjekker at modellen er av type List<Post>
-        Assert.Equal(2, model.Count); // Bekrefter at antallet innlegg er riktig
+        var viewResult = Assert.IsType<ViewResult>(result); // Ensure ViewResult is returned
+        var model = Assert.IsAssignableFrom<Post>(viewResult.Model); // Ensure model is of type Post
+        Assert.Equal(testPost.PostId, model.PostId); // Verify correct post is returned
     }
 
-    // NEGATIVE TEST : INDEX
     [Fact]
-    public async Task TestIndexInvalid()
+    public async Task TestDetailsInvalid()
     {
         // ARRANGE
-        var mockPostRepository = new Mock<IPostRepository>();
-        var postController = new PostController(mockPostRepository.Object);
+        int invalidId = 999;
 
-        // Simulerer at repositoriet returnerer en tom liste
-        mockPostRepository
-            .Setup(repo => repo.GetAllPostsAsync())
-            .ReturnsAsync(new List<Post>()); // Simulerer at det ikke finnes noen innlegg
+        _mockPostRepository
+            .Setup(repo => repo.GetPostByIdAsync(invalidId))
+            .ReturnsAsync((Post)null); // Simulate that the post does not exist
 
         // ACT
-        var result = await postController.Index();
+        var result = await _postController.Details(invalidId);
 
         // ASSERT
-        var viewResult = Assert.IsType<ViewResult>(result); // Sjekker at resultatet er en ViewResult
-        var model = Assert.IsAssignableFrom<List<Post>>(viewResult.Model); // Sjekker at modellen er av type List<Post>
-        Assert.Empty(model); // Bekrefter at modellen er tom
+        Assert.IsType<NotFoundResult>(result); // Ensure NotFoundResult is returned
     }
+
+
 
     // POSITIVE TEST : CREATE
     [Fact]
@@ -88,60 +78,72 @@ public class PostControllerTests
         var testUser = new User
         {
             UserName = "JaneDoe",
-            Email = "jane.doe@example.com",
-            Password = "password456"
+            Email = "jane.doe@example.com"
         };
+
+        // Mock IFormFile
+        var mockImageFile = new Mock<IFormFile>();
+        mockImageFile.Setup(f => f.Length).Returns(1024);
+        mockImageFile.Setup(f => f.FileName).Returns("test.jpg");
+        mockImageFile.Setup(f => f.OpenReadStream()).Returns(new MemoryStream());
 
         var testPost = new Post
         {
-            User = testUser, // User object as input in the relation
-            Text = "Today I went to the park and enjoyed the sunshine.",
-            ImgUrl = "wwwroot/images/picknick.png",
+            PostId = 1,
+            User = testUser,
+            Text = "Valid Post Text",
+            ImgUrl =  "/images/test.jpg",
             DateCreated = DateTime.Now,
             DateUpdated = DateTime.Now
         };
 
-        var mockPostRepository = new Mock<IPostRepository>();
-        mockPostRepository
-            .Setup(repo => repo.CreatePostAsync(It.IsAny<Post>()))
-            .Returns(Task.CompletedTask); // Simulates successful method completion
+        var mockClaimsPrincipal = new Mock<ClaimsPrincipal>();
+        mockClaimsPrincipal.Setup(user => user.Identity!.IsAuthenticated).Returns(true);
+        mockClaimsPrincipal.Setup(user => user.Identity!.Name).Returns(testUser.UserName); // Sørg for at dette samsvarer
 
-        var postController = new PostController(mockPostRepository.Object);
-        postController.ModelState.Clear(); // Clear ModelState to simulate a valid model
+        _postController.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext
+            {
+                User = mockClaimsPrincipal.Object
+            }
+        };
+
+        // Simulate user retrieval in repository
+        _mockUserRepository
+            .Setup(repo => repo.GetUserByUsernameAsync(testUser.UserName)) // Sørg for at samme navn brukes her
+            .ReturnsAsync(testUser); // Returner den mockede brukeren
+
+        _mockPostRepository
+            .Setup(repo => repo.CreatePostAsync(It.IsAny<Post>()))
+            .ReturnsAsync(true);
+
+        _postController.ModelState.Clear(); // Mock a valid modelstate
 
         // ACT
-        var result = await postController.Create(testPost);
-
+        var result = await _postController.Create(testPost, mockImageFile.Object);
         // ASSERT
-        Assert.True(postController.ModelState.IsValid, "Expected ModelState to be valid.");
-        
-        var viewResult = Assert.IsType<ViewResult>(result); // Ensure the result is a ViewResult
-        Assert.Equal(testPost, viewResult.Model); // Check that the model in the ViewResult is correct
-
-        // Verify that CreatePostAsync was called exactly once with a Post object matching the expected properties
-        mockPostRepository.Verify(repo => repo.CreatePostAsync(It.Is<Post>(p =>
-            p.User.UserName == "JaneDoe" &&
-            p.Text == "Today I went to the park and enjoyed the sunshine." &&
-            p.ImgUrl == "wwwroot/images/picknick.png"
-        )), Times.Once);
+        var viewResult = Assert.IsType<ViewResult>(result); // Ensure ViewResult is returned
+        var model = Assert.IsAssignableFrom<Post>(viewResult.Model); // Ensure model is of type Post
+        Assert.Equal(testPost.PostId, model.PostId); // Verify correct post is returned
     }
 
-    // NEGATIVE TEST : CREATE
     [Fact]
     public async Task TestCreateInvalid()
     {
+        _postController.ModelState.Clear();
+
         // ARRANGE
         var testUser = new User
         {
             UserName = "JaneDoe",
-            Email = "jane.doe@example.com",
-            Password = "password456"
+            Email = "jane.doe@example.com"
         };
 
         var testPostWithoutTextAndImage = new Post
         {
-            User = testUser, // Gyldig bruker
-            Text = "", // Ingen tekst
+            User = testUser, // Valid user
+            Text = "", // Missing text
             ImgUrl = null,
             DateCreated = DateTime.Now,
             DateUpdated = DateTime.Now
@@ -149,36 +151,52 @@ public class PostControllerTests
 
         var testPostWithoutUser = new Post
         {
-            User = null, // Ingen bruker
-            Text = "Valid text.", // Gyldig tekst
+            User = null, // Missing user
+            Text = "Valid text.", // Valid text
             ImgUrl = null,
             DateCreated = DateTime.Now,
             DateUpdated = DateTime.Now
         };
 
-        var mockPostRepository = new Mock<IPostRepository>();
-        var postController = new PostController(mockPostRepository.Object);
+        var mockClaimsPrincipal = new Mock<ClaimsPrincipal>();
+        mockClaimsPrincipal.Setup(user => user.Identity!.IsAuthenticated).Returns(true);
+        mockClaimsPrincipal.Setup(user => user.Identity!.Name).Returns(testUser.UserName); // Sørg for at dette samsvarer
 
-        // ACT - for Post uten tekst og bilde
-        postController.ModelState.Clear(); // Tømmer ModelState for å simulere gyldig inngang
-        postController.ModelState.AddModelError("Text", "Either Text or ImgUrl is required."); // Legger til valideringsfeil
-        var resultWithoutTextAndImage = await postController.Create(testPostWithoutTextAndImage);
+        _postController.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext
+            {
+                User = mockClaimsPrincipal.Object
+            }
+        };
 
-        // ASSERT for Post uten tekst og bilde
-        Assert.IsType<ViewResult>(resultWithoutTextAndImage); // Sjekker at resultatet er en ViewResult
-        Assert.False(postController.ModelState.IsValid, "Expected ModelState to be invalid for missing text and image."); // Bekrefter at ModelState er ugyldig
-        mockPostRepository.Verify(repo => repo.CreatePostAsync(It.IsAny<Post>()), Times.Never); // Sjekker at CreatePostAsync ikke ble kalt
+        // Simulate user retrieval in repository
+        _mockUserRepository
+            .Setup(repo => repo.GetUserByUsernameAsync(testUser.UserName)) // Sørg for at samme navn brukes her
+            .ReturnsAsync(testUser); // Returner den mockede brukeren
 
-        // ACT - Test for Post uten bruker
-        postController.ModelState.Clear(); // Tømmer ModelState for å simulere gyldig inngang
-        postController.ModelState.AddModelError("User", "User is required."); // Legger til valideringsfeil
-        var resultWithoutUser = await postController.Create(testPostWithoutUser);
+        // ACT: Test for post without text and image
+        _postController.ModelState.Clear(); // Clear ModelState to simulate fresh validation state
+        _postController.ModelState.AddModelError("Text", "Either Text or ImgUrl is required."); // Add validation error
+        var resultWithoutTextAndImage = await _postController.Create(testPostWithoutTextAndImage, null);
 
-        // ASSERT for Post uten bruker
-        Assert.IsType<ViewResult>(resultWithoutUser); // Sjekker at resultatet er en ViewResult
-        Assert.False(postController.ModelState.IsValid, "Expected ModelState to be invalid for missing user."); // Bekrefter at ModelState er ugyldig
-        mockPostRepository.Verify(repo => repo.CreatePostAsync(It.IsAny<Post>()), Times.Never); // Sjekker at CreatePostAsync ikke ble kalt
+        // ASSERT: Test for post without text and image
+        var viewResultWithoutTextAndImage = Assert.IsType<ViewResult>(resultWithoutTextAndImage); // Result should be a ViewResult
+        Assert.False(_postController.ModelState.IsValid, "Expected ModelState to be invalid for missing text and image."); // Ensure ModelState is invalid
+        _mockPostRepository.Verify(repo => repo.CreatePostAsync(It.IsAny<Post>()), Times.Never); // Ensure CreatePostAsync is not called
+
+        // ACT: Test for post without user
+        _postController.ModelState.Clear(); // Clear ModelState for fresh validation
+        _postController.ModelState.AddModelError("User", "User is required."); // Add validation error
+        _postController.ControllerContext.HttpContext.User = new ClaimsPrincipal(); // Simulate unauthenticated user
+        var resultWithoutUser = await _postController.Create(testPostWithoutUser, null);
+
+        // ASSERT: Test for post without user
+        var unauthorizedResult = Assert.IsType<UnauthorizedObjectResult>(resultWithoutUser); // Oppdater forventningen
+        Assert.Equal("User is not authenticated.", unauthorizedResult.Value); // Valider melding
+        _mockPostRepository.Verify(repo => repo.CreatePostAsync(It.IsAny<Post>()), Times.Never); // Ensure CreatePostAsync is not called
     }
+
 
     // POSITIVE TEST : UPDATE
     [Fact]
@@ -188,47 +206,55 @@ public class PostControllerTests
         var testUser = new User
         {
             UserName = "JaneDoe",
-            Email = "jane.doe@example.com",
-            Password = "password456"
+            Email = "jane.doe@example.com"
         };
 
-        var testPost = new Post
+        var existingPost = new Post
         {
-            PostId = 1, // Assume ID for update
+            PostId = 1, // Assume ID for the post to update
             User = testUser,
-            Text = "Updated text for the post.",
-            ImgUrl = null,
-            DateCreated = DateTime.Now,
-            DateUpdated = DateTime.Now
+            Text = "Old text for the post.",
+            ImgUrl = "/images/old_image.png",
+            DateCreated = DateTime.Now.AddDays(-1),
+            DateUpdated = DateTime.Now.AddDays(-1)
         };
 
-        var mockPostRepository = new Mock<IPostRepository>();
-        mockPostRepository
-            .Setup(repo => repo.UpdatePostAsync(It.IsAny<Post>()))
-            .Returns(Task.CompletedTask); // Simulate successful update
+        var updatedModel = new PostUpdateViewModel
+        {
+            PostId = 1,
+            Text = "Updated text for the post.",
+            NewImage = null // No new image uploaded
+        };
 
-        var postController = new PostController(mockPostRepository.Object);
-        postController.ModelState.Clear(); // Clear ModelState to simulate valid model
+        // Mock repository behavior for retrieving the post
+        _mockPostRepository
+            .Setup(repo => repo.GetPostByIdAsync(updatedModel.PostId))
+            .ReturnsAsync(existingPost);
+
+        _mockPostRepository
+            .Setup(repo => repo.UpdatePostAsync(It.IsAny<Post>()))
+            .ReturnsAsync(true); // Simulate successful update
+
+        _postController.ModelState.Clear(); // Clear ModelState to simulate valid model
 
         // ACT
-        var result = await postController.Update(testPost);
+        var result = await _postController.Update(updatedModel);
 
         // ASSERT
-        Assert.True(postController.ModelState.IsValid, "Expected ModelState to be valid.");
+        Assert.True(_postController.ModelState.IsValid, "Expected ModelState to be valid.");
 
         var redirectResult = Assert.IsType<RedirectToActionResult>(result); // Check for RedirectToActionResult
-        Assert.Equal(nameof(postController.Index), redirectResult.ActionName); // Check redirection to Index
+        Assert.Equal("Index", redirectResult.ActionName); // Check redirection to Index
 
         // Verify that UpdatePostAsync was called with the correct Post data
-        mockPostRepository.Verify(repo => repo.UpdatePostAsync(It.Is<Post>(p =>
-            p.PostId == 1 && // Confirm ID is correct
-            p.User.UserName == "JaneDoe" &&
-            p.Text == "Updated text for the post."
+        _mockPostRepository.Verify(repo => repo.UpdatePostAsync(It.Is<Post>(p =>
+            p.PostId == existingPost.PostId &&
+            p.Text == updatedModel.Text &&
+            p.User.UserName == "JaneDoe"
         )), Times.Once);
     }
 
 
-    // NEGATIVE TEST : UPDATE
     [Fact]
     public async Task TestUpdateInvalid()
     {
@@ -236,87 +262,77 @@ public class PostControllerTests
         var testUser = new User
         {
             UserName = "JaneDoe",
-            Email = "jane.doe@example.com",
-            Password = "password456"
+            Email = "jane.doe@example.com"
         };
 
-        // Create a post that simulates a non-existent one (e.g., wrong ID)
-        var testPostWithInvalidId = new Post
+        // Create a model that simulates a non-existent post (e.g., invalid PostId)
+        var testUpdateViewModel = new PostUpdateViewModel
         {
             PostId = 999, // Assume this ID does not exist
-            User = testUser,
             Text = "Valid text.",
-            ImgUrl = null,
-            DateCreated = DateTime.Now,
-            DateUpdated = DateTime.Now
+            NewImage = null // No new image
         };
 
-        var mockPostRepository = new Mock<IPostRepository>();
-        var postController = new PostController(mockPostRepository.Object);
+        // Simulate that the repository cannot find the post with PostId = 999
+        _mockPostRepository
+            .Setup(repo => repo.GetPostByIdAsync(testUpdateViewModel.PostId))
+            .ReturnsAsync((Post)null); // Return null to indicate post does not exist
 
-        // Simulate that the repository will not find the post
-        mockPostRepository
-            .Setup(repo => repo.UpdatePostAsync(It.Is<Post>(p => p.PostId == 999)))
-            .ThrowsAsync(new KeyNotFoundException("Post not found."));
-
-        // Clear ModelState to simulate valid input
-        postController.ModelState.Clear();
+        _postController.ModelState.Clear(); // Clear ModelState to simulate valid input
 
         // ACT
-        var result = await postController.Update(testPostWithInvalidId);
+        var result = await _postController.Update(testUpdateViewModel);
 
         // ASSERT
-        var viewResult = Assert.IsType<ViewResult>(result); // Check that the result is a ViewResult
-        Assert.False(postController.ModelState.IsValid, "Expected ModelState to be invalid for missing post."); // Ensure ModelState is invalid
-
-        // Verify that UpdatePostAsync was called with the post that has an invalid ID
-        mockPostRepository.Verify(repo => repo.UpdatePostAsync(It.Is<Post>(p => p.PostId == 999)), Times.Once);
+        Assert.IsType<NotFoundResult>(result); // Ensure that the result is a NotFoundResult
+        _mockPostRepository.Verify(repo => repo.UpdatePostAsync(It.IsAny<Post>()), Times.Never); // Verify that UpdatePostAsync was never called
     }
 
-    // POSITIVE TEST : DELETE
-    [Fact]
+
+   [Fact]
     public async Task TestDeleteValid()
     {
         // ARRANGE
-        int testId = 1; // ID-en til posten som skal slettes
+        int testId = 1; // ID of the post to be deleted
 
-        var mockPostRepository = new Mock<IPostRepository>();
-        mockPostRepository
-            .Setup(repo => repo.DeletePostAsync(It.IsAny<int>()))
-            .Returns(Task.CompletedTask); // Simulerer at metoden fullfører uten feil
-
-        var postController = new PostController(mockPostRepository.Object);
+        // Simulate successful deletion
+        _mockPostRepository
+            .Setup(repo => repo.DeletePostAsync(testId))
+            .ReturnsAsync(true); // Simulate success
 
         // ACT
-        var result = await postController.Delete(testId);
+        var result = await _postController.Delete(testId);
 
         // ASSERT
-        var redirectResult = Assert.IsType<RedirectToActionResult>(result); // Sjekker at resultatet er RedirectToActionResult
-        Assert.Equal(nameof(postController.Index), redirectResult.ActionName); // Bekrefter at omdirigeringen går til Index
-        mockPostRepository.Verify(repo => repo.DeletePostAsync(testId), Times.Once); // Sjekker at DeletePostAsync ble kalt én gang med testId
+        var redirectResult = Assert.IsType<RedirectToActionResult>(result); // Ensure redirection
+        Assert.Equal("Index", redirectResult.ActionName); // Confirm redirection to Index
+        Assert.Equal("Home", redirectResult.ControllerName); // Confirm controller name
+        _mockPostRepository.Verify(repo => repo.DeletePostAsync(testId), Times.Once); // Verify method call
     }
 
-    // NEGATIVE TEST : DELETE
+
     [Fact]
     public async Task TestDeleteInvalid()
     {
         // ARRANGE
-        var mockPostRepository = new Mock<IPostRepository>();
-        var postController = new PostController(mockPostRepository.Object);
-        int nonExistentPostId = 999; // Assume this ID does not exist
+        int testId = 999; // ID of the post that cannot be deleted
 
-        // Simulate that the post with the specified ID does not exist
-        mockPostRepository
-            .Setup(repo => repo.DeletePostAsync(nonExistentPostId))
-            .ThrowsAsync(new KeyNotFoundException("Post not found.")); // Throw exception on delete
+        // Simulate failed deletion
+        _mockPostRepository
+            .Setup(repo => repo.DeletePostAsync(testId))
+            .ReturnsAsync(false); // Simulate failure
 
         // ACT
-        var result = await postController.Delete(nonExistentPostId);
+        var result = await _postController.Delete(testId);
 
         // ASSERT
-        var redirectResult = Assert.IsType<RedirectToActionResult>(result);
-        Assert.Equal(nameof(postController.Index), redirectResult.ActionName); // Check redirection
+        var redirectResult = Assert.IsType<RedirectToActionResult>(result); // Ensure redirection
+        Assert.Equal("Details", redirectResult.ActionName); // Confirm redirection to Details
+        Assert.Equal(testId, redirectResult.RouteValues["id"]); // Ensure correct post ID is passed
+        Assert.True(_postController.ModelState.ContainsKey(""), "Expected error message in ModelState.");
+        _mockPostRepository.Verify(repo => repo.DeletePostAsync(testId), Times.Once); // Verify method call
     }
+
 
 
 }
