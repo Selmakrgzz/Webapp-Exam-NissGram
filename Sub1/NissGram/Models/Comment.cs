@@ -10,6 +10,9 @@ public class Comment
     public virtual Post Post { get; set; } = default!;
     public virtual User User { get; set; } = default!;
 
+    public string UserId { get; set; } = default!; // Fremmednøkkel til User
+
+
     [Required(ErrorMessage = "Comment text is required.")]
     [StringLength(500, ErrorMessage = "Comment text cannot exceed 500 characters.")]
     public required string Text { get; set; }

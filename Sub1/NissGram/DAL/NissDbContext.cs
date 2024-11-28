@@ -40,5 +40,6 @@ public class NissDbContext : IdentityDbContext<User>
             .HasOne(upl => upl.Post)
             .WithMany(p => p.UserLikes)
             .HasForeignKey(upl => upl.PostId);
+
     }
 }

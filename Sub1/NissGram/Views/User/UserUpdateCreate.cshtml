@@ -50,7 +50,7 @@
         <!-- Email -->
         <div class="mb-3">
             <label asp-for="Email" class="form-label fs-5 fw-bold"></label><span class="text-danger">*</span>
-            <input asp-for="Email" class="form-control" />
+            <input asp-for="Email" class="form-control" readonly/>
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
@@ -117,7 +117,7 @@
                 </div>
                 <div class="modal-footer">
                     <!-- Form for deleting account -->
-                    <form asp-action="DeleteAccount" method="post" class="d-inline">
+                    <form asp-action="DeleteUser" method="post" class="d-inline">
                         @Html.AntiForgeryToken()
                         <button type="submit" class="btn btn-danger confirm-delete-button">Yes, Delete</button>
                     </form>

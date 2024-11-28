@@ -36,11 +36,13 @@ public class User : IdentityUser
     public string? About { get; set; }  // Added this - db?
 
     //Posts created by the user
-    public virtual ICollection<Post>? Posts { get; set; }
+    public virtual ICollection<Post>? Posts { get; set; } = new List<Post>();
 
     //Likes made by the user to use under activity
     public virtual ICollection<UserPostLike> LikedPosts { get; set; } = new List<UserPostLike>();
 
+    // Relasjon til kommentarer
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 }
 
 /* The strings and classes must be declared with default values ( = string.Empty or

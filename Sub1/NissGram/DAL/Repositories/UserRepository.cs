@@ -100,26 +100,76 @@ public class UserRepository : IUserRepository
     }
 
 
-    public async Task<bool> DeleteUserByUsernameAsync(string username)
-    {
-        try
-        {
-            var user = await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
-            if (user == null)
-            {
-                _logger.LogWarning("[UserRepository] User with username {Username} was not found and could not be deleted.", username);
-                return false;
+    // public async Task<bool> DeleteUserByUsernameAsync(string username)
+    // {
+    //     try
+    //     {
+    //         var user = await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+    //         if (user == null)
+    //         {
+    //             _logger.LogWarning("[UserRepository] User with username {Username} was not found and could not be deleted.", username);
+    //             return false;
 
-            }
-            _db.Users.Remove(user);
-            await _db.SaveChangesAsync();
-            return true;
-        }
-        catch (Exception ex)
+    //         }
+
+    //         // Delete related posts
+    //         _db.Posts.RemoveRange(user.Posts);
+
+    //         // Delete related likes
+    //         _db.UserPostLikes.RemoveRange(user.LikedPosts);
+
+    //         _db.Users.Remove(user);
+    //         await _db.SaveChangesAsync();
+    //         return true;
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         _logger.LogError("[UserRepository] An error occurred while trying to delete user with username {Username}. Exception: {e}", username, ex.Message);
+    //         return false;
+    //     }
+    // }
+
+    public async Task<bool> DeleteUserByUsernameAsync(string username)
+{
+    try
+    {
+         var user = await _db.Users
+            .Include(u => u.Comments) // Inkluder kommentarer
+            .Include(u => u.Posts) // Inkluder innlegg
+            .FirstOrDefaultAsync(u => u.UserName == username);
+
+        if (user == null)
         {
-            _logger.LogError("[UserRepository] An error occurred while trying to delete user with username {Username}. Exception: {e}", username, ex.Message);
+            _logger.LogWarning("[UserRepository] User with username {Username} was not found and could not be deleted.", username);
             return false;
         }
+
+        // Slett relaterte kommentarer
+        if (user.Comments != null && user.Comments.Any())
+        {
+            _db.Comments.RemoveRange(user.Comments);
+        }
+
+        // Slett relaterte innlegg
+        if (user.Posts != null && user.Posts.Any())
+        {
+            _db.Posts.RemoveRange(user.Posts);
+        }
+
+        // Brukerens kommentarer blir slettet automatisk på grunn av "cascade delete"
+        _db.Users.Remove(user);
+
+        // Log message to terminal
+        Console.WriteLine($"[UserRepository] User with username '{username}' has been successfully deleted.");
+        await _db.SaveChangesAsync();
+        return true;
     }
+    catch (Exception ex)
+    {
+        _logger.LogError("[UserRepository] An error occurred while trying to delete user with username {Username}. Exception: {e}", username, ex.Message);
+        return false;
+    }
+}
+
 }
 
