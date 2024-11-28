@@ -1,0 +1,125 @@
+using Microsoft.EntityFrameworkCore;
+using NissGram.Models;
+
+namespace NissGram.DAL;
+public class UserRepository : IUserRepository
+{
+    private readonly NissDbContext _db;
+    private readonly ILogger<UserRepository> _logger;
+
+    public UserRepository(NissDbContext db, ILogger<UserRepository> logger)
+    {
+        _db = db;
+        _logger = logger;
+    }
+
+    public async Task<IEnumerable<User>?> GetAllUsersAsync()
+    {
+        try
+        {
+            return await _db.Users.ToListAsync();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[UserRepository] users ToListAsync() failed when GetAllUsersAsync(), error message: {e}", e.Message);
+            return null;
+        }
+    }
+
+    public async Task<User?> GetUserByIdAsync(int id)
+    {
+        try
+        {
+            return await _db.Users.FindAsync(id);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[UserRepository] user FindAsync(id) failed for UserId {UserId:0000}, error message: {e}", id, e.Message);
+            return null;
+        }
+
+    }
+
+    public async Task<User?> GetUserByUsernameAsync(string username)
+    {
+        try
+        {
+            return await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("[UserRepository] Error fetching user by username: {Username}, error: {Error}", username, e.Message);
+            return null;
+        }
+    }
+
+
+    public async Task<bool> CreateUserAsync(User user)
+    {
+        if (user == null)
+        {
+            _logger.LogWarning("[UserRepository] Attempted to create a null user. User: {user}", user);
+            return false;
+        }
+
+        try
+        {
+            await _db.Users.AddAsync(user);
+            await _db.SaveChangesAsync();
+            _logger.LogInformation("[UserRepository] User with username {Username} was successfully created.", user.UserName);
+            return true; // Success
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("[UserRepository] An error occurred while creating user with username {Username}. Exception: {ex}", user.UserName, ex.Message);
+            return false;
+        }
+    }
+
+    public async Task<bool> UpdateUserAsync(User user)
+    {
+        if (user == null)
+        {
+            _logger.LogWarning("[UserRepository] Attempted to create a null user. User: {user}", user);
+            return false;
+        }
+
+        try
+        {
+            var existingUser = await _db.Users.FindAsync(user.Id);
+
+            _db.Users.Update(user);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[UserRepository] An error occurred while updating user with ID {UserId}.", user.Id);
+            return false;
+        }
+    }
+
+
+    public async Task<bool> DeleteUserByUsernameAsync(string username)
+    {
+        try
+        {
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+            if (user == null)
+            {
+                _logger.LogWarning("[UserRepository] User with username {Username} was not found and could not be deleted.", username);
+                return false;
+
+            }
+            _db.Users.Remove(user);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("[UserRepository] An error occurred while trying to delete user with username {Username}. Exception: {e}", username, ex.Message);
+            return false;
+        }
+    }
+}
+

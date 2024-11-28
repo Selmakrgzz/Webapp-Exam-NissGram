@@ -1,0 +1,7 @@
+Page-level components (e.g., routes)
+
+feks:
+pages/
+├── Home.tsx
+├── Profile.tsx
+└── Login.tsx
