@@ -207,8 +207,8 @@ public class PostAPIController : Controller
         }
     }
 
-    [HttpPost("like/{id}")]
-    public async Task<IActionResult> Like([FromBody] int postId)
+    [HttpPost("like/{postId}")]
+    public async Task<IActionResult> Like(int postId)
     {
         // Authenticate the user
         var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
