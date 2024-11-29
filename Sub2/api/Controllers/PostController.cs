@@ -42,7 +42,7 @@ public class PostAPIController : Controller
 
 
     [HttpPost("create")]
-    public async Task<IActionResult> Create([FromForm] CreatePostDto postDto, IFormFile? uploadImage)
+    public async Task<IActionResult> Create([FromForm] CreateUpdatePostDto postDto, IFormFile? uploadImage)
     {
         if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
         {
@@ -97,18 +97,17 @@ public class PostAPIController : Controller
             DateUpdated = DateTime.UtcNow
         };
 
-        var createdPostDto = MappingHelper.MapToPostDto(post);
         try
         {
-            bool success = await _postRepository.CreatePostAsync(post);
-            if (!success)
+            int postId = await _postRepository.CreatePostAsync(post);
+            if (postId == -1)
             {
                 _logger.LogError("[PostController] Failed to create a new post. Post data: {@Post}", post);
                 return StatusCode(500, new { error = "An unexpected error occurred while trying to create the post." });
             }
 
-            _logger.LogInformation("[PostController] Post created successfully. PostId: {PostId}", post.PostId);
-            return CreatedAtAction(nameof(Details), new { id = createdPostDto.PostId }, createdPostDto);
+            var createdPostDto = MappingHelper.MapToPostDto(post);
+            return CreatedAtAction(nameof(Details), new { id = postId }, createdPostDto);
 
         }
         catch (Exception ex)
@@ -131,6 +130,137 @@ public class PostAPIController : Controller
 
         return NoContent();
     }
+
+
+    [HttpPut("update/{id}")]
+    public async Task<IActionResult> Update(int id, [FromForm] CreateUpdatePostDto model, IFormFile? newImage)
+    {
+        // Fetch the existing post using the id from the route
+        var existingPost = await _postRepository.GetPostByIdAsync(id);
+        if (existingPost == null)
+        {
+            _logger.LogError("[PostAPIController] Post not found for id: {id}", id);
+            return NotFound(new { error = "Post not found." });
+        }
+
+        // Ensure the authenticated user owns the post
+        if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
+        {
+            return Unauthorized(new { error = "User is not authenticated." });
+        }
+
+        var currentUser = await _userRepository.GetUserByUsernameAsync(User.Identity.Name);
+        if (currentUser == null || existingPost.User.Id != currentUser.Id)
+        {
+            return Forbid();
+        }
+
+        // Update text if provided
+        if (!string.IsNullOrWhiteSpace(model.Text) && model.Text != existingPost.Text)
+        {
+            existingPost.Text = model.Text;
+        }
+
+        // Handle new image upload if provided
+        if (newImage != null && newImage.Length > 0)
+        {
+            var fileName = Guid.NewGuid() + Path.GetExtension(newImage.FileName);
+            var filePath = Path.Combine("wwwroot/images", fileName);
+
+            try
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await newImage.CopyToAsync(stream);
+                }
+
+                existingPost.ImgUrl = "/images/" + fileName;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while uploading image.");
+                return StatusCode(500, new { error = "An error occurred while uploading the image." });
+            }
+        }
+
+        // Update timestamp
+        existingPost.DateUpdated = DateTime.UtcNow;
+
+        // Save changes
+        try
+        {
+            var success = await _postRepository.UpdatePostAsync(existingPost);
+            if (!success)
+            {
+                return StatusCode(500, new { error = "Failed to update the post." });
+            }
+
+            // Map updated post to PostDto for response
+            var updatedPostDto = MappingHelper.MapToPostDto(existingPost);
+
+            return Ok(updatedPostDto); // Use Ok instead of CreatedAtAction for updates
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while updating the post.");
+            return StatusCode(500, new { error = "A system error occurred while updating the post." });
+        }
+    }
+
+    [HttpPost("like/{id}")]
+    public async Task<IActionResult> Like([FromBody] int postId)
+    {
+        // Authenticate the user
+        var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
+        if (user == null)
+        {
+            return Unauthorized(new { error = "User is not authenticated." });
+        }
+
+        // Retrieve the post
+        var post = await _postRepository.GetPostByIdAsync(postId);
+        if (post == null)
+        {
+            _logger.LogError("[PostController] Post not found with PostId: {PostId}", postId);
+            return NotFound(new { error = "Post not found." });
+        }
+
+        // Check if the user has already liked the post
+        var existingLike = post.UserLikes.FirstOrDefault(like => like.UserId == user.Id);
+
+        if (existingLike != null)
+        {
+            // If the user has already liked, remove the like
+            post.UserLikes.Remove(existingLike);
+        }
+        else
+        {
+            // If the user hasn't liked, add the like
+            post.UserLikes.Add(new UserPostLike
+            {
+                UserId = user.Id,
+                PostId = postId,
+            });
+        }
+
+        // Save the changes
+        var success = await _postRepository.UpdatePostAsync(post);
+
+        if (!success)
+        {
+            _logger.LogError("[PostController] Error updating like on PostId: {PostId}", postId);
+            return StatusCode(500, new { error = "An error occurred while updating the like status." });
+        }
+
+        // Return the updated like count and action performed
+        return Ok(new
+        {
+            message = existingLike != null ? "Like removed" : "Like added",
+            likeCount = post.UserLikes.Count
+        });
+    }
+
+
 }
 
 // public class PostController : Controller
@@ -164,112 +294,4 @@ public class PostAPIController : Controller
 //         return View("PostUpdateView", model); // Display the update form with existing data
 //     }
 
-//    [HttpPost]
-//     public async Task<IActionResult> Update(PostUpdateViewModel model)
-//     {
-//         if (!ModelState.IsValid)
-//         {
-//             return View("PostUpdateView", model); // Returner skjemaet hvis validering feiler
-//         }
-
-//         // Hent eksisterende post
-//         var existingPost = await _postRepository.GetPostByIdAsync(model.PostId);
-//         if (existingPost == null)
-//         {
-//             return NotFound();
-//         }
-
-//         // Oppdater tekst
-//         if (!string.IsNullOrWhiteSpace(model.Text) && model.Text != existingPost.Text)
-//         {
-//             existingPost.Text = model.Text;
-//         }
-
-//         // Håndter ny bildeopplasting
-//         if (model.NewImage != null && model.NewImage.Length > 0)
-//         {
-//             var fileName = Guid.NewGuid() + Path.GetExtension(model.NewImage.FileName);
-//             var filePath = Path.Combine("wwwroot/images", fileName);
-
-//             try
-//             {
-//                 using (var stream = new FileStream(filePath, FileMode.Create))
-//                 {
-//                     await model.NewImage.CopyToAsync(stream);
-//                 }
-
-//                 existingPost.ImgUrl = "/images/" + fileName;
-//             }
-//             catch (Exception ex)
-//             {
-//                 _logger.LogError(ex, "Error occurred while uploading image.");
-//                 ModelState.AddModelError("", "An error occurred while uploading the image.");
-//                 return View("PostUpdateView", model);
-//             }
-//         }
-
-//         // Oppdater tidsstempel
-//         existingPost.DateUpdated = DateTime.Now;
-
-//         // Lagre oppdateringen
-//         var success = await _postRepository.UpdatePostAsync(existingPost);
-//         if (success)
-//         {
-//             return RedirectToAction("Index", "Home"); // Redirect til hjemmesiden
-
-//         }
-
-//         ModelState.AddModelError("", "Failed to update the post.");
-//         return RedirectToAction(nameof(PostUpdateViewModel));
-//     }
-
-
-
-
-
-
-
-
-//     [HttpPost]
-//     public async Task<IActionResult> Like(int postId)
-//     {
-//         var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
-//         if (user == null) return Unauthorized();
-
-//         var post = await _postRepository.GetPostByIdAsync(postId);
-//         if (post == null)
-//         {
-//             _logger.LogError("[PostController] An error occurred while getting post with PostId: {PostId}", postId);
-//             return NotFound();
-//         }
-
-//         // Check if the user has already liked the post
-//         var existingLike = post.UserLikes.FirstOrDefault(like => like.UserId == user.Id);
-
-//         if (existingLike != null)
-//         {
-//             // If the user has already liked, remove the like
-//             post.UserLikes.Remove(existingLike);
-//         }
-//         else
-//         {
-//             // If the user hasn't liked, add the like
-//             post.UserLikes.Add(new UserPostLike
-//             {
-//                 UserId = user.Id,
-//                 PostId = postId,
-//             });
-//         }
-
-//         var success = await _postRepository.UpdatePostAsync(post);
-
-//         if (!success)
-//         {
-//             _logger.LogError("[PostController] An error occurred while updating like on post with PostId: {PostId}", postId);
-//             return StatusCode(500, "An error occurred while updating the like status.");
-//         }
-//         /// Redirect back to the specific post section
-//         return RedirectToAction(nameof(Index), "Home", new { section = $"post-{postId}" });
-//     }
-// }
 
