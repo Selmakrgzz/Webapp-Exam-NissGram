@@ -25,7 +25,7 @@ const RegisterPage: React.FC = () => {
             <img
               id="profileImage"
               src={DefaultProfilePicture} // Bruker logo som standardbilde
-              alt="Profile Picture Preview"
+              alt="Profile Preview"
               style={{
                 width: '100%',
                 height: '100%',
