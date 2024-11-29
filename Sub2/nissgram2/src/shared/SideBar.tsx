@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
                 <li className="nav-item mb-3">
                     <a href="/profile" className="nav-link">
                         <div className="profile-container circle">
-                            <img src={ProfileIcon} alt="Bildet" className="profile-picture"/> 
+                            <img src={ProfileIcon} className="profile-picture" alt="Profile "/>
                         </div>
                     </a>
                 </li>

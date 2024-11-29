@@ -12,19 +12,19 @@ const Header: React.FC = () => {
             <img src={Logo} alt="NissGram Logo" style={{height: "70px", padding: "5px"}}/>
         </a>
 
-          <nav className="icon-bar">
-            <a href="/profile">
+        <nav className="icon-bar">
+            <a href="/profile" className="nav-link">
                 <div className="profile-container circle">
                     <img src={ProfileIcon} className="profile-picture" alt="Profile "/>
                 </div>
             </a>
-            <a href="/">
+            <a href="/" className="nav-link">
                 <img src={HomeIcon} style={{height: "40px", padding: "5px"}} alt="Home "/>
             </a>
-            <a href="/create">
+            <a href="/create" className="nav-link">
                 <img src={AddIcon} style={{height: "40px", padding: "5px"}} alt="Add Post "/>
             </a>
-            <div className="d-inline">
+            <div className="d-inline nav-link" >
                 <button type="submit" className="nav-link text-white p-0 border-0 bg-transparent">
                     <a href="/logout">
                         <img src={LogoutIcon} style={{height: "40px", padding: "5px"}} alt="Logout "/>
