@@ -1,0 +1,167 @@
+.like_img, .comment_img {
+    width: 25px !important;
+    height: 24px !important;
+    transition: transform 0.2s ease-in-out;
+  }
+
+.like-img.liked {
+    transform: scale(1.1);
+    content: url('/images/heart-red.png')
+}
+.comment_img {
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+/* Style for the like button container */
+.like-button-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer; 
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out; 
+}
+
+/* Hover effect for the like button */
+.like-button-container:hover {
+  transform: scale(1.1); 
+}
+
+/* Style for the like icon */
+.like-button-container img {
+  width: 20px; 
+  height: 20px;
+  margin-right: 5px; 
+}
+
+/* Hover effect for the like count text (optional) */
+.like-button-container span {
+  color: #555;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.like-button-container:hover span {
+  color: #ff4d4d; 
+}
+
+/* Optional: Add a custom focus style for better accessibility */
+.like-button-container button:focus {
+  border-radius: 5px; 
+  box-shadow: 0 0 5px green; 
+}
+
+/* Style for the comment button container */
+.comment-button-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer; 
+  transition: transform 0.2s ease-in-out; 
+}
+
+/* Hover effect for the comment button */
+.comment-button-container:hover {
+  transform: scale(1.1); 
+  filter: brightness(1.2); 
+}
+
+/* Style for the comment icon */
+.comment-button-container img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px; 
+}
+
+/* Hover effect for the text next to the icon (optional) */
+.comment-button-container span {
+  color: #555; 
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.comment-button-container:hover span {
+  color: #007bff;
+}
+
+small {
+    color: gray;
+}
+.profile_img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .card {
+    font-size: 14px; 
+  }
+  
+  .card-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-title {
+    color: #333; 
+    font-weight: bold;
+  }
+.post-card {
+  width: 70%; 
+  margin: 0 auto; 
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  min-height: 100px;
+  min-width: 100px;
+}
+
+.likes-comments-dates {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    margin-top: 10px;
+}
+
+.text-muted.postedDateModal {
+    text-align: right;
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.comment_img_popup {
+    margin-left: 5; 
+    text-align: left; 
+}
+
+/* Responsiv styling for små skjermer */
+@media (max-width: 900px) {
+    .likes-comments-dates {
+        flex-direction:row; 
+        align-items: flex-start; 
+    }
+
+    .likes-comments-dates > div {
+        width: 100%; 
+        text-align: left; 
+        margin-bottom: 10px; 
+        margin-left: 0;
+    }
+
+    .text-muted.postedDateModal {
+        text-align: left; 
+        margin-left: 0; 
+    }
+
+    .comment_img_popup {
+        margin-left: 0; 
+        text-align: left; 
+    }
+}
