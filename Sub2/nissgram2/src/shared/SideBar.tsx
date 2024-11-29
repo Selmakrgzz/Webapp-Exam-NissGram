@@ -22,13 +22,13 @@ const Sidebar: React.FC = () => {
                     </a>
                 </li>
                 <li className="nav-item mb-3">
-                    <a href="/create" className="nav-link">
+                    <a href="/createPost" className="nav-link">
                         <img src={AddIcon} alt="Add Post Icon" style={{ height: "40px", width: "40px" }} />
                     </a>
                 </li>
             </ul>
             <div className="d-flex align-items-center justify-content-center" style={{height: "100%"}}>
-                <button type="submit" className="nav-link text-white p-0 border-0 bg-transparent">
+                <button type="submit" className="text-white p-0 border-0 bg-transparent">
                     <a href="/logout" className="nav-link">
                         <img src={LogoutIcon} alt="Logout Icon" style={{ height: "40px", width: "40px", margin: "15px" }} />
                     </a>
