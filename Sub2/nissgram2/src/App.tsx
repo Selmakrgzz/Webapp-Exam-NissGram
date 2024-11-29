@@ -6,8 +6,8 @@ import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import CreatePost from "./post/createPost"; 
-import UpdatePost from "./post/updatePost";
+import CreatePost from "./pages/post/createPost"; 
+import UpdatePost from "./pages/post/updatePost";
 
 
 const App: React.FC = () => {
