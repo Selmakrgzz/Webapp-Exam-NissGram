@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj": {}
+    "C:\\Users\\Bruker\\Desktop\\Webapp-exam\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj": {
+    "C:\\Users\\Bruker\\Desktop\\Webapp-exam\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\Bruker\\Desktop\\Webapp-exam\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\obj\\",
+        "projectPath": "C:\\Users\\Bruker\\Desktop\\Webapp-exam\\Webapp-Exam-NissGram\\Sub2\\api\\api.csproj",
+        "packagesPath": "C:\\Users\\Bruker\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bruker\\Desktop\\Webapp-exam\\Webapp-Exam-NissGram\\Sub2\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Bruker\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -117,7 +117,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
