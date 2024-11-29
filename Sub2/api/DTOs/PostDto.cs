@@ -16,7 +16,7 @@ namespace NissGram.DTOs
     }
 
 
-    public class CreatePostDto
+    public class CreateUpdatePostDto
     {
         public int? PostId { get; set; }
         public string? Text { get; set; }
