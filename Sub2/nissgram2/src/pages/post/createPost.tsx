@@ -41,7 +41,7 @@ const CreatePost: React.FC = () => {
     }
 
     try {
-      const response = await fetch("https://your-backend-api.com/posts", {
+      const response = await fetch("https://create/posts", { //ENDRE HVIS NØDVENDIG
         method: "POST",
         body: formData,
       });
