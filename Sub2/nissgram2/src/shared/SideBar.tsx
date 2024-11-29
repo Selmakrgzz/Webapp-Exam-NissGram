@@ -22,7 +22,7 @@ const Sidebar: React.FC = () => {
                     </a>
                 </li>
                 <li className="nav-item mb-3">
-                    <a href="/create" className="nav-link">
+                    <a href="/createPost" className="nav-link">
                         <img src={AddIcon} alt="Add Post Icon" style={{ height: "40px", width: "40px" }} />
                     </a>
                 </li>

@@ -21,7 +21,7 @@ const Header: React.FC = () => {
             <a href="/" className="nav-link">
                 <img src={HomeIcon} style={{height: "40px", padding: "5px"}} alt="Home "/>
             </a>
-            <a href="/create" className="nav-link">
+            <a href="/createPost" className="nav-link">
                 <img src={AddIcon} style={{height: "40px", padding: "5px"}} alt="Add Post "/>
             </a>
             <div className="d-inline nav-link" >
