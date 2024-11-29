@@ -1,77 +1,72 @@
-/* General Styles */
-html {
-  font-size: 14px;
-  position: relative;
-  min-height: 100%;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #eef0f5;
-  color: #333;
-  position: relative;
-  min-height: 100%;
-}
-
-/* Full-screen layout with header and side navbar */
-.d-flex {
-  min-height: auto;
-}
-
-/* Layout Container */
-.layout-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Header Styling */
+/* Fixed header at the top with space for side navbar on the left */
 .fixed-header {
   position: fixed;
   top: 0;
-  left: 0;
+  /* left: 0; */
   width: 100%;
   height: 60px;
-  background-color: #8fa0c3;
+  /* background-color: #0077b6; */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1030;
+  background-color: #387478 !important;
+
 }
 
-/* Icon bar (alternative navbar) for smaller screens */
-.icon-bar {
-  display: none; 
+/* Profilepicture icon on the navbar */
+.profile-picture {
+  width: 100%; /* Tilpass bildet til containerens bredde */
+  height: 100%; /* Behold proporsjonene */
+  object-fit: fill; /* Sørger for at bildet ikke blir kuttet */
+  border-radius: 50%; /* Gjør bildet rundt */
 }
 
-/* Sidebar Styling */
 .side-navbar {
-  left: 0;
+  background-color: #71a8a6 !important;
+}
+
+/* Hover-effekt
+.nav-link:hover {
+  transform: scale(1.1); /* Liten zoom ved hover 
+  filter: brightness(1.1); /* Gjør ikonet lysere ved hover 
+  cursor: pointer; /* Endre markøren til håndikon 
+} */
+
+/* Logo image styling in the header */
+.navbar-brand{
+  /* height: 50px; */
+  /* padding: 50px; */
+  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); */
+}
+
+/* Main content area with margins for header and side navbar */
+.content-container {
+  /* flex-grow: 1; */
+  margin-top: 60px;
+  margin-left: 80px;
+  padding: 20px;
+}
+
+/* Side navigation bar styling */
+.side-navbar {
   width: 80px;
   min-height: 100vh;
-  background-color: #a4b0c9;
   position: fixed;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  /* justify-content: space-between; */
   padding-top: 80px;
   border-right: 1px solid #e5e5e5;
-  
+  background-color: #f2f4f7; /* Softer color for sidebar background */
 }
 
 /* Styling for the logout button at the bottom of the sidebar */
-.circleLogout {
-  align-self: center;
-  margin-bottom: 15px; 
-  padding: 8px; 
-  margin-left: 5px; 
+.circle.logout {
+  /* align-self: center; */
+  /* margin-bottom: 15px;  */
+  /* padding: 8px;  */
+  /* margin-left: 5px;  */
 }
 
 /* General styling for circular buttons/icons */
@@ -80,63 +75,24 @@ body {
   height: 50px;
   border-radius: 50%; 
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* overflow: hidden; */
 }
 
-.nav-icon {
-  height: 40px;
-  width: 40px;
-  padding: 5px;
+/* Icon bar (alternative navbar) for smaller screens */
+.icon-bar {
+  display: none; 
 }
 
-/* Logo image styling in the header */
-.navbar-brand{
-  height: 50px;
-  padding: 50px;
+/* Profile icon styling within a circular frame */
+.profile-icon {
+  /* width: 80%;  */
+  /* height: auto;  */
+  /* border-radius: 50%;  */
+  /* object-fit: cover;  */
 }
 
-/* Content Styling */
-.content-container {
-  flex-grow: 1;
-  margin-top: 60px;
-  margin-left: 80px;
-  padding: 20px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 80px;
-  width: calc(100% - 80px);
-  background-color: #f8f9fa;
-  text-align: center;
-  padding: 0.5rem 0;
-  font-size: 0.8rem;
-  line-height: 1.5rem;
-  border-top: 1px solid #e5e5e5;
-  z-index: 1000;
-}
-
-/* Profile-specific Styling */
-.profile-container {
-  border: 2px solid #8fa0c3;
-}
-
-.profile-picture {
-  width: 100%; /* Tilpass bildet til containerens bredde */
-  height: 100%; /* Behold proporsjonene */
-  border-radius: 50%; 
-  object-fit: cover; 
-}
-
-/* Hover Effects */
-.nav-link:hover {
-  transform: scale(1.1);
-  filter: brightness(1.1);
-  cursor: pointer;
-}
 
 /* Footer styling at the bottom of the page */
 .footer {
@@ -144,13 +100,13 @@ body {
   bottom: 0;
   left: 80px;
   width: calc(100% - 80px);
-  background-color: #f8f9fa;
+  background-color: #dee7e7;
   text-align: center;
   padding: 0.5rem 0;
   font-size: 0.8rem;
   line-height: 1.5rem;
-  border-top: 1px solid #e5e5e5;
-  z-index: 1000;
+  /* border-top: 1px solid #e5e5e5; */
+  /* z-index: 1000; */
 }
 
 /* Full-width footer for login and register pages */
@@ -159,6 +115,7 @@ body {
   width: 100%;
   margin-left: 0;
 }
+
 
 /* Responsive adjustments for small screens */
 @media (max-width: 768px) {
