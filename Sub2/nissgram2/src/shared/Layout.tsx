@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './SideBar';
 import Footer from './Footer';
-import './../styles/layout/layout.css';
+import './../styles/layout.css';
 
 interface LayoutProps {
   children?: ReactNode;

@@ -1,5 +1,4 @@
 import React from 'react';
-import './../styles/layout/header.css';
 import Logo from './../assets/images/Niss.png';
 import ProfileIcon from './../assets/images/profile_image_default.png';
 import HomeIcon from './../assets/images/homeIcon.png';
