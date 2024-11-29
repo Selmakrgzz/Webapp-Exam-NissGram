@@ -13,7 +13,7 @@ public class Comment
     [Required(ErrorMessage = "Comment text is required.")]
     [StringLength(500, ErrorMessage = "Comment text cannot exceed 500 characters.")]
     public required string Text { get; set; }
-    public DateTime dateCommented { get; set; } //capital letters?
+    public DateTime DateCommented { get; set; }
 
 
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Serilog;
-using NissGram.DAL; 
+using NissGram.DAL;
 using NissGram.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 var builder = WebApplication.CreateBuilder(args);
 
 // Set up connection string
-var connectionString = builder.Configuration.GetConnectionString("NissDbContextConnection") 
+var connectionString = builder.Configuration.GetConnectionString("NissDbContextConnection")
     ?? throw new InvalidOperationException("Connection string 'NissDbContextConnection' not found.");
 
 // Add services to the container
@@ -92,6 +92,7 @@ builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>
     {
         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+        options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
     });
 
 var app = builder.Build();
