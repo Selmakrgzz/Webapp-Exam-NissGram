@@ -6,7 +6,7 @@ namespace NissGram.DTOs
     {
         public int? CommentId { get; set; } // Nullable for add operations
         public int PostId { get; set; }     // Required for all operations
-        
+
         [StringLength(500, ErrorMessage = "Comment text cannot exceed 500 characters.")]
         public string? Text { get; set; }  // Required for add, optional for delete
 

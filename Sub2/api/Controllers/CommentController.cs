@@ -53,7 +53,7 @@ namespace NissGram.Controllers
                 Post = post,
                 User = user,
                 Text = commentDto.Text,
-                dateCommented = DateTime.UtcNow
+                DateCommented = DateTime.UtcNow
             };
 
             var success = await _commentRepository.AddCommentAsync(comment);
@@ -69,7 +69,7 @@ namespace NissGram.Controllers
                 PostId = commentDto.PostId,
                 Text = comment.Text,
                 Username = user.UserName,
-                DateCommented = comment.dateCommented
+                DateCommented = comment.DateCommented
             });
         }
 
