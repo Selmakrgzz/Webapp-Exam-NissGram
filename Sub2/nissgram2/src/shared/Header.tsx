@@ -8,8 +8,8 @@ import LogoutIcon from './../assets/images/logoutIcon.png';
 const Header: React.FC = () => {
   return (
     <header className="fixed-header">
-        <a href="/" className="navbar-brand">
-            <img src={Logo} alt="NissGram Logo" style={{height: "70px", padding: "5px"}}/>
+        <a href="/" >
+            <img src={Logo} alt="NissGram Logo" className="navbar-brand" style={{height: "70px", padding: "5px"}}/>
         </a>
 
         <nav className="icon-bar">

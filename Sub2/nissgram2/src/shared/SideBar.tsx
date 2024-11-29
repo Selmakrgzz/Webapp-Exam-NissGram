@@ -28,7 +28,7 @@ const Sidebar: React.FC = () => {
                 </li>
             </ul>
             <div className="d-flex align-items-center justify-content-center" style={{height: "100%"}}>
-                <button type="submit" className="nav-link text-white p-0 border-0 bg-transparent">
+                <button type="submit" className="text-white p-0 border-0 bg-transparent">
                     <a href="/logout" className="nav-link">
                         <img src={LogoutIcon} alt="Logout Icon" style={{ height: "40px", width: "40px", margin: "15px" }} />
                     </a>
