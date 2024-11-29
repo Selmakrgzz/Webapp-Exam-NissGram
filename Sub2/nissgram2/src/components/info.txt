@@ -1,6 +1,8 @@
 Reusable components
 
-ha feks
+ha feks  (gjenbrukbar knapp-komponent)
+(modal-komponent)
+evt. loading spinner, men trenger nok ikke.
 
 components/
 ├── Button/

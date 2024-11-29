@@ -1,0 +1,705 @@
+{
+  "Files": [
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\css\\createPost.css",
+      "PackagePath": "staticwebassets\\css\\createPost.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\css\\loginRegister.css",
+      "PackagePath": "staticwebassets\\css\\loginRegister.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\css\\postCard.css",
+      "PackagePath": "staticwebassets\\css\\postCard.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\css\\profilePage.css",
+      "PackagePath": "staticwebassets\\css\\profilePage.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\0848170c-4fb9-4825-b24b-d4071a5445c7.png",
+      "PackagePath": "staticwebassets\\images\\0848170c-4fb9-4825-b24b-d4071a5445c7.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\0979ca3d-ed6d-423b-bbdd-953f4c9b07e7.png",
+      "PackagePath": "staticwebassets\\images\\0979ca3d-ed6d-423b-bbdd-953f4c9b07e7.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\10a4fa36-47ac-4752-961e-8842a27e5cd7.png",
+      "PackagePath": "staticwebassets\\images\\10a4fa36-47ac-4752-961e-8842a27e5cd7.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\15b3ffd3-13c4-4a94-afa6-6c5b03e2f859.png",
+      "PackagePath": "staticwebassets\\images\\15b3ffd3-13c4-4a94-afa6-6c5b03e2f859.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\18013e69-3a38-4796-9e40-35af9e3b97a0.png",
+      "PackagePath": "staticwebassets\\images\\18013e69-3a38-4796-9e40-35af9e3b97a0.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\194e0cef-5750-4982-b4de-10f5300d2549.png",
+      "PackagePath": "staticwebassets\\images\\194e0cef-5750-4982-b4de-10f5300d2549.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\1cf56b20-94a2-4b4f-9f68-e933bf09207c.jpg",
+      "PackagePath": "staticwebassets\\images\\1cf56b20-94a2-4b4f-9f68-e933bf09207c.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\225b3b20-a4fd-4084-abac-11d974b04b23.png",
+      "PackagePath": "staticwebassets\\images\\225b3b20-a4fd-4084-abac-11d974b04b23.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\2ad67a20-87b1-463d-88fc-a92ebbe46a21.png",
+      "PackagePath": "staticwebassets\\images\\2ad67a20-87b1-463d-88fc-a92ebbe46a21.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\3fd46e6a-d804-47ef-bea0-a73046118dd8.png",
+      "PackagePath": "staticwebassets\\images\\3fd46e6a-d804-47ef-bea0-a73046118dd8.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\40681fe9-d0d9-46f0-956c-1f30d7bc1e9b.png",
+      "PackagePath": "staticwebassets\\images\\40681fe9-d0d9-46f0-956c-1f30d7bc1e9b.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\46ee98ec-8783-4f83-93e8-ff6475d92de9.png",
+      "PackagePath": "staticwebassets\\images\\46ee98ec-8783-4f83-93e8-ff6475d92de9.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\4e8dbab2-d706-436e-8471-8e833fc3ee16.png",
+      "PackagePath": "staticwebassets\\images\\4e8dbab2-d706-436e-8471-8e833fc3ee16.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\4f80c1fc-850a-47e2-864f-0c117e978e77.png",
+      "PackagePath": "staticwebassets\\images\\4f80c1fc-850a-47e2-864f-0c117e978e77.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\50898a11-1f8f-4e75-8c68-3b27208950c7.png",
+      "PackagePath": "staticwebassets\\images\\50898a11-1f8f-4e75-8c68-3b27208950c7.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\597a6955-8453-4e41-b05e-bebab2392e2c.jpg",
+      "PackagePath": "staticwebassets\\images\\597a6955-8453-4e41-b05e-bebab2392e2c.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\5eae92dd-204d-4874-b06a-ed95e36d2288.png",
+      "PackagePath": "staticwebassets\\images\\5eae92dd-204d-4874-b06a-ed95e36d2288.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\616a77cb-bde4-4aea-9fe8-5b20d95413db.png",
+      "PackagePath": "staticwebassets\\images\\616a77cb-bde4-4aea-9fe8-5b20d95413db.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\63ff6e5d-222f-40da-80e4-f0a106c0941c.jpg",
+      "PackagePath": "staticwebassets\\images\\63ff6e5d-222f-40da-80e4-f0a106c0941c.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\66adbfc4-ffd4-431b-b3c8-33f0908b4c63.png",
+      "PackagePath": "staticwebassets\\images\\66adbfc4-ffd4-431b-b3c8-33f0908b4c63.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\686d0d3d-bfb7-41c3-8437-ccf0163b7ae2.png",
+      "PackagePath": "staticwebassets\\images\\686d0d3d-bfb7-41c3-8437-ccf0163b7ae2.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\7e001168-87ab-451f-b43d-9ca0d94eff91.png",
+      "PackagePath": "staticwebassets\\images\\7e001168-87ab-451f-b43d-9ca0d94eff91.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\8013e970-bcde-4377-8f20-476c07073b02.jpg",
+      "PackagePath": "staticwebassets\\images\\8013e970-bcde-4377-8f20-476c07073b02.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\83874b45-9e7d-4898-9239-a4bdde7ec20c.png",
+      "PackagePath": "staticwebassets\\images\\83874b45-9e7d-4898-9239-a4bdde7ec20c.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\86a3a4fb-16da-4b75-ad8e-f32eae69939b.jpg",
+      "PackagePath": "staticwebassets\\images\\86a3a4fb-16da-4b75-ad8e-f32eae69939b.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\8841a855-4eb3-4a2c-884e-162cec1311d0.png",
+      "PackagePath": "staticwebassets\\images\\8841a855-4eb3-4a2c-884e-162cec1311d0.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\8a04e336-43f6-43a3-ba0b-a10f68cd7a3d.png",
+      "PackagePath": "staticwebassets\\images\\8a04e336-43f6-43a3-ba0b-a10f68cd7a3d.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\97191f93-8275-49fd-925a-f79390580b6b.png",
+      "PackagePath": "staticwebassets\\images\\97191f93-8275-49fd-925a-f79390580b6b.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\985672e2-1e48-40d0-95fd-bbb5f898503e.jpg",
+      "PackagePath": "staticwebassets\\images\\985672e2-1e48-40d0-95fd-bbb5f898503e.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\9ca375b1-2f6b-4895-a9c0-5af28bcdd379.png",
+      "PackagePath": "staticwebassets\\images\\9ca375b1-2f6b-4895-a9c0-5af28bcdd379.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\Niss.png",
+      "PackagePath": "staticwebassets\\images\\Niss.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\NissGramLogo.png",
+      "PackagePath": "staticwebassets\\images\\NissGramLogo.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\NissLogo.png",
+      "PackagePath": "staticwebassets\\images\\NissLogo.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\a0b19267-85b2-4403-bc5e-01fcfd11c27e.png",
+      "PackagePath": "staticwebassets\\images\\a0b19267-85b2-4403-bc5e-01fcfd11c27e.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\a0c39abd-d4cb-48b1-9afd-aa4df01b81cf.png",
+      "PackagePath": "staticwebassets\\images\\a0c39abd-d4cb-48b1-9afd-aa4df01b81cf.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\a5b78530-f9c9-4324-b0bf-d7a2745d2671.png",
+      "PackagePath": "staticwebassets\\images\\a5b78530-f9c9-4324-b0bf-d7a2745d2671.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\ac518a5f-91c8-4098-a3bc-7e956168c5e5.png",
+      "PackagePath": "staticwebassets\\images\\ac518a5f-91c8-4098-a3bc-7e956168c5e5.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\addIcon.png",
+      "PackagePath": "staticwebassets\\images\\addIcon.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\af64b140-1e83-4d6c-b3f7-67a1ad31f326.png",
+      "PackagePath": "staticwebassets\\images\\af64b140-1e83-4d6c-b3f7-67a1ad31f326.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\airplane_window.png",
+      "PackagePath": "staticwebassets\\images\\airplane_window.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\b850e2db-059b-4594-a883-6098bbbe21f1.png",
+      "PackagePath": "staticwebassets\\images\\b850e2db-059b-4594-a883-6098bbbe21f1.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\bd336669-ecc6-4c72-b024-2fc28e637920.jpg",
+      "PackagePath": "staticwebassets\\images\\bd336669-ecc6-4c72-b024-2fc28e637920.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\bf23418e-fd93-468d-9c4e-2d882040deae.jpg",
+      "PackagePath": "staticwebassets\\images\\bf23418e-fd93-468d-9c4e-2d882040deae.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\c5dc960a-e773-4db4-a78e-3b05c732e77f.png",
+      "PackagePath": "staticwebassets\\images\\c5dc960a-e773-4db4-a78e-3b05c732e77f.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\c7618384-3235-46d5-9388-9d21f8a1b5ad.png",
+      "PackagePath": "staticwebassets\\images\\c7618384-3235-46d5-9388-9d21f8a1b5ad.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\ce50e317-63ad-4b8b-9292-b6e7d55c8300.png",
+      "PackagePath": "staticwebassets\\images\\ce50e317-63ad-4b8b-9292-b6e7d55c8300.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\chat.png",
+      "PackagePath": "staticwebassets\\images\\chat.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\cooking.png",
+      "PackagePath": "staticwebassets\\images\\cooking.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\cows.png",
+      "PackagePath": "staticwebassets\\images\\cows.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\db8d77d8-9548-4fdd-96de-f7179a670d08.png",
+      "PackagePath": "staticwebassets\\images\\db8d77d8-9548-4fdd-96de-f7179a670d08.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\e0af256a-79af-4bd9-a0a9-e68655cfb1bb.png",
+      "PackagePath": "staticwebassets\\images\\e0af256a-79af-4bd9-a0a9-e68655cfb1bb.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\e0bc8e78-8fcb-4acd-a57b-735a507dfffa.jpg",
+      "PackagePath": "staticwebassets\\images\\e0bc8e78-8fcb-4acd-a57b-735a507dfffa.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\e0e11bb5-62e1-4914-820b-15c8848213e4.png",
+      "PackagePath": "staticwebassets\\images\\e0e11bb5-62e1-4914-820b-15c8848213e4.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\e8d4ba0a-857d-43aa-950d-abb12915b870.jpg",
+      "PackagePath": "staticwebassets\\images\\e8d4ba0a-857d-43aa-950d-abb12915b870.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\f06325a1-5829-4129-ac72-6c5d90b08718.png",
+      "PackagePath": "staticwebassets\\images\\f06325a1-5829-4129-ac72-6c5d90b08718.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\fishing.png",
+      "PackagePath": "staticwebassets\\images\\fishing.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\friends_dining.png",
+      "PackagePath": "staticwebassets\\images\\friends_dining.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\heart-red.png",
+      "PackagePath": "staticwebassets\\images\\heart-red.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\heart.png",
+      "PackagePath": "staticwebassets\\images\\heart.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\hiking.png",
+      "PackagePath": "staticwebassets\\images\\hiking.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\homeIcon.png",
+      "PackagePath": "staticwebassets\\images\\homeIcon.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\logoutIcon.png",
+      "PackagePath": "staticwebassets\\images\\logoutIcon.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\mexican_amigos.png",
+      "PackagePath": "staticwebassets\\images\\mexican_amigos.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\northern_lights.png",
+      "PackagePath": "staticwebassets\\images\\northern_lights.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\paragliding.png",
+      "PackagePath": "staticwebassets\\images\\paragliding.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\picknick.png",
+      "PackagePath": "staticwebassets\\images\\picknick.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\profile_image_default.png",
+      "PackagePath": "staticwebassets\\images\\profile_image_default.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\safari.png",
+      "PackagePath": "staticwebassets\\images\\safari.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\snorekling.png",
+      "PackagePath": "staticwebassets\\images\\snorekling.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\temp\\bakgrunn10.jpg",
+      "PackagePath": "staticwebassets\\images\\temp\\bakgrunn10.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\temp\\bakgrunn8.jpg",
+      "PackagePath": "staticwebassets\\images\\temp\\bakgrunn8.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\temp\\ikoner.png",
+      "PackagePath": "staticwebassets\\images\\temp\\ikoner.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\images\\temp\\math2.png",
+      "PackagePath": "staticwebassets\\images\\temp\\math2.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\js\\createPost.js",
+      "PackagePath": "staticwebassets\\js\\createPost.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\js\\userUpdateCreate.js",
+      "PackagePath": "staticwebassets\\js\\userUpdateCreate.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c1.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c1.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c10.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c10.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c2.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c2.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c3.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c3.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c4.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c4.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c5.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c5.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c6.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c6.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c7.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c7.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c8.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c8.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures-seededUsers\\c9.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures-seededUsers\\c9.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\00f1a1ed-f84b-4dff-81f8-60e5e43b4712.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\00f1a1ed-f84b-4dff-81f8-60e5e43b4712.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\05557d4c-0378-4d1d-9fb4-f2bf150be6a9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\05557d4c-0378-4d1d-9fb4-f2bf150be6a9.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\16710f82-0f56-43ea-83c4-664844dcd23d.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\16710f82-0f56-43ea-83c4-664844dcd23d.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\38ecc459-ec8d-4ec9-a53c-df82a6e843b3.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\38ecc459-ec8d-4ec9-a53c-df82a6e843b3.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\4785a5a8-3ec1-4a1c-bff8-0987b64a0ec5.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\4785a5a8-3ec1-4a1c-bff8-0987b64a0ec5.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\53706638-65b1-483f-a9d7-0195f73ba108.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\53706638-65b1-483f-a9d7-0195f73ba108.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\537db43f-91a0-4af4-8fa7-b18803556c16.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\537db43f-91a0-4af4-8fa7-b18803556c16.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\56b79131-2925-420a-b188-36e333f3b263.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\56b79131-2925-420a-b188-36e333f3b263.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\705edbce-95f5-4a6c-8446-1383f567e4ae.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\705edbce-95f5-4a6c-8446-1383f567e4ae.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\80ea11d0-33b2-4544-8449-22e03e18cb14.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\80ea11d0-33b2-4544-8449-22e03e18cb14.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\8e18630f-325f-4678-8888-98ba09af9d73.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\8e18630f-325f-4678-8888-98ba09af9d73.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\8f420cac-f800-4236-845f-8af0c3b8254c.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\8f420cac-f800-4236-845f-8af0c3b8254c.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\9466665f-4c28-4c76-a073-26d4ad83dd01.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\9466665f-4c28-4c76-a073-26d4ad83dd01.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\9d41365e-98cc-4ddd-8fb7-841574d75bb0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\9d41365e-98cc-4ddd-8fb7-841574d75bb0.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\a1ab8d87-cfe6-4faa-ad9c-b4fe29129ef6.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\a1ab8d87-cfe6-4faa-ad9c-b4fe29129ef6.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\ada718e4-0445-43ca-a53b-5a51960b8403.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\ada718e4-0445-43ca-a53b-5a51960b8403.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\b77d9784-7344-4bc5-bfad-9e1a81d6ca4b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\b77d9784-7344-4bc5-bfad-9e1a81d6ca4b.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\c39b92f1-7636-4a16-9376-7fce2afe3974.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\c39b92f1-7636-4a16-9376-7fce2afe3974.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\d46625ce-d975-418a-99ca-d20e1b63c014.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\d46625ce-d975-418a-99ca-d20e1b63c014.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\d6183aeb-4ec0-45b0-bc77-ed05462e21d0.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\d6183aeb-4ec0-45b0-bc77-ed05462e21d0.jpg"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\db28acbd-d034-4746-88a6-e3dd5ee30f07.png",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\db28acbd-d034-4746-88a6-e3dd5ee30f07.png"
+    },
+    {
+      "Id": "c:\\Users\\nicol\\OneDrive\\Skrivebord\\WebappPC\\Webapp-Exam-NissGram\\Sub2\\api\\wwwroot\\uploads\\profile-pictures\\df4e1c4c-a1b6-4240-8361-72ff923cbeff.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile-pictures\\df4e1c4c-a1b6-4240-8361-72ff923cbeff.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.api.props",
+      "PackagePath": "build\\api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.api.props",
+      "PackagePath": "buildMultiTargeting\\api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.api.props",
+      "PackagePath": "buildTransitive\\api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

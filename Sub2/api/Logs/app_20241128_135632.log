@@ -1,0 +1,75 @@
+2024-11-28 13:56:34.869 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2024-11-28 13:56:35.195 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS "a")
+2024-11-28 13:56:35.633 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Nico123'
+LIMIT 1
+2024-11-28 13:56:35.763 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JaneDoe'
+LIMIT 1
+2024-11-28 13:56:35.776 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JohnSmith'
+LIMIT 1
+2024-11-28 13:56:35.787 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Bom93'
+LIMIT 1
+2024-11-28 13:56:35.794 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'koko_223'
+LIMIT 1
+2024-11-28 13:56:35.802 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'geir_er_kul'
+LIMIT 1
+2024-11-28 13:56:35.809 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'tina_betina12'
+LIMIT 1
+2024-11-28 13:56:35.813 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Posts" AS "p")
+2024-11-28 13:56:35.816 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Comments" AS "c")
+2024-11-28 13:56:36.072 +01:00 [INF] User profile is available. Using 'C:\Users\Sina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-28 13:56:36.239 +01:00 [INF] Now listening on: http://localhost:5024
+2024-11-28 13:56:36.245 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-28 13:56:36.245 +01:00 [INF] Hosting environment: Development
+2024-11-28 13:56:36.246 +01:00 [INF] Content root path: C:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api
+2024-11-28 13:56:42.701 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 13:56:42.873 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 174.6334ms
+2024-11-28 13:56:43.275 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 13:56:43.482 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 206.4462ms
+2024-11-28 13:56:53.585 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/auth/test - null null
+2024-11-28 13:56:53.674 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 13:56:53.679 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Test (api)'
+2024-11-28 13:56:53.705 +01:00 [INF] Route matched with {action = "Test", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Test() on controller NissGram.Controllers.AuthController (api).
+2024-11-28 13:56:53.718 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 13:56:53.719 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 13:56:53.721 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 13:56:53.726 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 13:56:53.733 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Test (api) in 21.3174ms
+2024-11-28 13:56:53.733 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Test (api)'
+2024-11-28 13:56:53.735 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/auth/test - 302 0 null 149.8895ms
+2024-11-28 13:56:53.739 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/auth/login?ReturnUrl=%2Fapi%2Fauth%2Ftest - null null
+2024-11-28 13:56:53.746 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 13:56:53.747 +01:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2024-11-28 13:56:53.747 +01:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2024-11-28 13:56:53.747 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/auth/login?ReturnUrl=%2Fapi%2Fauth%2Ftest - 405 0 null 8.3196ms

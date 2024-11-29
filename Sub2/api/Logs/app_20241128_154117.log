@@ -1,0 +1,660 @@
+2024-11-28 15:41:19.107 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2024-11-28 15:41:19.313 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS "a")
+2024-11-28 15:41:19.641 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Nico123'
+LIMIT 1
+2024-11-28 15:41:19.738 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JaneDoe'
+LIMIT 1
+2024-11-28 15:41:19.743 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'JohnSmith'
+LIMIT 1
+2024-11-28 15:41:19.750 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'Bom93'
+LIMIT 1
+2024-11-28 15:41:19.755 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'koko_223'
+LIMIT 1
+2024-11-28 15:41:19.761 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'geir_er_kul'
+LIMIT 1
+2024-11-28 15:41:19.766 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = 'tina_betina12'
+LIMIT 1
+2024-11-28 15:41:19.768 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Posts" AS "p")
+2024-11-28 15:41:19.770 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Comments" AS "c")
+2024-11-28 15:41:19.954 +01:00 [INF] User profile is available. Using 'C:\Users\Sina\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-28 15:41:20.074 +01:00 [INF] Now listening on: http://localhost:5024
+2024-11-28 15:41:20.078 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-28 15:41:20.079 +01:00 [INF] Hosting environment: Development
+2024-11-28 15:41:20.079 +01:00 [INF] Content root path: C:\Users\Sina\Documents\webapp\Webapp-Exam-NissGram\Sub2\api
+2024-11-28 15:41:20.296 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/index.html - null null
+2024-11-28 15:41:20.411 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/index.html - 200 null text/html;charset=utf-8 116.2498ms
+2024-11-28 15:41:20.623 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - null null
+2024-11-28 15:41:20.777 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 153.8743ms
+2024-11-28 15:41:29.227 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/register - application/json 228
+2024-11-28 15:41:29.254 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:41:29.268 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 15:41:29.294 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(NissGram.DTOs.RegisterDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 15:41:29.359 +01:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType2`1[[System.String[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-28 15:41:29.367 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Register (api) in 70.2954ms
+2024-11-28 15:41:29.368 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 15:41:29.370 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/register - 400 null application/json; charset=utf-8 142.626ms
+2024-11-28 15:41:58.349 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/register - application/json 226
+2024-11-28 15:41:58.356 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:41:58.364 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 15:41:58.365 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(NissGram.DTOs.RegisterDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 15:41:58.684 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedUserName_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 15:41:58.721 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 16)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2024-11-28 15:41:58.957 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 6), @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 16), @p5='?' (DbType = Boolean), @p6='?' (Size = 10), @p7='?' (Size = 9), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?' (Size = 16), @p11='?' (Size = 9), @p12='?' (Size = 84), @p13='?', @p14='?' (DbType = Boolean), @p15='?' (Size = 6), @p16='?' (Size = 32), @p17='?' (DbType = Boolean), @p18='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2024-11-28 15:41:58.974 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`4[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-28 15:41:58.979 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Register (api) in 613.8582ms
+2024-11-28 15:41:58.979 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Register (api)'
+2024-11-28 15:41:58.984 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/register - 200 null application/json; charset=utf-8 635.7354ms
+2024-11-28 15:42:26.316 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/login - application/json 72
+2024-11-28 15:42:26.345 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:42:26.349 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 15:42:26.356 +01:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NissGram.DTOs.LoginDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 15:42:26.474 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedUserName_0='?' (Size = 6)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 15:42:26.475 +01:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2024-11-28 15:42:26.476 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Login (api) in 119.0509ms
+2024-11-28 15:42:26.476 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 15:42:26.476 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/login - 401 null text/plain; charset=utf-8 160.0922ms
+2024-11-28 15:42:33.461 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/login - application/json 75
+2024-11-28 15:42:33.461 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:42:33.462 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 15:42:33.462 +01:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NissGram.DTOs.LoginDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 15:42:33.465 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedUserName_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 15:42:33.626 +01:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2024-11-28 15:42:33.627 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Login (api) in 164.5075ms
+2024-11-28 15:42:33.627 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 15:42:33.627 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/login - 401 null text/plain; charset=utf-8 166.66ms
+2024-11-28 15:42:39.702 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/login - application/json 77
+2024-11-28 15:42:39.702 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:42:39.702 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 15:42:39.703 +01:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NissGram.DTOs.LoginDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 15:42:39.706 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedUserName_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 15:42:39.991 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE "a"."UserId" = @__user_Id_0
+2024-11-28 15:42:40.031 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a0"."Name"
+FROM "AspNetUserRoles" AS "a"
+INNER JOIN "AspNetRoles" AS "a0" ON "a"."RoleId" = "a0"."Id"
+WHERE "a"."UserId" = @__userId_0
+2024-11-28 15:42:40.048 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-11-28 15:42:40.049 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-28 15:42:40.051 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Login (api) in 347.989ms
+2024-11-28 15:42:40.051 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 15:42:40.051 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/login - 200 null application/json; charset=utf-8 349.8204ms
+2024-11-28 15:43:11.844 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 135
+2024-11-28 15:43:11.847 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:43:11.866 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:43:11.874 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:43:11.919 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__username_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = @__username_0
+LIMIT 1
+2024-11-28 15:43:11.984 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = @__p_0
+LIMIT 1
+2024-11-28 15:43:12.157 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 12), @p2='?' (Size = 36), @p3='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "CommentId";
+2024-11-28 15:43:12.195 +01:00 [INF] [CommentRepository] Comment added successfully for PostId: 1
+2024-11-28 15:43:12.198 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'NissGram.DTOs.CommentDto'.
+2024-11-28 15:43:12.246 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 371.1286ms
+2024-11-28 15:43:12.246 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:43:12.249 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 201 null application/json; charset=utf-8 404.978ms
+2024-11-28 15:44:14.168 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 117
+2024-11-28 15:44:14.171 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:44:14.173 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:44:14.174 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:44:14.185 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__username_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = @__username_0
+LIMIT 1
+2024-11-28 15:44:14.187 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = @__p_0
+LIMIT 1
+2024-11-28 15:44:14.190 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 12), @p2='?' (Size = 36), @p3='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "CommentId";
+2024-11-28 15:44:14.227 +01:00 [INF] [CommentRepository] Comment added successfully for PostId: 1
+2024-11-28 15:44:14.232 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'NissGram.DTOs.CommentDto'.
+2024-11-28 15:44:14.234 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 59.4969ms
+2024-11-28 15:44:14.234 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:44:14.235 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 201 null application/json; charset=utf-8 68.1728ms
+2024-11-28 15:44:23.527 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 71
+2024-11-28 15:44:23.527 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:44:23.530 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:44:23.530 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:44:23.545 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-11-28 15:44:23.572 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 41.6147ms
+2024-11-28 15:44:23.572 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:44:23.572 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 400 null application/problem+json; charset=utf-8 45.5596ms
+2024-11-28 15:44:55.346 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 70
+2024-11-28 15:44:55.349 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:44:55.360 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:44:55.360 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:44:55.363 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__username_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = @__username_0
+LIMIT 1
+2024-11-28 15:44:55.365 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = @__p_0
+LIMIT 1
+2024-11-28 15:44:55.367 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 12), @p2='?' (Size = 36), @p3='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "CommentId";
+2024-11-28 15:44:55.369 +01:00 [INF] [CommentRepository] Comment added successfully for PostId: 1
+2024-11-28 15:44:55.372 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'NissGram.DTOs.CommentDto'.
+2024-11-28 15:44:55.379 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 18.1611ms
+2024-11-28 15:44:55.382 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:44:55.383 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 201 null application/json; charset=utf-8 36.2677ms
+2024-11-28 15:45:03.723 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 61
+2024-11-28 15:45:03.724 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:45:03.725 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:45:03.725 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:45:03.727 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__username_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = @__username_0
+LIMIT 1
+2024-11-28 15:45:03.728 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = @__p_0
+LIMIT 1
+2024-11-28 15:45:03.731 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 12), @p2='?' (Size = 36), @p3='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "CommentId";
+2024-11-28 15:45:03.732 +01:00 [INF] [CommentRepository] Comment added successfully for PostId: 1
+2024-11-28 15:45:03.733 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'NissGram.DTOs.CommentDto'.
+2024-11-28 15:45:03.733 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 8.4248ms
+2024-11-28 15:45:03.733 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:45:03.734 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 201 null application/json; charset=utf-8 10.1064ms
+2024-11-28 15:45:21.823 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 59
+2024-11-28 15:45:21.823 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:45:21.824 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:45:21.824 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:45:21.826 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-11-28 15:45:21.827 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 2.6333ms
+2024-11-28 15:45:21.827 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:45:21.827 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 400 null application/problem+json; charset=utf-8 4.2825ms
+2024-11-28 15:45:34.373 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 58
+2024-11-28 15:45:34.374 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:45:34.374 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:45:34.375 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:45:34.379 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__username_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = @__username_0
+LIMIT 1
+2024-11-28 15:45:34.380 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = @__p_0
+LIMIT 1
+2024-11-28 15:45:34.383 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 27), @p2='?' (Size = 36), @p3='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "CommentId";
+2024-11-28 15:45:34.410 +01:00 [INF] [CommentRepository] Comment added successfully for PostId: 1
+2024-11-28 15:45:34.416 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'NissGram.DTOs.CommentDto'.
+2024-11-28 15:45:34.419 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 44.7198ms
+2024-11-28 15:45:34.420 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 15:45:34.420 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 201 null application/json; charset=utf-8 46.7076ms
+2024-11-28 15:46:00.576 +01:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5024/api/CommentAPI/delete/43 - null null
+2024-11-28 15:46:00.580 +01:00 [INF] CORS policy execution successful.
+2024-11-28 15:46:00.585 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Delete (api)'
+2024-11-28 15:46:00.593 +01:00 [INF] Route matched with {action = "Delete", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 15:46:00.646 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."CommentId", "c"."PostId", "c"."Text", "c"."UserId", "c"."dateCommented"
+FROM "Comments" AS "c"
+WHERE "c"."CommentId" = @__p_0
+LIMIT 1
+2024-11-28 15:46:00.662 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Comments"
+WHERE "CommentId" = @p0
+RETURNING 1;
+2024-11-28 15:46:00.684 +01:00 [INF] [CommentRepository] Comment deleted successfully. CommentId: 43
+2024-11-28 15:46:00.690 +01:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2024-11-28 15:46:00.691 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Delete (api) in 98.1271ms
+2024-11-28 15:46:00.691 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Delete (api)'
+2024-11-28 15:46:00.691 +01:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5024/api/CommentAPI/delete/43 - 204 null null 115.7567ms
+2024-11-28 15:46:38.669 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - null null
+2024-11-28 15:46:38.676 +01:00 [INF] Executing endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 15:46:38.681 +01:00 [INF] Route matched with {action = "Index", controller = "HomeAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NissGram.Controllers.HomeAPIController (api).
+2024-11-28 15:46:38.710 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+ORDER BY "p"."DateCreated" DESC
+2024-11-28 15:46:38.712 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[NissGram.Models.Post, api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-11-28 15:46:38.758 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 15:46:38.791 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 15:46:38.800 +01:00 [INF] Executed action NissGram.Controllers.HomeAPIController.Index (api) in 119.209ms
+2024-11-28 15:46:38.801 +01:00 [INF] Executed endpoint 'NissGram.Controllers.HomeAPIController.Index (api)'
+2024-11-28 15:46:38.805 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Text.Json.JsonException: A possible object cycle was detected. This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32. Consider using ReferenceHandler.Preserve on JsonSerializerOptions to support cycles. Path: $.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.PostId.
+   at System.Text.Json.ThrowHelper.ThrowJsonException_SerializerCycleDetected(Int32 maxDepth)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.ListOfTConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-11-28 15:46:38.854 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/HomeAPI/index - 500 null text/plain; charset=utf-8 184.769ms
+2024-11-28 15:47:00.537 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/PostAPI/details/1 - null null
+2024-11-28 15:47:00.548 +01:00 [INF] Executing endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 15:47:00.560 +01:00 [INF] Route matched with {action = "Details", controller = "PostAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Details(Int32) on controller NissGram.Controllers.PostAPIController (api).
+2024-11-28 15:47:00.565 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = @__p_0
+LIMIT 1
+2024-11-28 15:47:00.566 +01:00 [INF] Executing OkObjectResult, writing value of type 'Castle.Proxies.PostProxy'.
+2024-11-28 15:47:00.577 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-28 15:47:00.579 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."UserId" = @__p_0
+2024-11-28 15:47:00.584 +01:00 [INF] Executed action NissGram.Controllers.PostAPIController.Details (api) in 23.4643ms
+2024-11-28 15:47:00.585 +01:00 [INF] Executed endpoint 'NissGram.Controllers.PostAPIController.Details (api)'
+2024-11-28 15:47:00.586 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Text.Json.JsonException: A possible object cycle was detected. This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32. Consider using ReferenceHandler.Preserve on JsonSerializerOptions to support cycles. Path: $.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.Posts.User.ProfilePicture.
+   at System.Text.Json.ThrowHelper.ThrowJsonException_SerializerCycleDetected(Int32 maxDepth)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-11-28 15:47:00.590 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/PostAPI/details/1 - 500 null text/plain; charset=utf-8 53.3796ms
+2024-11-28 15:47:07.019 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5024/api/PostAPI/tests - null null
+2024-11-28 15:47:07.022 +01:00 [INF] Executing endpoint 'NissGram.Controllers.PostAPIController.tests (api)'
+2024-11-28 15:47:07.027 +01:00 [INF] Route matched with {action = "tests", controller = "PostAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] tests() on controller NissGram.Controllers.PostAPIController (api).
+2024-11-28 15:47:07.029 +01:00 [INF] Executing OkObjectResult, writing value of type 'NissGram.Models.Post'.
+2024-11-28 15:47:07.032 +01:00 [INF] Executed action NissGram.Controllers.PostAPIController.tests (api) in 5.0047ms
+2024-11-28 15:47:07.033 +01:00 [INF] Executed endpoint 'NissGram.Controllers.PostAPIController.tests (api)'
+2024-11-28 15:47:07.033 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5024/api/PostAPI/tests - 200 null application/json; charset=utf-8 13.6236ms
+2024-11-28 16:10:16.417 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/logout - null 0
+2024-11-28 16:10:16.417 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:10:16.418 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Logout (api)'
+2024-11-28 16:10:16.424 +01:00 [INF] Route matched with {action = "Logout", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller NissGram.Controllers.AuthController (api).
+2024-11-28 16:10:16.427 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2024-11-28 16:10:16.427 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2024-11-28 16:10:16.428 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2024-11-28 16:10:16.428 +01:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-11-28 16:10:16.428 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Logout (api) in 4.3206ms
+2024-11-28 16:10:16.428 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Logout (api)'
+2024-11-28 16:10:16.428 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/logout - 200 null text/plain; charset=utf-8 11.1986ms
+2024-11-28 16:10:58.355 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 45
+2024-11-28 16:10:58.355 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:10:58.356 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 16:10:58.356 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 16:10:58.357 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 16:10:58.357 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 16:10:58.359 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 16:10:58.361 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 16:10:58.361 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 5.1873ms
+2024-11-28 16:10:58.361 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 16:10:58.362 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 401 0 null 6.5169ms
+2024-11-28 16:12:33.830 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 45
+2024-11-28 16:12:33.830 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:12:33.831 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 16:12:33.831 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 16:12:33.831 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 16:12:33.831 +01:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2024-11-28 16:12:33.831 +01:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2024-11-28 16:12:33.831 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 16:12:33.831 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 0.6121ms
+2024-11-28 16:12:33.831 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 16:12:33.832 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 401 0 null 1.4886ms
+2024-11-28 16:12:41.371 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/auth/login - application/json 77
+2024-11-28 16:12:41.371 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:12:41.371 +01:00 [INF] Executing endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 16:12:41.371 +01:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NissGram.DTOs.LoginDto) on controller NissGram.Controllers.AuthController (api).
+2024-11-28 16:12:41.378 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 16:12:41.484 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE "a"."UserId" = @__user_Id_0
+2024-11-28 16:12:41.486 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a0"."Name"
+FROM "AspNetUserRoles" AS "a"
+INNER JOIN "AspNetRoles" AS "a0" ON "a"."RoleId" = "a0"."Id"
+WHERE "a"."UserId" = @__userId_0
+2024-11-28 16:12:41.487 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-11-28 16:12:41.487 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-28 16:12:41.487 +01:00 [INF] Executed action NissGram.Controllers.AuthController.Login (api) in 115.4184ms
+2024-11-28 16:12:41.487 +01:00 [INF] Executed endpoint 'NissGram.Controllers.AuthController.Login (api)'
+2024-11-28 16:12:41.487 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/auth/login - 200 null application/json; charset=utf-8 116.7337ms
+2024-11-28 16:12:50.290 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - application/json 45
+2024-11-28 16:12:50.290 +01:00 [INF] CORS policy execution successful.
+2024-11-28 16:12:50.291 +01:00 [INF] Executing endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 16:12:50.291 +01:00 [INF] Route matched with {action = "Add", controller = "CommentAPI"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(NissGram.DTOs.CommentDto) on controller NissGram.Controllers.CommentAPIController (api).
+2024-11-28 16:12:50.293 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__username_0='?' (Size = 9)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."About", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."FirstName", "a"."LastName", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."ProfilePicture", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."UserName" = @__username_0
+LIMIT 1
+2024-11-28 16:12:50.294 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."PostId", "p"."DateCreated", "p"."DateUpdated", "p"."ImgUrl", "p"."Text", "p"."UserId"
+FROM "Posts" AS "p"
+WHERE "p"."PostId" = @__p_0
+LIMIT 1
+2024-11-28 16:12:50.296 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 14), @p2='?' (Size = 36), @p3='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("PostId", "Text", "UserId", "dateCommented")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "CommentId";
+2024-11-28 16:12:50.300 +01:00 [INF] [CommentRepository] Comment added successfully for PostId: 1
+2024-11-28 16:12:50.300 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'NissGram.DTOs.CommentDto'.
+2024-11-28 16:12:50.301 +01:00 [INF] Executed action NissGram.Controllers.CommentAPIController.Add (api) in 9.6651ms
+2024-11-28 16:12:50.301 +01:00 [INF] Executed endpoint 'NissGram.Controllers.CommentAPIController.Add (api)'
+2024-11-28 16:12:50.301 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5024/api/CommentAPI/add - 201 null application/json; charset=utf-8 11.3437ms

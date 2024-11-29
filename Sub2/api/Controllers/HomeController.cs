@@ -1,44 +1,50 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using NissGram.Models;
 using NissGram.DAL;
-using NissGram.ViewModels;
-using Microsoft.AspNetCore.Authorization;
+using NissGram.DTOs;
+
 
 namespace NissGram.Controllers;
 
-public class HomeController : Controller
+[ApiController]
+[Route("api/[controller]")]
+public class HomeAPIController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<HomeAPIController> _logger;
     private readonly IPostRepository _postRepository;
 
 
-    public HomeController(ILogger<HomeController> logger, IPostRepository postRepository)
+    public HomeAPIController(ILogger<HomeAPIController> logger, IPostRepository postRepository)
     {
         _logger = logger;
         _postRepository = postRepository;
     }
 
-    public async Task<IActionResult> Index()
+    [HttpGet("index")]
+public async Task<IActionResult> Index()
+{
+    var posts = await _postRepository.GetAllPostsAsync();
+    if (posts == null || !posts.Any())
     {
-        var posts = await _postRepository.GetAllPostsAsync();
-        if (posts == null)
-        {
-            _logger.LogError("[HomeController] Post list not found while executing _itemRepository.GetAllPostsAsync()");
-            return NotFound("Item list not found");
-        }
-        var viewModel = new PostsViewModel(posts, "All Posts");
-        return View(viewModel);
+        _logger.LogError("[HomeAPIController] No posts found while executing _postRepository.GetAllPostsAsync()");
+        return NotFound("No posts found.");
     }
 
-    public IActionResult Privacy()
+    var postDtos = posts.Select(post => new PostDto
     {
-        return View();
-    }
+        PostId = post.PostId,
+        Username = post.User.UserName ?? "Unknown", // For possible null value
+        Text = post.Text,
+        ImgUrl = post.ImgUrl,
+        DateCreated = post.DateCreated,
+        DateUpdated = post.DateUpdated,
+        LikeCount = post.UserLikes.Count,
+        CommentCount = post.UserComments.Count
+    });
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    return Ok(postDtos);
 }
+
+
+ 
+}
+
