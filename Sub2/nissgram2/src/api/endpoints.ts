@@ -1,4 +1,5 @@
-//Define backend endpoint constants.
+//Define backend endpoint constants. 
+//bruker ikke disse enda.
 export const ENDPOINTS = {
     LOGIN: '/auth/login',
     REGISTER: '/auth/register',

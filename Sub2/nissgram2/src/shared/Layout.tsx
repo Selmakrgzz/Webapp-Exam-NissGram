@@ -1,16 +1,22 @@
-import React from 'react';
-import NavBar from './NavBar';
+import React, { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './Header';
+import Sidebar from './SideBar';
 import Footer from './Footer';
+import './../styles/layout/layout.css';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children?: ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
-      <NavBar />
-      <main style={{ minHeight: '80vh' }}>{children}</main>
+    <div className="layout-container">
+      <Header />
+      <div className="layout-content">
+        <Sidebar />
+        <main className="content-container">{children || <Outlet />}</main>
+      </div>
       <Footer />
     </div>
   );

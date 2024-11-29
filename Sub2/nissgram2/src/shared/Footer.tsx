@@ -1,12 +1,14 @@
 import React from 'react';
+import './../styles/layout/footer.css';
 
-function App() {
+const Footer: React.FC = () => {
   return (
-    <div>
-      {/* Din hovedapp */}
-        FOOTER
-    </div>
+    <footer className="border-top footer text-muted" >
+        <div className="container">
+            &copy; 2024 - NissGram - Privacy
+        </div>
+    </footer>
   );
-}
+};
 
-export default App;
+export default Footer;
