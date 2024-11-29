@@ -1,5 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Identity;
 
 namespace NissGram.Models;
@@ -15,6 +16,7 @@ public class User : IdentityUser
         Phonenr type string 
         
     */
+
     public string? ProfilePicture { get; set; }
     [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}", ErrorMessage = "The Name must be letters and between 2 to 20 characters.")]
     [Display(Name = "First name")]
