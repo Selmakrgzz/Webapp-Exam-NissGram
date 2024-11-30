@@ -34,5 +34,6 @@ namespace NissGram.DTOs
 
         [Display(Name = "Profile Picture URL")]
         public string? ProfilePicture { get; set; }
+
     }
 }
