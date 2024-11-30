@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Serilog;
 using NissGram.DAL;
 using NissGram.Models;
-using Microsoft.AspNetCore.Mvc;
-
 
 
 var builder = WebApplication.CreateBuilder(args);
