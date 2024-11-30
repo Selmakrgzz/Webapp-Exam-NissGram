@@ -132,16 +132,7 @@ const RegisterPage: React.FC = () => {
         <button type="submit" className="btn btn-primary w-100 mb-3">Register</button>
 
         <div className="text-center">
-<<<<<<< HEAD
-          <p>
-            Already have an account?{" "}
-            <a href="/login" style={{ textDecoration: "underline" }}>
-              Log in here
-            </a>
-          </p>
-=======
           <p>Already have an account? <a href="/login" style={{ textDecoration: 'underline' }}>Log in here</a></p>
->>>>>>> origin
         </div>
       </form>
     </div>

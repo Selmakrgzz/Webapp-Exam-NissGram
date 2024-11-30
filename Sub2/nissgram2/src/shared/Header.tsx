@@ -1,15 +1,7 @@
 import React from 'react';
-<<<<<<< HEAD
 import API_URL from '../apiConfig';
 import './../styles/layout.css';
-=======
-import Logo from './../assets/images/Niss.png';
-import ProfileIcon from './../assets/images/profile_image_default.png';
-import HomeIcon from './../assets/images/homeIcon.png';
-import AddIcon from './../assets/images/addIcon.png';
-import LogoutIcon from './../assets/images/logoutIcon.png';
 import { useNavigate } from 'react-router-dom';
->>>>>>> origin
 
 const Header: React.FC = () => {
     const navigate = useNavigate();

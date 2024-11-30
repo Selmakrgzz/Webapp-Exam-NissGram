@@ -13,7 +13,7 @@ const PostProfileHeader: React.FC<PostProfileHeaderProps> = ({
 }) => {
   return (
     <a
-      href={userProfileLink}
+      href={"/profile"}
       style={{ color: "inherit", textDecoration: "none" }}
     >
       <div className="d-flex align-items-center justify-content-between mb-3">
