@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserForm from './auth/UserProfileForm';
+import UserForm from '../../components/UserProfileForm';
 
 const UpdateUserPage: React.FC = () => {
   const [userDetails, setUserDetails] = useState({

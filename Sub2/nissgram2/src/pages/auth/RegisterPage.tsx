@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserProfileForm from './UserProfileForm';
+import UserProfileForm from '../../components/UserProfileForm';
 //import './../../styles/loginRegister.css'; // CSS file for styling
 
 

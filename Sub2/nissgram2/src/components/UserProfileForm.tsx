@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DefaultProfilePicture from './../../assets/images/profile_image_default.png';
-import CustomDropdown from '../profile/CustomDropdown';
+import CustomDropdown from './CustomDropdown';
 
 interface UserProfileFormProps {
   username: string;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ProfileHeader from './profile/ProfileHeader';
-import NavigationButtons from './profile/NavigationButtons';
-import DynamicContent from './profile/DynamicContent';
+import ProfileHeader from '../../components/ProfileHeader';
+import NavigationButtons from '../../components/NavigationButtons';
+import DynamicContent from '../../components/profile/DynamicContent';
 import '../styles/profilePage.css';
 
 const ProfilePage: React.FC = () => {

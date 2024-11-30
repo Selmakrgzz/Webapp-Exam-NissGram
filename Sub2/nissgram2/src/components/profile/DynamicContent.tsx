@@ -1,6 +1,6 @@
 import React from 'react';
-import PicturesSection from './PicturesSection';
-import NotesSection from './NotesSection';
+import PicturesSection from '../PicturesSection';
+import NotesSection from '../NotesSection';
 import ActivitySection from './ActivitySection';
 
 type Section = 'Pictures' | 'Notes' | 'LikedPosts';
