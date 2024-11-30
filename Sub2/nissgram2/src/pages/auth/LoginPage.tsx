@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './../../styles/auth.css'; // CSS-stil for enhetlig design
+import './../../styles/loginRegister.css'; 
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../../apiConfig';
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -40,7 +42,7 @@ const LoginPage: React.FC = () => {
         {/* Venstre kolonne med logo */}
         <div className="col-md-5 d-flex align-items-center" style={{ paddingRight: '20px' }}>
           <img
-            src={'${API_URL}/images/Logo/Niss.png'}
+            src={`${API_URL}/images/Logo/Niss.png`}
             alt="Login Illustration"
             className="img-fluid"
             style={{ maxHeight: '400px' }}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import CustomDropdown from './CustomDropdown'; // Correct the path as needed
-import DefaultProfilePicture from '../assets/images/profile_image_default.png'; // Import the default profile picture
 import '../styles/profilePage.css';
+import API_URL from '../apiConfig';
 
 const ProfileHeader: React.FC = () => {
   const navigate = useNavigate(); // Initialize the useNavigate hook
@@ -26,7 +26,7 @@ const ProfileHeader: React.FC = () => {
         {/* Profile Picture */}
         <div className="d-flex align-items-center">
           <img
-            src={DefaultProfilePicture} // Use the default profile picture
+            src={`${API_URL}/images/profile_image_default.png`} // Use the default profile picture
             alt="Profile"
             className="rounded-circle me-5"
             style={{ width: '100px', height: '100px' }}
