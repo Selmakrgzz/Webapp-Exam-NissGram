@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+/*
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -52,4 +52,4 @@ const RegisterPage: React.FC = () => {
   );
 };
 
-export default RegisterPage;
+export default RegisterPage;*/

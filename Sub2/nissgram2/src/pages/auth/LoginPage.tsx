@@ -1,5 +1,5 @@
 import React from 'react';
-import './../../styles/auth.css'; // CSS-stil for enhetlig design
+//import './../../styles/loginRegister.css'; // CSS-stil for enhetlig design
 import NissGramLogo from './../../assets/images/Niss.png';
 
 const LoginPage: React.FC = () => {

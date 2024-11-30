@@ -8,7 +8,8 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import CreatePost from "./pages/post/createPost"; 
 import UpdatePost from "./pages/post/updatePost";
-
+import UpdateUserPage from "./pages/UpdateUserPage"; // Correct path to your UpdateUserPage component
+import ChangePasswordPage from './pages/ChangePasswordPage';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,8 @@ const App: React.FC = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
+          <Route path="/update-profile" element={<UpdateUserPage />} />
+          <Route path="/change-password" element={<ChangePasswordPage />} /> {/* Change Password */}
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="*" element={<NotFoundPage />} />
