@@ -21,14 +21,6 @@ public class AuthController : ControllerBase
         _userManager = userManager;
     }
 
-    // REMOVE THIS AFTER TESTING
-    [AllowAnonymous] // No authentication required 
-    [HttpGet("test")]
-    public IActionResult Test()
-    {
-        return Ok("Test endpoint working.");
-    }
-
     [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)

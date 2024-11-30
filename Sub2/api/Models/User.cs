@@ -35,4 +35,7 @@ public class User : IdentityUser
     //Likes made by the user to use under activity
     public virtual ICollection<UserPostLike> LikedPosts { get; set; } = new List<UserPostLike>();
 
+    // Relasjon til kommentarer
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
 }
