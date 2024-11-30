@@ -22,43 +22,43 @@ public static class DBInit
                 {
                     UserName = "Nico123",
                     Email = "nico123@example.com",
-                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c1.png"
+                    ProfilePicture = "/images/profile-pictures-seededUsers/c1.png"
                 },
                 new User
                 {
                     UserName = "JaneDoe",
                     Email = "jane.doe@example.com",
-                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c2.png"
+                    ProfilePicture = "/images/profile-pictures-seededUsers/c2.png"
                 },
                 new User
                 {
                     UserName = "JohnSmith",
                     Email = "john.smith@example.com",
-                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c3.png"
+                    ProfilePicture = "/images/profile-pictures-seededUsers/c3.png"
                 },
                 new User
                 {
                     UserName = "Bom93",
                     Email = "bombom@gmail.com",
-                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c4.png"
+                    ProfilePicture = "/images/profile-pictures-seededUsers/c4.png"
                 },
                 new User
                 {
                     UserName = "koko_223",
                     Email = "kko.2@outlook.com",
-                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c5.png"
+                    ProfilePicture = "/images/profile-pictures-seededUsers/c5.png"
                 },
                 new User
                 {
                     UserName = "geir_er_kul",
                     Email = "geir34@jahoo.com",
-                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c6.png"
+                    ProfilePicture = "/images/profile-pictures-seededUsers/c6.png"
                 },
                 new User
                 {
                     UserName = "tina_betina12",
                     Email = "tine.b@gmail.com",
-                    ProfilePicture = "/uploads/profile-pictures-seededUsers/c7.png"
+                    ProfilePicture = "/images/profile-pictures-seededUsers/c7.png"
                 }
             };
 
@@ -86,7 +86,7 @@ public static class DBInit
                 {
                     User = userNico, // Brukerobjektet for å sette relasjonen
                     Text = "Very pretty colors Gggg!",
-                    ImgUrl = "/images/snorekling.png",
+                    ImgUrl = "/images/postImages/snorekling.png",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -108,7 +108,7 @@ public static class DBInit
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
                     Text = "Nais hiking",
-                    ImgUrl = "/images/hiking.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/hiking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -119,7 +119,7 @@ public static class DBInit
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
                     Text = "Wow so many animals",
-                    ImgUrl = "/images/safari.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/safari.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -141,7 +141,7 @@ public static class DBInit
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
                     Text = "I catched a huge cod",
-                    ImgUrl = "/images/fishing.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/fishing.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -152,7 +152,7 @@ public static class DBInit
                 {
                     User = userTina, // Brukerobjektet for å sette relasjonen
                     Text = "Dinner time",
-                    ImgUrl = "/images/cooking.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/cooking.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -174,7 +174,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Music time",
-                    ImgUrl = "/images/mexican_amigos.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/mexican_amigos.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -185,7 +185,7 @@ public static class DBInit
                 {
                     User = userBom, // Brukerobjektet for å sette relasjonen
                     Text = "Travel time",
-                    ImgUrl = "/images/airplane_window.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/airplane_window.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -207,7 +207,7 @@ public static class DBInit
                 {
                     User = userJohn, // Brukerobjektet for å sette relasjonen
                     Text = "Adventure time",
-                    ImgUrl = "/images/paragliding.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/paragliding.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -218,7 +218,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Just loving nature",
-                    ImgUrl = "/images/northern_lights.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/northern_lights.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -240,7 +240,7 @@ public static class DBInit
                 {
                     User = userGeir, // Brukerobjektet for å sette relasjonen
                     Text = "I love steak",
-                    ImgUrl = "/images/cows.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/cows.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -251,7 +251,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "Happy hour",
-                    ImgUrl = "/images/friends_dining.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/friends_dining.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>
@@ -273,7 +273,7 @@ public static class DBInit
                 {
                     User = userJane, // Brukerobjektet for å sette relasjonen
                     Text = "FOOOOOD",
-                    ImgUrl = "/images/picknick.png", // Legg til en passende URL for bildet
+                    ImgUrl = "/images/postImages/picknick.png", // Legg til en passende URL for bildet
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     UserLikes = new List<UserPostLike>

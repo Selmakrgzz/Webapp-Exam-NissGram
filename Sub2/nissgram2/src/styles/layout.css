@@ -26,12 +26,11 @@
   background-color: #71a8a6 !important;
 }
 
-/* Hover-effekt
 .nav-link:hover {
-  transform: scale(1.1); /* Liten zoom ved hover 
-  filter: brightness(1.1); /* Gjør ikonet lysere ved hover 
-  cursor: pointer; /* Endre markøren til håndikon 
-} */
+  transform: scale(1.1); 
+  filter: brightness(1.1); 
+  cursor: pointer; 
+} 
 
 /* Logo image styling in the header */
 .navbar-brand{

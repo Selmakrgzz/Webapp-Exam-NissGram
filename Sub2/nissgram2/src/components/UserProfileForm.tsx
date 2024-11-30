@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import DefaultProfilePicture from '../assets/images/profile_image_default.png';
 import CustomDropdown from './CustomDropdown';
+import API_URL from '../apiConfig';
 
 interface UserProfileFormProps {
   username: string;
@@ -24,7 +24,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
   readOnlyFields = [],
 }) => {
   const [image, setImage] = useState<File | null>(null); // For image
-  const [preview, setPreview] = useState<string | null>(DefaultProfilePicture); // For preview
+  const [preview, setPreview] = useState<string | null>(`${API_URL}/images/profile_image_default.png`); // For preview
 
   // Handle image upload and preview
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +41,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
 
   const menuItems = [
     { label: 'Upload Picture', action: () => document.getElementById('uploadProfilePicture')?.click() }, // Trigger file input
-    { label: 'Delete Picture', action: () => { setImage(null); setPreview(DefaultProfilePicture); } },
+    { label: 'Delete Picture', action: () => { setImage(null); setPreview(`${API_URL}/images/profile_image_default.png`); } },
   ];
 
   return (
@@ -67,7 +67,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
         >
           <img
             id="profileImage"
-            src={preview || DefaultProfilePicture}
+            src={preview || `${API_URL}/images/profile_image_default.png`}
             alt="Profile Preview"
             style={{
               width: '100%',
