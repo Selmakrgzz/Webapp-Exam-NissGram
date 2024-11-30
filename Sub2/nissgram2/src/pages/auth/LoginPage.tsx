@@ -1,6 +1,5 @@
 import React from 'react';
 import './../../styles/auth.css'; // CSS-stil for enhetlig design
-import NissGramLogo from './../../assets/images/Niss.png';
 
 const LoginPage: React.FC = () => {
   return (
@@ -9,7 +8,7 @@ const LoginPage: React.FC = () => {
         {/* Venstre kolonne med logo */}
         <div className="col-md-5 d-flex align-items-center" style={{ paddingRight: '20px' }}>
           <img
-            src={NissGramLogo}
+            src={'${API_URL}/images/Logo/Niss.png'}
             alt="Login Illustration"
             className="img-fluid"
             style={{ maxHeight: '400px' }}

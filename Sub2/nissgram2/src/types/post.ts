@@ -1,10 +1,17 @@
-import { User } from "./user"; // Importer `User` hvis det finnes i en annen fil
+import { User } from "./user";
 
 export interface Post {
-    postId: number;
-    user: User;
-    text: string;
-    ImgUrl: string;
-    dateCreated: Date;
-    dateUpdated: Date;
-  }
+  postId: number;
+  imgUrl?: string;
+  text: string;
+  dateCreated: Date;
+  dateUpdated: Date;
+  user: User; // Aligns with backend DTO
+  userLiked: boolean; // Indicates if the user liked the post
+  likeCount: number;
+  commentCount: number;
+  onLike: () => void; // Optional callbacks
+  onCommentClick: () => void;
+  onUpdate: () => void;
+  onDelete: () => void;
+}

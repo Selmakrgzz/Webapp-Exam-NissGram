@@ -1,8 +1,8 @@
 export interface User {
-    id: number;
-    ProfilePicture: string;
-    FirstName: string;
-    LastName: string;
-    About: string;
-  }
-  
+  id: number;
+  userName: string;
+  profilePicture: string; // Align with backend
+  firstName?: string; // Optional if not needed in UI
+  lastName?: string;
+  about?: string;
+}

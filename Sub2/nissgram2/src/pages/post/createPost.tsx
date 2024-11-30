@@ -22,35 +22,35 @@ const CreatePost: React.FC = () => {
     }
   };
 
-  // Håndter innsending av skjemaet
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-
+  
     if (!text && !image) {
       setError("You must provide either text or an image.");
       return;
     }
-
+  
     setIsSubmitting(true);
-
+  
+    // Opprett FormData for å håndtere fil og tekst
     const formData = new FormData();
     formData.append("text", text);
     if (image) {
-      formData.append("image", image);
+      formData.append("uploadimage", image); // Bruk riktig felt som backend forventer
     }
-
+  
     try {
-      const response = await fetch("https://create/posts", { //ENDRE HVIS NØDVENDIG
+      const response = await fetch("http://localhost:5024/api/PostAPI/create", {
         method: "POST",
-        body: formData,
+        body: formData, // Send FormData direkte
       });
-
+  
       if (!response.ok) {
         throw new Error("Failed to create post.");
       }
-
-      // Reset skjemaet etter en vellykket innsending
+  
+      // Tilbakestill skjema ved suksess
       setText("");
       setImage(null);
       setPreview(null);
@@ -62,6 +62,7 @@ const CreatePost: React.FC = () => {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="container mt-3">
