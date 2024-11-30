@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DefaultProfilePicture from './../../assets/images/profile_image_default.png';
+import DefaultProfilePicture from '../assets/images/profile_image_default.png';
 import CustomDropdown from './CustomDropdown';
 
 interface UserProfileFormProps {
@@ -82,7 +82,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
         <div
           style={{
             position: 'absolute',
-            top: '75%',
+            top: '89%',
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 10,

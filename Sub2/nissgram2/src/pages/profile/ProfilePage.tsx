@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProfileHeader from '../../components/ProfileHeader';
 import NavigationButtons from '../../components/NavigationButtons';
 import DynamicContent from '../../components/profile/DynamicContent';
-import '../styles/profilePage.css';
+import '../../styles/profilePage.css';
 
 const ProfilePage: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'Pictures' | 'Notes' | 'LikedPosts'>('Pictures');

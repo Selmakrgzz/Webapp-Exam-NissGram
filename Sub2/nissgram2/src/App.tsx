@@ -10,6 +10,7 @@ import CreatePost from "./pages/post/createPost";
 import UpdatePost from "./pages/post/updatePost";
 import UpdateUserPage from "./pages/profile/UpdateUserPage"; // Correct path to your UpdateUserPage component
 import ChangePasswordPage from './pages/profile/ChangePasswordPage';
+import './styles/layout.css';
 
 const App: React.FC = () => {
   return (

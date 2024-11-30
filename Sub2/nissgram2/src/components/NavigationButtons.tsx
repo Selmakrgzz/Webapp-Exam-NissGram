@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/profilePage.css';
+import '../styles/profilePage.css';
 
 interface NavigationButtonsProps {
   onSectionChange: (section: 'Pictures' | 'Notes' | 'LikedPosts') => void;
