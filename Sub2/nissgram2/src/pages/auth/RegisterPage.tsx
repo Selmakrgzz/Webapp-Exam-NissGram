@@ -30,9 +30,8 @@ const RegisterPage: React.FC = () => {
       setError("Passwords do not match.");
       return;
     }
-
     try {
-      const response = await fetch('http://localhost:5024/api/auth/register', {
+      const regResponse = await fetch('http://localhost:5024/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,16 +45,35 @@ const RegisterPage: React.FC = () => {
           lastName: userDetails.lastName,
           about: userDetails.about,
           phoneNumber: userDetails.phoneNumber
-        })
+        }),
+        credentials: 'include'
       });
 
-      if (!response.ok) {
-        const resData = await response.json();
+      if (!regResponse.ok) {
+        const resData = await regResponse.json();
         throw new Error(resData.message || 'Failed to register. Please check your details and try again.');
       }
 
-      // After successful registration, redirect to login
-      navigate('/login');
+      // Perform the login immediately after successful registration
+      const loginResponse = await fetch('http://localhost:5024/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: userDetails.username,
+          password: userDetails.password
+        }),
+        credentials: 'include' // To ensure cookies are handled if using sessions
+      });
+
+      if (!loginResponse.ok) {
+        const resData = await loginResponse.json();
+        throw new Error(resData.message || 'Login failed after registration.');
+      }
+
+      // Navigate to the home page after successful login
+      navigate('/');
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
