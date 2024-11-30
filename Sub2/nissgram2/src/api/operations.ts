@@ -29,6 +29,13 @@ async function callApi(endpoint: string, method: string, body?: any) {
 }
 
 // API operations
+
+// API operation for creating a post
+export const createPost = async (postDetails: { text: string; imgUrl?: string }) => {
+    return callApi('/posts/create', 'POST', postDetails);
+};
+
+
 //API operation for login
 export const login = async (username: string, password: string) => {
     return callApi('/auth/login', 'POST', { username, password });

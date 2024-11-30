@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
         // Map data to align with the Post interface
         const enrichedPosts: Post[] = data.map((post: any) => ({
           postId: post.postId,
-          imgUrl: post.imgUrl,
+          imgUrl: post.imgUrl.startsWith('http') ? post.imgUrl : `${API_URL}${post.imgUrl}`, // Håndterer relative baner
           text: post.text,
           dateCreated: new Date(post.dateCreated),
           dateUpdated: new Date(post.dateUpdated),
