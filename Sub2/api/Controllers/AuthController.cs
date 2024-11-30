@@ -102,4 +102,19 @@ public class AuthController : ControllerBase
         await _signInManager.SignOutAsync();
         return Ok("Logged out successfully.");
     }
+
+    [HttpGet("isauthenticated")]
+    public IActionResult GetAuthenticationStatus()
+    {
+        if (User.Identity == null || !User.Identity.IsAuthenticated)
+        {
+            return Unauthorized(new { isAuthenticated = false, user = (string?)null });
+        }
+
+        return Ok(new
+        {
+            isAuthenticated = true,
+            user = User.Identity.Name
+        });
+    }
 }
