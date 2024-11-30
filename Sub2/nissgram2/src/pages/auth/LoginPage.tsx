@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './../../styles/auth.css'; // CSS-stil for enhetlig design
 import NissGramLogo from './../../assets/images/Niss.png';
+import { useNavigate} from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -17,12 +19,12 @@ const LoginPage: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', 
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
-        // Behandle vellykket innlogging
-        console.log('Logged in successfully');
-        // Redirect brukeren eller oppdater UI som nødvendig
+        setError(''); // Clear any previous errors
+        navigate('/'); 
       } else {
         throw new Error('Failed to log in');
       }
