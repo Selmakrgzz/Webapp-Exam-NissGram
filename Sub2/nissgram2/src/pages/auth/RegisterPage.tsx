@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './../../styles/auth.css'; // Ensure the path to your CSS is correct
+import { register, login } from './../../api/operations';
 
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const RegisterPage: React.FC = () => {
     phoneNumber: ''
   });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
@@ -27,61 +29,28 @@ const RegisterPage: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (userDetails.password !== userDetails.confirmPassword) {
-      setError("Passwords do not match.");
-      return;
+        setError("Passwords do not match.");
+        return;
     }
+    setLoading(true);
+    
     try {
-      const regResponse = await fetch('http://localhost:5024/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: userDetails.username,
-          email: userDetails.email,
-          password: userDetails.password,
-          confirmPassword: userDetails.confirmPassword,
-          firstName: userDetails.firstName,
-          lastName: userDetails.lastName,
-          about: userDetails.about,
-          phoneNumber: userDetails.phoneNumber
-        }),
-        credentials: 'include'
-      });
-
-      if (!regResponse.ok) {
-        const resData = await regResponse.json();
-        throw new Error(resData.message || 'Failed to register. Please check your details and try again.');
-      }
-
-      // Perform the login immediately after successful registration
-      const loginResponse = await fetch('http://localhost:5024/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: userDetails.username,
-          password: userDetails.password
-        }),
-        credentials: 'include' // To ensure cookies are handled if using sessions
-      });
-
-      if (!loginResponse.ok) {
-        const resData = await loginResponse.json();
-        throw new Error(resData.message || 'Login failed after registration.');
-      }
-
-      // Navigate to the home page after successful login
-      navigate('/');
+        await register(userDetails);
+        // Perform the login immediately after successful registration
+        const loginResponse = await login(userDetails.username, userDetails.password);
+        console.log(loginResponse); // Use login response for setting user context or similar actions
+        setError('');
+        navigate('/'); // Navigate to home page
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unexpected error occurred.');
-      }
+        if (err instanceof Error) {
+            setError(err.message);
+        } else {
+            setError('An unexpected error occurred.');
+        }
+    } finally {
+        setLoading(false);
     }
-  };
+};
 
   return (
     <div className="container">

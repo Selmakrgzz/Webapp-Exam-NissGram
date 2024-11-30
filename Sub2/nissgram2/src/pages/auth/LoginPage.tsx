@@ -3,6 +3,7 @@ import './../../styles/auth.css'; // CSS-stil for enhetlig design
 import './../../styles/loginRegister.css'; 
 import { useNavigate } from 'react-router-dom';
 import API_URL from '../../apiConfig';
+import { login } from './../../api/operations'; // Make sure the path matches where your operations.ts file is located
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -15,26 +16,22 @@ const LoginPage: React.FC = () => {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5024/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include', 
-        body: JSON.stringify({ username, password }),
-      });
-      if (response.ok) {
-        setError(''); // Clear any previous errors
-        navigate('/'); 
-      } else {
+      const result = await login(username, password);
+      if (result.error) {
+        setError(result.error);
         throw new Error('Failed to log in');
+      } else {
+        // Assuming the API returns some token or user data, handle it here
+        setError(''); // Clear any previous errors
+        navigate('/'); // Redirect on successful login
       }
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error) {
+      setError('Failed to connect to the server.');
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }}>
