@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import ProfileIcon from './../assets/images/profile_image_default.png';
 import HomeIcon from './../assets/images/homeIcon.png';
 import AddIcon from './../assets/images/addIcon.png';

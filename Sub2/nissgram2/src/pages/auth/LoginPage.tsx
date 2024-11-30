@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './../../styles/auth.css'; // CSS-stil for enhetlig design
+//import './../../styles/loginRegister.css'; // CSS-stil for enhetlig design
 import NissGramLogo from './../../assets/images/Niss.png';
 import { useNavigate} from 'react-router-dom';
 
