@@ -8,6 +8,7 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import CreatePost from "./pages/post/createPost"; 
 import UpdatePost from "./pages/post/updatePost";
+import AuthorizeView from './pages/auth/AuthorizeView';
 
 
 const App: React.FC = () => {
@@ -15,25 +16,43 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="profile" element={<ProfilePage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="createPost" element={<CreatePost />} /> {/* Riktig bruk av CreatePost */}
+
           <Route
-            path="/updatePost"
-            element={
-              <UpdatePost
-                postId={123}
-                existingImgUrl= " "
-                text="This is the current text of the post."
-                onUpdate={(postId, updatedText, updatedImage) => {
-                  console.log("Updated Post:", { postId, updatedText, updatedImage });
-                }}
-              />
-            }
-          />
+                  path="/"
+                  element={
+                      <AuthorizeView>
+                          <HomePage />
+                      </AuthorizeView>
+                  }
+            />
+          <Route
+                  path="/profile"
+                  element={
+                      <AuthorizeView>
+                         <ProfilePage />
+                      </AuthorizeView>
+                  }
+            />
+            <Route
+                  path="/createPost"
+                  element={
+                      <AuthorizeView>
+                         <CreatePost />
+                      </AuthorizeView>
+                  }
+            />
+        
+            <Route
+                  path="*"
+                  element={
+                      <AuthorizeView>
+                         <NotFoundPage />
+                      </AuthorizeView>
+                  }
+            />
+        
         </Route>
       </Routes>
     </Router>
