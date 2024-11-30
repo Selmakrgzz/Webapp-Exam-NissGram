@@ -6,6 +6,7 @@ const HomePage: React.FC = () => {
         <h1>Welcome to NissGram</h1>
         <p>Explore, share, and connect with friends!</p>
       </div>
+   
   );
 };
 

@@ -112,7 +112,7 @@ const CreatePost: React.FC = () => {
               {/* Upload Image Button */}
               <button
                 type="button"
-                className="btn btn-secondary btn-upload me-2"
+                className="btn btn-primary btn-lg btn-post"
                 onClick={() =>
                   document.getElementById("uploadImage")?.click()
                 }
