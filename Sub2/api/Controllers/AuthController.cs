@@ -29,6 +29,21 @@ public class AuthController : ControllerBase
         return Ok("Test endpoint working.");
     }
 
+    [HttpGet("isauthenticated")]
+    public IActionResult GetAuthenticationStatus()
+    {
+        if (User.Identity == null || !User.Identity.IsAuthenticated)
+        {
+            return Unauthorized(new { isAuthenticated = false, user = (string?)null });
+        }
+
+        return Ok(new
+        {
+            isAuthenticated = true,
+            user = User.Identity.Name
+        });
+    }
+
     [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "../../styles/createPost.css";
 
 interface UpdatePostProps {
@@ -45,7 +45,7 @@ const UpdatePost: React.FC<UpdatePostProps> = ({ postId, existingImgUrl, text, o
             {imagePreview ? (
               <img
                 src={imagePreview}
-                alt="Image Preview"
+                alt="Bildet "
                 style={{
                   maxWidth: "100%",
                   maxHeight: "100%",
@@ -85,7 +85,7 @@ const UpdatePost: React.FC<UpdatePostProps> = ({ postId, existingImgUrl, text, o
               {/* Upload Image Button */}
               <button
                 type="button"
-                className="btn btn-secondary btn-upload me-2"
+                className="btn btn-primary btn-lg btn-post"
                 onClick={() => document.getElementById("uploadImage")?.click()}
               >
                 Upload Image
