@@ -35,6 +35,9 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 // Configure authentication cookies
 builder.Services.ConfigureApplicationCookie(options =>
 {
+    options.Cookie.HttpOnly = true; // Ensures cookies cannot be accessed via JavaScript
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.Lax;
     options.LoginPath = "/api/auth/login";
     options.AccessDeniedPath = "/api/auth/accessdenied";
     options.LogoutPath = "/api/auth/logout";
@@ -70,9 +73,10 @@ builder.Services.AddControllersWithViews(config =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder =>
-        builder.AllowAnyOrigin() // Consider restricting this in production
+         builder.WithOrigins("http://localhost:3000") // Consider restricting this in production
                .AllowAnyMethod()
-               .AllowAnyHeader());
+               .AllowAnyHeader()
+               .AllowCredentials());
 });
 
 // Add Swagger/OpenAPI
