@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import API_URL from "../../apiConfig";
 import { Modal } from 'react-bootstrap';
 import PostPopup from "./PostPopup";
 import PostProfileHeader from "./PostProfileHeader";
 import '../../styles/popUp.css';
-import { useEffect } from "react";
 
 interface PostActionsProps {
   postId: number;
@@ -58,61 +57,82 @@ const PostActions: React.FC<PostActionsProps> = ({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Hent status fra backend
-    const fetchLikeStatus = async () => {
-      try {
-        const response = await fetch(`http://localhost:5024/api/PostAPI/details/${postId}`, {
-          method: "GET",
-          credentials: "include",
-        });
+    try {
+      const savedLiked = localStorage.getItem(`post_${postId}_liked`);
+      const savedLikeCount = localStorage.getItem(`post_${postId}_likeCount`);
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch like status.");
-        }
+      if (savedLiked !== null && savedLikeCount !== null) {
+        setUserLiked(JSON.parse(savedLiked));
+        setLikeCount(parseInt(savedLikeCount, 10));
+      } else {
+        const fetchLikeStatus = async () => {
+          try {
+            const response = await fetch(`${API_URL}/api/PostAPI/details/${postId}`, {
+              method: "GET",
+              credentials: "include",
+            });
 
-        const data = await response.json();
-        setUserLiked(data.userLiked);
-        setLikeCount(data.likeCount);
-      } catch (error: any) {
-        console.error("Error fetching like status:", error);
-        setError("Failed to load like status.");
+            if (!response.ok) {
+              throw new Error(`Failed to fetch like status. Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            setUserLiked(data.userLiked);
+            setLikeCount(data.likeCount);
+
+            localStorage.setItem(`post_${postId}_liked`, JSON.stringify(data.userLiked));
+            localStorage.setItem(`post_${postId}_likeCount`, JSON.stringify(data.likeCount));
+          } catch (error) {
+            console.error("Error fetching like status:", error);
+            setError("Failed to load like status.");
+          }
+        };
+
+        fetchLikeStatus();
       }
-    };
-      fetchLikeStatus();
+    } catch (error) {
+      console.error("Error accessing localStorage:", error);
+      setError("Failed to access local storage.");
+    }
   }, [postId]);
 
   const handleLike = async () => {
     try {
       const newLikedState = !userLiked;
-      setUserLiked(newLikedState);
-      setLikeCount((prev) => (newLikedState ? prev + 1 : prev - 1));
+      const newLikeCount = newLikedState ? likeCount + 1 : likeCount - 1;
 
-      // Send like til backend
-      const response = await fetch(`http://localhost:5024/api/PostAPI/like/${postId}`, {
+      setUserLiked(newLikedState);
+      setLikeCount(newLikeCount);
+
+      localStorage.setItem(`post_${postId}_liked`, JSON.stringify(newLikedState));
+      localStorage.setItem(`post_${postId}_likeCount`, JSON.stringify(newLikeCount));
+
+      const response = await fetch(`${API_URL}/api/PostAPI/like/${postId}`, {
         method: "POST",
-        credentials: "include", // Inkluderer autentiseringstoken
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ liked: newLikedState }),
       });
 
       if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.error || "Failed to update like status.");
+        throw new Error("Failed to update like status.");
       }
 
       const data = await response.json();
-      console.log("Backend response:", data);
-    } catch (error: any) {
-      console.error("Error updating like status:", error);
+      setUserLiked(data.userLiked);
+      setLikeCount(data.likeCount);
 
-      // Tilbakestill state ved feil
+      localStorage.setItem(`post_${postId}_liked`, JSON.stringify(data.userLiked));
+      localStorage.setItem(`post_${postId}_likeCount`, JSON.stringify(data.likeCount));
+    } catch (error) {
+      console.error("Error updating like status:", error);
       setUserLiked(!userLiked);
-      setLikeCount((prev) => (userLiked ? prev + 1 : prev - 1));
+      setLikeCount((prev) => (userLiked ? prev - 1 : prev + 1));
       setError("An error occurred while updating your like.");
     }
   };
-
 
   return (
     <div className="d-flex align-items-center">
@@ -145,36 +165,35 @@ const PostActions: React.FC<PostActionsProps> = ({
       <Modal show={showModal} onHide={toggleModal} centered className="modal-xl">
         <Modal.Header closeButton>
           <Modal.Title>
-          <PostProfileHeader 
+            <PostProfileHeader
               profilePicture={user?.profilePicture || `${API_URL}/images/default-profile.png`}
               userName={user?.userName || "Unknown"}
               userProfileLink={`/user/${user?.userName || "unknown"}`}
-          /> 
+            />
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-body">
-        <PostPopup
-          postId={postId}
-          user={user} // Ensure this matches the expected structure in PostPopupProps
-          imgUrl={imgUrl}
-          text={text}
-          dateCreated={dateCreated}
-          dateUpdated={dateUpdated}
-          comments={comments}
-          userLiked={userLiked}
-          likeCount={likeCount}
-          commentCount={commentCount}
-          onLike={onLike}
-          onAddComment={onAddComment}
-          onDeleteComment={onDeleteComment}
-          onClose={toggleModal} // Ensure onClose is expecting a function
-          onCommentClick={onCommentClick}
-        />
+          <PostPopup
+            postId={postId}
+            user={user}
+            imgUrl={imgUrl}
+            text={text}
+            dateCreated={dateCreated}
+            dateUpdated={dateUpdated}
+            comments={comments}
+            userLiked={userLiked}
+            likeCount={likeCount}
+            commentCount={commentCount}
+            onLike={onLike}
+            onAddComment={onAddComment}
+            onDeleteComment={onDeleteComment}
+            onClose={toggleModal}
+            onCommentClick={onCommentClick}
+          />
         </Modal.Body>
       </Modal>
     </div>
   );
 };
-
 
 export default PostActions;
