@@ -61,7 +61,7 @@ const PostCard: React.FC<PostCardProps> = ({
       )}
 
       <p>{text}</p>
-      <hr></hr>
+      <hr/>
 
       {/* PostDates */}
       <PostDates dateCreated={new Date(dateCreated)} dateUpdated={new Date(dateUpdated)} />
@@ -69,9 +69,18 @@ const PostCard: React.FC<PostCardProps> = ({
       {/* PostActions */}
       <PostActions
         postId={postId}
+        user={user}
+        imgUrl={imgUrl?  imgUrl : ''  }
+        text={text}
+        dateCreated={new Date(dateCreated)}
+        dateUpdated={new Date(dateUpdated)}
+        comments={[]} // Anta at denne fylles korrekt opp et annet sted i appen
         userLiked={userLiked}
         likeCount={likeCount}
         commentCount={commentCount}
+        onLike={handleCommentClick}
+        onAddComment={() => {}}
+        onDeleteComment={() => {}}
         onCommentClick={handleCommentClick}
       />
     </div>
