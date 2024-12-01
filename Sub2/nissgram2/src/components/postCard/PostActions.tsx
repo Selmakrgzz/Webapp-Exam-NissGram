@@ -20,35 +20,95 @@ const PostActions: React.FC<PostActionsProps> = ({
   const [likeCount, setLikeCount] = useState(initialLikeCount);
   const [error, setError] = useState<string | null>(null);
 
+<<<<<<< Updated upstream
+=======
+  useEffect(() => {
+    try {
+      const savedLiked = localStorage.getItem(`post_${postId}_liked`);
+      const savedLikeCount = localStorage.getItem(`post_${postId}_likeCount`);
+  
+      if (savedLiked !== null && savedLikeCount !== null) {
+        setUserLiked(JSON.parse(savedLiked));
+        setLikeCount(parseInt(savedLikeCount, 10));
+      } else {
+        // Fetch from backend
+        const fetchLikeStatus = async () => {
+          try {
+            const response = await fetch(`${API_URL}/api/PostAPI/details/${postId}`, {
+              method: "GET",
+              credentials: "include",
+            });
+  
+            if (!response.ok) {
+              throw new Error(`Failed to fetch like status. Status: ${response.status}`);
+            }
+  
+            const data = await response.json();
+            setUserLiked(data.userLiked);
+            setLikeCount(data.likeCount);
+  
+            localStorage.setItem(`post_${postId}_liked`, JSON.stringify(data.userLiked));
+            localStorage.setItem(`post_${postId}_likeCount`, JSON.stringify(data.likeCount));
+          } catch (error) {
+            console.error("Error fetching like status:", error);
+            setError("Failed to load like status.");
+          }
+        };
+  
+        fetchLikeStatus();
+      }
+    } catch (error) {
+      console.error("Error accessing localStorage:", error);
+      setError("Failed to access local storage.");
+    }
+  }, [postId]);
+  
+
+>>>>>>> Stashed changes
   const handleLike = async () => {
     try {
       // Oppdater state lokalt
       const newLikedState = !userLiked;
-      setUserLiked(newLikedState);
-      setLikeCount((prev) => (newLikedState ? prev + 1 : prev - 1));
+      const newLikeCount = newLikedState ? likeCount + 1 : likeCount - 1;
 
-      // Send like til backend
+      // Optimistically update the state
+      setUserLiked(newLikedState);
+      setLikeCount(newLikeCount);
+
+      // Save the updated state to localStorage
+      localStorage.setItem(`post_${postId}_liked`, JSON.stringify(newLikedState));
+      localStorage.setItem(`post_${postId}_likeCount`, JSON.stringify(newLikeCount));
+
+      // Make API call to update the backend
       const response = await fetch(`http://localhost:5024/api/PostAPI/like/${postId}`, {
         method: "POST",
-        credentials: "include", // Inkluderer autentiseringstoken
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ liked: newLikedState }),
       });
 
       if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.error || "Failed to update like status.");
+        throw new Error("Failed to update like status.");
       }
 
       const data = await response.json();
-      console.log("Backend response:", data);
-    } catch (error: any) {
+
+      // Sync the state with backend response
+      setUserLiked(data.userLiked);
+      setLikeCount(data.likeCount);
+
+      // Update localStorage with backend response
+      localStorage.setItem(`post_${postId}_liked`, JSON.stringify(data.userLiked));
+      localStorage.setItem(`post_${postId}_likeCount`, JSON.stringify(data.likeCount));
+    } catch (error) {
       console.error("Error updating like status:", error);
 
-      // Tilbakestill state ved feil
+      // Revert optimistic update on error
       setUserLiked(!userLiked);
-      setLikeCount((prev) => (userLiked ? prev + 1 : prev - 1));
+      setLikeCount((prev) => (userLiked ? prev - 1 : prev + 1));
+
       setError("An error occurred while updating your like.");
     }
   };

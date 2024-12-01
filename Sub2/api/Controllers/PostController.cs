@@ -63,6 +63,8 @@ public class PostAPIController : Controller
             return BadRequest(new { error = "You must provide either text or an image." });
         }
 
+        
+
         string? imageUrl = null;
 
         // Handle image upload if provided
@@ -118,6 +120,8 @@ public class PostAPIController : Controller
 
     }
 
+    
+
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> Delete(int id)
     {
@@ -155,8 +159,24 @@ public class PostAPIController : Controller
             return Forbid();
         }
 
+<<<<<<< Updated upstream
         // Update text if provided
         if (!string.IsNullOrWhiteSpace(model.Text) && model.Text != existingPost.Text)
+=======
+        // Check if both Text and newImage are empty/null
+       if (string.IsNullOrWhiteSpace(model.Text) && newImage == null && string.IsNullOrWhiteSpace(existingPost.ImgUrl))
+        {
+            return BadRequest(new { error = "Both text and image cannot be empty." });
+        }
+
+
+        // Update text (set to empty if null or whitespace)
+        if (string.IsNullOrWhiteSpace(model.Text))
+        {
+            existingPost.Text = string.Empty;
+        }
+        else if (model.Text != existingPost.Text)
+>>>>>>> Stashed changes
         {
             existingPost.Text = model.Text;
         }
