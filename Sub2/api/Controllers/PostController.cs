@@ -156,10 +156,11 @@ public class PostAPIController : Controller
         }
 
         // Check if both Text and newImage are empty/null
-        if (string.IsNullOrWhiteSpace(model.Text) && (newImage == null || newImage.Length == 0) && model.ImgUrl != existingPost.ImgUrl)
+        if (string.IsNullOrWhiteSpace(model.Text) && newImage == null && string.IsNullOrWhiteSpace(existingPost.ImgUrl))
         {
             return BadRequest(new { error = "Both text and image cannot be empty." });
         }
+
 
         // Update text (set to empty if null or whitespace)
         if (string.IsNullOrWhiteSpace(model.Text))
