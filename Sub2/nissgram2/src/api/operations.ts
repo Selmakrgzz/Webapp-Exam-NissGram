@@ -71,3 +71,10 @@ export const updateUserProfile = async (userDetails: any) => {
 export const fetchCurrentUser = async () => {
     return callApi('/userapi/current', 'GET');
 };
+
+// Fetch the user's profile data for display in the profile header
+export const fetchUserProfile = async () => {
+    return callApi('/userapi/profile', 'GET');
+};
+
+

@@ -5,6 +5,8 @@ interface NavigationButtonsProps {
   onSectionChange: (section: 'Pictures' | 'Notes' | 'LikedPosts') => void;
 }
 
+
+
 const NavigationButtons: React.FC<NavigationButtonsProps> = ({ onSectionChange }) => {
   return (
     <div className="d-flex justify-content-center my-4">

@@ -1,20 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomDropdown from './CustomDropdown';
 import '../styles/profilePage.css';
 import API_URL from '../apiConfig';
+import { fetchUserProfile } from '../api/operations';
 
-interface ProfileHeaderProps {
-  userData: {
+const ProfileHeader: React.FC = () => {
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState<{
     username: string;
-    description: string;
+    about: string;
     pictureCount: number;
     noteCount: number;
-  };
-}
+  }>({
+    username: '',
+    about: '',
+    pictureCount: 0,
+    noteCount: 0,
+  });
 
-const ProfileHeader: React.FC<ProfileHeaderProps> = ({ userData }) => {
-  const navigate = useNavigate();
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const userProfile = await fetchUserProfile();
+        console.log('Fetched user profile:', userProfile); // Debug log
+  
+        // Map the API response to the state
+        setUserData({
+          username: userProfile.username, // Correct API property
+          about: userProfile.about || 'No description available.', // Correct API property
+          pictureCount: userProfile.pictureCount || 0, // Use the DTO property
+          noteCount: userProfile.noteCount || 0, // Use the DTO property
+        });
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+        setUserData({
+          username: 'Guest',
+          about: 'No description available.',
+          pictureCount: 0,
+          noteCount: 0,
+        });
+      }
+    };
+  
+    loadUserData();
+  }, []);
+  
 
   const handleLogout = () => {
     localStorage.removeItem('authToken'); // Clear user token
@@ -23,8 +54,12 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ userData }) => {
 
   const menuItems = [
     { label: 'Update Profile', action: () => navigate('/update-profile') },
-    { label: 'Log Out', action: handleLogout }
+    { label: 'Log Out', action: handleLogout },
   ];
+
+  if (userData.username === '') {
+    return <p>Loading profile...</p>;
+  }
 
   return (
     <div className="profile-header-frame border rounded p-3 mb-4">
@@ -49,9 +84,9 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ userData }) => {
               <span>{userData.noteCount} Notes</span>
             </p>
 
-            {/* Description */}
+            {/* About */}
             <p className="fs-6 description-text" style={{ color: '#000' }}>
-              {userData.description}
+              {userData.about || 'No description available.'}
             </p>
           </div>
         </div>
