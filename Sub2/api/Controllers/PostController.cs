@@ -156,7 +156,7 @@ public class PostAPIController : Controller
         }
 
         // Check if both Text and newImage are empty/null
-        if (string.IsNullOrWhiteSpace(model.Text) && (newImage == null || newImage.Length == 0))
+        if (string.IsNullOrWhiteSpace(model.Text) && (newImage == null || newImage.Length == 0) && model.ImgUrl != existingPost.ImgUrl)
         {
             return BadRequest(new { error = "Both text and image cannot be empty." });
         }
@@ -169,6 +169,11 @@ public class PostAPIController : Controller
         else if (model.Text != existingPost.Text)
         {
             existingPost.Text = model.Text;
+        }
+
+        if (model.ImgUrl == null)
+        {
+            existingPost.ImgUrl = string.Empty;
         }
 
         // Handle new image upload or reset ImgUrl if newImage is null
@@ -192,11 +197,8 @@ public class PostAPIController : Controller
                 return StatusCode(500, new { error = "An error occurred while uploading the image." });
             }
         }
-        else
-        {
-            // Clear ImgUrl if no new image is provided
-            existingPost.ImgUrl = string.Empty;
-        }
+
+
 
         // Update timestamp
         existingPost.DateUpdated = DateTime.UtcNow;
