@@ -155,13 +155,23 @@ public class PostAPIController : Controller
             return Forbid();
         }
 
-        // Update text if provided
-        if (!string.IsNullOrWhiteSpace(model.Text) && model.Text != existingPost.Text)
+        // Check if both Text and newImage are empty/null
+        if (string.IsNullOrWhiteSpace(model.Text) && (newImage == null || newImage.Length == 0))
+        {
+            return BadRequest(new { error = "Both text and image cannot be empty." });
+        }
+
+        // Update text (set to empty if null or whitespace)
+        if (string.IsNullOrWhiteSpace(model.Text))
+        {
+            existingPost.Text = string.Empty;
+        }
+        else if (model.Text != existingPost.Text)
         {
             existingPost.Text = model.Text;
         }
 
-        // Handle new image upload if provided
+        // Handle new image upload or reset ImgUrl if newImage is null
         if (newImage != null && newImage.Length > 0)
         {
             var fileName = Guid.NewGuid() + Path.GetExtension(newImage.FileName);
@@ -181,6 +191,11 @@ public class PostAPIController : Controller
                 _logger.LogError(ex, "Error occurred while uploading image.");
                 return StatusCode(500, new { error = "An error occurred while uploading the image." });
             }
+        }
+        else
+        {
+            // Clear ImgUrl if no new image is provided
+            existingPost.ImgUrl = string.Empty;
         }
 
         // Update timestamp
@@ -206,6 +221,7 @@ public class PostAPIController : Controller
             return StatusCode(500, new { error = "A system error occurred while updating the post." });
         }
     }
+
 
     [HttpPost("like/{postId}")]
     public async Task<IActionResult> Like(int postId)
