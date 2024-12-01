@@ -1,22 +1,22 @@
 import React from 'react';
+import { Post } from './../../types/post';
+import PostCard from './../postCard/PostCard';
 
 interface ActivitySectionProps {
-  activities: string[];
+  activities: Post[];
 }
 
 const ActivitySection: React.FC<ActivitySectionProps> = ({ activities }) => {
+  if (!activities || activities.length === 0) {
+    return <p>No activity yet!</p>;
+  }
+
   return (
     <div>
       <h3>Activity</h3>
-      {activities.length > 0 ? (
-        <ul>
-          {activities.map((activity, index) => (
-            <li key={index}>{activity}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No activity yet!</p>
-      )}
+      {activities.map((post) => (
+        <PostCard key={post.postId} {...post} currentUserName={post.user?.userName || 'Unknown'} />
+      ))}
     </div>
   );
 };

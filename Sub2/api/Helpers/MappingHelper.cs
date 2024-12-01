@@ -12,6 +12,7 @@ namespace NissGram.Helpers
                 Username = user.UserName ?? "unknown",
                 PictureCount = user.Posts?.Count(p => !string.IsNullOrEmpty(p.ImgUrl)) ?? 0,
                 NoteCount = user.Posts?.Count(p => string.IsNullOrEmpty(p.ImgUrl)) ?? 0,
+                About = user.About ?? "No desc available.", // Ensure About is mapped
                 Pictures = MapPostsToDtos(user.Posts?.Where(p => !string.IsNullOrEmpty(p.ImgUrl))),
                 Notes = MapPostsToDtos(user.Posts?.Where(p => string.IsNullOrEmpty(p.ImgUrl))),
                 LikedPosts = MapPostsToDtos(user.LikedPosts?.Select(like => like.Post))
