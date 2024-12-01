@@ -1,15 +1,14 @@
 import React from "react";
 import API_URL from "../../apiConfig";
 import PostProfileHeader from "./PostProfileHeader";
-import '../../styles/postCard.css';
+import "../../styles/postCard.css";
 import PostDates from "./PostDates";
 import PostActions from "./PostActions";
 import { Post } from "../../types/post";
-import { post } from "axios";
 import PostDropdown from "./PostDropdown";
 
 interface PostCardProps extends Post {
-  postId: number; // Sørg for at postId er inkludert
+  postId: number;
   currentUserName: string;
 }
 
@@ -21,16 +20,10 @@ const PostCard: React.FC<PostCardProps> = ({
   commentCount,
   dateCreated,
   dateUpdated,
-  onLike,
-  onCommentClick,
   userLiked,
   postId,
   currentUserName,
-  
 }) => {
-  //console.log("Current UserName:", currentUserName);
-  //console.log("Post UserName:", user.userName);
-  //console.log(`Current UserName: ${currentUserName}, Post UserName: ${user.userName}, Should Render Dropdown: ${currentUserName === user.userName}`);
   const handleEdit = () => {
     console.log(`Editing post with ID: ${postId}`);
   };
@@ -38,6 +31,11 @@ const PostCard: React.FC<PostCardProps> = ({
   const handleDelete = () => {
     console.log(`Deleting post with ID: ${postId}`);
   };
+
+  const handleCommentClick = () => {
+    console.log("Comment clicked for post:", postId);
+  };
+
   return (
     <div className="post-card" style={{ position: "relative", marginBottom: "20px" }}>
       <div className="d-flex justify-content-between align-items-center">
@@ -55,7 +53,7 @@ const PostCard: React.FC<PostCardProps> = ({
 
       {imgUrl && (
         <img
-          src={imgUrl.startsWith('/images/postImages') ? `${API_URL}${imgUrl}` : `http://localhost:5024${imgUrl}`}
+          src={imgUrl.startsWith("/images/postImages") ? `${API_URL}${imgUrl}` : `http://localhost:5024${imgUrl}`}
           alt="Post"
           className="img-fluid rounded"
           style={{ marginTop: "10px" }}
@@ -66,7 +64,7 @@ const PostCard: React.FC<PostCardProps> = ({
       <hr></hr>
 
       {/* PostDates */}
-      <PostDates dateCreated={new Date()} dateUpdated={dateUpdated} />
+      <PostDates dateCreated={new Date(dateCreated)} dateUpdated={new Date(dateUpdated)} />
 
       {/* PostActions */}
       <PostActions
@@ -74,8 +72,7 @@ const PostCard: React.FC<PostCardProps> = ({
         userLiked={userLiked}
         likeCount={likeCount}
         commentCount={commentCount}
-        onLike={onLike}
-        onCommentClick={onCommentClick}
+        onCommentClick={handleCommentClick}
       />
     </div>
   );

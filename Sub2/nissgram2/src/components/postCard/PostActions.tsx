@@ -6,7 +6,6 @@ interface PostActionsProps {
   userLiked: boolean;
   likeCount: number;
   commentCount: number;
-  onLike: () => void; // Legg til dette hvis det mangler
   onCommentClick: () => void;
 }
 
@@ -17,22 +16,48 @@ const PostActions: React.FC<PostActionsProps> = ({
   commentCount,
   onCommentClick,
 }) => {
-  // State for likes og om brukeren har likt
   const [userLiked, setUserLiked] = useState(initialUserLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLike = () => {
-    // Bytt mellom likt og ikke-likt
-    if (userLiked) {
-      setLikeCount((prev) => prev - 1); // Fjern en like hvis allerede likt
-    } else {
-      setLikeCount((prev) => prev + 1); // Legg til en like hvis ikke likt
+  const handleLike = async () => {
+    try {
+      // Oppdater state lokalt
+      const newLikedState = !userLiked;
+      setUserLiked(newLikedState);
+      setLikeCount((prev) => (newLikedState ? prev + 1 : prev - 1));
+
+      // Send like til backend
+      const response = await fetch(`http://localhost:5024/api/PostAPI/like/${postId}`, {
+        method: "POST",
+        credentials: "include", // Inkluderer autentiseringstoken
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.error || "Failed to update like status.");
+      }
+
+      const data = await response.json();
+      console.log("Backend response:", data);
+    } catch (error: any) {
+      console.error("Error updating like status:", error);
+
+      // Tilbakestill state ved feil
+      setUserLiked(!userLiked);
+      setLikeCount((prev) => (userLiked ? prev + 1 : prev - 1));
+      setError("An error occurred while updating your like.");
     }
-    setUserLiked(!userLiked); // Oppdater state for userLiked
   };
 
   return (
     <div className="d-flex align-items-center">
+      {/* Feilmelding */}
+      {error && <div className="text-danger">{error}</div>}
+
       {/* Like-knappen */}
       <div className="d-flex align-items-center mr-3 like-button-container">
         <button
