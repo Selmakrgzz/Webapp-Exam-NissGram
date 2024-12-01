@@ -1,56 +1,85 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "../../styles/layout.css";
 import "../../styles/createPost.css";
 
 const CreatePost: React.FC = () => {
   const navigate = useNavigate();
 
-  const [text, setText] = useState<string>(""); // For text content
-  const [image, setImage] = useState<File | null>(null); // Endrer typen til File | null
-  const [preview, setPreview] = useState<string | null>(""); // For image preview
-  const [error, setError] = useState<string | null>(null); // For error messages
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // For loading state
-  const [successMessage, setSuccessMessage] = useState<string | null>(null); // For success message
+  const [text, setText] = useState<string>(""); // For tekstinnhold
+  const [image, setImage] = useState<File | null>(null); // For bildefil
+  const [preview, setPreview] = useState<string | null>(""); // For bilde-forhåndsvisning
+  const [error, setError] = useState<string | null>(null); // For feilmeldinger
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // For lasting
+  const [successMessage, setSuccessMessage] = useState<string | null>(null); // For suksessmelding
 
-  // Handle image upload and preview
+  // Håndter bildevalg og forhåndsvisning
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setImage(file); // Setter `image` som en fil
+      if (!file.type.startsWith("image/")) {
+        setError("Only image files are allowed.");
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) { // Maksimal størrelse: 5 MB
+        setError("Image size must be less than 5MB.");
+        return;
+      }
+
+      setImage(file); // Lagre fil
+      setError(null); // Nullstill feilmelding
+
       const reader = new FileReader();
       reader.onload = () => {
-        setPreview(reader.result as string); // Forhåndsviser bildet
+        setPreview(reader.result as string); // Sett forhåndsvisning
       };
       reader.readAsDataURL(file);
     }
   };
 
-  // Handle form submission
+  // Håndter skjema-validering
+  const validateInputs = () => {
+    if (!text.trim() && !image) {
+      setError("You must provide either text or an image.");
+      return false;
+    }
+
+    if (text.length > 500) {
+      setError("Text must not exceed 500 characters.");
+      return false;
+    }
+
+    setError(null); // Nullstill feilmelding hvis alt er OK
+    return true;
+  };
+
+  // Håndter skjema-innsending
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setSuccessMessage(null);
 
-    if (!text && !image) {
-      setError("You must provide either text or an image.");
-      return;
-    }
+    if (!validateInputs()) return;
 
     setIsSubmitting(true);
 
-    // Opprett FormData for å sende tekst og bilde
     const formData = new FormData();
-    formData.append("Text", text); // Må samsvare med backend-feltet "Text"
+    formData.append("Text", text.trim());
     if (image) {
-      formData.append("uploadImage", image); // Må samsvare med backend-feltet "uploadImage"
+      formData.append("uploadImage", image);
     }
 
     try {
+      console.log("[DEBUG] Sending data to backend:", {
+        text: text.trim(),
+        image,
+      });
+
       const response = await fetch("http://localhost:5024/api/PostAPI/create", {
         method: "POST",
         body: formData,
-        credentials: "include", // Inkluderer autentiseringstokenet
+        credentials: "include",
       });
 
       if (!response.ok) {
@@ -58,18 +87,21 @@ const CreatePost: React.FC = () => {
         throw new Error(errorResponse.error || "Failed to create post.");
       }
 
-      // Rydd opp skjema ved suksess
+      const data = await response.json();
+      console.log("[DEBUG] Post created successfully:", data);
+
+      // Nullstill skjema ved suksess
       setText("");
       setImage(null);
       setPreview(null);
-      setSuccessMessage('Post created successfully!'); // Sett suksessmelding
+      setSuccessMessage("Post created successfully!");
 
       // Naviger til hjemmesiden etter 2 sekunder
       setTimeout(() => {
-        navigate('/');
-      }, 1500);
-        
+        navigate("/");
+      }, 2000);
     } catch (err: any) {
+      console.error("[ERROR] Failed to create post:", err.message || err);
       setError(err.message || "Something went wrong.");
     } finally {
       setIsSubmitting(false);
@@ -82,15 +114,22 @@ const CreatePost: React.FC = () => {
         <h2>Share something!</h2>
       </div>
 
-      {/* Success message */}
+      {/* Suksessmelding */}
       {successMessage && (
         <div className="alert alert-success text-center" role="alert">
           {successMessage}
         </div>
       )}
 
+      {/* Feilmelding */}
+      {error && (
+        <div className="alert alert-danger text-center" role="alert">
+          {error}
+        </div>
+      )}
+
       <div className="row">
-        {/* Left Column: Image Preview */}
+        {/* Venstre kolonne: Forhåndsvisning av bilde */}
         <div className="col-md-6 d-flex justify-content-center">
           <div id="imagePreview" className="border">
             {preview ? (
@@ -109,13 +148,10 @@ const CreatePost: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Form Elements */}
+        {/* Høyre kolonne: Skjemafelt */}
         <div className="col-md-6">
           <form onSubmit={handleSubmit}>
-            {/* Validation Summary */}
-            {error && <div className="text-danger mb-3">{error}</div>}
-
-            {/* Text Area */}
+            {/* Tekstområde */}
             <div className="form-group mb-3">
               <textarea
                 className="form-control form-control-lg"
@@ -127,9 +163,9 @@ const CreatePost: React.FC = () => {
               ></textarea>
             </div>
 
-            {/* Buttons Section */}
+            {/* Knapper */}
             <div className="form-group d-flex justify-content-between align-items-center">
-              {/* Upload Image Button */}
+              {/* Opplastingsknapp */}
               <button
                 type="button"
                 className="btn btn-primary btn-lg btn-post"
@@ -139,7 +175,6 @@ const CreatePost: React.FC = () => {
               >
                 Upload Image
               </button>
-              {/* Hidden File Input */}
               <input
                 type="file"
                 id="uploadImage"
@@ -150,7 +185,7 @@ const CreatePost: React.FC = () => {
                 onChange={handleImageChange}
               />
 
-              {/* Submit Button */}
+              {/* Innsendingsknapp */}
               <button
                 type="submit"
                 className="btn btn-primary btn-lg btn-post"

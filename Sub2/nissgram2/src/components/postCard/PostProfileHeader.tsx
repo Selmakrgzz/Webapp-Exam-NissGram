@@ -17,14 +17,14 @@ const PostProfileHeader: React.FC<PostProfileHeaderProps> = ({
 }) => {
   return (
     <div className="d-flex align-items-center justify-content-between">
-      <div className="d-flex align-items-center">
-        <img
+      <div className="d-flex align-items-center" style={{ marginBottom: "10px"}}>
+      <a href={userProfileLink}><img
           src={profilePicture}
           alt="Profile"
           className="rounded-circle"
           style={{ width: "40px", height: "40px", marginRight: "10px" }}
-        />
-        <a href={userProfileLink} className="text-decoration-none text-dark">
+        /></a>
+        <a href={userProfileLink} className="text-decoration-none text-dark" style={{fontWeight: "bold"}}>
           {userName}
         </a>
       </div>

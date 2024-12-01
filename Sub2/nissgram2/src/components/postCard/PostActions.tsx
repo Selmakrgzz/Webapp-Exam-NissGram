@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import API_URL from "../../apiConfig";
 
 interface PostActionsProps {
@@ -20,9 +20,33 @@ const PostActions: React.FC<PostActionsProps> = ({
   const [likeCount, setLikeCount] = useState(initialLikeCount);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    // Hent status fra backend
+    const fetchLikeStatus = async () => {
+      try {
+        const response = await fetch(`http://localhost:5024/api/PostAPI/details/${postId}`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch like status.");
+        }
+
+        const data = await response.json();
+        setUserLiked(data.userLiked);
+        setLikeCount(data.likeCount);
+      } catch (error: any) {
+        console.error("Error fetching like status:", error);
+        setError("Failed to load like status.");
+      }
+    };
+
+    fetchLikeStatus();
+  }, [postId]);
+
   const handleLike = async () => {
     try {
-      // Oppdater state lokalt
       const newLikedState = !userLiked;
       setUserLiked(newLikedState);
       setLikeCount((prev) => (newLikedState ? prev + 1 : prev - 1));
@@ -55,15 +79,13 @@ const PostActions: React.FC<PostActionsProps> = ({
 
   return (
     <div className="d-flex align-items-center">
-      {/* Feilmelding */}
       {error && <div className="text-danger">{error}</div>}
 
-      {/* Like-knappen */}
       <div className="d-flex align-items-center mr-3 like-button-container">
         <button
           onClick={(e) => {
-            e.preventDefault(); // Forhindre standard form-oppførsel
-            handleLike(); // Håndter likes
+            e.preventDefault();
+            handleLike();
           }}
           className="btn p-0"
           style={{ border: "none", background: "transparent" }}
@@ -78,12 +100,11 @@ const PostActions: React.FC<PostActionsProps> = ({
         <span>{likeCount}</span>
       </div>
 
-      {/* Kommentarseksjonen */}
       <div
         className="d-flex align-items-center mr-3 comment-button-container"
         style={{ cursor: "pointer" }}
         data-bs-toggle="modal"
-        data-bs-target={`#postModal-${postId}`} // Koble modal til riktig post
+        data-bs-target={`#postModal-${postId}`}
         onClick={onCommentClick}
       >
         <img
