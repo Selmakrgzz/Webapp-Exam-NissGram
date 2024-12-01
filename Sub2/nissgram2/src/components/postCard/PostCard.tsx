@@ -63,6 +63,7 @@ const PostCard: React.FC<PostCardProps> = ({
       )}
 
       <p>{text}</p>
+      <hr></hr>
 
       {/* PostDates */}
       <PostDates dateCreated={new Date()} dateUpdated={dateUpdated} />

@@ -4,7 +4,7 @@ import { Post } from "../../types/post";
 import { fetchCurrentUser as fetchUser } from '../../api/operations'; // Import the API call function
 
 const AllPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true); // For å håndtere lasting
+  //const [isLoading, setIsLoading] = useState<boolean>(true); // For å håndtere lasting
   const [currentUser, setCurrentUser] = useState<string | null>(null); // Holder userName for innlogget bruker
 
   useEffect(() => {
@@ -17,18 +17,12 @@ const AllPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
       } catch (error) {
         //console.error("Error fetching current user:", error);
         setCurrentUser(null); // Angir feilmeldingstilstand hvis API feiler
-      } finally {
-        setIsLoading(false); // Sett lasting til false etter forsøket
-      }
+      } 
     };
 
     fetchCurrentUser();
   }, []);
 
-  // Viser en loading-melding mens data hentes
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
 
   // Feilmelding hvis brukeren ikke kunne lastes
   if (!currentUser) {
