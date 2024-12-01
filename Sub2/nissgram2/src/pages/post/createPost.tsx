@@ -42,7 +42,11 @@ const CreatePost: React.FC = () => {
     if (image) {
       formData.append("uploadImage", image); // Må samsvare med backend-feltet "uploadImage"
     }
-  
+    // Logg data før sending
+    console.log('Sending the following data to backend:', {
+      text: text,
+      image: image,
+    })
     try {
       const response = await fetch("http://localhost:5024/api/PostAPI/create", {
         method: "POST",
