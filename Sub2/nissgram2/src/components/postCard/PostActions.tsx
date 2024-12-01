@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import API_URL from "../../apiConfig";
 
 interface PostActionsProps {
@@ -20,25 +20,72 @@ const PostActions: React.FC<PostActionsProps> = ({
   // State for likes og om brukeren har likt
   const [userLiked, setUserLiked] = useState(initialUserLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLike = () => {
-    // Bytt mellom likt og ikke-likt
-    if (userLiked) {
-      setLikeCount((prev) => prev - 1); // Fjern en like hvis allerede likt
-    } else {
-      setLikeCount((prev) => prev + 1); // Legg til en like hvis ikke likt
+  useEffect(() => {
+    // Hent status fra backend
+    const fetchLikeStatus = async () => {
+      try {
+        const response = await fetch(`http://localhost:5024/api/PostAPI/details/${postId}`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch like status.");
+        }
+
+        const data = await response.json();
+        setUserLiked(data.userLiked);
+        setLikeCount(data.likeCount);
+      } catch (error: any) {
+        console.error("Error fetching like status:", error);
+        setError("Failed to load like status.");
+      }
+    };
+
+    fetchLikeStatus();
+  }, [postId]);
+
+  const handleLike = async () => {
+    try {
+      const newLikedState = !userLiked;
+      setUserLiked(newLikedState);
+      setLikeCount((prev) => (newLikedState ? prev + 1 : prev - 1));
+
+      const response = await fetch(`http://localhost:5024/api/PostAPI/like/${postId}`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.error || "Failed to update like status.");
+      }
+
+      const data = await response.json();
+      console.log("Backend response:", data);
+    } catch (error: any) {
+      console.error("Error updating like status:", error);
+      setUserLiked(!userLiked); // Tilbakestill tilstand ved feil
+      setLikeCount((prev) => (userLiked ? prev + 1 : prev - 1));
+      setError("An error occurred while updating your like.");
     }
     setUserLiked(!userLiked); // Oppdater state for userLiked
   };
 
   return (
     <div className="d-flex align-items-center">
-      {/* Like-knappen */}
+      {error && <div className="text-danger">{error}</div>}
+
       <div className="d-flex align-items-center mr-3 like-button-container">
         <button
           onClick={(e) => {
-            e.preventDefault(); // Forhindre standard form-oppførsel
-            handleLike(); // Håndter likes
+            e.preventDefault();
+            handleLike();
           }}
           className="btn p-0"
           style={{ border: "none", background: "transparent" }}
@@ -53,12 +100,11 @@ const PostActions: React.FC<PostActionsProps> = ({
         <span>{likeCount}</span>
       </div>
 
-      {/* Kommentarseksjonen */}
       <div
         className="d-flex align-items-center mr-3 comment-button-container"
         style={{ cursor: "pointer" }}
         data-bs-toggle="modal"
-        data-bs-target={`#postModal-${postId}`} // Koble modal til riktig post
+        data-bs-target={`#postModal-${postId}`}
         onClick={onCommentClick}
       >
         <img

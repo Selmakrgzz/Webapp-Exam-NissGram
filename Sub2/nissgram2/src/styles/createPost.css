@@ -87,3 +87,13 @@
     background-color: #fff;
     resize: none; 
 }
+
+.content-container {
+    margin-bottom: 30px;
+}
+
+/*@media (max-width: 1150px) {
+    .content-container {
+        margin: 30px 40px 40px 40px;
+    }
+}*/

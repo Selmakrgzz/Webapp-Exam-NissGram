@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import "../../styles/layout.css";
+import "../../styles/createPost.css";
 
 const UpdatePost: React.FC = () => {
   const navigate = useNavigate();
@@ -13,8 +15,8 @@ const UpdatePost: React.FC = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [newImage, setNewImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null); // Ny tilstand for suksessmelding
+  const [error, setError] = useState<string | null>(null); // For valideringsfeil
+  const [successMessage, setSuccessMessage] = useState<string | null>(null); // For suksessmelding
 
   const BASE_URL = 'http://localhost:5024';
 
@@ -77,64 +79,68 @@ const UpdatePost: React.FC = () => {
   };
 
   const handleSave = async () => {
-    if (!postDetails.text.trim() && !newImage) {
-      alert('You must provide either a text or an image to update the post.');
+    // Inputvalidering uten dialogboks
+    if (!postDetails.text.trim() && (newImage == null && imagePreview == null)) {
+      setError("You must provide either text or an image to update the post.");
       return;
     }
+    setError(null); // Nullstill feil hvis valideringen består
+
+    
 
     try {
       setLoading(true);
-
+    
       const formData = new FormData();
-      formData.append('text', postDetails.text);
+    
+      // Sjekk om teksten skal settes til null
+      if (!postDetails.text.trim()) {
+        formData.append('text', '  '); // Merk: Vi sender "null" som en streng
+      } else {
+        formData.append('text', postDetails.text.trim());
+      }
+    
+      // Legg til nytt bilde om det er valgt
       if (newImage) {
         formData.append('newImage', newImage);
       }
-
+    
       console.log('Sending data to backend:', {
-        text: postDetails.text,
-        image: newImage,
+        text: postDetails.text || '  ',
+        image: newImage || 'Using existing image',
       });
-
+    
       const response = await fetch(`${BASE_URL}/api/PostAPI/update/${postId}`, {
         method: 'PUT',
         credentials: 'include',
         body: formData,
       });
-
+    
       if (!response.ok) {
-        throw new Error('Failed to update post.');
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.message || 'Failed to update post.');
       }
-
+    
       const updatedPost = await response.json();
-      console.log('Backend returned updated post details:', updatedPost);
-
       setPostDetails({
         text: updatedPost.text,
         imageUrl: `${BASE_URL}${updatedPost.imgUrl}`,
       });
-
+    
       setImagePreview(`${BASE_URL}${updatedPost.imgUrl}?t=${Date.now()}`);
-      setSuccessMessage('Post updated successfully!'); // Sett suksessmelding
-
-      // Naviger til hjemmesiden etter 2 sekunder
-      setTimeout(() => {
-        navigate('/');
-      }, 1500);
+      setSuccessMessage('Post updated successfully!');
+      setError(null);
+    
+      navigate('/');
     } catch (err: any) {
-      console.error('Error updating post:', err.message || err);
-      alert('Failed to update post. Please try again.');
-    } finally {
-      setLoading(false);
+      console.error('Update post failed:', err.message);
+      setError('Failed to update post. Please try again.');
     }
+    
   };
 
-  const handleCancel = () => {
-    navigate('/');
-  };
 
   if (loading) return <p>Loading post data...</p>;
-  if (error) return <p className="text-danger">{error}</p>;
 
   return (
     <div className="container mt-3">
@@ -142,6 +148,14 @@ const UpdatePost: React.FC = () => {
         <h2>Update your post!</h2>
       </div>
 
+      {/* Feilmelding */}
+      {error && (
+        <div className="alert alert-danger text-center" role="alert">
+          {error}
+        </div>
+      )}
+
+      {/* Suksessmelding */}
       {successMessage && (
         <div className="alert alert-success text-center" role="alert">
           {successMessage}
@@ -189,7 +203,7 @@ const UpdatePost: React.FC = () => {
             <div className="form-group d-flex justify-content-between align-items-center">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary btn-lg"
                 onClick={() => document.getElementById('uploadImage')?.click()}
               >
                 Upload Image
@@ -203,8 +217,8 @@ const UpdatePost: React.FC = () => {
               />
 
               <button
-                type="button"
-                className="btn btn-success"
+                type="submit"
+                className="btn btn-success btn btn-primary btn-lg"
                 onClick={handleSave}
               >
                 Update
