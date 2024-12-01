@@ -184,7 +184,30 @@ public class UserAPIController : Controller
         }
     }
 
-    
+
+    [HttpGet("LikedPosts")]
+    public async Task<IActionResult> LikedPosts()
+    {
+
+
+        // Authenticate the user
+        var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
+        if (user == null)
+        {
+            return Unauthorized(new { error = "User is not authenticated." });
+        }
+
+
+        // Check if the user has liked the post
+        var liked = _userRepository.GetLikedPostIds(user);
+
+        return Ok(new
+        {
+            hasLiked = liked.Result
+        });
+    }
+
+
 
 }
 

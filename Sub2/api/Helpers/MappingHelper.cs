@@ -54,7 +54,11 @@ namespace NissGram.Helpers
             return posts?.Select(p => new PostDto
             {
                 PostId = p.PostId,
-                Username = p.User?.UserName ?? "unknown",
+                SimpleUser = new SimpleUserDto
+                {
+                    UserName = p.User.UserName,
+                    ProfilePicture = p.User.ProfilePicture
+                },
                 Text = p.Text,
                 ImgUrl = p.ImgUrl,
                 DateCreated = p.DateCreated,
@@ -69,7 +73,11 @@ namespace NissGram.Helpers
             return new PostDto
             {
                 PostId = post.PostId,
-                Username = post.User?.UserName ?? "Unknown",
+                SimpleUser = new SimpleUserDto
+                {
+                    UserName = post.User.UserName,
+                    ProfilePicture = post.User.ProfilePicture
+                },
                 Text = post.Text,
                 ImgUrl = post.ImgUrl,
                 DateCreated = post.DateCreated,

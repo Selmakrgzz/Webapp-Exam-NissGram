@@ -5,7 +5,7 @@ namespace NissGram.DTOs
     public class PostDto
     {
         public int PostId { get; set; }
-        public string Username { get; set; } = string.Empty;
+        public SimpleUserDto SimpleUser { get; set; } = new SimpleUserDto();
         public string? Text { get; set; }
         public string? ImgUrl { get; set; }
         public DateTime DateCreated { get; set; }
