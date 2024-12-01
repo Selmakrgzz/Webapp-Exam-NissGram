@@ -262,36 +262,3 @@ public class PostAPIController : Controller
 
 
 }
-
-// public class PostController : Controller
-// {
-//     // GET: Create Post Form
-//     [HttpGet]
-//     public IActionResult Create()
-//     {
-//         return View();
-//     }
-
-
-
-//     // GET: Show the update form
-//     [HttpGet]
-//     public async Task<IActionResult> Update(int id)
-//     {
-//         var post = await _postRepository.GetPostByIdAsync(id);
-//         if (post == null)
-//         {
-//             _logger.LogError("[PostController] An error occurred while getting post with PostId: {PostId}", id);
-//             return NotFound();
-//         }
-//        // Map post to ViewModel
-//         var model = new PostUpdateViewModel
-//         {
-//             PostId = post.PostId,
-//             Text = post.Text,
-//             ExistingImgUrl = post.ImgUrl // Use ImgUrl property for existing image
-//         };
-//         return View("PostUpdateView", model); // Display the update form with existing data
-//     }
-
-

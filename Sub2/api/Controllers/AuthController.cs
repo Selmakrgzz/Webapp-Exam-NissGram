@@ -21,29 +21,6 @@ public class AuthController : ControllerBase
         _userManager = userManager;
     }
 
-    // REMOVE THIS AFTER TESTING
-    [AllowAnonymous] // No authentication required 
-    [HttpGet("test")]
-    public IActionResult Test()
-    {
-        return Ok("Test endpoint working.");
-    }
-
-    [HttpGet("isauthenticated")]
-    public IActionResult GetAuthenticationStatus()
-    {
-        if (User.Identity == null || !User.Identity.IsAuthenticated)
-        {
-            return Unauthorized(new { isAuthenticated = false, user = (string?)null });
-        }
-
-        return Ok(new
-        {
-            isAuthenticated = true,
-            user = User.Identity.Name
-        });
-    }
-
     [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
@@ -116,5 +93,20 @@ public class AuthController : ControllerBase
     {
         await _signInManager.SignOutAsync();
         return Ok("Logged out successfully.");
+    }
+
+    [HttpGet("isauthenticated")]
+    public IActionResult GetAuthenticationStatus()
+    {
+        if (User.Identity == null || !User.Identity.IsAuthenticated)
+        {
+            return Unauthorized(new { isAuthenticated = false, user = (string?)null });
+        }
+
+        return Ok(new
+        {
+            isAuthenticated = true,
+            user = User.Identity.Name
+        });
     }
 }

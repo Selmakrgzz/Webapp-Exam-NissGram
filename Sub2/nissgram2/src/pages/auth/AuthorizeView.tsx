@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
+import { checkAuthentication } from './../../api/operations'; // Import the function
 
 interface User {
   email: string;
@@ -13,23 +14,14 @@ function AuthorizeView({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const checkAuthentication = async () => {
+    const fetchAuthentication = async () => {
       try {
-        const response = await fetch('http://localhost:5024/api/auth/isauthenticated', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        });
-
-        if (response.ok) {
-          const result = await response.json();
-          setAuthorized(result.isAuthenticated);
-          setUser({ email: result.user });
-        } else {
-          setAuthorized(false);
+        const result = await checkAuthentication(); // Use the function from operations.ts
+        if (result.error) {
+          throw new Error(result.error);
         }
+        setAuthorized(result.isAuthenticated);
+        setUser({ email: result.user });
       } catch (error) {
         console.error('Error checking authentication:', error);
         setAuthorized(false);
@@ -38,8 +30,10 @@ function AuthorizeView({ children }: { children: ReactNode }) {
       }
     };
 
-    checkAuthentication();
+    fetchAuthentication();
   }, []);
+
+  
 
   if (loading) {
     // Show a loading indicator until the authentication check completes

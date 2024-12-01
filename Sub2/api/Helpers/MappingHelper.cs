@@ -9,13 +9,43 @@ namespace NissGram.Helpers
         {
             return new UserProfileDto
             {
-                Username = user.UserName,
+                Username = user.UserName ?? "unknown",
                 PictureCount = user.Posts?.Count(p => !string.IsNullOrEmpty(p.ImgUrl)) ?? 0,
                 NoteCount = user.Posts?.Count(p => string.IsNullOrEmpty(p.ImgUrl)) ?? 0,
                 Pictures = MapPostsToDtos(user.Posts?.Where(p => !string.IsNullOrEmpty(p.ImgUrl))),
                 Notes = MapPostsToDtos(user.Posts?.Where(p => string.IsNullOrEmpty(p.ImgUrl))),
                 LikedPosts = MapPostsToDtos(user.LikedPosts?.Select(like => like.Post))
             };
+        }
+
+        public static UserDto MapToUserDto(User user)
+        {
+            return new UserDto
+            {
+                ProfilePicture = user.ProfilePicture,
+                About = user.About,
+                Username = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+        }
+
+
+        // Map UserUpdateDto to User
+        public static void MapUserUpdateDtoToUser(User user, UserUpdateDto dto)
+        {
+            user.About = dto.About;
+            user.FirstName = dto.FirstName;
+            user.LastName = dto.LastName;
+            user.PhoneNumber = dto.PhoneNumber;
+
+            // ProfilePicture is optional, so we update it only if provided
+            if (!string.IsNullOrEmpty(dto.ProfilePicture))
+            {
+                user.ProfilePicture = dto.ProfilePicture;
+            }
         }
 
         public static List<PostDto> MapPostsToDtos(IEnumerable<Post>? posts)

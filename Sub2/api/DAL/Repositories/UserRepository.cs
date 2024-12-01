@@ -104,14 +104,34 @@ public class UserRepository : IUserRepository
     {
         try
         {
-            var user = await _db.Users.FirstOrDefaultAsync(u => u.UserName == username);
+            var user = await _db.Users
+               .Include(u => u.Comments) // Inkluder kommentarer
+               .Include(u => u.Posts) // Inkluder innlegg
+               .FirstOrDefaultAsync(u => u.UserName == username);
+
             if (user == null)
             {
                 _logger.LogWarning("[UserRepository] User with username {Username} was not found and could not be deleted.", username);
                 return false;
-
             }
+
+            // Slett relaterte kommentarer
+            if (user.Comments != null && user.Comments.Any())
+            {
+                _db.Comments.RemoveRange(user.Comments);
+            }
+
+            // Slett relaterte innlegg
+            if (user.Posts != null && user.Posts.Any())
+            {
+                _db.Posts.RemoveRange(user.Posts);
+            }
+
+            // Brukerens kommentarer blir slettet automatisk på grunn av "cascade delete"
             _db.Users.Remove(user);
+
+            // Log message to terminal
+            Console.WriteLine($"[UserRepository] User with username '{username}' has been successfully deleted.");
             await _db.SaveChangesAsync();
             return true;
         }
