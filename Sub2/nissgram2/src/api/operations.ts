@@ -52,3 +52,15 @@ export const checkAuthentication = async () => {
 };
 
 // Flere operations/calls mot backend!
+
+
+
+//API operation to call the POST /api/UserAPI/update endpoint 
+export const updateUserProfile = async (userDetails: any) => {
+    return callApi('/userapi/update', 'POST', userDetails);
+  };
+  
+//API function to fetch the current users profile
+export const fetchCurrentUser = async () => {
+    return callApi('/userapi/current', 'GET');
+};
