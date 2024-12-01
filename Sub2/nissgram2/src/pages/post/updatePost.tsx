@@ -85,59 +85,59 @@ const UpdatePost: React.FC = () => {
       return;
     }
     setError(null); // Nullstill feil hvis valideringen består
-
-    
-
+  
     try {
       setLoading(true);
-    
+  
       const formData = new FormData();
-    
-      // Sjekk om teksten skal settes til null
-      if (!postDetails.text.trim()) {
-        formData.append('text', '  '); // Merk: Vi sender "null" som en streng
-      } else {
-        formData.append('text', postDetails.text.trim());
-      }
-    
-      // Legg til nytt bilde om det er valgt
+      formData.append('text', postDetails.text);
+  
       if (newImage) {
+        // Hvis et nytt bilde er valgt, legg til det i formData
         formData.append('newImage', newImage);
+      } else if (postDetails.imageUrl) {
+        // Hvis det eksisterende bildet ikke er endret, legg til URL-en
+        formData.append('ImgUrl', postDetails.imageUrl);
       }
-    
+  
       console.log('Sending data to backend:', {
-        text: postDetails.text || '  ',
-        image: newImage || 'Using existing image',
+        text: postDetails.text,
+        image: newImage || postDetails.imageUrl,
       });
-    
+  
       const response = await fetch(`${BASE_URL}/api/PostAPI/update/${postId}`, {
         method: 'PUT',
         credentials: 'include',
         body: formData,
       });
-    
+  
       if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.message || 'Failed to update post.');
+        throw new Error('Failed to update post.');
       }
-    
+  
       const updatedPost = await response.json();
+      console.log('Backend returned updated post details:', updatedPost);
+  
       setPostDetails({
         text: updatedPost.text,
         imageUrl: `${BASE_URL}${updatedPost.imgUrl}`,
       });
-    
+  
       setImagePreview(`${BASE_URL}${updatedPost.imgUrl}?t=${Date.now()}`);
-      setSuccessMessage('Post updated successfully!');
-      setError(null);
-    
-      navigate('/');
+      setSuccessMessage('Post updated successfully!'); // Sett suksessmelding
+  
+      // Naviger til hjemmesiden etter 2 sekunder
+      setTimeout(() => {
+        navigate('/');
+      }, 1500);
     } catch (err: any) {
-      console.error('Update post failed:', err.message);
+      console.error('Error updating post:', err.message || err);
       setError('Failed to update post. Please try again.');
+    } finally {
+      setLoading(false);
     }
-    
   };
+  
 
 
   if (loading) return <p>Loading post data...</p>;
