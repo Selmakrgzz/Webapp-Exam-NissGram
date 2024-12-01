@@ -1,10 +1,15 @@
 export interface User {
-  userName: string; // Changed to match camelCase from the returned data
+  userName: string; 
   profilePicture: string;
-  about: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  about?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+}
+
+export interface SimpleUser {
+  userName: string; 
+  profilePicture: string;
 }
 
 export interface Comment {
@@ -20,7 +25,7 @@ export interface Post {
   text: string;
   dateCreated: Date;
   dateUpdated: Date;
-  user: User;
+  simpleUser: SimpleUser;
   userLiked: boolean;
   likeCount: number;
   commentCount: number;

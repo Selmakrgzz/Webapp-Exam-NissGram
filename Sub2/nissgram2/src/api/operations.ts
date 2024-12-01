@@ -80,7 +80,13 @@ export const likePost = async (postId: number) => {
     return callApi(Post.LIKE_POST.replace('{postId}', postId.toString()), 'POST');
 };
 
+
+
 // User operations
+export const likedPosts = async () => {
+    return callApi(User.LIKED_POSTS, 'GET');
+}
+
 export const getUserProfile = async (userId: string) => {
     return callApi(User.GET_USER_PROFILE.replace('{id}', userId), 'GET');
 };

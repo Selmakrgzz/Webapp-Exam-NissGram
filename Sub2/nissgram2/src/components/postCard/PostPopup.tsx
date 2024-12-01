@@ -5,7 +5,7 @@ import { PostPopupProps } from "../../types/interfaces";
 import { addComment, deleteComment } from "../../api/operations";
 
 const PostPopup: React.FC<PostPopupProps> = ({ post, onClose }) => {
-  const { postId, user, imgUrl, text, dateCreated, dateUpdated, userLiked, likeCount, commentCount, comments } = post;
+  const { postId, simpleUser, imgUrl, text, dateCreated, dateUpdated, userLiked, likeCount, commentCount, comments } = post;
 
   const [newComment, setNewComment] = useState<string>("");
   const [localComments, setLocalComments] = useState(comments);
@@ -27,7 +27,7 @@ const PostPopup: React.FC<PostPopupProps> = ({ post, onClose }) => {
           commentId: result.commentId, // Use the returned comment ID
           text: newComment,
           dateCommented: new Date().toISOString(),
-          user: { userName: user.userName, profilePicture: user.profilePicture },
+          user: { userName: simpleUser.userName, profilePicture: simpleUser.profilePicture },
         },
       ]);
       setNewComment("");
@@ -82,7 +82,7 @@ const PostPopup: React.FC<PostPopupProps> = ({ post, onClose }) => {
             <span>
               <strong>{comment.user.userName}</strong>: {comment.text}
             </span>
-            {user.userName === comment.user.userName && (
+            {simpleUser.userName === comment.user.userName && (
               <button
                 className="btn btn-link text-danger p-0 ms-2"
                 onClick={() => handleDeleteComment(comment.commentId)}

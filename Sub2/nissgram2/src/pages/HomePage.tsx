@@ -10,12 +10,14 @@ const HomePage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+
   useEffect(() => {
     const fetchPosts = async () => {
       const { posts, error } = await getAllPosts();
       if (error) {
         setError(error);
       } else {
+        
         setPosts(posts);
         setError(null);
       }

@@ -5,6 +5,7 @@ export const User = {
   GET_CURRENT_USER: 'UserAPI/current',
   UPDATE_USER_PROFILE: 'UserAPI/update',
   DELETE_USER: 'UserAPI/delete',
+  LIKED_POSTS: 'UserAPI/LikedPosts'
 };
 export const Auth = {
   // AuthAPI

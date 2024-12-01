@@ -14,7 +14,7 @@ interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
   const {
-    user,
+    simpleUser,
     imgUrl,
     text,
     likeCount,
@@ -26,9 +26,12 @@ const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
   } = post;
 
   // Fallback values for user object and profilePicture
-  const userProfilePicture = user?.profilePicture || "/default-profile.png";
-  const userName = user?.userName || "Unknown";
+  let userProfilePicture = simpleUser?.profilePicture;
+  const username = simpleUser?.userName || "unknown";
 
+  if(userProfilePicture == null || userProfilePicture == "string"){
+    userProfilePicture =  "/images/profile_image_default.png";
+  }
   const handleEdit = () => {
     console.log(`Editing post with ID: ${postId}`);
   };
@@ -42,10 +45,10 @@ const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
       <div className="d-flex justify-content-between align-items-center">
         <PostProfileHeader
           profilePicture={userProfilePicture} // Use fallback value
-          userName={userName} // Use fallback value
-          userProfileLink={`/user/${userName}`} // Use fallback value
+          userName={username} // Use fallback value
+          userProfileLink={`/user/${username}`} // Use fallback value
         />
-        {currentUserName === user?.userName && (
+        {currentUserName === simpleUser?.userName && (
           <PostDropdown onEdit={handleEdit} onDelete={handleDelete} postId={postId} />
         )}
       </div>
@@ -64,10 +67,10 @@ const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
       <p>{text}</p>
       <hr />
       <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated} />
-      {/* <PostActions
+      <PostActions
         post={{
           postId,
-          user,
+          simpleUser,
           imgUrl,
           text,
           dateCreated,
@@ -76,7 +79,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
           likeCount,
           commentCount,
         }}
-      /> */}
+      />
     </div>
   );
 };

@@ -5,14 +5,14 @@ import PostPopup from "./PostPopup";
 import PostProfileHeader from "./PostProfileHeader";
 import { Post, PostDetails } from "../../types/interfaces";
 import "../../styles/popUp.css";
-import { likePost, getPostDetails } from "../../api/operations";
+import { likePost, getPostDetails} from "../../api/operations";
 
 interface PostActionsProps {
   post: Post; // The post object
 }
 
 const PostActions: React.FC<PostActionsProps> = ({ post }) => {
-  const { postId, user, imgUrl, text, dateCreated, dateUpdated, userLiked: initialUserLiked, likeCount: initialLikeCount, commentCount } = post;
+  const { postId, simpleUser, imgUrl, text, dateCreated, dateUpdated, userLiked: initialUserLiked, likeCount: initialLikeCount, commentCount } = post;
 
   const [showModal, setShowModal] = useState(false);
   const [userLiked, setUserLiked] = useState(initialUserLiked);
@@ -40,14 +40,20 @@ const PostActions: React.FC<PostActionsProps> = ({ post }) => {
   const handleLike = async () => {
     try {
       const newLikedState = !userLiked;
-      setUserLiked(newLikedState);
-      setLikeCount((prev) => (newLikedState ? prev + 1 : prev - 1));
-
-      await likePost(postId); // Send likePost request to the API
+      setUserLiked(newLikedState); // Optimistically update UI
+  
+      const response = await likePost(postId); // Send likePost request to the API
+  
+      if (response && response.likeCount !== undefined) {
+        setLikeCount(response.likeCount); // Update with the API's like count
+      } else {
+        throw new Error("Invalid response from server.");
+      }
     } catch (err) {
       console.error("Error liking the post:", err);
-      setUserLiked(!userLiked); // Revert state on failure
-      setLikeCount((prev) => (userLiked ? prev + 1 : prev - 1)); // Adjust like count back
+  
+      // Revert optimistic state changes on failure
+      setUserLiked(!userLiked);
       setError("Failed to update like status.");
     }
   };
@@ -88,9 +94,9 @@ const PostActions: React.FC<PostActionsProps> = ({ post }) => {
         <Modal.Header closeButton>
           <Modal.Title>
             <PostProfileHeader
-              profilePicture={user.profilePicture}
-              userName={user.userName}
-              userProfileLink={`/user/${user.userName}`}
+              profilePicture={simpleUser.profilePicture}
+              userName={simpleUser.userName}
+              userProfileLink={`/user/${simpleUser.userName}`}
             />
           </Modal.Title>
         </Modal.Header>
