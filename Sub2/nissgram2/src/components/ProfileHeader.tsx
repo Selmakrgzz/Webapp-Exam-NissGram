@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CustomDropdown from './CustomDropdown';
 import '../styles/profilePage.css';
 import API_URL from '../apiConfig';
-import { fetchUserProfile } from '../api/operations';
+import { fetchCurrentUser as fetchUserProfile } from '../api/operations';
 
 const ProfileHeader: React.FC = () => {
   const navigate = useNavigate();

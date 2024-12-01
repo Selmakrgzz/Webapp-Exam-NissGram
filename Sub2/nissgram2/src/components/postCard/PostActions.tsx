@@ -1,85 +1,41 @@
 import React, { useState } from "react";
 import API_URL from "../../apiConfig";
-import { Modal } from 'react-bootstrap';
+import { Modal } from "react-bootstrap";
 import PostPopup from "./PostPopup";
 import PostProfileHeader from "./PostProfileHeader";
-import '../../styles/popUp.css';
-import { useEffect } from "react";
+import { Post, PostDetails } from "../../types/interfaces";
+import "../../styles/popUp.css";
+import { likePost, getPostDetails } from "../../api/operations";
 
 interface PostActionsProps {
-  postId: number;
-  user: {
-    id: number;
-    userName: string;
-    profilePicture: string;
-  };
-  imgUrl: string;
-  text: string;
-  dateCreated: Date;
-  dateUpdated: Date;
-  comments: Array<{
-    commentId: number;
-    text: string;
-    dateCommented: string;
-    user: {
-      userName: string;
-      profilePicture: string;
-    };
-  }>;
-  userLiked: boolean;
-  likeCount: number;
-  commentCount: number;
-  onLike: () => void;
-  onAddComment: (text: string) => void;
-  onDeleteComment: (commentId: number) => void;
-  onCommentClick: () => void;
+  post: Post; // The post object
 }
 
-const PostActions: React.FC<PostActionsProps> = ({
-  postId,
-  user,
-  imgUrl,
-  text,
-  dateCreated,
-  dateUpdated,
-  comments,
-  userLiked: initialUserLiked,
-  likeCount: initialLikeCount,
-  commentCount,
-  onLike,
-  onAddComment,
-  onDeleteComment,
-  onCommentClick,
-}) => {
+const PostActions: React.FC<PostActionsProps> = ({ post }) => {
+  const { postId, user, imgUrl, text, dateCreated, dateUpdated, userLiked: initialUserLiked, likeCount: initialLikeCount, commentCount } = post;
+
   const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => setShowModal(!showModal);
   const [userLiked, setUserLiked] = useState(initialUserLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [postDetails, setPostDetails] = useState<PostDetails | null>(null); // Use PostDetails type
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Hent status fra backend
-    const fetchLikeStatus = async () => {
+  const toggleModal = async () => {
+    if (!showModal) {
+      setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5024/api/PostAPI/details/${postId}`, {
-          method: "GET",
-          credentials: "include",
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch like status.");
-        }
-
-        const data = await response.json();
-        setUserLiked(data.userLiked);
-        setLikeCount(data.likeCount);
-      } catch (error: any) {
-        console.error("Error fetching like status:", error);
-        setError("Failed to load like status.");
+        const data: PostDetails = await getPostDetails(postId); // Fetch full post details
+        setPostDetails(data); // Set PostDetails data
+      } catch (err) {
+        console.error("Error fetching post details:", err);
+        setError("Failed to load post details.");
+      } finally {
+        setLoading(false);
       }
-    };
-      fetchLikeStatus();
-  }, [postId]);
+    }
+    setShowModal(!showModal);
+  };
 
   const handleLike = async () => {
     try {
@@ -87,32 +43,14 @@ const PostActions: React.FC<PostActionsProps> = ({
       setUserLiked(newLikedState);
       setLikeCount((prev) => (newLikedState ? prev + 1 : prev - 1));
 
-      // Send like til backend
-      const response = await fetch(`http://localhost:5024/api/PostAPI/like/${postId}`, {
-        method: "POST",
-        credentials: "include", // Inkluderer autentiseringstoken
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        const errorResponse = await response.json();
-        throw new Error(errorResponse.error || "Failed to update like status.");
-      }
-
-      const data = await response.json();
-      console.log("Backend response:", data);
-    } catch (error: any) {
-      console.error("Error updating like status:", error);
-
-      // Tilbakestill state ved feil
-      setUserLiked(!userLiked);
-      setLikeCount((prev) => (userLiked ? prev + 1 : prev - 1));
-      setError("An error occurred while updating your like.");
+      await likePost(postId); // Send likePost request to the API
+    } catch (err) {
+      console.error("Error liking the post:", err);
+      setUserLiked(!userLiked); // Revert state on failure
+      setLikeCount((prev) => (userLiked ? prev + 1 : prev - 1)); // Adjust like count back
+      setError("Failed to update like status.");
     }
   };
-
 
   return (
     <div className="d-flex align-items-center">
@@ -137,7 +75,11 @@ const PostActions: React.FC<PostActionsProps> = ({
         <span>{likeCount}</span>
       </div>
 
-      <button onClick={toggleModal} className="btn comment-button-container">
+      <button
+        onClick={toggleModal}
+        className="btn comment-button-container"
+        disabled={loading} // Disable the button while loading
+      >
         <img src={`${API_URL}/images/Icons/chat.png`} alt="Comment Icon" />
         <span>{commentCount}</span>
       </button>
@@ -145,36 +87,28 @@ const PostActions: React.FC<PostActionsProps> = ({
       <Modal show={showModal} onHide={toggleModal} centered className="modal-xl">
         <Modal.Header closeButton>
           <Modal.Title>
-          <PostProfileHeader 
-              profilePicture={user?.profilePicture || `${API_URL}/images/default-profile.png`}
-              userName={user?.userName || "Unknown"}
-              userProfileLink={`/user/${user?.userName || "unknown"}`}
-          /> 
+            <PostProfileHeader
+              profilePicture={user.profilePicture}
+              userName={user.userName}
+              userProfileLink={`/user/${user.userName}`}
+            />
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-body">
-        <PostPopup
-          postId={postId}
-          user={user} // Ensure this matches the expected structure in PostPopupProps
-          imgUrl={imgUrl}
-          text={text}
-          dateCreated={dateCreated}
-          dateUpdated={dateUpdated}
-          comments={comments}
-          userLiked={userLiked}
-          likeCount={likeCount}
-          commentCount={commentCount}
-          onLike={onLike}
-          onAddComment={onAddComment}
-          onDeleteComment={onDeleteComment}
-          onClose={toggleModal} // Ensure onClose is expecting a function
-          onCommentClick={onCommentClick}
-        />
+          {loading ? (
+            <p>Loading post details...</p>
+          ) : postDetails ? (
+            <PostPopup
+              post={postDetails} // Pass the full PostDetails object
+              onClose={toggleModal}
+            />
+          ) : (
+            <p>Error loading post details.</p>
+          )}
         </Modal.Body>
       </Modal>
     </div>
   );
 };
-
 
 export default PostActions;

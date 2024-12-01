@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ProfileHeader from '../../components/ProfileHeader';
 import NavigationButtons from '../../components/NavigationButtons';
 import PostCard from '../../components/postCard/PostCard';
-import { Post } from '../../types/post';
+import { Post } from '../../types/interfaces';
 import API_URL from '../../apiConfig';
 import '../../styles/layout.css';
 
@@ -101,7 +101,7 @@ const ProfilePage: React.FC = () => {
         <div className="row">
           {filteredPosts.map((post) => (
             <div key={post.postId} className="col-md-4 mb-3">
-              <PostCard {...post} currentUserName={post.user?.userName || 'Unknown'} />
+              {/* <PostCard {...post} currentUserName={post.user?.userName || 'Unknown'} /> */}
             </div>
           ))}
         </div>

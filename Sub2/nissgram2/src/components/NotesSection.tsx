@@ -1,7 +1,7 @@
 import React from 'react';
 import PostCard from './postCard/PostCard'; // Import PostCard
 
-import { Post } from './../types/post';
+import { Post } from '../types/interfaces';
 
 
 interface NotesSectionProps {
@@ -16,9 +16,9 @@ const NotesSection: React.FC<NotesSectionProps> = ({ notes }) => {
   return (
     <div>
       <h3>Notes</h3>
-      {notes.map((post) => (
+      {/* {notes.map((post) => (
         <PostCard key={post.postId} {...post} currentUserName={post.user.userName} />
-      ))}
+      ))} */}
     </div>
   );
 };

@@ -1,2 +1,0 @@
-Custom React hooks
-Trenger kanskje ikke, ser ann (trenger bare om vi lager egne hooks)

@@ -4,26 +4,31 @@ import PostProfileHeader from "./PostProfileHeader";
 import "../../styles/postCard.css";
 import PostDates from "./PostDates";
 import PostActions from "./PostActions";
-import { Post } from "../../types/post";
 import PostDropdown from "./PostDropdown";
+import { Post } from "../../types/interfaces";
 
-interface PostCardProps extends Post {
-  postId: number;
-  currentUserName: string;
+interface PostCardProps {
+  post: Post; // The post object as a single prop
+  currentUserName: string; // Current logged-in user's username
 }
 
-const PostCard: React.FC<PostCardProps> = ({
-  user,
-  imgUrl,
-  text,
-  likeCount,
-  commentCount,
-  dateCreated,
-  dateUpdated,
-  userLiked,
-  postId,
-  currentUserName,
-}) => {
+const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
+  const {
+    user,
+    imgUrl,
+    text,
+    likeCount,
+    commentCount,
+    dateCreated,
+    dateUpdated,
+    userLiked,
+    postId,
+  } = post;
+
+  // Fallback values for user object and profilePicture
+  const userProfilePicture = user?.profilePicture || "/default-profile.png";
+  const userName = user?.userName || "Unknown";
+
   const handleEdit = () => {
     console.log(`Editing post with ID: ${postId}`);
   };
@@ -32,57 +37,46 @@ const PostCard: React.FC<PostCardProps> = ({
     console.log(`Deleting post with ID: ${postId}`);
   };
 
-  const handleCommentClick = () => {
-    console.log("Comment clicked for post:", postId);
-  };
-
   return (
     <div className="post-card" style={{ position: "relative", marginBottom: "20px" }}>
       <div className="d-flex justify-content-between align-items-center">
         <PostProfileHeader
-          profilePicture={user?.profilePicture || "/default-profile.png"}
-          userName={user?.userName || "Unknown"}
-          userProfileLink={`/user/${user?.userName || "unknown"}`}
+          profilePicture={userProfilePicture} // Use fallback value
+          userName={userName} // Use fallback value
+          userProfileLink={`/user/${userName}`} // Use fallback value
         />
-
-        {/* Dropdown Button - vises kun for innlogget bruker */}
-        {currentUserName === user.userName && (
+        {currentUserName === user?.userName && (
           <PostDropdown onEdit={handleEdit} onDelete={handleDelete} postId={postId} />
         )}
       </div>
-
       {imgUrl && (
         <img
-          src={imgUrl.startsWith("/images/postImages") ? `${API_URL}${imgUrl}` : `http://localhost:5024${imgUrl}`}
+          src={
+            imgUrl.startsWith("/images/postImages")
+              ? `${API_URL}${imgUrl}`
+              : `http://localhost:5024${imgUrl}`
+          }
           alt="Post"
           className="img-fluid rounded"
           style={{ marginTop: "10px" }}
         />
       )}
-
       <p>{text}</p>
-      <hr/>
-
-      {/* PostDates */}
-      <PostDates dateCreated={new Date(dateCreated)} dateUpdated={new Date(dateUpdated)} />
-
-      {/* PostActions */}
-      <PostActions
-        postId={postId}
-        user={user}
-        imgUrl={imgUrl?  imgUrl : ''  }
-        text={text}
-        dateCreated={new Date(dateCreated)}
-        dateUpdated={new Date(dateUpdated)}
-        comments={[]} // Anta at denne fylles korrekt opp et annet sted i appen
-        userLiked={userLiked}
-        likeCount={likeCount}
-        commentCount={commentCount}
-        onLike={handleCommentClick}
-        onAddComment={() => {}}
-        onDeleteComment={() => {}}
-        onCommentClick={handleCommentClick}
-      />
+      <hr />
+      <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated} />
+      {/* <PostActions
+        post={{
+          postId,
+          user,
+          imgUrl,
+          text,
+          dateCreated,
+          dateUpdated,
+          userLiked,
+          likeCount,
+          commentCount,
+        }}
+      /> */}
     </div>
   );
 };

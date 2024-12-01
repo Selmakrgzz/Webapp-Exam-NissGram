@@ -1,5 +1,5 @@
 import React from 'react';
-import { Post } from './../../types/post';
+import { Post } from '../../types/interfaces';
 import PostCard from './../postCard/PostCard';
 
 interface ActivitySectionProps {
@@ -14,9 +14,9 @@ const ActivitySection: React.FC<ActivitySectionProps> = ({ activities }) => {
   return (
     <div>
       <h3>Activity</h3>
-      {activities.map((post) => (
+      {/* {activities.map((post) => (
         <PostCard key={post.postId} {...post} currentUserName={post.user?.userName || 'Unknown'} />
-      ))}
+      ))} */}
     </div>
   );
 };

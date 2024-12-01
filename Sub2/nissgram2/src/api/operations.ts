@@ -1,8 +1,8 @@
 // operations.ts
+import { User, Auth, Comment, Home, Post } from './endpoints';
 
-const apiUrl = 'http://localhost:5024/api';
+const apiUrl = 'http://localhost:5024/api/';
 
-// Helper function to call API
 async function callApi(endpoint: string, method: string, body?: any) {
     const headers = { 'Content-Type': 'application/json' };
     const config: RequestInit = {
@@ -28,53 +28,75 @@ async function callApi(endpoint: string, method: string, body?: any) {
     }
 }
 
-// API operations
-
-// API operation for creating a post
-export const createPost = async (postDetails: { text: string; imgUrl?: string }) => {
-    return callApi('/posts/create', 'POST', postDetails);
-};
-
-
-//API operation for login
+// Auth operations
 export const login = async (username: string, password: string) => {
-    return callApi('/auth/login', 'POST', { username, password });
+    return callApi(Auth.LOGIN, 'POST', { username, password });
 };
 
-//API operation for register
 export const register = async (userDetails: any) => {
-    return callApi('/auth/register', 'POST', userDetails);
+    return callApi(Auth.REGISTER, 'POST', userDetails);
 };
 
-//API operation for checking authentication
+export const logout = async () => {
+    return callApi(Auth.LOGOUT, 'POST');
+};
+
 export const checkAuthentication = async () => {
-    return callApi('/auth/isauthenticated', 'GET');
+    return callApi(Auth.isAuthenticated, 'GET');
 };
 
-// Flere operations/calls mot backend!
+// Comment operations
 export const addComment = async (commentData: any) => {
-    return callApi('/CommentAPI/add', 'POST', commentData);
+    return callApi(Comment.ADD_COMMENT, 'POST', commentData);
 };
 
-// api.js eller et tilsvarende sted for API-kall
-export const deleteComment = async (commentId: any) => {
-    return callApi(`/CommentAPI/delete/${commentId}`, 'DELETE');
+export const deleteComment = async (commentId: string) => {
+    return callApi(Comment.DELETE_COMMENT.replace('{id}', commentId), 'DELETE');
 };
 
+// Home operations
+export const fetchHomeIndex = async () => {
+    return callApi(Home.HOME_INDEX, 'GET');
+};
 
-//API operation to call the POST /api/UserAPI/update endpoint 
-export const updateUserProfile = async (userDetails: any) => {
-    return callApi('/userapi/update', 'POST', userDetails);
-  };
-  
-//API function to fetch the current users profile
+// Post operations
+export const getPostDetails = async (postId: number) => {
+    return callApi(Post.GET_POST_DETAILS.replace('{id}', postId.toString()), 'GET');
+};
+
+export const createPost = async (postDetails: { text: string; imgUrl?: string }) => {
+    return callApi(Post.CREATE_POST, 'POST', postDetails);
+};
+
+export const deletePost = async (postId: string) => {
+    return callApi(Post.DELETE_POST.replace('{id}', postId), 'DELETE');
+};
+
+export const updatePost = async (postId: string, updatedDetails: any) => {
+    return callApi(Post.UPDATE_POST.replace('{id}', postId), 'PUT', updatedDetails);
+};
+
+export const likePost = async (postId: number) => {
+    return callApi(Post.LIKE_POST.replace('{postId}', postId.toString()), 'POST');
+};
+
+// User operations
+export const getUserProfile = async (userId: string) => {
+    return callApi(User.GET_USER_PROFILE.replace('{id}', userId), 'GET');
+};
+
+export const getUserProfileByUsername = async (username: string) => {
+    return callApi(User.GET_USER_PROFILE_BY_USERNAME.replace('{username}', username), 'GET');
+};
+
 export const fetchCurrentUser = async () => {
-    return callApi('/userapi/current', 'GET');
+    return callApi(User.GET_CURRENT_USER, 'GET');
 };
 
-// Fetch the user's profile data for display in the profile header
-export const fetchUserProfile = async () => {
-    return callApi('/userapi/profile', 'GET');
+export const updateUserProfile = async (userDetails: any) => {
+    return callApi(User.UPDATE_USER_PROFILE, 'POST', userDetails);
 };
 
-
+export const deleteUser = async () => {
+    return callApi(User.DELETE_USER, 'DELETE');
+};

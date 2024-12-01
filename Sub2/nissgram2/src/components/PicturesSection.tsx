@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Post } from './../types/post';
+import { Post } from '../types/interfaces';
 import PostCard from './postCard/PostCard';
 import API_URL from '../apiConfig';
 
@@ -66,7 +66,7 @@ const PicturesSection: React.FC = () => {
       <div className="row">
         {posts.map((post) => (
           <div key={post.postId} className="col-md-4 mb-3">
-            <PostCard {...post} currentUserName={post.user?.userName || 'Unknown'} />
+            {/* <PostCard {post} currentUserName={post.user?.userName || 'Unknown'} /> */}
           </div>
         ))}
       </div>

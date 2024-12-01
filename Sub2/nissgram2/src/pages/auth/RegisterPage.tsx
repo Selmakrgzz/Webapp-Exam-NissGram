@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './../../styles/auth.css'; // Ensure the path to your CSS is correct
+import './../../styles/auth.css'; 
 import { register, login } from './../../api/operations';
 
 const RegisterPage: React.FC = () => {
@@ -35,21 +35,30 @@ const RegisterPage: React.FC = () => {
     setLoading(true);
     
     try {
-        await register(userDetails);
-        // Perform the login immediately after successful registration
-        const loginResponse = await login(userDetails.username, userDetails.password);
-        console.log(loginResponse); // Use login response for setting user context or similar actions
-        setError('');
-        navigate('/'); // Navigate to home page
-    } catch (err) {
-        if (err instanceof Error) {
-            setError(err.message);
-        } else {
-            setError('An unexpected error occurred.');
-        }
-    } finally {
-        setLoading(false);
-    }
+      const registerCall = await register(userDetails);
+  
+      if (!registerCall.error) {
+          // Perform the login immediately after successful registration
+          const loginCall = await login(userDetails.username, userDetails.password);
+  
+          if (!loginCall.error) {
+              setError(''); // Clear any existing error
+              navigate('/'); // Navigate to the home page
+          } else {
+              setError(`Login failed: ${loginCall.error}`); // Set login error
+          }
+      } else {
+          setError(`Registration failed: ${registerCall.errorResponse}`); // Set registration error
+      }
+  } catch (err) {
+      if (err instanceof Error) {
+          setError(err.message); // Set the error message from the caught exception
+      } else {
+          setError('An unexpected error occurred.'); // Set a generic error message
+      }
+  } finally {
+      setLoading(false); // Ensure loading is set to false in all cases
+  }
 };
 
   return (

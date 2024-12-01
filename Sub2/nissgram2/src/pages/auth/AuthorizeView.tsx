@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext, ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { checkAuthentication } from './../../api/operations'; // Import the function
 
+
 interface User {
   email: string;
 }
