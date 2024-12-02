@@ -3,9 +3,10 @@ import '../../styles/profilePage.css';
 
 interface NavigationButtonsProps {
   onSectionChange: (section: 'Pictures' | 'Notes' | 'LikedPosts') => void;
+  hideLikedPosts?: boolean;
 }
 
-const NavigationButtons: React.FC<NavigationButtonsProps> = ({ onSectionChange }) => {
+const NavigationButtons: React.FC<NavigationButtonsProps> = ({ onSectionChange, hideLikedPosts  }) => {
   const picturesButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -30,12 +31,7 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({ onSectionChange }
       >
         Notes
       </button>
-      <button
-        className="btn btn-primary btn-lg mx-2 w-25"
-        onClick={() => onSectionChange('LikedPosts')}
-      >
-        Activity
-      </button>
+      {!hideLikedPosts && <button className="btn btn-primary btn-lg mx-2 w-25" onClick={() => onSectionChange("LikedPosts")}>Liked Posts</button>}
     </div>
   );
 };

@@ -121,7 +121,7 @@ public class UserAPIController : Controller
             // Handle profile picture upload
             if (profilePicture != null && profilePicture.Length > 0)
             {
-                var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/profile_pictures");
+                var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profile_pictures");
                 var fileName = Guid.NewGuid() + Path.GetExtension(profilePicture.FileName);
                 var filePath = Path.Combine(uploadFolder, fileName);
 
@@ -140,7 +140,7 @@ public class UserAPIController : Controller
                     }
 
                     // Update user's profile picture path
-                    currentUser.ProfilePicture = "/profile_pictures/" + fileName;
+                    currentUser.ProfilePicture = "/images/profile_pictures/" + fileName;
                 }
                 catch (Exception ex)
                 {

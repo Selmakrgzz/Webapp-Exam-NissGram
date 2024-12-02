@@ -70,14 +70,14 @@ public class PostAPIController : Controller
             try
             {
                 var fileName = Guid.NewGuid() + Path.GetExtension(uploadImage.FileName);
-                var filePath = Path.Combine("wwwroot/images", fileName);
+                var filePath = Path.Combine("wwwroot/images/post_images", fileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await uploadImage.CopyToAsync(stream);
                 }
 
-                imageUrl = "/images/" + fileName;
+                imageUrl = "/images/post_images/" + fileName;
             }
             catch (Exception ex)
             {
@@ -180,7 +180,7 @@ public class PostAPIController : Controller
         if (newImage != null && newImage.Length > 0)
         {
             var fileName = Guid.NewGuid() + Path.GetExtension(newImage.FileName);
-            var filePath = Path.Combine("wwwroot/images", fileName);
+            var filePath = Path.Combine("wwwroot/images/post_images", fileName);
 
             try
             {
@@ -189,7 +189,7 @@ public class PostAPIController : Controller
                     await newImage.CopyToAsync(stream);
                 }
 
-                existingPost.ImgUrl = "/images/" + fileName;
+                existingPost.ImgUrl = "/images/post_images" + fileName;
             }
             catch (Exception ex)
             {

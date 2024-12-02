@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CustomDropdown from './CustomDropdown';
-import API_URL from '../../apiConfig';
+import config from '../../apiConfig';
 
 interface UserProfileFormProps {
   username: string;
@@ -28,14 +28,14 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
   onImageChange,
 }) => {
   const [preview, setPreview] = useState<string | null>(
-    profilePicture ? `${API_URL}${profilePicture}` : `${API_URL}/images/profile_image_default.png`
+    profilePicture ? `${config.API_URL}${profilePicture}` : `${config}/images/profile_image_default.png`
   );
 
   useEffect(() => {
     setPreview(
       profilePicture
-        ? `${API_URL}${profilePicture}`
-        : `${API_URL}/images/profile_image_default.png`
+        ? `${config.BACKEND_URL}${profilePicture}`
+        : `${config.API_URL}/images/profile_image_default.png`
     );
   }, [profilePicture]);
 
@@ -52,7 +52,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
   };
 
   const handleDeleteImage = () => {
-    setPreview(`${API_URL}/images/profile_image_default.png`); // Reset preview
+    setPreview(`${config.API_URL}/images/profile_image_default.png`); // Reset preview
     if (onImageChange) onImageChange(null); // Notify parent to clear profile picture
   };
 
@@ -82,7 +82,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
           }}
         >
           <img
-            src={preview || `${API_URL}/images/profile_image_default.png`}
+            src={preview || `${config.API_URL}/images/profile_image_default.png`}
             alt="Profile Preview"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />

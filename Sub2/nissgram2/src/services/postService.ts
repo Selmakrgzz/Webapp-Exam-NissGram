@@ -24,3 +24,4 @@ export const getCurrentUser = async (): Promise<{ username: string | null; error
     return { username: null, error: err instanceof Error ? err.message : "An unknown error occurred" };
   }
 };
+

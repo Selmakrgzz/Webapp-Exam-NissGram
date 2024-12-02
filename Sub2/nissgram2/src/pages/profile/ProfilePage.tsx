@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; // For accessing route params
 import ProfileHeader from "../../components/profile/ProfileHeader";
 import NavigationButtons from "../../components/profile/NavigationButtons";
 import PostsSection from "../../components/profile/PostsSection";
-import { UserProfile} from "../../types/interfaces";
-import { getUserProfile } from "../../api/operations";
+import { UserProfile } from "../../types/interfaces";
+import { getUserProfile, getUserProfileByUsername } from "../../api/operations";
 
 const ProfilePage: React.FC = () => {
+  const { username } = useParams<{ username?: string }>(); // Extract username from route
   const [activeSection, setActiveSection] = useState<"Pictures" | "Notes" | "LikedPosts">("Pictures");
   const [profileData, setProfileData] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -15,7 +17,16 @@ const ProfilePage: React.FC = () => {
     const fetchUserProfile = async () => {
       try {
         setLoading(true);
-        const data = await getUserProfile(); // Call API operation
+        let data;
+
+        if (username) {
+          // Fetch profile by username
+          data = await getUserProfileByUsername(username);
+        } else {
+          // Fetch logged-in user's profile
+          data = await getUserProfile();
+        }
+
         const userProfile: UserProfile = {
           username: data.username,
           pictureCount: data.pictureCount,
@@ -24,8 +35,9 @@ const ProfilePage: React.FC = () => {
           about: data.about || "",
           pictures: data.pictures || [],
           notes: data.notes || [],
-          likedPosts: data.likedPosts || [],
+          likedPosts: username ? [] : data.likedPosts || [], // Hide likedPosts for other users
         };
+
         setProfileData(userProfile);
       } catch (err) {
         console.error("Error fetching profile data:", err);
@@ -36,9 +48,10 @@ const ProfilePage: React.FC = () => {
     };
 
     fetchUserProfile();
-  }, []);
+  }, [username]); // Refetch data when username changes
 
   const handleSectionChange = (section: "Pictures" | "Notes" | "LikedPosts") => {
+    if (username && section === "LikedPosts") return; // Prevent showing LikedPosts for other users
     setActiveSection(section);
   };
 
@@ -56,14 +69,17 @@ const ProfilePage: React.FC = () => {
 
   return (
     <div className="container mt-4">
-         <ProfileHeader
+      <ProfileHeader
         profilepicture={profileData.profilePicture || "/images/profile_image_default.png"}
         username={profileData.username}
         pictureCount={profileData.pictureCount}
         noteCount={profileData.noteCount}
-        about={profileData.about || "No description available"} 
+        about={profileData.about || "No description available"}
       />
-      <NavigationButtons onSectionChange={handleSectionChange} />
+      <NavigationButtons
+        onSectionChange={handleSectionChange}
+        hideLikedPosts={!!username} // Pass a flag to hide LikedPosts for other users
+      />
       <div className="mt-4">
         <PostsSection activeSection={activeSection} profileData={profileData} />
       </div>

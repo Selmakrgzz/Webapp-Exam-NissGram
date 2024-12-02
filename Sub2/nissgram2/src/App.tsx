@@ -37,6 +37,12 @@ const App: React.FC = () => {
                       </AuthorizeView>
                   }
             />
+
+          <Route 
+                  path="/user/:username" 
+                  element={<AuthorizeView>
+                    <ProfilePage />
+                 </AuthorizeView>} />  
             <Route
                   path="/update-profile"
                   element={

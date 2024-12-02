@@ -20,6 +20,7 @@ const UpdateUserPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [deleteProfilePicture, setDeleteProfilePicture] = useState<boolean>(false);
 
   // Fetch user data
   useEffect(() => {
@@ -60,14 +61,13 @@ const UpdateUserPage: React.FC = () => {
   };
 
   // Handle profile picture change
-  const handleImageChange = (file: File | null) => {
-    setProfilePicture(file);
-    if (!file) {
-      // If the picture is deleted, reset it
-      setUserDetails((prevDetails) => ({
-        ...prevDetails,
-        profilePicture: '',
-      }));
+  const handleImageChange = (image: File | null) => {
+    if (image) {
+      setProfilePicture(image); // Set new profile picture
+      setDeleteProfilePicture(false); // Reset delete flag if a new image is added
+    } else {
+      setProfilePicture(null); // Clear the profile picture
+      setDeleteProfilePicture(true); // Set delete flag
     }
   };
 
