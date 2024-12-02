@@ -6,6 +6,16 @@ export interface User {
   lastName?: string;
   email?: string;
 }
+export interface UserProfile {
+  username: string;
+  pictureCount: number;
+  noteCount: number;
+  about?: string;
+  profilePicture?: string;
+  pictures: Post[]; // Array of Post objects
+  notes: Post[]; // Array of Post objects
+  likedPosts: Post[]; // Array of Post objects
+}
 
 export interface SimpleUser {
   userName: string; 

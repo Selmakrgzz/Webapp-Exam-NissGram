@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomDropdown from './CustomDropdown';
-import API_URL from '../apiConfig';
+import API_URL from '../../apiConfig';
 
 interface UserProfileFormProps {
   username: string;
@@ -9,9 +9,9 @@ interface UserProfileFormProps {
   lastName: string;
   about: string;
   phoneNumber: string;
-  profilePicture?: string; // Optional prop for profile picture
+  profilePicture?: string; // Profile picture URL
   onInputChange: (field: string, value: string) => void;
-  readOnlyFields?: string[]; // Optional prop for specifying read-only fields
+  readOnlyFields?: string[]; // Fields that should be read-only
   onImageChange?: (image: File | null) => void; // Callback for handling image upload
 }
 
@@ -27,71 +27,68 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
   readOnlyFields = [],
   onImageChange,
 }) => {
-  const [image, setImage] = useState<File | null>(null); // For image
   const [preview, setPreview] = useState<string | null>(
-    profilePicture ? `${API_URL}/${profilePicture}` : `${API_URL}/images/profile_image_default.png`
+    profilePicture ? `${API_URL}${profilePicture}` : `${API_URL}/images/profile_image_default.png`
   );
 
   useEffect(() => {
-    if (profilePicture) {
-      setPreview(`${API_URL}/${profilePicture}`);
-    }
+    setPreview(
+      profilePicture
+        ? `${API_URL}${profilePicture}`
+        : `${API_URL}/images/profile_image_default.png`
+    );
   }, [profilePicture]);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setImage(file);
       const reader = new FileReader();
       reader.onload = () => {
-        setPreview(reader.result as string);
+        setPreview(reader.result as string); // Update preview
       };
       reader.readAsDataURL(file);
-      if (onImageChange) onImageChange(file);
+      if (onImageChange) onImageChange(file); // Notify parent component
     }
   };
 
+  const handleDeleteImage = () => {
+    setPreview(`${API_URL}/images/profile_image_default.png`); // Reset preview
+    if (onImageChange) onImageChange(null); // Notify parent to clear profile picture
+  };
+
   const menuItems = [
-    { label: 'Upload Picture', action: () => document.getElementById('uploadProfilePicture')?.click() },
-    { label: 'Delete Picture', action: () => { 
-      setImage(null); 
-      setPreview(`${API_URL}/images/profile_image_default.png`); 
-      if (onImageChange) onImageChange(null); 
-    } },
+    {
+      label: 'Upload Picture',
+      action: () => document.getElementById('uploadProfilePicture')?.click(),
+    },
+    {
+      label: 'Delete Picture',
+      action: handleDeleteImage,
+    },
   ];
 
   return (
     <div>
-      {/* Profile Picture Upload Section */}
-      <div className="mb-4 text-center position-relative">
-        <div className="fs-5 fw-bold mb-2">Profile Picture</div>
-
+      {/* Profile Picture Section */}
+      <div className="text-center mb-4">
         <div
           id="profileImagePreview"
-          className="rounded-circle mx-auto mb-3"
+          className="rounded-circle mx-auto"
           style={{
             width: '150px',
             height: '150px',
             overflow: 'hidden',
-            backgroundColor: '#f8f9fa',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            backgroundColor: '#f0f0f0',
           }}
         >
           <img
-            id="profileImage"
-            src={preview || `${API_URL}/images/profile_image_default.png`}            alt="Profile Preview"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              borderRadius: '50%',
-            }}
+            src={preview || `${API_URL}/images/profile_image_default.png`}
+            alt="Profile Preview"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
 
-        <div style={{ position: 'absolute', top: '85%', left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}>
+        <div>
           <CustomDropdown
             icon={
               <svg
@@ -112,17 +109,16 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
         <input
           type="file"
           id="uploadProfilePicture"
-          name="uploadImage"
-          accept="image/*"
           style={{ display: 'none' }}
-          onChange={handleImageChange}
+          accept="image/*"
+          onChange={handleFileChange}
         />
       </div>
 
       {/* Form Fields */}
       <div className="mb-3">
-        <label htmlFor="username" className="form-label fs-5 fw-bold">
-          Username<span className="text-danger">*</span>
+        <label htmlFor="username" className="form-label">
+          Username
         </label>
         <input
           type="text"
@@ -135,8 +131,8 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
       </div>
 
       <div className="mb-3">
-        <label htmlFor="email" className="form-label fs-5 fw-bold">
-          Email<span className="text-danger">*</span>
+        <label htmlFor="email" className="form-label">
+          Email
         </label>
         <input
           type="email"
@@ -149,7 +145,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
       </div>
 
       <div className="mb-3">
-        <label htmlFor="firstName" className="form-label fs-5 fw-bold">
+        <label htmlFor="firstName" className="form-label">
           First Name
         </label>
         <input
@@ -162,7 +158,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
       </div>
 
       <div className="mb-3">
-        <label htmlFor="lastName" className="form-label fs-5 fw-bold">
+        <label htmlFor="lastName" className="form-label">
           Last Name
         </label>
         <input
@@ -175,7 +171,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
       </div>
 
       <div className="mb-3">
-        <label htmlFor="about" className="form-label fs-5 fw-bold">
+        <label htmlFor="about" className="form-label">
           About
         </label>
         <textarea
@@ -187,7 +183,7 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
       </div>
 
       <div className="mb-3">
-        <label htmlFor="phoneNumber" className="form-label fs-5 fw-bold">
+        <label htmlFor="phoneNumber" className="form-label">
           Phone Number
         </label>
         <input
@@ -203,4 +199,3 @@ const UserProfileForm: React.FC<UserProfileFormProps> = ({
 };
 
 export default UserProfileForm;
-

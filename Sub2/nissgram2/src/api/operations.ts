@@ -3,8 +3,8 @@ import { User, Auth, Comment, Home, Post } from './endpoints';
 
 const apiUrl = 'http://localhost:5024/api/';
 
-async function callApi(endpoint: string, method: string, body?: any) {
-    const headers = { 'Content-Type': 'application/json' };
+async function callApi(endpoint: string, method: string, body?: any, isMultipart: boolean = false) {
+    const headers: HeadersInit = isMultipart ? {} : { 'Content-Type': 'application/json' }; // Omit Content-Type for FormData
     const config: RequestInit = {
         method: method,
         headers: headers,
@@ -12,15 +12,24 @@ async function callApi(endpoint: string, method: string, body?: any) {
     };
 
     if (body) {
-        config.body = JSON.stringify(body);
+        config.body = isMultipart ? body : JSON.stringify(body); // Use FormData or JSON
     }
 
     try {
         const response = await fetch(`${apiUrl}${endpoint}`, config);
+
+        // If no content in response, return success status
+        if (response.status === 204) {
+            return { message: 'Success' };
+        }
+
+        // Parse response as JSON
         const data = await response.json();
+
         if (!response.ok) {
             throw new Error(data.message || 'API call failed');
         }
+
         return data;
     } catch (error) {
         if (error instanceof Error) return { error: error.message };
@@ -87,8 +96,8 @@ export const likedPosts = async () => {
     return callApi(User.LIKED_POSTS, 'GET');
 }
 
-export const getUserProfile = async (userId: string) => {
-    return callApi(User.GET_USER_PROFILE.replace('{id}', userId), 'GET');
+export const getUserProfile = async () => {
+    return callApi(User.GET_USER_PROFILE, 'GET');
 };
 
 export const getUserProfileByUsername = async (username: string) => {
@@ -99,8 +108,8 @@ export const fetchCurrentUser = async () => {
     return callApi(User.GET_CURRENT_USER, 'GET');
 };
 
-export const updateUserProfile = async (userDetails: any) => {
-    return callApi(User.UPDATE_USER_PROFILE, 'POST', userDetails);
+export const updateUserProfile = async (formData: FormData) => {
+    return callApi('UserAPI/update', 'POST', formData, true); // Pass `true` for `isMultipart`
 };
 
 export const deleteUser = async () => {
