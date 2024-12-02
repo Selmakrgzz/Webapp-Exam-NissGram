@@ -28,45 +28,65 @@ const RegisterPage: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    // Check if passwords match
     if (userDetails.password !== userDetails.confirmPassword) {
-        setError("Passwords do not match.");
+        setError("Passwords do not match. Please re-enter the same password.");
         return;
     }
+
+    // Check for required fields
+    if (!userDetails.username || !userDetails.email || !userDetails.password) {
+        setError("Please fill in all required fields (Username, Email, and Password).");
+        return;
+    }
+
     setLoading(true);
-    
+    setError(''); // Clear any previous error
+
     try {
-      const registerCall = await register(userDetails);
-  
-      if (!registerCall.error) {
-          // Perform the login immediately after successful registration
-          const loginCall = await login(userDetails.username, userDetails.password);
-  
-          if (!loginCall.error) {
-              setError(''); // Clear any existing error
-              navigate('/'); // Navigate to the home page
-          } else {
-              setError(`Login failed: ${loginCall.error}`); // Set login error
-          }
-      } else {
-          setError(`Registration failed: ${registerCall.errorResponse}`); // Set registration error
-      }
-  } catch (err) {
-      if (err instanceof Error) {
-          setError(err.message); // Set the error message from the caught exception
-      } else {
-          setError('An unexpected error occurred.'); // Set a generic error message
-      }
-  } finally {
-      setLoading(false); // Ensure loading is set to false in all cases
-  }
+        const registerCall = await register(userDetails);
+
+        if (!registerCall.error) {
+            // Perform the login immediately after successful registration
+            const loginCall = await login(userDetails.username, userDetails.password);
+
+            if (!loginCall.error) {
+                setError(''); // Clear any existing error
+                navigate('/'); // Navigate to the home page
+            } else {
+                setError(`Login failed: ${loginCall.error}. Please try logging in manually.`);
+            }
+        } else {
+            // Check specific error codes or messages from the backend
+            if (registerCall.errorResponse.includes("username")) {
+                setError("The username is already taken. Please choose another one.");
+            } else if (registerCall.errorResponse.includes("email")) {
+                setError("The email is already registered. Please use a different email or log in.");
+            } else {
+                setError(`Registration failed: ${registerCall.errorResponse}`);
+            }
+        }
+    } catch (err) {
+        if (err instanceof Error) {
+            if (err.message.includes("Network Error")) {
+                setError("Unable to connect to the server. Please check your internet connection.");
+            } else {
+                setError(`An unexpected error occurred: ${err.message}`);
+            }
+        } else {
+            setError("An unexpected error occurred. Please try again later.");
+        }
+    } finally {
+        setLoading(false); // Ensure loading is set to false in all cases
+    }
 };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit} id="registerForm" method="post" encType="multipart/form-data">
-        <h2 className="text-center mb-4">Register</h2>
-        {error && <div className="alert alert-danger">{error}</div>}
-
+        <h2 className="text-center mb-4" style={{paddingTop: "2rem"}}>Register</h2>
+      
         <div className="mb-3">
           <label htmlFor="username" className="form-label fs-5 fw-bold">Username<span className="text-danger">*</span></label>
           <input type="text" className="form-control" id="username" name="username" value={userDetails.username} onChange={handleInputChange} />
@@ -102,14 +122,16 @@ const RegisterPage: React.FC = () => {
           <input type="password" className="form-control" id="password" name="password" value={userDetails.password} onChange={handleInputChange} />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3" style={{paddingBottom: "2rem"}}>
           <label htmlFor="confirmPassword" className="form-label fs-5 fw-bold">Confirm Password<span className="text-danger">*</span></label>
           <input type="password" className="form-control" id="confirmPassword" name="confirmPassword" value={userDetails.confirmPassword} onChange={handleInputChange} />
         </div>
 
-        <button type="submit" className="btn btn-primary w-100 mb-3">Register</button>
+        {error && <div className="alert alert-danger">{error}</div>}
 
-        <div className="text-center">
+        <button type="submit" className="btn btn-primary w-100 mb-3 fs-4" >Register</button>
+
+        <div className="text-center fs-5" >
           <p>Already have an account? <a href="/login" style={{ textDecoration: 'underline' }}>Log in here</a></p>
         </div>
       </form>

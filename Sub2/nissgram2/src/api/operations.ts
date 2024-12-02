@@ -73,8 +73,8 @@ export const getPostDetails = async (postId: number) => {
     return callApi(Post.GET_POST_DETAILS.replace('{id}', postId.toString()), 'GET');
 };
 
-export const createPost = async (postDetails: { text: string; imgUrl?: string }) => {
-    return callApi(Post.CREATE_POST, 'POST', postDetails);
+export const createPost = async (formData: FormData) => {
+    return callApi(Post.CREATE_POST, 'POST', formData, true);
 };
 
 export const deletePost = async (postId: string) => {
@@ -88,8 +88,6 @@ export const updatePost = async (postId: string, updatedDetails: any) => {
 export const likePost = async (postId: number) => {
     return callApi(Post.LIKE_POST.replace('{postId}', postId.toString()), 'POST');
 };
-
-
 
 // User operations
 export const likedPosts = async () => {

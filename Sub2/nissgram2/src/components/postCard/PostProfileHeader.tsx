@@ -1,5 +1,6 @@
 import React from "react";
 import PostDropdown from "./PostDropdown";
+import config from '../../apiConfig';
 
 
 interface PostProfileHeaderProps {
@@ -19,7 +20,7 @@ const PostProfileHeader: React.FC<PostProfileHeaderProps> = ({
     <div className="d-flex align-items-center justify-content-between">
       <div className="d-flex align-items-center" style={{ marginBottom: "10px"}}>
       <a href={userProfileLink}><img
-          src={profilePicture}
+          src={`${config.BACKEND_URL}${profilePicture}`}
           alt="Profile"
           className="rounded-circle"
           style={{ width: "40px", height: "40px", marginRight: "10px" }}
