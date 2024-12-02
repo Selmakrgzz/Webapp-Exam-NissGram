@@ -3,7 +3,7 @@ import './../../styles/auth.css'; // CSS-stil for enhetlig design
 import './../../styles/loginRegister.css'; 
 import { useNavigate } from 'react-router-dom';
 import API_URL from '../../apiConfig';
-import { login } from './../../api/operations'; // Make sure the path matches where your operations.ts file is located
+import { login } from './../../api/operations';
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -50,25 +50,11 @@ const LoginPage: React.FC = () => {
           <h2 className="text-center mb-4">Log in</h2>
           <form onSubmit={handleLogin}>
             <div className="form-floating mb-3">
-              <input
-                type="text"
-                className="form-control"
-                id="usernameOrEmail"
-                placeholder="Enter your username or email"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
+              <input type="text" className="form-control" id="usernameOrEmail" placeholder="Enter your username or email" value={username} onChange={(e) => setUsername(e.target.value)} />
               <label htmlFor="usernameOrEmail">Username or Email</label>
             </div>
             <div className="form-floating mb-3">
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <input type="password" className="form-control" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
               <label htmlFor="password">Password</label>
             </div>
             {error && <div className="alert alert-danger">{error}</div>}

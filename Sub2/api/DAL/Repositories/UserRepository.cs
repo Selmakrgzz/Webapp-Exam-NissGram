@@ -141,5 +141,19 @@ public class UserRepository : IUserRepository
             return false;
         }
     }
+
+
+    public async Task<List<int>> GetLikedPostIds(User thisUser)
+    {
+        if (thisUser == null)
+            throw new ArgumentNullException(nameof(thisUser), "User cannot be null.");
+
+        var likedPostIds = await _db.UserPostLikes
+            .Where(u => u.UserId == thisUser.Id) // Filter likes by the user ID
+            .Select(u => u.PostId) // Select the post IDs
+            .ToListAsync(); // Execute the query asynchronously
+
+        return likedPostIds;
+    }
 }
 

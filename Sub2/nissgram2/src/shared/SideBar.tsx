@@ -1,5 +1,5 @@
 import React from 'react';
-import API_URL from '../apiConfig';
+import config from '../apiConfig';
 import './../styles/layout.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,25 +37,25 @@ const Sidebar: React.FC = () => {
                 <li className="nav-item mb-3">
                     <a href="/profile" className="nav-link">
                         <div className="profile-container circle">
-                            <img src={`${API_URL}/images/profile_image_default.png`} className="profile-picture" alt="Profile "/>
+                            <img src={`${config.API_URL}/images/profile_image_default.png`} className="profile-picture" alt="Profile "/>
                         </div>
                     </a>
                 </li>
                 <li className="nav-item mb-3">
                     <a href="/" className="nav-link">
-                        <img src={`${API_URL}/images/Icons/homeIcon.png`} alt="Home Icon" style={{ height: "40px", width: "40px" }}/>
+                        <img src={`${config.API_URL}/images/Icons/homeIcon.png`} alt="Home Icon" style={{ height: "40px", width: "40px" }}/>
                     </a>
                 </li>
                 <li className="nav-item mb-3">
                     <a href="/createPost" className="nav-link">
-                        <img src={`${API_URL}/images/Icons/addIcon.png`} alt="Add Post Icon" style={{ height: "40px", width: "40px" }} />
+                        <img src={`${config.API_URL}/images/Icons/addIcon.png`} alt="Add Post Icon" style={{ height: "40px", width: "40px" }} />
                     </a>
                 </li>
             </ul>
             <div className="d-flex align-items-center justify-content-center" style={{height: "100%"}}>
                 <button type="submit" onClick={handleLogout} className="text-white p-0 border-0 bg-transparent">
                     <a href="/logout" className="nav-link">
-                        <img src={`${API_URL}/images/Icons/logoutIcon.png`} alt="Logout Icon" style={{ height: "40px", width: "40px", margin: "15px" }} />
+                        <img src={`${config.API_URL}/images/Icons/logoutIcon.png`} alt="Logout Icon" style={{ height: "40px", width: "40px", margin: "15px" }} />
                     </a>
                 </button>
             </div>

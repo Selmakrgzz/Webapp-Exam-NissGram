@@ -1,50 +1,78 @@
 import React, { useState } from "react";
-import API_URL from "../../apiConfig";
+import config from "../../apiConfig";
+import { Modal } from "react-bootstrap";
+import PostPopup from "./PostPopup";
+import PostProfileHeader from "./PostProfileHeader";
+import { Post, PostDetails } from "../../types/interfaces";
+import "../../styles/popUp.css";
+import { likePost, getPostDetails} from "../../api/operations";
 
 interface PostActionsProps {
-  postId: number;
-  userLiked: boolean;
-  likeCount: number;
-  commentCount: number;
-  onLike: () => void; // Legg til dette hvis det mangler
-  onCommentClick: () => void;
+  post: Post; // The post object
 }
 
-const PostActions: React.FC<PostActionsProps> = ({
-  postId,
-  userLiked: initialUserLiked,
-  likeCount: initialLikeCount,
-  commentCount,
-  onCommentClick,
-}) => {
-  // State for likes og om brukeren har likt
+const PostActions: React.FC<PostActionsProps> = ({ post }) => {
+  const { postId, simpleUser, imgUrl, text, dateCreated, dateUpdated, userLiked: initialUserLiked, likeCount: initialLikeCount, commentCount } = post;
+
+  const [showModal, setShowModal] = useState(false);
   const [userLiked, setUserLiked] = useState(initialUserLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
+  const [postDetails, setPostDetails] = useState<PostDetails | null>(null); // Use PostDetails type
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLike = () => {
-    // Bytt mellom likt og ikke-likt
-    if (userLiked) {
-      setLikeCount((prev) => prev - 1); // Fjern en like hvis allerede likt
-    } else {
-      setLikeCount((prev) => prev + 1); // Legg til en like hvis ikke likt
+  const toggleModal = async () => {
+    if (!showModal) {
+      setLoading(true);
+      try {
+        const data: PostDetails = await getPostDetails(postId); // Fetch full post details
+        setPostDetails(data); // Set PostDetails data
+      } catch (err) {
+        console.error("Error fetching post details:", err);
+        setError("Failed to load post details.");
+      } finally {
+        setLoading(false);
+      }
     }
-    setUserLiked(!userLiked); // Oppdater state for userLiked
+    setShowModal(!showModal);
+  };
+
+  const handleLike = async () => {
+    try {
+      const newLikedState = !userLiked;
+      setUserLiked(newLikedState); // Optimistically update UI
+  
+      const response = await likePost(postId); // Send likePost request to the API
+  
+      if (response && response.likeCount !== undefined) {
+        setLikeCount(response.likeCount); // Update with the API's like count
+      } else {
+        throw new Error("Invalid response from server.");
+      }
+    } catch (err) {
+      console.error("Error liking the post:", err);
+  
+      // Revert optimistic state changes on failure
+      setUserLiked(!userLiked);
+      setError("Failed to update like status.");
+    }
   };
 
   return (
     <div className="d-flex align-items-center">
-      {/* Like-knappen */}
+      {error && <div className="text-danger">{error}</div>}
+
       <div className="d-flex align-items-center mr-3 like-button-container">
         <button
           onClick={(e) => {
-            e.preventDefault(); // Forhindre standard form-oppførsel
-            handleLike(); // Håndter likes
+            e.preventDefault();
+            handleLike();
           }}
           className="btn p-0"
           style={{ border: "none", background: "transparent" }}
         >
           <img
-            src={`${API_URL}/images/Icons/${userLiked ? "heart-red" : "heart"}.png`}
+            src={`${config.API_URL}/images/Icons/${userLiked ? "heart-red" : "heart"}.png`}
             alt="Like Icon"
             className="like-img me-2"
             style={{ marginLeft: "5px", width: "25px", height: "24px" }}
@@ -53,23 +81,38 @@ const PostActions: React.FC<PostActionsProps> = ({
         <span>{likeCount}</span>
       </div>
 
-      {/* Kommentarseksjonen */}
-      <div
-        className="d-flex align-items-center mr-3 comment-button-container"
-        style={{ cursor: "pointer" }}
-        data-bs-toggle="modal"
-        data-bs-target={`#postModal-${postId}`} // Koble modal til riktig post
-        onClick={onCommentClick}
+      <button
+        onClick={toggleModal}
+        className="btn comment-button-container"
+        disabled={loading} // Disable the button while loading
       >
-        <img
-          src={`${API_URL}/images/Icons/chat.png`}
-          alt="Comment Icon"
-          className="comment_img"
-        />
-        <span style={{ marginLeft: "5px", width: "25px", height: "24px" }}>
-          {commentCount}
-        </span>
-      </div>
+        <img src={`${config.API_URL}/images/Icons/chat.png`} alt="Comment Icon" />
+        <span>{commentCount}</span>
+      </button>
+
+      <Modal show={showModal} onHide={toggleModal} centered className="modal-xl">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <PostProfileHeader
+              profilePicture={simpleUser.profilePicture}
+              userName={simpleUser.userName}
+              userProfileLink={`/user/${simpleUser.userName}`}
+            />
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-body">
+          {loading ? (
+            <p>Loading post details...</p>
+          ) : postDetails ? (
+            <PostPopup
+              post={postDetails} // Pass the full PostDetails object
+              onClose={toggleModal}
+            />
+          ) : (
+            <p>Error loading post details.</p>
+          )}
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

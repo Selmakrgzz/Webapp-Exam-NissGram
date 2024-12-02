@@ -4,7 +4,6 @@ using NissGram.DAL;
 using NissGram.Helpers;
 using NissGram.DTOs;
 using NissGram.Models;
-using NissGram.ViewModels;
 using System.Security.Claims;
 
 
@@ -71,14 +70,14 @@ public class PostAPIController : Controller
             try
             {
                 var fileName = Guid.NewGuid() + Path.GetExtension(uploadImage.FileName);
-                var filePath = Path.Combine("wwwroot/images", fileName);
+                var filePath = Path.Combine("wwwroot/images/post_images", fileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await uploadImage.CopyToAsync(stream);
                 }
 
-                imageUrl = "/images/" + fileName;
+                imageUrl = "/images/post_images/" + fileName;
             }
             catch (Exception ex)
             {
@@ -155,17 +154,33 @@ public class PostAPIController : Controller
             return Forbid();
         }
 
-        // Update text if provided
-        if (!string.IsNullOrWhiteSpace(model.Text) && model.Text != existingPost.Text)
+        // Check if both Text and newImage are empty/null
+        if (string.IsNullOrWhiteSpace(model.Text) && newImage == null && string.IsNullOrWhiteSpace(existingPost.ImgUrl))
+        {
+            return BadRequest(new { error = "Both text and image cannot be empty." });
+        }
+
+
+        // Update text (set to empty if null or whitespace)
+        if (string.IsNullOrWhiteSpace(model.Text))
+        {
+            existingPost.Text = string.Empty;
+        }
+        else if (model.Text != existingPost.Text)
         {
             existingPost.Text = model.Text;
         }
 
-        // Handle new image upload if provided
+        if (model.ImgUrl == null)
+        {
+            existingPost.ImgUrl = string.Empty;
+        }
+
+        // Handle new image upload or reset ImgUrl if newImage is null
         if (newImage != null && newImage.Length > 0)
         {
             var fileName = Guid.NewGuid() + Path.GetExtension(newImage.FileName);
-            var filePath = Path.Combine("wwwroot/images", fileName);
+            var filePath = Path.Combine("wwwroot/images/post_images", fileName);
 
             try
             {
@@ -174,7 +189,7 @@ public class PostAPIController : Controller
                     await newImage.CopyToAsync(stream);
                 }
 
-                existingPost.ImgUrl = "/images/" + fileName;
+                existingPost.ImgUrl = "/images/post_images" + fileName;
             }
             catch (Exception ex)
             {
@@ -182,6 +197,8 @@ public class PostAPIController : Controller
                 return StatusCode(500, new { error = "An error occurred while uploading the image." });
             }
         }
+
+
 
         // Update timestamp
         existingPost.DateUpdated = DateTime.UtcNow;
@@ -206,6 +223,7 @@ public class PostAPIController : Controller
             return StatusCode(500, new { error = "A system error occurred while updating the post." });
         }
     }
+
 
     [HttpPost("like/{postId}")]
     public async Task<IActionResult> Like(int postId)
@@ -259,6 +277,5 @@ public class PostAPIController : Controller
             likeCount = post.UserLikes.Count
         });
     }
-
 
 }

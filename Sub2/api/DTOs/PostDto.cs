@@ -5,7 +5,7 @@ namespace NissGram.DTOs
     public class PostDto
     {
         public int PostId { get; set; }
-        public string Username { get; set; } = string.Empty;
+        public SimpleUserDto SimpleUser { get; set; } = new SimpleUserDto();
         public string? Text { get; set; }
         public string? ImgUrl { get; set; }
         public DateTime DateCreated { get; set; }
@@ -31,7 +31,7 @@ namespace NissGram.DTOs
         [StringLength(500, ErrorMessage = "Comment text cannot exceed 500 characters.")]
         public string? Text { get; set; }  // Required for add, optional for delete
 
-        public string? Username { get; set; } // For response DTOs only
+        public SimpleUserDto? SimpleUser { get; set; } // For response DTOs only
         public DateTime? DateCommented { get; set; } // For response DTOs only
     }
 }

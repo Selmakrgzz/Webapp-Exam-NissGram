@@ -101,7 +101,7 @@ public class UserAPIController : Controller
     }
 
     [HttpPost("update")]
-    public async Task<IActionResult> UpdateUser([FromBody] UserUpdateDto userUpdateDto)
+    public async Task<IActionResult> UpdateUser([FromForm] UserUpdateDto userUpdateDto, IFormFile? profilePicture)
     {
         if (User.Identity == null || string.IsNullOrEmpty(User.Identity.Name))
         {
@@ -118,7 +118,38 @@ public class UserAPIController : Controller
 
         try
         {
-            // Use the mapping method to update the User entity
+            // Handle profile picture upload
+            if (profilePicture != null && profilePicture.Length > 0)
+            {
+                var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/profile_pictures");
+                var fileName = Guid.NewGuid() + Path.GetExtension(profilePicture.FileName);
+                var filePath = Path.Combine(uploadFolder, fileName);
+
+                // Ensure the directory exists
+                if (!Directory.Exists(uploadFolder))
+                {
+                    Directory.CreateDirectory(uploadFolder);
+                }
+
+                try
+                {
+                    // Save the file to the server
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await profilePicture.CopyToAsync(stream);
+                    }
+
+                    // Update user's profile picture path
+                    currentUser.ProfilePicture = "/images/profile_pictures/" + fileName;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error occurred while uploading profile picture.");
+                    return StatusCode(500, "An error occurred while uploading the profile picture.");
+                }
+            }
+
+            // Update other user details using the mapping method
             MappingHelper.MapUserUpdateDtoToUser(currentUser, userUpdateDto);
 
             var updateSuccess = await _userRepository.UpdateUserAsync(currentUser);
@@ -129,7 +160,7 @@ public class UserAPIController : Controller
                 return StatusCode(500, "An error occurred while updating the user.");
             }
 
-            return Ok("User updated successfully.");
+            return Ok(new { message = "User updated successfully.", profilePictureUrl = currentUser.ProfilePicture });
         }
         catch (Exception ex)
         {
@@ -137,6 +168,7 @@ public class UserAPIController : Controller
             return StatusCode(500, "An unexpected error occurred.");
         }
     }
+
 
     [HttpDelete("delete")]
     public async Task<IActionResult> DeleteUser()
@@ -183,6 +215,30 @@ public class UserAPIController : Controller
             return StatusCode(500, "An unexpected error occurred. Please try again later.");
         }
     }
+
+
+    [HttpGet("LikedPosts")]
+    public async Task<IActionResult> LikedPosts()
+    {
+
+
+        // Authenticate the user
+        var user = await _userRepository.GetUserByUsernameAsync(User.Identity?.Name ?? string.Empty);
+        if (user == null)
+        {
+            return Unauthorized(new { error = "User is not authenticated." });
+        }
+
+
+        // Check if the user has liked the post
+        var liked = _userRepository.GetLikedPostIds(user);
+
+        return Ok(new
+        {
+            hasLiked = liked.Result
+        });
+    }
+
 
 
 }

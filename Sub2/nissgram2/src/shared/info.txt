@@ -1,1 +1,0 @@
-ser om vi trenger denne. kan hende vi bare bruker components mappen, men kan hende vi får bruk underveis

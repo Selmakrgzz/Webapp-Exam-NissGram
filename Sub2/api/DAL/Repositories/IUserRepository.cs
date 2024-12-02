@@ -9,4 +9,5 @@ public interface IUserRepository
     Task<bool> CreateUserAsync(User user);
     Task<bool> UpdateUserAsync(User user);
     Task<bool> DeleteUserByUsernameAsync(string username);
+    Task<List<int>> GetLikedPostIds(User thisUser);
 }

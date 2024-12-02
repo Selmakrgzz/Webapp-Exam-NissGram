@@ -1,52 +1,85 @@
 import React from "react";
 import API_URL from "../../apiConfig";
 import PostProfileHeader from "./PostProfileHeader";
-import '../../styles/postCard.css';
+import "../../styles/postCard.css";
 import PostDates from "./PostDates";
 import PostActions from "./PostActions";
-import { Post } from "../../types/post"; // Sørg for at typen Post er riktig definert.
+import PostDropdown from "./PostDropdown";
+import { Post } from "../../types/interfaces";
 
-const PostCard: React.FC<Post> = ({
-  user,
-  imgUrl,
-  text,
-  likeCount,
-  commentCount,
-  dateCreated,
-  dateUpdated,
-  onLike,
-  onCommentClick,
-  userLiked, // Passer for likes
-}) => {
+interface PostCardProps {
+  post: Post; // The post object as a single prop
+  currentUserName: string; // Current logged-in user's username
+}
+
+const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
+  const {
+    simpleUser,
+    imgUrl,
+    text,
+    likeCount,
+    commentCount,
+    dateCreated,
+    dateUpdated,
+    userLiked,
+    postId,
+  } = post;
+
+  // Fallback values for user object and profilePicture
+  let userProfilePicture = simpleUser?.profilePicture;
+  const username = simpleUser?.userName || "unknown";
+
+  if(userProfilePicture == null || userProfilePicture == "string"){
+    userProfilePicture =  "/images/profile_image_default.png";
+  }
+  const handleEdit = () => {
+    console.log(`Editing post with ID: ${postId}`);
+  };
+
+  const handleDelete = () => {
+    console.log(`Deleting post with ID: ${postId}`);
+  };
+
   return (
-    <div className="post-card">
-      {/* Profilheader */}
-      <PostProfileHeader
-        profilePicture={user?.profilePicture || `${API_URL}/images/default-profile.png`}
-        userName={user?.userName || "Unknown"}
-        userProfileLink={`/user/${user?.userName || "unknown"}`}
-      />
-
-      {/* Postens bilde */}
-      {imgUrl && <img src={imgUrl} alt="Post image" className="post-image" />}
-
-      {/* Postens tekst */}
-      <p>{text}</p>
-
-      {/* Datoer */}
-      <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated} />
-
-      {/* Likes og kommentarer */}
-      <div className="likes-comments-dates">
-        <PostActions
-          postId={user?.id || 0} // Sørg for at du bruker riktig ID her.
-          userLiked={userLiked} // Overfør om brukeren har likt innlegget.
-          likeCount={likeCount} // Overfør antall likes.
-          commentCount={commentCount} // Overfør antall kommentarer.
-          onLike={onLike} // Funksjon for håndtering av likes.
-          onCommentClick={onCommentClick} // Funksjon for håndtering av kommentarer.
+    <div className="post-card" style={{ position: "relative", marginBottom: "20px" }}>
+      <div className="d-flex justify-content-between align-items-center">
+        <PostProfileHeader
+          profilePicture={userProfilePicture} // Use fallback value
+          userName={username} // Use fallback value
+          userProfileLink={`/user/${username}`} // Use fallback value
         />
+        {currentUserName === simpleUser?.userName && (
+          <PostDropdown onEdit={handleEdit} onDelete={handleDelete} postId={postId} />
+        )}
       </div>
+      {imgUrl && (
+        <img
+          src={
+            imgUrl.startsWith("/images/postImages")
+              ? `${API_URL}${imgUrl}`
+              : `http://localhost:5024${imgUrl}`
+          }
+          alt="Post"
+          className="img-fluid rounded"
+          style={{ marginTop: "10px" }}
+        />
+      )}
+      <p>{text}</p>
+      <hr />
+      <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated} />
+      <PostActions
+        post={{
+          postId,
+          simpleUser,
+          imgUrl,
+          text,
+          dateCreated,
+          dateUpdated,
+          userLiked,
+          likeCount,
+          commentCount,
+        }}
+      />
     </div>
   );
 };

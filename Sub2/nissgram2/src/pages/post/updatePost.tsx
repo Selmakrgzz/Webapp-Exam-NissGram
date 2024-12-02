@@ -1,23 +1,75 @@
-import React, { useState} from "react";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import "../../styles/layout.css";
 import "../../styles/createPost.css";
 
-interface UpdatePostProps {
-  postId: number;
-  existingImgUrl: string | null; // Null hvis ingen eksisterende bilde-URL
-  text: string;
-  onUpdate: (postId: number, updatedText: string, updatedImage: File | null) => void;
-}
+const UpdatePost: React.FC = () => {
+  const navigate = useNavigate();
+  const { postId } = useParams<{ postId: string }>();
 
-const UpdatePost: React.FC<UpdatePostProps> = ({ postId, existingImgUrl, text, onUpdate }) => {
-  const [currentText, setCurrentText] = useState<string>(text);
+  const [postDetails, setPostDetails] = useState({
+    text: '',
+    imageUrl: '',
+  });
+
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [newImage, setNewImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(existingImgUrl);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null); // For valideringsfeil
+  const [successMessage, setSuccessMessage] = useState<string | null>(null); // For suksessmelding
 
-  // Oppdater forhåndsvisning når ny fil velges
+  const BASE_URL = 'http://localhost:5024';
+
+  useEffect(() => {
+    const fetchPostDetails = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/api/PostAPI/details/${postId}`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch post data');
+        }
+
+        const data = await response.json();
+        console.log('Fetched post details:', data);
+
+        const fullImageUrl = data.imgUrl?.startsWith('/images/')
+          ? `${BASE_URL}${data.imgUrl}`
+          : data.imgUrl || null;
+
+        setPostDetails({
+          text: data.text || '',
+          imageUrl: fullImageUrl || '',
+        });
+
+        setImagePreview(fullImageUrl);
+      } catch (err: any) {
+        console.error('Error fetching post details:', err.message || err);
+        setError(err.message || 'Failed to load post data.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (postId) {
+      fetchPostDetails();
+    }
+  }, [postId]);
+
+  const handleInputChange = (value: string) => {
+    setPostDetails((prevDetails) => ({
+      ...prevDetails,
+      text: value,
+    }));
+  };
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       setNewImage(file);
+
       const reader = new FileReader();
       reader.onload = () => {
         setImagePreview(reader.result as string);
@@ -26,11 +78,69 @@ const UpdatePost: React.FC<UpdatePostProps> = ({ postId, existingImgUrl, text, o
     }
   };
 
-  // Håndter innsending av oppdateringen
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onUpdate(postId, currentText, newImage);
+  const handleSave = async () => {
+    // Inputvalidering uten dialogboks
+    if (!postDetails.text.trim() && (newImage == null && imagePreview == null)) {
+      setError("You must provide either text or an image to update the post.");
+      return;
+    }
+    setError(null); // Nullstill feil hvis valideringen består
+  
+    try {
+      setLoading(true);
+  
+      const formData = new FormData();
+      formData.append('text', postDetails.text);
+  
+      if (newImage) {
+        // Hvis et nytt bilde er valgt, legg til det i formData
+        formData.append('newImage', newImage);
+      } else if (postDetails.imageUrl) {
+        // Hvis det eksisterende bildet ikke er endret, legg til URL-en
+        formData.append('ImgUrl', postDetails.imageUrl);
+      }
+  
+      console.log('Sending data to backend:', {
+        text: postDetails.text,
+        image: newImage || postDetails.imageUrl,
+      });
+  
+      const response = await fetch(`${BASE_URL}/api/PostAPI/update/${postId}`, {
+        method: 'PUT',
+        credentials: 'include',
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update post.');
+      }
+  
+      const updatedPost = await response.json();
+      console.log('Backend returned updated post details:', updatedPost);
+  
+      setPostDetails({
+        text: updatedPost.text,
+        imageUrl: `${BASE_URL}${updatedPost.imgUrl}`,
+      });
+  
+      setImagePreview(`${BASE_URL}${updatedPost.imgUrl}?t=${Date.now()}`);
+      setSuccessMessage('Post updated successfully!'); // Sett suksessmelding
+  
+      // Naviger til hjemmesiden etter 2 sekunder
+      setTimeout(() => {
+        navigate('/');
+      }, 1500);
+    } catch (err: any) {
+      console.error('Error updating post:', err.message || err);
+      setError('Failed to update post. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
+  
+
+
+  if (loading) return <p>Loading post data...</p>;
 
   return (
     <div className="container mt-3">
@@ -38,18 +148,31 @@ const UpdatePost: React.FC<UpdatePostProps> = ({ postId, existingImgUrl, text, o
         <h2>Update your post!</h2>
       </div>
 
+      {/* Feilmelding */}
+      {error && (
+        <div className="alert alert-danger text-center" role="alert">
+          {error}
+        </div>
+      )}
+
+      {/* Suksessmelding */}
+      {successMessage && (
+        <div className="alert alert-success text-center" role="alert">
+          {successMessage}
+        </div>
+      )}
+
       <div className="row">
-        {/* Left Column: Image Preview */}
         <div className="col-md-6 d-flex justify-content-center">
           <div id="imagePreview" className="border">
             {imagePreview ? (
               <img
                 src={imagePreview}
-                alt="Bildet "
+                alt="Preview"
                 style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contain",
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
                 }}
               />
             ) : (
@@ -58,50 +181,46 @@ const UpdatePost: React.FC<UpdatePostProps> = ({ postId, existingImgUrl, text, o
           </div>
         </div>
 
-        {/* Right Column: Form Elements */}
         <div className="col-md-6">
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
-            {/* Hidden field for PostId */}
+          <form onSubmit={(e) => e.preventDefault()}>
             <input type="hidden" value={postId} />
 
-            {/* Text Area for updating text */}
-            <div className="form-group md-1">
+            <div className="form-group">
               <label htmlFor="textArea" className="font-weight-bold">
                 Content
               </label>
               <textarea
-                className="form-control form-control-lg"
+                className="form-control"
                 id="textArea"
                 rows={6}
                 placeholder="Write something..."
-                value={currentText}
-                onChange={(e) => setCurrentText(e.target.value)}
+                value={postDetails.text}
+                onChange={(e) => handleInputChange(e.target.value)}
               ></textarea>
             </div>
             <br />
 
-            {/* Buttons Section */}
             <div className="form-group d-flex justify-content-between align-items-center">
-              {/* Upload Image Button */}
               <button
                 type="button"
-                className="btn btn-primary btn-lg btn-post"
-                onClick={() => document.getElementById("uploadImage")?.click()}
+                className="btn btn-primary btn-lg"
+                onClick={() => document.getElementById('uploadImage')?.click()}
               >
                 Upload Image
               </button>
-              {/* Hidden File Input */}
               <input
                 type="file"
                 id="uploadImage"
-                className="file-input"
+                style={{ display: 'none' }}
                 accept="image/*"
-                style={{ display: "none" }}
                 onChange={handleImageChange}
               />
 
-              {/* Update Button */}
-              <button type="submit" className="btn btn-primary btn-lg btn-post">
+              <button
+                type="submit"
+                className="btn btn-success btn btn-primary btn-lg"
+                onClick={handleSave}
+              >
                 Update
               </button>
             </div>

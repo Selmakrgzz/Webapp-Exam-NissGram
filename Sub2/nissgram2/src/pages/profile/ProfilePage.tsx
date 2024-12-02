@@ -1,34 +1,87 @@
-import React, { useState } from 'react';
-import ProfileHeader from '../../components/ProfileHeader';
-import NavigationButtons from '../../components/NavigationButtons';
-import DynamicContent from '../../components/profile/DynamicContent';
-import '../../styles/profilePage.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"; // For accessing route params
+import ProfileHeader from "../../components/profile/ProfileHeader";
+import NavigationButtons from "../../components/profile/NavigationButtons";
+import PostsSection from "../../components/profile/PostsSection";
+import { UserProfile } from "../../types/interfaces";
+import { getUserProfile, getUserProfileByUsername } from "../../api/operations";
 
 const ProfilePage: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<'Pictures' | 'Notes' | 'LikedPosts'>('Pictures');
+  const { username } = useParams<{ username?: string }>(); // Extract username from route
+  const [activeSection, setActiveSection] = useState<"Pictures" | "Notes" | "LikedPosts">("Pictures");
+  const [profileData, setProfileData] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSectionChange = (section: 'Pictures' | 'Notes' | 'LikedPosts') => {
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        setLoading(true);
+        let data;
+
+        if (username) {
+          // Fetch profile by username
+          data = await getUserProfileByUsername(username);
+        } else {
+          // Fetch logged-in user's profile
+          data = await getUserProfile();
+        }
+
+        const userProfile: UserProfile = {
+          username: data.username,
+          pictureCount: data.pictureCount,
+          noteCount: data.noteCount,
+          profilePicture: data.profilePicture,
+          about: data.about || "",
+          pictures: data.pictures || [],
+          notes: data.notes || [],
+          likedPosts: username ? [] : data.likedPosts || [], // Hide likedPosts for other users
+        };
+
+        setProfileData(userProfile);
+      } catch (err) {
+        console.error("Error fetching profile data:", err);
+        setError("Failed to load profile data. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserProfile();
+  }, [username]); // Refetch data when username changes
+
+  const handleSectionChange = (section: "Pictures" | "Notes" | "LikedPosts") => {
+    if (username && section === "LikedPosts") return; // Prevent showing LikedPosts for other users
     setActiveSection(section);
   };
 
+  if (loading) {
+    return <p>Loading profile...</p>;
+  }
+
+  if (error) {
+    return <p className="error">{error}</p>;
+  }
+
+  if (!profileData) {
+    return <p>Error: No profile data available.</p>;
+  }
+
   return (
     <div className="container mt-4">
-      {/* Profile Header Component */}
-      <ProfileHeader />
-
-      {/* Navigation Buttons */}
-      <NavigationButtons onSectionChange={handleSectionChange} />
-
-      {/* Dynamic Content */}
+      <ProfileHeader
+        profilepicture={profileData.profilePicture || "/images/profile_image_default.png"}
+        username={profileData.username}
+        pictureCount={profileData.pictureCount}
+        noteCount={profileData.noteCount}
+        about={profileData.about || "No description available"}
+      />
+      <NavigationButtons
+        onSectionChange={handleSectionChange}
+        hideLikedPosts={!!username} // Pass a flag to hide LikedPosts for other users
+      />
       <div className="mt-4">
-        <DynamicContent
-          section={activeSection}
-          data={{
-            pictures: [], // Replace with database integration later
-            notes: [], // Replace with database integration later
-            activities: [], // Replace with database integration later
-          }}
-        />
+        <PostsSection activeSection={activeSection} profileData={profileData} />
       </div>
     </div>
   );

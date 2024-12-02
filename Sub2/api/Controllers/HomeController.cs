@@ -32,7 +32,11 @@ public class HomeAPIController : ControllerBase
         var postDtos = posts.Select(post => new PostDto
         {
             PostId = post.PostId,
-            Username = post.User.UserName ?? "Unknown", // For possible null value
+            SimpleUser = new SimpleUserDto
+            {
+                UserName = post.User.UserName,
+                ProfilePicture = post.User.ProfilePicture
+            },
             Text = post.Text,
             ImgUrl = post.ImgUrl,
             DateCreated = post.DateCreated,
@@ -44,7 +48,7 @@ public class HomeAPIController : ControllerBase
         return Ok(postDtos);
     }
 
-    
+
 
 
 

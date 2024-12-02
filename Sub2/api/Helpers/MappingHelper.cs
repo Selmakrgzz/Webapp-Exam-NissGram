@@ -12,6 +12,8 @@ namespace NissGram.Helpers
                 Username = user.UserName ?? "unknown",
                 PictureCount = user.Posts?.Count(p => !string.IsNullOrEmpty(p.ImgUrl)) ?? 0,
                 NoteCount = user.Posts?.Count(p => string.IsNullOrEmpty(p.ImgUrl)) ?? 0,
+                About = user.About ?? "No desc available.", // Ensure About is mapped
+                ProfilePicture = user.ProfilePicture ?? "",
                 Pictures = MapPostsToDtos(user.Posts?.Where(p => !string.IsNullOrEmpty(p.ImgUrl))),
                 Notes = MapPostsToDtos(user.Posts?.Where(p => string.IsNullOrEmpty(p.ImgUrl))),
                 LikedPosts = MapPostsToDtos(user.LikedPosts?.Select(like => like.Post))
@@ -53,7 +55,11 @@ namespace NissGram.Helpers
             return posts?.Select(p => new PostDto
             {
                 PostId = p.PostId,
-                Username = p.User?.UserName ?? "unknown",
+                SimpleUser = new SimpleUserDto
+                {
+                    UserName = p.User.UserName,
+                    ProfilePicture = p.User.ProfilePicture
+                },
                 Text = p.Text,
                 ImgUrl = p.ImgUrl,
                 DateCreated = p.DateCreated,
@@ -68,7 +74,11 @@ namespace NissGram.Helpers
             return new PostDto
             {
                 PostId = post.PostId,
-                Username = post.User?.UserName ?? "Unknown",
+                SimpleUser = new SimpleUserDto
+                {
+                    UserName = post.User.UserName,
+                    ProfilePicture = post.User.ProfilePicture
+                },
                 Text = post.Text,
                 ImgUrl = post.ImgUrl,
                 DateCreated = post.DateCreated,
@@ -80,7 +90,11 @@ namespace NissGram.Helpers
                     {
                         CommentId = comment.CommentId,
                         Text = comment.Text,
-                        Username = comment.User?.UserName ?? "Unknown",
+                        SimpleUser = new SimpleUserDto
+                        {
+                            UserName = comment.User.UserName,
+                            ProfilePicture = comment.User.ProfilePicture
+                        },
                         DateCommented = comment.DateCommented
                     })
                     .ToList() ?? new List<CommentDto>()
