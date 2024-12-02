@@ -89,7 +89,11 @@ namespace NissGram.Helpers
                     {
                         CommentId = comment.CommentId,
                         Text = comment.Text,
-                        Username = comment.User?.UserName ?? "Unknown",
+                        SimpleUser = new SimpleUserDto
+                        {
+                            UserName = comment.User.UserName,
+                            ProfilePicture = comment.User.ProfilePicture
+                        },
                         DateCommented = comment.DateCommented
                     })
                     .ToList() ?? new List<CommentDto>()

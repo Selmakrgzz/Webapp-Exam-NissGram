@@ -68,7 +68,11 @@ namespace NissGram.Controllers
                 CommentId = comment.CommentId,
                 PostId = commentDto.PostId,
                 Text = comment.Text,
-                Username = user.UserName,
+                SimpleUser = new SimpleUserDto
+                {
+                    UserName = user.UserName,
+                    ProfilePicture = user.ProfilePicture
+                },
                 DateCommented = comment.DateCommented
             });
         }
