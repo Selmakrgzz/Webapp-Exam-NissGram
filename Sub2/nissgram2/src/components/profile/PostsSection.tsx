@@ -5,9 +5,10 @@ import { Post, UserProfile } from "../../types/interfaces";
 interface PostsSectionProps {
   activeSection: "Pictures" | "Notes" | "LikedPosts";
   profileData: UserProfile;
+  currentUser : string;
 }
 
-const PostsSection: React.FC<PostsSectionProps> = ({ activeSection, profileData }) => {
+const PostsSection: React.FC<PostsSectionProps> = ({ activeSection, profileData, currentUser }) => {
   const getPostsForSection = (): Post[] => {
     switch (activeSection) {
       case "Pictures":
@@ -31,7 +32,7 @@ const PostsSection: React.FC<PostsSectionProps> = ({ activeSection, profileData 
     <div className="row">
       {posts.map((post) => (
         <div key={post.postId} className="col-md-4 mb-5">
-          <PostCard post={post} currentUserName={profileData.username} />
+          <PostCard post={post} currentUserName={currentUser}  />
         </div>
       ))}
     </div>

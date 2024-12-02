@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // For accessing route params
+import { useParams } from "react-router-dom";
 import ProfileHeader from "../../components/profile/ProfileHeader";
 import NavigationButtons from "../../components/profile/NavigationButtons";
 import PostsSection from "../../components/profile/PostsSection";
@@ -12,19 +12,24 @@ const ProfilePage: React.FC = () => {
   const [profileData, setProfileData] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [loggedInUsername, setLoggedInUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
         setLoading(true);
-        let data;
 
+        // Fetch the logged-in user's profile to determine username
+        const loggedInUser = await getUserProfile();
+        setLoggedInUsername(loggedInUser.username);
+
+        let data;
         if (username) {
           // Fetch profile by username
           data = await getUserProfileByUsername(username);
         } else {
           // Fetch logged-in user's profile
-          data = await getUserProfile();
+          data = loggedInUser;
         }
 
         const userProfile: UserProfile = {
@@ -67,6 +72,8 @@ const ProfilePage: React.FC = () => {
     return <p>Error: No profile data available.</p>;
   }
 
+  const isOwnProfile = loggedInUsername === profileData.username;
+
   return (
     <div className="container mt-4">
       <ProfileHeader
@@ -75,13 +82,14 @@ const ProfilePage: React.FC = () => {
         pictureCount={profileData.pictureCount}
         noteCount={profileData.noteCount}
         about={profileData.about || "No description available"}
+        isOwnProfile={isOwnProfile} // Pass the flag to ProfileHeader
       />
       <NavigationButtons
         onSectionChange={handleSectionChange}
         hideLikedPosts={!!username} // Pass a flag to hide LikedPosts for other users
       />
       <div className="mt-4">
-        <PostsSection activeSection={activeSection} profileData={profileData} />
+        <PostsSection activeSection={activeSection} profileData={profileData} currentUser={loggedInUsername || ""} />
       </div>
     </div>
   );
