@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import PostDates from "./PostDates";
 import API_URL from "./../../apiConfig";
 import { PostPopupProps } from "../../types/interfaces";
-import { addComment, deleteComment } from "../../api/operations";
+import { addComment, deleteComment, fetchCurrentUser } from "../../api/operations";
 
 const PostPopup: React.FC<PostPopupProps> = ({ post, onClose }) => {
-  const { postId, simpleUser, imgUrl, text, dateCreated, dateUpdated, userLiked, likeCount, commentCount, comments } = post;
+  const { postId, imgUrl, text, dateCreated, dateUpdated, likeCount, commentCount, comments } = post;
 
-  const [newComment, setNewComment] = useState<string>("");
-  const [localComments, setLocalComments] = useState(comments);
+  const [newComment, setNewComment] = useState("");
+  const [error, setError] = useState("");
+  const [currentUser, setCurrentUser] = useState<{ username: string } | null>(null);
+
+  // Fetch the current user on component mount
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const user = await fetchCurrentUser();
+        setCurrentUser(user);
+      } catch (err) {
+        console.error("Error fetching current user:", err);
+        setError("Failed to fetch current user.");
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   const handleAddComment = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -17,96 +33,68 @@ const PostPopup: React.FC<PostPopupProps> = ({ post, onClose }) => {
     try {
       const result = await addComment({ postId, text: newComment });
       if (result.error) {
-        console.error("Failed to add comment:", result.error);
+        setError("Failed to add comment: " + result.error);
         return;
       }
-
-      setLocalComments((prevComments) => [
-        ...prevComments,
-        {
-          commentId: result.commentId, // Use the returned comment ID
-          text: newComment,
-          dateCommented: new Date().toISOString(),
-          user: { userName: simpleUser.userName, profilePicture: simpleUser.profilePicture },
-        },
-      ]);
-      setNewComment("");
+      onClose();
     } catch (err) {
       console.error("Error adding comment:", err);
+      setError("An error occurred while adding the comment.");
     }
+    setNewComment("");
   };
 
   const handleDeleteComment = async (commentId: number) => {
     try {
-      const result = await deleteComment(commentId.toString());
-      if (result.error) {
-        console.error("Failed to delete comment:", result.error);
-        return;
+      const result = await deleteComment(commentId);
+      if (result.success) {
+        onClose();
+      } else {
+        setError("Failed to delete comment.");
       }
-
-      setLocalComments((prevComments) => prevComments.filter((comment) => comment.commentId !== commentId));
     } catch (err) {
       console.error("Error deleting comment:", err);
+      setError("An error occurred while deleting the comment.");
     }
   };
 
   return (
     <div className="post-popup modal-body d-flex">
-      {/* Left Section */}
       <div className="left pe-3">
-        {imgUrl ? (
+        {imgUrl && (
           <img
-            src={imgUrl.startsWith("/images/postImages") ? `${API_URL}${imgUrl}` : `http://localhost:5024${imgUrl}`}
+            src={`${API_URL}/images/postImages${imgUrl}`}
             alt="Post image"
             className="img-fluid rounded mb-3"
             style={{ maxHeight: "400px" }}
           />
-        ) : (
-          <p className="font-italic">{text}</p>
         )}
-
-        <div className="likes-comments-dates mt-3">
-          <div className="d-flex justify-content-between">
-            <span>{likeCount} Likes</span>
-            <span>{commentCount} Comments</span>
-          </div>
-          <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated} />
-        </div>
+        <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated} />
+        <p>{likeCount} Likes</p>
+        <p>{commentCount} Comments</p>
       </div>
 
-      {/* Right Section */}
       <div className="right">
         <h6>Comments</h6>
-        {localComments.map((comment) => (
-          <div key={comment.commentId} className="comment mb-2">
-            <span>
-              <strong>{comment.user.userName}</strong>: {comment.text}
-            </span>
-            {simpleUser.userName === comment.user.userName && (
-              <button
-                className="btn btn-link text-danger p-0 ms-2"
-                onClick={() => handleDeleteComment(comment.commentId)}
-              >
-                <i className="fas fa-trash-alt" />
+        {comments.map((comment) => (
+          <div key={comment.commentId} className="d-flex align-items-center mb-2">
+            <strong>{post.simpleUser?.userName || "Unknown"}:</strong> {comment.text}
+            {post.simpleUser?.userName === currentUser?.username && (
+              <button onClick={() => handleDeleteComment(comment.commentId)} className="btn btn-link text-danger p-0">
+                <i className="fas fa-trash-alt"></i>
               </button>
             )}
           </div>
         ))}
-
-        {/* Add Comment */}
-        <form onSubmit={handleAddComment} className="mt-3">
-          <div className="input-group">
-            <input
-              type="text"
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Write a comment..."
-              className="form-control"
-            />
-            <button type="submit" className="btn btn-primary">
-              Post
-            </button>
-          </div>
+        <form onSubmit={handleAddComment}>
+          <input
+            type="text"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder="Write a comment..."
+            required
+          />
+          <button className="btn btn-primary" type="submit">Post</button>
         </form>
       </div>
     </div>

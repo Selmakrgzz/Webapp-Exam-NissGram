@@ -59,8 +59,8 @@ export const addComment = async (commentData: any) => {
     return callApi(Comment.ADD_COMMENT, 'POST', commentData);
 };
 
-export const deleteComment = async (commentId: string) => {
-    return callApi(Comment.DELETE_COMMENT.replace('{id}', commentId), 'DELETE');
+export const deleteComment = async (commentId: number) => {
+    return callApi(Comment.DELETE_COMMENT.replace('{id}', commentId.toString()), 'DELETE');
 };
 
 // Home operations

@@ -26,7 +26,7 @@ export interface Comment {
   commentId: number;
   text: string;
   dateCommented: string;
-  user: User;
+  user: SimpleUser;
 }
 
 export interface Post {
