@@ -1,5 +1,5 @@
 import React from "react";
-import API_URL from "../../apiConfig";
+import config from '../../apiConfig';
 import PostProfileHeader from "./PostProfileHeader";
 import "../../styles/postCard.css";
 import PostDates from "./PostDates";
@@ -30,7 +30,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
   const username = simpleUser?.userName || "unknown";
 
   if(userProfilePicture == null || userProfilePicture == "string"){
-    userProfilePicture =  "/images/profile_image_default.png";
+    userProfilePicture =  "/images/profile_pictures/profile_image_default.png";
   }
   const handleEdit = () => {
     console.log(`Editing post with ID: ${postId}`);
@@ -56,8 +56,8 @@ const PostCard: React.FC<PostCardProps> = ({ post, currentUserName }) => {
         <img
           src={
             imgUrl.startsWith("/images/postImages")
-              ? `${API_URL}${imgUrl}`
-              : `http://localhost:5024${imgUrl}`
+              ? `${config.API_URL}${imgUrl}`
+              : `${config.BACKEND_URL}${imgUrl}`
           }
           alt="Post"
           className="img-fluid rounded"

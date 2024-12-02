@@ -70,7 +70,7 @@ const ProfilePage: React.FC = () => {
   return (
     <div className="container mt-4">
       <ProfileHeader
-        profilepicture={profileData.profilePicture || "/images/profile_image_default.png"}
+        profilepicture={profileData.profilePicture || "/images/profile_pictures/profile_image_default.png"}
         username={profileData.username}
         pictureCount={profileData.pictureCount}
         noteCount={profileData.noteCount}
