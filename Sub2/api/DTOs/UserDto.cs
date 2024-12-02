@@ -22,6 +22,14 @@ namespace NissGram.DTOs
         public string? LastName { get; set; }
         public string? PhoneNumber { get; set; }
     }
+
+    public class SimpleUserDto
+    {
+        public string? ProfilePicture { get; set; }
+        public string? UserName { get; set; }
+    }
+
+
 }
 
 

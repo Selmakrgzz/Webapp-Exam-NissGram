@@ -32,12 +32,6 @@
   cursor: pointer; 
 } 
 
-/* Logo image styling in the header */
-.navbar-brand{
-  /* height: 50px; */
-  /* padding: 50px; */
-  /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); */
-}
 
 /* Main content area with margins for header and side navbar */
 .content-container {
@@ -60,13 +54,7 @@
   background-color: #f2f4f7; /* Softer color for sidebar background */
 }
 
-/* Styling for the logout button at the bottom of the sidebar */
-.circle.logout {
-  /* align-self: center; */
-  /* margin-bottom: 15px;  */
-  /* padding: 8px;  */
-  /* margin-left: 5px;  */
-}
+
 
 /* General styling for circular buttons/icons */
 .circle {
@@ -74,9 +62,7 @@
   height: 50px;
   border-radius: 50%; 
   display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* overflow: hidden; */
+
 }
 
 /* Icon bar (alternative navbar) for smaller screens */
@@ -84,13 +70,6 @@
   display: none; 
 }
 
-/* Profile icon styling within a circular frame */
-.profile-icon {
-  /* width: 80%;  */
-  /* height: auto;  */
-  /* border-radius: 50%;  */
-  /* object-fit: cover;  */
-}
 
 
 /* Footer styling at the bottom of the page */

@@ -1,156 +1,145 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import PostDates from "./PostDates";
-import { deleteComment, addComment } from "../../api/operations";
-import API_URL from "./../../apiConfig";
-import PostActions from "./PostActions";
+import config from "./../../apiConfig";
+import { PostPopupProps } from "../../types/interfaces";
+import { addComment, deleteComment, fetchCurrentUser} from "../../api/operations";
 
-interface Comment {
-  commentId: number;
-  text: string;
-  dateCommented: string;
-  user: {
-    userName: string;
-    profilePicture: string;
-  };
-}
+const PostPopup: React.FC<PostPopupProps> = ({ post, onClose }) => {
+  const { postId, imgUrl, text, dateCreated, dateUpdated, likeCount, commentCount, comments } = post;
 
-interface PostPopupProps {
-  postId: number;
-  user: {
-    userName: string;
-    profilePicture: string;
-    id: number;
-  };
-  imgUrl?: string;
-  text: string;
-  dateCreated: Date;
-  dateUpdated: Date;
-  comments: Comment[];
-  userLiked: boolean;
-  likeCount: number;
-  commentCount: number;
-  onLike: () => void;
-  onAddComment: (text: string) => void;
-  onDeleteComment: (commentId: number) => void;
-  onClose: () => void;
-  onCommentClick: () => void;
-}
+  const [newComment, setNewComment] = useState("");
+  const [error, setError] = useState("");
+  const [currentUser, setCurrentUser] = useState<{ username: string } | null>(null);
 
-const PostPopup: React.FC<PostPopupProps> = ({
-  postId,
-  user,
-  imgUrl,
-  text,
-  dateCreated,
-  dateUpdated,
-  comments,
-  userLiked,
-  likeCount,
-  commentCount,
-  onLike,
-  onAddComment,
-  onDeleteComment,
-  onClose,
-  onCommentClick,
-}) => {
-  const [newComment, setNewComment] = useState('');
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const user = await fetchCurrentUser();
+        setCurrentUser(user);
+      } catch (err) {
+        console.error("Error fetching current user:", err);
+        setError("Failed to fetch current user.");
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   const handleAddComment = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!newComment.trim()) return;
-    const result = await addComment({
-      postId: postId,
-      text: newComment,
-      username: user.userName, // This should match the backend expected field
-      dateCommented: new Date().toISOString(),
-    });
 
-    console.log(newComment, user.userName, new Date().toISOString(),)
-
-    if (result.error) {
-      console.error('Failed to add comment:', result.error);
-    } else {
-      setNewComment('');
-      // Push new comment to comments array to update UI
-      comments.push({
-        commentId: result.commentId, // Make sure your API returns the new ID
-        text: newComment,
-        dateCommented: new Date().toISOString(),
-        user: { userName: user.userName, profilePicture: user.profilePicture }
-      });
-      // Call any additional state updates or side-effects here
+    try {
+      const result = await addComment({ postId, text: newComment });
+      if (result.error) {
+        setError("Failed to add comment: " + result.error);
+        return;
+      }
+      // Assuming onClose will trigger the re-fetching of post details including new comments
+      onClose();
+    } catch (err) {
+      console.error("Error adding comment:", err);
+      setError("An error occurred while adding the comment.");
     }
+    setNewComment("");
   };
 
   const handleDeleteComment = async (commentId: number) => {
-    const result = await deleteComment(commentId);
-    if (result.error) {
-      console.error('Failed to delete comment:', result.error);
-    } else {
-      // Filter out the deleted comment from the local state to update UI
-      const updatedComments = comments.filter(comment => comment.commentId !== commentId);
-      comments = updatedComments; // Assuming this updates your state correctly
-    }
+    try {
+      const result = await deleteComment(commentId);
+      if (result.success) {
+        onClose(); // Assume onClose will refresh the comments
+      } else {
+        setError("Failed to delete comment.");
+      }
+    } catch (err) {
+      console.error("Error deleting comment:", err);
+      setError("An error occurred while deleting the comment.");
+    } 
   };
 
+  const title = () =>{
+    if(imgUrl){
+      return post.text
+    }
+    else{
+      return "Note"
+    }
+  } 
+
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is 0-indexed
+    const year = date.getFullYear().toString().slice(-2); // Get last 2 digits of the year
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+  
+    return `${day}.${month}.${year} | ${hours}:${minutes}`;
+  };
+  
   return (
     <div className="post-popup modal-body d-flex">
+      <div className="left pe-3">
+        {imgUrl && (
+          <img
+            src={
+              imgUrl.startsWith("/images/postImages")
+                ? `${config.API_URL}${imgUrl}`
+                : `http://localhost:5024${imgUrl}`
+            }
+            alt="Post"
+            className="img-fluid rounded"
+            style={{ marginTop: "10px" }}
+          />
+        )}
 
-      {/* left */}
-      <div className="left pe-3 ">
-        {imgUrl ? (
-              <img
-                src={imgUrl.startsWith('/images/postImages') ? `${API_URL}${imgUrl}` : `http://localhost:5024${imgUrl}`}
-                alt="Post image"
-                className="img-fluid rounded mb-3"
-                style={{ maxHeight: "400px" }}
-              />
-            ): (
-              <p className="font-italic">{text}</p>
-            )}
-        <div>
-
-
-        <div className="likes-comments-dates">
-          LIKES OG KMR            
-            <div className="postedDateModal">
-              <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated}/>
-            </div>
-        </div>
+        <div className="d-flex align-items-center mr-3 like-button-container">
+        
+        
+        <span>{likeCount}</span>
       </div>
-    </div>
+        
+        <PostDates dateCreated={dateCreated} dateUpdated={dateUpdated} />
+        <p>{likeCount} Likes</p>
+        <p>{commentCount} Comments</p>
+      </div>
 
-
-      {/* right */}
       <div className="right">
-        <h5 className="mb-3">{imgUrl ? " " : "Note"}</h5>
-          
-        <h6> Comments </h6>
-        {comments.map((comment) => (
-          <div key={comment.commentId} className="comment">
-            <span>{comment.user.userName}: </span>
-            <span>{comment.text}</span>
-            {user.userName === comment.user.userName && (
-              <button className="btn btn-link text-danger p-0" onClick={() => handleDeleteComment(comment.commentId)}>
-                <i className="fas fa-trash-alt"> </i>
-              </button>
-            )}
-          </div>
-        ))}
+        <div>
+          {title()}
+        </div>
+      <h6>Comments</h6>
+        {comments.map((comment) => {
 
-        {/* add*/}
-        <form onSubmit={(e) => {
-          e.preventDefault();
-          handleAddComment(e);
-        }}>
+        const renderComment = (comment:any) => {
+            console.log(comment)
+            return (
+            <div key={comment.commentId} className="list-group" style={{maxHeight:"23rem", overflowY:"auto",width:"100%"}}>
+              <div className='list-group-item d-flex justify-content-between align-items-center'>
+                <strong>{comment.simpleUser.userName ? comment.simpleUser.userName : "Unknown"}:</strong> {comment.text}
+                <small className="text-muted">{formatDate(comment.dateCommented)}</small>
+                {currentUser && comment.simpleUser?.userName === currentUser.username && (
+                  <button onClick={() => handleDeleteComment(comment.commentId)} className="btn btn-link text-danger p-0">
+                    <i className="fas fa-trash-alt"></i>
+                  </button>
+                )}
+              </div>             
+            </div>
+            );
+          };
+              return renderComment(comment);
+          })}
+
+          <form onSubmit={handleAddComment}>
           <input
             type="text"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Write a comment..."
             required
-            className="form-control"
           />
-          <button type="submit" className="btn btn-primary">Post</button>
+          <button className="btn btn-primary" type="submit">Post</button>
         </form>
       </div>
     </div>

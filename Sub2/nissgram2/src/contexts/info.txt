@@ -1,2 +1,0 @@
-Context API files (if using React context)
-(for brukerautentisering)

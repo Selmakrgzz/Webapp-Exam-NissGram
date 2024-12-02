@@ -1,41 +1,69 @@
+// src/components/postCard/AllPosts.tsx
 import React, { useEffect, useState } from "react";
 import PostCard from "./PostCard";
-import { Post } from "../../types/post";
-import { fetchCurrentUser as fetchUser } from '../../api/operations'; // Import the API call function
+import { Post } from "../../types/interfaces";
+import { getCurrentUser } from "../../services/postService";
+import { likedPosts } from "../../api/operations";
+
 
 const AllPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
-  //const [isLoading, setIsLoading] = useState<boolean>(true); // For å håndtere lasting
-  const [currentUser, setCurrentUser] = useState<string | null>(null); // Holder userName for innlogget bruker
+  const [currentUser, setCurrentUser] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [updatedPosts, setUpdatedPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    const fetchCurrentUser = async () => {
+    const fetchUserData = async () => {
       try {
-        // Kall API for å hente nåværende bruker
-        const data = await fetchUser(); // Forutsetter at fetchUser returnerer JSON-data
-        //console.log("Fetched current user:", data);
-        setCurrentUser(data.username); // Oppdaterer brukernavnet fra API-respons
-      } catch (error) {
-        //console.error("Error fetching current user:", error);
-        setCurrentUser(null); // Angir feilmeldingstilstand hvis API feiler
-      } 
+        setLoading(true);
+
+        // Fetch current user
+        const { username, error: userError } = await getCurrentUser();
+        if (userError) {
+          throw new Error(userError);
+        }
+
+        setCurrentUser(username);
+
+        // Fetch liked posts
+        const likedPostsResponse = await likedPosts();
+        const likedPostIds = likedPostsResponse?.hasLiked || [];
+
+        // Update posts with `userLiked` property
+        const postsWithLikes = posts.map((post) => ({
+          ...post,
+          userLiked: likedPostIds.includes(post.postId), // Set userLiked based on likedPostIds
+        }));
+
+        setUpdatedPosts(postsWithLikes);
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching user data or liked posts:", err);
+        setError("Failed to load posts. Please try again.");
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchCurrentUser();
-  }, []);
+    fetchUserData();
+  }, [posts]);
 
-
-  // Feilmelding hvis brukeren ikke kunne lastes
-  if (!currentUser) {
-    return (
-      <p>Error: Could not fetch the current user. Please try again later.</p>
-    );
+  if (loading) {
+    return <p>Loading...</p>;
   }
 
-  // Renderer listen over innlegg hvis data er lastet
+  if (error) {
+    return <p className="error">{error}</p>;
+  }
+
+  if (!currentUser) {
+    return <p>Error: Could not fetch the current user. Please try again later.</p>;
+  }
+
   return (
     <div>
-      {posts.map((post) => (
-        <PostCard key={post.postId} {...post} currentUserName={currentUser} />
+      {updatedPosts.map((post) => (
+        <PostCard key={post.postId} post={post} currentUserName={currentUser} />
       ))}
     </div>
   );

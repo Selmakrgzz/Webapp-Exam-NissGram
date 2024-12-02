@@ -8,6 +8,8 @@ namespace NissGram.DTOs
         public int PictureCount { get; set; }
         public int NoteCount { get; set; }
         public string? About { get; set; } // Add this field
+
+        public string? ProfilePicture { get; set; }
         public List<PostDto> Pictures { get; set; } = new List<PostDto>();
         public List<PostDto> Notes { get; set; } = new List<PostDto>();
         public List<PostDto> LikedPosts { get; set; } = new List<PostDto>();

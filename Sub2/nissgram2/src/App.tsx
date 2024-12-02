@@ -9,7 +9,6 @@ import NotFoundPage from "./pages/NotFoundPage";
 import CreatePost from "./pages/post/createPost"; 
 import UpdatePost from "./pages/post/updatePost";
 import UpdateUserPage from "./pages/profile/UpdateUserPage"; // Correct path to your UpdateUserPage component
-import ChangePasswordPage from './pages/profile/ChangePasswordPage';
 import './styles/layout.css';
 import AuthorizeView from './pages/auth/AuthorizeView';
 
@@ -38,19 +37,17 @@ const App: React.FC = () => {
                       </AuthorizeView>
                   }
             />
+
+          <Route 
+                  path="/user/:username" 
+                  element={<AuthorizeView>
+                    <ProfilePage />
+                 </AuthorizeView>} />  
             <Route
                   path="/update-profile"
                   element={
                       <AuthorizeView>
                          <UpdateUserPage />
-                      </AuthorizeView>
-                  }
-            />
-            <Route
-                  path="/password"
-                  element={
-                      <AuthorizeView>
-                         <ChangePasswordPage />
                       </AuthorizeView>
                   }
             />
