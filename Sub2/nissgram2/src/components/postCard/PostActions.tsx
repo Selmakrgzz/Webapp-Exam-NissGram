@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import API_URL from "../../apiConfig";
+import config from "../../apiConfig";
 import { Modal } from "react-bootstrap";
 import PostPopup from "./PostPopup";
 import PostProfileHeader from "./PostProfileHeader";
@@ -72,7 +72,7 @@ const PostActions: React.FC<PostActionsProps> = ({ post }) => {
           style={{ border: "none", background: "transparent" }}
         >
           <img
-            src={`${API_URL}/images/Icons/${userLiked ? "heart-red" : "heart"}.png`}
+            src={`${config.API_URL}/images/Icons/${userLiked ? "heart-red" : "heart"}.png`}
             alt="Like Icon"
             className="like-img me-2"
             style={{ marginLeft: "5px", width: "25px", height: "24px" }}
@@ -86,7 +86,7 @@ const PostActions: React.FC<PostActionsProps> = ({ post }) => {
         className="btn comment-button-container"
         disabled={loading} // Disable the button while loading
       >
-        <img src={`${API_URL}/images/Icons/chat.png`} alt="Comment Icon" />
+        <img src={`${config.API_URL}/images/Icons/chat.png`} alt="Comment Icon" />
         <span>{commentCount}</span>
       </button>
 
